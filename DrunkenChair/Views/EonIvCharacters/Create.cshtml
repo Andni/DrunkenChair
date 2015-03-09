@@ -25,6 +25,8 @@
             @Html.LabelFor(model => model.Archetype)
             <div>
                 @Html.DropDownListFor(model => model.Archetype, Model.Archetypes)
+                @Html.DropDownListFor(model => model.Race, Model.Races)
+                @Html.DropDownListFor(model => model.Environment, Model.Environments)
             </div>
         </div>
 

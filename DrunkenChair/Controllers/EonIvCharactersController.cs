@@ -53,7 +53,7 @@ namespace DrunkenChair.Controllers
                              select d.Name;
             RaceList.AddRange(RaceQuerry);
 
-            var EnvironmentQuerry = from d in db.Races
+            var EnvironmentQuerry = from d in db.Environments
                              orderby d.Name
                              select d.Name;
             EnvironmentList.AddRange(EnvironmentQuerry);

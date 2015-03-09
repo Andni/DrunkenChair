@@ -149,6 +149,18 @@
     <Compile Include="Migrations\201503091404070_attributeUpdate.Designer.cs">
       <DependentUpon>201503091404070_attributeUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503091607295_addEnvironmentsTable.cs" />
+    <Compile Include="Migrations\201503091607295_addEnvironmentsTable.Designer.cs">
+      <DependentUpon>201503091607295_addEnvironmentsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201503091627301_addSkills2Environments.cs" />
+    <Compile Include="Migrations\201503091627301_addSkills2Environments.Designer.cs">
+      <DependentUpon>201503091627301_addSkills2Environments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201503091631343_addSkills2Environments1.cs" />
+    <Compile Include="Migrations\201503091631343_addSkills2Environments1.Designer.cs">
+      <DependentUpon>201503091631343_addSkills2Environments1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Archetype.cs" />
     <Compile Include="Models\Attribute.cs" />
@@ -159,9 +171,11 @@
     <Compile Include="Models\CharacterBasics.cs" />
     <Compile Include="Models\CharacterCreationConstants.cs" />
     <Compile Include="Models\DerivedAttributes.cs" />
+    <Compile Include="Models\Environment.cs" />
     <Compile Include="Models\EonIvCharacter.cs" />
     <Compile Include="Models\IDerivedAttributes.cs" />
     <Compile Include="Models\Race.cs" />
+    <Compile Include="Models\Skillpoints.cs" />
     <Compile Include="Models\TableRolls.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -257,6 +271,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201503091404070_attributeUpdate.resx">
       <DependentUpon>201503091404070_attributeUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503091607295_addEnvironmentsTable.resx">
+      <DependentUpon>201503091607295_addEnvironmentsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503091627301_addSkills2Environments.resx">
+      <DependentUpon>201503091627301_addSkills2Environments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503091631343_addSkills2Environments1.resx">
+      <DependentUpon>201503091631343_addSkills2Environments1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

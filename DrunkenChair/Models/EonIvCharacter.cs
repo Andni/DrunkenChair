@@ -27,6 +27,7 @@ namespace DrunkenChair.Models
         public DbSet<EonIvCharacter> EonIvCharacters { get; set; }
         public DbSet<Archetype> Archetypes { get; set; }
         public DbSet<Race> Races { get; set; }
+        public DbSet<Environment> Environments { get; set; }
 
         public DbSet<CharacterCreationConstants> CreationConstants { get; set; }
     }

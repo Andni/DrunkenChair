@@ -1,6 +1,5 @@
 namespace DrunkenChair.Migrations
 {
-    using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -31,6 +30,7 @@ namespace DrunkenChair.Migrations
 
             SeedArchetypes(context);
             SeedRaces(context);
+            SeedEnvironments(context);
             SeedConstants(context);
         }
 
@@ -60,6 +60,15 @@ namespace DrunkenChair.Migrations
                         Charisma = new Models.Attribute(1, 3)
                     },
                     Perks = "Flexible"}
+                );
+        }
+
+        private void SeedEnvironments(DrunkenChair.Models.EonIvCharacterDbContext context)
+        {
+            context.Environments.AddOrUpdate(
+                e => e.Name,
+                new Environment("Hav", new TableRolls(), new Skillpoints()),
+                new Environment("Stad", new TableRolls(), new Skillpoints())
                 );
         }
 

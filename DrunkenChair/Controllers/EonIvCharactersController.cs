@@ -40,7 +40,7 @@ namespace DrunkenChair.Controllers
         public ActionResult Create()
         {
             var ArchetypeList = new List<string>();
-            var RaceList = new List<string>();
+            var RaceList = new List<Race>();
             var EnvironmentList = new List<string>();
 
             var ArchetypeQuerry = from d in db.Archetypes
@@ -50,7 +50,7 @@ namespace DrunkenChair.Controllers
 
             var RaceQuerry = from d in db.Races
                              orderby d.Name
-                             select d.Name;
+                             select d;
             RaceList.AddRange(RaceQuerry);
 
             var EnvironmentQuerry = from d in db.Environments
@@ -61,7 +61,7 @@ namespace DrunkenChair.Controllers
             return View(new BasicCharacterDetails(
                 new SelectList(ArchetypeList),
                 new SelectList(EnvironmentList),
-                new SelectList(RaceList)));
+                RaceList));
         }
 
         // POST: EonIvCharacters/Create
@@ -158,6 +158,22 @@ namespace DrunkenChair.Controllers
             db.EonIvCharacters.Remove(eonIvCharacter);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+            
+        [HttpGet]
+        public ActionResult GetCharacterPreview(string archetype, string race, string environment)
+        {
+            CharacterPreview model = new CharacterPreview();
+
+            var theArchetype = db.Archetypes.Single(a => a.Name == archetype);
+            var theRace = db.Races.Single(r => r.Name == race);
+            var theEnvironment = db.Environments.Single(r => r.Name == environment);
+
+            model.Attributes = theRace.StartingAttributes;
+            model.EventRolls = theArchetype.LifeEventRolls + theEnvironment.Events;
+            model.Skillpoints = theEnvironment.Skills;
+
+            return PartialView("CharacterPreview",  model);
         }
 
         protected override void Dispose(bool disposing)

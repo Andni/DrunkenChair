@@ -15,14 +15,14 @@ namespace DrunkenChair.Models
 
         public Archetype()
         {
-            LifeEventRolls = new TableRolls();
+            LifeEventRolls = new EventTableRolls();
         }
 
         //public int ID { get; set; }
         [Key]
         public string Name { get; set; }
         [Display(Name = "Events")]
-        public TableRolls LifeEventRolls { get; set; }
+        public EventTableRolls LifeEventRolls { get; set; }
     }
 
     public class ArchetypeDbContext : DbContext

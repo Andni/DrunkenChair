@@ -38,8 +38,8 @@ namespace DrunkenChair.Migrations
         {
             context.Archetypes.AddOrUpdate(
                   a => a.Name,
-                  new Archetype { Name = "Krigare", LifeEventRolls = new TableRolls(1, 0, 0, 2, 0) },
-                  new Archetype { Name = "Mystiker", LifeEventRolls = new TableRolls(0, 0, 2, 0, 1) }
+                  new Archetype { Name = "Krigare", LifeEventRolls = new EventTableRolls(1, 0, 0, 2, 0) },
+                  new Archetype { Name = "Mystiker", LifeEventRolls = new EventTableRolls(0, 0, 2, 0, 1) }
                 );
             
         }
@@ -67,8 +67,8 @@ namespace DrunkenChair.Migrations
         {
             context.Environments.AddOrUpdate(
                 e => e.Name,
-                new Environment("Hav", new TableRolls(), new Skillpoints()),
-                new Environment("Stad", new TableRolls(), new Skillpoints())
+                new Environment("Hav", new EventTableRolls(), new Skillpoints()),
+                new Environment("Stad", new EventTableRolls(), new Skillpoints())
                 );
         }
 

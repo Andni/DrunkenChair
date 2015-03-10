@@ -161,6 +161,10 @@
     <Compile Include="Migrations\201503091631343_addSkills2Environments1.Designer.cs">
       <DependentUpon>201503091631343_addSkills2Environments1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503100927598_skillpointsUpdate.cs" />
+    <Compile Include="Migrations\201503100927598_skillpointsUpdate.Designer.cs">
+      <DependentUpon>201503100927598_skillpointsUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Archetype.cs" />
     <Compile Include="Models\Attribute.cs" />
@@ -170,13 +174,14 @@
     <Compile Include="Models\CharacterAttributes.cs" />
     <Compile Include="Models\CharacterBasics.cs" />
     <Compile Include="Models\CharacterCreationConstants.cs" />
+    <Compile Include="Models\CharacterPreview.cs" />
     <Compile Include="Models\DerivedAttributes.cs" />
     <Compile Include="Models\Environment.cs" />
     <Compile Include="Models\EonIvCharacter.cs" />
     <Compile Include="Models\IDerivedAttributes.cs" />
     <Compile Include="Models\Race.cs" />
     <Compile Include="Models\Skillpoints.cs" />
-    <Compile Include="Models\TableRolls.cs" />
+    <Compile Include="Models\EventTableRolls.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -242,6 +247,9 @@
     <Content Include="Views\EonIvCharacters\Index.cshtml" />
     <Content Include="Views\EonIvCharacters\CharacterAttributeDetails.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\eInt32.cshtml" />
+    <Content Include="Views\EonIvCharacters\CharacterPreview.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Attributes.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Attribute.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -280,6 +288,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201503091631343_addSkills2Environments1.resx">
       <DependentUpon>201503091631343_addSkills2Environments1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503100927598_skillpointsUpdate.resx">
+      <DependentUpon>201503100927598_skillpointsUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

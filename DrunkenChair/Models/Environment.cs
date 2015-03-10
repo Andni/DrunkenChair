@@ -12,11 +12,11 @@ namespace DrunkenChair.Models
         [Key]
         public string Name { get; set; }
         public Skillpoints Skills { get; set; }
-        public TableRolls Events { get; set; }
+        public EventTableRolls Events { get; set; }
 
-        public Environment() : this("Default", new TableRolls(), new Skillpoints()) { }
+        public Environment() : this("Default", new EventTableRolls(), new Skillpoints()) { }
 
-        public Environment(string name, TableRolls eventRolls, Skillpoints skills)
+        public Environment(string name, EventTableRolls eventRolls, Skillpoints skills)
         {
             Name = name;
             Events = eventRolls;

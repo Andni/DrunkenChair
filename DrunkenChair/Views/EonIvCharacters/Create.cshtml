@@ -2,10 +2,15 @@
 
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Karaktärsgrunder";
+
+    var dropdownListAttributes = new { htmlAttributes = new { @class = "form-control" } };
+    var labelAttributes = new { @class = "control-label col-md-2" };
+
+    var races = new SelectList(Model.Races.Select(r => r.Name));
 }
 
-<h2>Create</h2>
+<h2>Karaktärsgrunder</h2>
 
 
 @using (Html.BeginForm()) 
@@ -13,21 +18,39 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>EonIvCharacter</h4>
+        <h4>Karaktärsgrunder</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.Background, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Background, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Background, "", new { @class = "text-danger" })
-            </div>
-            @Html.LabelFor(model => model.Archetype)
+
+            @Html.LabelFor(model => model.Background, htmlAttributes: labelAttributes)
             <div>
-                @Html.DropDownListFor(model => model.Archetype, Model.Archetypes)
-                @Html.DropDownListFor(model => model.Race, Model.Races)
-                @Html.DropDownListFor(model => model.Environment, Model.Environments)
+                @Html.RadioButtonFor(model => model.Background, dropdownListAttributes)
             </div>
+
+            @Html.LabelFor(model => model.Archetype, htmlAttributes: labelAttributes)
+            <div>
+                @Html.DropDownListFor(model => model.Archetype, Model.Archetypes, dropdownListAttributes)
+            </div>
+            
+            <br />
+
+            @Html.LabelFor(model => model.Race, htmlAttributes: labelAttributes)
+            <div>
+                @Html.DropDownListFor(model => model.Race, races, dropdownListAttributes)
+            </div>
+
+            <br />
+
+            @Html.LabelFor(model => model.Environment, htmlAttributes: labelAttributes)
+            <div>
+                @Html.DropDownListFor(model => model.Environment, Model.Environments, dropdownListAttributes)
+            </div>
+
+        </div>
+
+        <div id="divCharacterPreview">
+            @{Html.RenderPartial("CharacterPreview", Model.Preview);}
         </div>
 
         <div class="form-group">
@@ -44,4 +67,15 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        $(this.document).ready(function () {
+            $('#Race').change(function () {
+                var selection = $('#Race').val();
+                $('#divCharacterPreview').load(
+                    '@(Url.Action("GetCharacterPreview", "EonIvCharacters", null, Request.Url.Scheme))?archetype=Krigare&environment=Hav&race=' + selection);
+            });
+        });
+        
+    </script>
 }

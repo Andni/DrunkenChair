@@ -1,12 +1,10 @@
 ﻿@model DrunkenChair.Models.BasicCharacterDetails
 
-
 @{
     ViewBag.Title = "Karaktärsgrunder";
 
-    var dropdownListAttributes = new { htmlAttributes = new { @class = "form-control" } };
-    var labelAttributes = new { @class = "control-label col-md-2" };
-
+    var labelAttributes = new { @class = "control-label col-md-2"};
+    var dropdownListAttributes = new { @class = "form-control", data_action_url = Url.Action("GetCharacterPreview", "EonIvCharacters") };
     var races = new SelectList(Model.Races.Select(r => r.Name));
 }
 
@@ -68,14 +66,5 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 
-    <script type="text/javascript">
-        $(this.document).ready(function () {
-            $('#Race').change(function () {
-                var selection = $('#Race').val();
-                $('#divCharacterPreview').load(
-                    '@(Url.Action("GetCharacterPreview", "EonIvCharacters", null, Request.Url.Scheme))?archetype=Krigare&environment=Hav&race=' + selection);
-            });
-        });
-        
-    </script>
+    <script type="text/javascript" src="@Url.Content("~/js/EonIvCharacters/create.js")"></script>
 }

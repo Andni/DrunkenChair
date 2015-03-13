@@ -58,10 +58,18 @@ namespace DrunkenChair.Controllers
                              select d.Name;
             EnvironmentList.AddRange(EnvironmentQuerry);
 
+            var ccs = GetCharacterConstructionSite();
+            ccs.Character.Attributes = new Attributes();
+            ccs.Scaffolding.EventRolls = new EventTableRolls();
+            ccs.Scaffolding.Skillpoints = new Skillpoints();
+
             return View(new BasicCharacterDetails(
                 new SelectList(ArchetypeList),
                 new SelectList(EnvironmentList),
-                RaceList));
+                RaceList)
+                {
+                    CharacterConstructionSite = ccs
+                });
         }
 
         // POST: EonIvCharacters/Create
@@ -73,11 +81,11 @@ namespace DrunkenChair.Controllers
         {
             if (ModelState.IsValid)
             {
-                var character = GetCharacter();
-                character.Basics.Archetype = basicDetails.Archetype;
-                character.Basics.Background = basicDetails.Background;
-                character.Basics.Environment = basicDetails.Environment;
-                character.Basics.Race = basicDetails.Race;
+                var cs = GetCharacterConstructionSite();
+                cs.Character.Basics.Archetype = basicDetails.Archetype;
+                cs.Character.Basics.Background = basicDetails.Background;
+                cs.Character.Basics.Environment = basicDetails.Environment;
+                cs.Character.Basics.Race = basicDetails.Race;
 
                 return View("CharacterAttributeDetails",
                     new CharacterAttributeDetails(
@@ -99,7 +107,8 @@ namespace DrunkenChair.Controllers
             ViewBag.DicesToDistribute = DicesToDistribute;
             ViewBag.MaxDiceesPerAttribute = MaxDicesPerAttribute;
 
-            return View(new CharacterAttributeDetails(DicesToDistribute, MaxDicesPerAttribute, new Attributes()));
+            return View(new CharacterAttributeDetails(DicesToDistribute, MaxDicesPerAttribute, new Attributes())
+            {CharacterConstructionSite = (EonIVCharacterConstructionSite)(Session[sessionStringCharacter]) });
         }
 
 
@@ -163,17 +172,23 @@ namespace DrunkenChair.Controllers
         [HttpGet]
         public ActionResult GetCharacterPreview(string archetype, string race, string environment)
         {
-            CharacterPreview model = new CharacterPreview();
+            //CharacterBasics model = new CharacterBasics();
+
+            EonIVCharacterConstructionSite ccs = GetCharacterConstructionSite();
 
             var theArchetype = db.Archetypes.Single(a => a.Name == archetype);
             var theRace = db.Races.Single(r => r.Name == race);
             var theEnvironment = db.Environments.Single(r => r.Name == environment);
 
-            model.Attributes = theRace.StartingAttributes;
-            model.EventRolls = theArchetype.LifeEventRolls + theEnvironment.Events;
-            model.Skillpoints = theEnvironment.Skills;
+            //model.Attributes = theRace.StartingAttributes;
+            //model.EventRolls = theArchetype.LifeEventRolls + theEnvironment.Events;
+            //model.Skillpoints = theEnvironment.Skills;
 
-            return PartialView("CharacterPreview",  model);
+            ccs.Character.Attributes = theRace.StartingAttributes;
+            ccs.Scaffolding.EventRolls = theArchetype.LifeEventRolls + theEnvironment.Events;
+            ccs.Scaffolding.Skillpoints = theEnvironment.Skills;
+
+            return PartialView("CharacterPreview",  ccs);
         }
 
         protected override void Dispose(bool disposing)
@@ -185,13 +200,13 @@ namespace DrunkenChair.Controllers
             base.Dispose(disposing);
         }
 
-        private EonIvCharacter GetCharacter()
+        private EonIVCharacterConstructionSite GetCharacterConstructionSite()
         {
             if (Session[sessionStringCharacter] == null)
             {
-                Session[sessionStringCharacter] = new EonIvCharacter();
+                Session[sessionStringCharacter] = new EonIVCharacterConstructionSite();
             }
-            return (EonIvCharacter)Session[sessionStringCharacter];
+            return (EonIVCharacterConstructionSite)Session[sessionStringCharacter];
         }
 
         private void RemoveCharacter()

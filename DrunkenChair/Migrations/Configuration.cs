@@ -48,8 +48,12 @@ namespace DrunkenChair.Migrations
         {
             context.Races.AddOrUpdate(
                 r => r.Name,
-                new Race { Name = "Adasier",
-                    StartingAttributes = new Attributes {
+
+                new Race
+                {
+                    Name = "Adasier",
+                    StartingAttributes = new Attributes
+                    {
                         Strength = new Models.Attribute(1, 2),
                         Stamina = new Models.Attribute(2, 3),
                         Agility = new Models.Attribute(3, 0),
@@ -59,16 +63,62 @@ namespace DrunkenChair.Migrations
                         Wisdom = new Models.Attribute(1, 0),
                         Charisma = new Models.Attribute(1, 3)
                     },
-                    Perks = "Flexible"}
-                );
+                    Perks = "Flexible"
+                },
+
+                new Race
+                {
+                    Name = "Cirefalier",
+                    StartingAttributes = new Attributes
+                    {
+                        Strength = new Attribute(2, 0),
+                        Stamina = new Attribute(2, 0),
+                        Agility = new Attribute(2, 0),
+                        Perception = new Attribute(1, 2),
+                        Will = new Attribute(2, 0),
+                        Psyche = new Attribute(2, 0),
+                        Wisdom = new Attribute(2, 2),
+                        Charisma = new Attribute(2, 2),
+                    },
+                    Perks = "A plan within a plan"
+                }
+            );
         }
 
         private void SeedEnvironments(DrunkenChair.Models.EonIvCharacterDbContext context)
         {
             context.Environments.AddOrUpdate(
                 e => e.Name,
-                new Environment("Hav", new EventTableRolls(), new Skillpoints()),
-                new Environment("Stad", new EventTableRolls(), new Skillpoints())
+                new Environment(
+                    "Hav",
+                    new EventTableRolls()
+                    {
+                        BattlesAndSkirmishes = 1,
+                        TravlesAndAdventures = 1,
+                        FreeChoise = 1
+                    },
+                    new Skillpoints()
+                    {
+                        Battle = 2,
+                        Knowledge = 1,
+                        Movement = 4,
+                        Wilderness = 5
+                    }),
+                new Environment(
+                    "Stad",
+                    new EventTableRolls()
+                    {
+                        IntrigueAndIlldeads = 1,
+                        KnowledgeAndMysteries = 1,
+                        FreeChoise = 1
+                    },
+                    new Skillpoints()
+                    {
+                        Knowledge = 2,
+                        Movement = 3,
+                        Social = 5,
+                        Battle = 2
+                    })
                 );
         }
 

@@ -12,12 +12,12 @@ namespace DrunkenChair.Models
     public class EonIvCharacter
     {
         public int ID { get; set; }
-        public CharacterBasics Basics { get; set; }
+        public CharacterBasicDetails Basics { get; set; }
         public Attributes Attributes { get; set; }
 
         public EonIvCharacter()
         {
-            Basics = new CharacterBasics();
+            Basics = new CharacterBasicDetails();
             Attributes = new Attributes();
         }
     }

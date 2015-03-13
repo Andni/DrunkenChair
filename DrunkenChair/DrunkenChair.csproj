@@ -166,20 +166,22 @@
       <DependentUpon>201503100927598_skillpointsUpdate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Archetype.cs" />
+    <Compile Include="Models\DatabaseTables\Archetype.cs" />
     <Compile Include="Models\Attribute.cs" />
     <Compile Include="Models\Attributes.cs" />
     <Compile Include="Models\BasicCharacterDetails.cs" />
     <Compile Include="Models\CharacterAttributeDetails.cs" />
     <Compile Include="Models\CharacterAttributes.cs" />
+    <Compile Include="Models\CharacterBasicDetails.cs" />
+    <Compile Include="Models\DatabaseTables\CharacterCreationConstants.cs" />
     <Compile Include="Models\CharacterBasics.cs" />
-    <Compile Include="Models\CharacterCreationConstants.cs" />
-    <Compile Include="Models\CharacterPreview.cs" />
     <Compile Include="Models\DerivedAttributes.cs" />
-    <Compile Include="Models\Environment.cs" />
+    <Compile Include="Models\DatabaseTables\Environment.cs" />
     <Compile Include="Models\EonIvCharacter.cs" />
+    <Compile Include="Models\EonIVCharacterConstructionSite.cs" />
+    <Compile Include="Models\EonIVCharacterScaffolding.cs" />
     <Compile Include="Models\IDerivedAttributes.cs" />
-    <Compile Include="Models\Race.cs" />
+    <Compile Include="Models\DatabaseTables\Race.cs" />
     <Compile Include="Models\Skillpoints.cs" />
     <Compile Include="Models\EventTableRolls.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

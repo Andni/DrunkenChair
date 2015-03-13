@@ -14,6 +14,8 @@ namespace DrunkenChair.Models
 
         public Attributes Attributes { get; set; }
 
+        public EonIVCharacterConstructionSite CharacterConstructionSite { get; set; }
+
         public int StrenghtBonusDices { get; set; }
         public int StaminaBonusDices { get; set; }
         public int AgilityBonusDices { get; set; }

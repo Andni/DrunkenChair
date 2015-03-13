@@ -25,7 +25,7 @@ namespace DrunkenChair.Models
 
         public EventTableRolls() : this(0, 0, 0, 0, 0) {}
 
-        public EventTableRolls(int travels, int intrigue, int knowledge, int battles, int free)
+        public EventTableRolls(int travels = 0, int intrigue = 0, int knowledge = 0, int battles = 0, int free = 0)
         {
             TravlesAndAdventures = travels;
             IntrigueAndIlldeads = intrigue;

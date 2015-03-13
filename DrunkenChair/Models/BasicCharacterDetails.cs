@@ -26,7 +26,7 @@ namespace DrunkenChair.Models
         public SelectList Archetypes { get; set; }
         public SelectList Environments { get; set; }
 
-        public CharacterPreview Preview { get; set; }
+        public EonIVCharacterConstructionSite CharacterConstructionSite { get; set; }
 
         public BasicCharacterDetails() : this(null, null, null) { }
 
@@ -35,8 +35,6 @@ namespace DrunkenChair.Models
             Archetypes = archetypes;
             Environments = environments;
             Races = races;
-
-            Preview = new CharacterPreview();
         }
     }
 }

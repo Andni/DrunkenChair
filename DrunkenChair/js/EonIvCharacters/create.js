@@ -27,12 +27,4 @@ $(this.document).ready(function () {
     eon.attachOnChange('#Archetype', eon.selectorChanged);
     eon.attachOnChange('#Environment', eon.selectorChanged);
     eon.attachOnChange('#Race', eon.selectorChanged);
-
-    //$('#Race').change(function () {
-    //    var selection = $('#Race').val();
-    //    $('#divCharacterPreview').load(
-    //        $('#Race').data("action-url") + '?archetype=Krigare&environment=Hav&race='
-    //        //'/EonIvCharacters/GetCharacterPreview?archetype=Krigare&environment=Hav&race='
-    //        + selection);
-    //});
 });

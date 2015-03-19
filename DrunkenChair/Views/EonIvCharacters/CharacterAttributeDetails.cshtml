@@ -1,15 +1,30 @@
 ﻿@model DrunkenChair.Models.CharacterAttributeDetails
 
+@using DrunkenChair.Extensions
+@using Finley.Common
+
 @{
     ViewBag.Title = "CharacterAttributeDetails";
     var dices = Model.DicesToDistribute;
     var max = Model.MaxDicesPerAttribute;
 
-    var basicStats = ((DrunkenChair.Models.EonIvCharacter)Session["character"]);
+    object labelHtmlAttributes = new { @class = "control-label col-md-2" };
+
+    object diceHtmlAttributes = new
+        {
+            @class = "form-control attribute-spinner",
+            @onkeydown = "return false",
+            @min = "0",
+            @max = "5",
+            @style = "color: transparent; text-shadow: 0 0 0 gray;"
+        };
     
-    object diceDistributorViewData = new 
+    var test = new Dictionary<string, string>();
+    test.Add("class", "form-control");
+        
+    object diceDistributorViewData = new
     {
-        htmlAttributes = new 
+        htmlAttributes = new
         {
             @class = "form-control",
             @onkeydown = "return false",
@@ -18,7 +33,6 @@
             @style = "color: transparent; text-shadow: 0 0 0 gray;"
         }
     };
-    
 }
 
 <h2>CharacterAttributeDetails</h2>
@@ -36,15 +50,70 @@
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.StrenghtBonusDices, htmlAttributes: new { @class = "control-label col-md-2" })
-            @Html.EditorFor(model => model.StrenghtBonusDices, diceDistributorViewData)
+            @Html.LabelFor(model => model.StrenghtBonusDices, htmlAttributes: labelHtmlAttributes)
+            @Html.EditorFor(model => model.StrenghtBonusDices,
+            new { htmlAttributes = TypeMerger.MergeTypes(diceHtmlAttributes,
+                new { data_onchange_target = "#" + Html.IdFor(model => model.CharacterConstructionSite.Character.Attributes.Strength.UnlimitedDice6) }) })
             <br/>
-            @Html.LabelFor(model => model.StaminaBonusDices, htmlAttributes: new { @class = "control-label col-md-2" })
-            @Html.EditorFor(model => model.StaminaBonusDices, diceDistributorViewData)
+            @Html.LabelFor(model => model.StaminaBonusDices, htmlAttributes: labelHtmlAttributes)
+            @Html.EditorFor(model => model.StaminaBonusDices, new
+               {
+                   htmlAttributes = TypeMerger.MergeTypes(diceHtmlAttributes,
+                       new { data_onchange_target = "#" + Html.IdFor(model => model.CharacterConstructionSite.Character.Attributes.Stamina.UnlimitedDice6) })
+               })
+            <br />
+            @Html.LabelFor(model => model.AgilityBonusDices, htmlAttributes: labelHtmlAttributes)
+            @Html.EditorFor(model => model.AgilityBonusDices, new
+               {
+                   htmlAttributes = TypeMerger.MergeTypes(diceHtmlAttributes,
+                       new { data_onchange_target = "#" + Html.IdFor(model => model.CharacterConstructionSite.Character.Attributes.Agility.UnlimitedDice6) })
+               })
+
+            <br />
+            @Html.LabelFor(model => model.PerceptionBonusDices, htmlAttributes: labelHtmlAttributes)
+            @Html.EditorFor(model => model.PerceptionBonusDices, new
+               {
+                   htmlAttributes = TypeMerger.MergeTypes(diceHtmlAttributes,
+                       new { data_onchange_target = "#" + Html.IdFor(model => model.CharacterConstructionSite.Character.Attributes.Perception.UnlimitedDice6) })
+               })
+
+            <br />
+            @Html.LabelFor(model => model.WillBonusDices, htmlAttributes: labelHtmlAttributes)
+            @Html.EditorFor(model => model.WillBonusDices, new
+               {
+                   htmlAttributes = TypeMerger.MergeTypes(diceHtmlAttributes,
+                       new { data_onchange_target = "#" + Html.IdFor(model => model.CharacterConstructionSite.Character.Attributes.Will.UnlimitedDice6) })
+               })
+
+            <br />
+            @Html.LabelFor(model => model.PsycheBonusDices, htmlAttributes: labelHtmlAttributes)
+            @Html.EditorFor(model => model.PsycheBonusDices, new
+               {
+                   htmlAttributes = TypeMerger.MergeTypes(diceHtmlAttributes,
+                       new { data_onchange_target = "#" + Html.IdFor(model => model.CharacterConstructionSite.Character.Attributes.Psyche.UnlimitedDice6) })
+               })
+
+            <br />
+            @Html.LabelFor(model => model.WisdomBonusDices, htmlAttributes: labelHtmlAttributes)
+            @Html.EditorFor(model => model.WisdomBonusDices, new
+               {
+                   htmlAttributes = TypeMerger.MergeTypes(diceHtmlAttributes,
+                       new { data_onchange_target = "#" + Html.IdFor(model => model.CharacterConstructionSite.Character.Attributes.Wisdom.UnlimitedDice6) })
+               })
+
+            <br />
+            @Html.LabelFor(model => model.CharismaBonusDices, htmlAttributes: labelHtmlAttributes)
+            @Html.EditorFor(model => model.CharismaBonusDices, new
+               {
+                   htmlAttributes = TypeMerger.MergeTypes(diceHtmlAttributes,
+                       new { data_onchange_target = "#" + Html.IdFor(model => model.CharacterConstructionSite.Character.Attributes.Charisma.UnlimitedDice6) })
+               })
+
+
         </div>
 
         <div id="divCharacterPreview">
-            @{Html.RenderPartial("CharacterPreview", Model.Preview);}
+                @Html.DisplayFor(m => m.CharacterConstructionSite)
         </div>
 
         <div class="form-group">
@@ -63,4 +132,6 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript" src="@Url.Content("~/js/EonIvCharacters/characterAttributeDetails.js")"></script>
+
 }

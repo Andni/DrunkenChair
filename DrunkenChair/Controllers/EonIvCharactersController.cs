@@ -59,7 +59,7 @@ namespace DrunkenChair.Controllers
             EnvironmentList.AddRange(EnvironmentQuerry);
 
             var ccs = GetCharacterConstructionSite();
-            ccs.Character.Attributes = new Attributes();
+            ccs.Character.Attributes = new DerivedCharacterAttributes();
             ccs.Scaffolding.EventRolls = new EventTableRolls();
             ccs.Scaffolding.Skillpoints = new Skillpoints();
 
@@ -91,8 +91,8 @@ namespace DrunkenChair.Controllers
                     new CharacterAttributeDetails(
                         db.CreationConstants.Single( c => c.Constant == Constant.BonusAttributeDiceses).Value,
                         db.CreationConstants.Single( c => c.Constant == Constant.MaxBonusAttributeDicesSpentOnOneAttribute).Value,
-                        db.Races.SingleOrDefault( r => r.Name == basicDetails.Race).StartingAttributes
-                    ));
+                        cs
+                        ));
             }
 
             return View();
@@ -107,8 +107,7 @@ namespace DrunkenChair.Controllers
             ViewBag.DicesToDistribute = DicesToDistribute;
             ViewBag.MaxDiceesPerAttribute = MaxDicesPerAttribute;
 
-            return View(new CharacterAttributeDetails(DicesToDistribute, MaxDicesPerAttribute, new Attributes())
-            {CharacterConstructionSite = (EonIVCharacterConstructionSite)(Session[sessionStringCharacter]) });
+            return View(new CharacterAttributeDetails(DicesToDistribute, MaxDicesPerAttribute, GetCharacterConstructionSite() ));
         }
 
 
@@ -172,23 +171,37 @@ namespace DrunkenChair.Controllers
         [HttpGet]
         public ActionResult GetCharacterPreview(string archetype, string race, string environment)
         {
-            //CharacterBasics model = new CharacterBasics();
-
             EonIVCharacterConstructionSite ccs = GetCharacterConstructionSite();
 
             var theArchetype = db.Archetypes.Single(a => a.Name == archetype);
             var theRace = db.Races.Single(r => r.Name == race);
             var theEnvironment = db.Environments.Single(r => r.Name == environment);
 
-            //model.Attributes = theRace.StartingAttributes;
-            //model.EventRolls = theArchetype.LifeEventRolls + theEnvironment.Events;
-            //model.Skillpoints = theEnvironment.Skills;
-
-            ccs.Character.Attributes = theRace.StartingAttributes;
+            ccs.Character.Attributes.Base = theRace.StartingAttributes;
             ccs.Scaffolding.EventRolls = theArchetype.LifeEventRolls + theEnvironment.Events;
             ccs.Scaffolding.Skillpoints = theEnvironment.Skills;
 
             return PartialView("CharacterPreview",  ccs);
+        }
+
+        [HttpGet]
+        public JsonResult GetDerivedAttributes(string str, string sta, string agl, string per, string wil, string psy, string wis, string cha)
+        {
+            var res = new JsonResult();
+            var atr = new DerivedCharacterAttributes()
+            {
+                Strength = str,
+                Stamina = sta,
+                Agility = agl,
+                Perception = per,
+                Will = per,
+                Psyche = psy,
+                Wisdom = wis,
+                Charisma = cha
+            };
+            res.Data = new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(atr);
+            res.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
+            return res;
         }
 
         protected override void Dispose(bool disposing)

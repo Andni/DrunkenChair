@@ -13,12 +13,12 @@ namespace DrunkenChair.Models
     {
         public int ID { get; set; }
         public CharacterBasicDetails Basics { get; set; }
-        public Attributes Attributes { get; set; }
+        public ICharacterAttributes Attributes { get; set; }
 
         public EonIvCharacter()
         {
             Basics = new CharacterBasicDetails();
-            Attributes = new Attributes();
+            Attributes = new DerivedCharacterAttributes();
         }
     }
 

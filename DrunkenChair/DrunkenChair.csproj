@@ -122,6 +122,8 @@
     <Compile Include="Controllers\HelloWorldController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Extensions\HtmlButtonExtension.cs" />
+    <Compile Include="Extensions\HtmlHelperExtensions.cs" />
+    <Compile Include="Extensions\ObjectPropertyMergerHelper.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -165,25 +167,29 @@
     <Compile Include="Migrations\201503100927598_skillpointsUpdate.Designer.cs">
       <DependentUpon>201503100927598_skillpointsUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503191058429_AttributeChanges.cs" />
+    <Compile Include="Migrations\201503191058429_AttributeChanges.Designer.cs">
+      <DependentUpon>201503191058429_AttributeChanges.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\CharacterBaseAttributes.cs" />
     <Compile Include="Models\DatabaseTables\Archetype.cs" />
     <Compile Include="Models\Attribute.cs" />
-    <Compile Include="Models\Attributes.cs" />
     <Compile Include="Models\BasicCharacterDetails.cs" />
     <Compile Include="Models\CharacterAttributeDetails.cs" />
-    <Compile Include="Models\CharacterAttributes.cs" />
     <Compile Include="Models\CharacterBasicDetails.cs" />
     <Compile Include="Models\DatabaseTables\CharacterCreationConstants.cs" />
-    <Compile Include="Models\CharacterBasics.cs" />
-    <Compile Include="Models\DerivedAttributes.cs" />
+    <Compile Include="Models\DerivedCharacterAttributes.cs" />
     <Compile Include="Models\DatabaseTables\Environment.cs" />
     <Compile Include="Models\EonIvCharacter.cs" />
     <Compile Include="Models\EonIVCharacterConstructionSite.cs" />
     <Compile Include="Models\EonIVCharacterScaffolding.cs" />
-    <Compile Include="Models\IDerivedAttributes.cs" />
+    <Compile Include="Models\ICharacterAttributes.cs" />
     <Compile Include="Models\DatabaseTables\Race.cs" />
     <Compile Include="Models\Skillpoints.cs" />
     <Compile Include="Models\EventTableRolls.cs" />
+    <Compile Include="Models\TypeMerger.cs" />
+    <Compile Include="Models\TypeMergerPolicy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -193,6 +199,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="js\EonIvCharacters\characterAttributeDetails.js" />
     <Content Include="js\EonIvCharacters\eonIVCharacters.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -218,7 +225,6 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Views\EonIvCharacters\create.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -253,8 +259,9 @@
     <Content Include="Views\EonIvCharacters\CharacterAttributeDetails.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\eInt32.cshtml" />
     <Content Include="Views\EonIvCharacters\CharacterPreview.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\Attributes.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DerivedCharacterAttributes.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Attribute.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\EonIVCharacterConstructionSite.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -296,6 +303,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201503100927598_skillpointsUpdate.resx">
       <DependentUpon>201503100927598_skillpointsUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503191058429_AttributeChanges.resx">
+      <DependentUpon>201503191058429_AttributeChanges.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

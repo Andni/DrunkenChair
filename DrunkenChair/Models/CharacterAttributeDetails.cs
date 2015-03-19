@@ -12,7 +12,7 @@ namespace DrunkenChair.Models
         public int DicesToDistribute = 0;
         public int MaxDicesPerAttribute = 0;
 
-        public Attributes Attributes { get; set; }
+        public CharacterBaseAttributes BaseAttributes { get; set; }
 
         public EonIVCharacterConstructionSite CharacterConstructionSite { get; set; }
 
@@ -25,11 +25,12 @@ namespace DrunkenChair.Models
         public int WisdomBonusDices { get; set; }
         public int CharismaBonusDices { get; set; }
 
-        public CharacterAttributeDetails(int dicesToDistribute, int maxDicesPerAttribute, Attributes attrs)
+        public CharacterAttributeDetails(int dicesToDistribute, int maxDicesPerAttribute, EonIVCharacterConstructionSite ccs)
         {
             this.DicesToDistribute = dicesToDistribute;
             this.MaxDicesPerAttribute = maxDicesPerAttribute;
-            Attributes = attrs;
+            BaseAttributes = new CharacterBaseAttributes();
+            CharacterConstructionSite = ccs;
         }
     }
 }

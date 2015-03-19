@@ -1,11 +1,26 @@
-﻿
+﻿var eon = eon || {};
 
-function aattachOnChange(element, fun) {
-    $('#Race').change(function () {
-        var race = $('#Race').val();
-        var environment = $('#Environment').val();
-        var archetype = $('#Archetype').val();
+
+(function (ns) {
+
+
+    ns.attachOnChange = function (selector, fun) {
+        $(selector).change(function () { fun(selector); });
+    };
+
+
+    ns.adjustAttribute = function (attributeSelector) {
+
         $('#divCharacterPreview').load(
-            '/EonIvCharacters/GetCharacterPreview?archetype=' + archetype + '&environment=' + environment + '&race=' + race);
-    });
-}
+            $(attributeSelector).data("action-url") +
+            '?archetype=' + archetype +
+            '&environment=' + environment +
+            '&race=' + race
+            );
+    };
+
+})(eon)
+
+$(this.document).ready(function () {
+
+});

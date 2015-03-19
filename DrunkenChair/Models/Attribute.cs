@@ -10,38 +10,82 @@ namespace DrunkenChair.Models
     [ComplexType]
     public class Attribute
     {
-        public int UnlimitedDice6 { get; set; }
-        public int Bonus { get; set; }
 
-        public Attribute() : this(0, 0) { }
+        private const int valuePerD6 = 4;
+
+        public int UnlimitedDice6
+        {
+            get
+            {
+                return Value / valuePerD6;
+            }
+        }
+        public int Bonus {
+            get
+            {
+                return this.Value % valuePerD6;
+            }
+        }
+        public int Value { get; set; }
+
+        public Attribute() : this(0) {}
 
         public Attribute(int value)
         {
-            Bonus = value % 4;
-            UnlimitedDice6 = value / 4;
-
+            this.Value = value;
         }
 
         public Attribute(int unlimitedDice6, int bonus)
         {
-            UnlimitedDice6 = unlimitedDice6;
-            Bonus = bonus;
+            this.Value = unlimitedDice6 * valuePerD6;
+        }
+
+        public Attribute(string str)
+        {
+            System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex(@"(?<d6>\d+)([TDtd]6)?(\+(?<bonus>\d+))?");
+            var res = regex.Match(str);
+            if(res.Groups["d6"].Success && res.Groups["bonus"].Success)
+            {
+                this.Value = Convert.ToInt32(res.Groups["d6"].Value) * valuePerD6 + Convert.ToInt32(res.Groups["bonus"].Value);
+            }
+            else if(res.Groups["d6"].Success)
+            {
+                this.Value = Convert.ToInt32(res.Groups["d6"].Value);
+            }
+            else
+            {
+                this.Value = 0;
+            }
         }
 
         public static Attribute operator+(Attribute lh, Attribute rh)
         {
-            var total = lh.Value() + rh.Value();
+            if (lh == null || rh == null)
+            {
+                return null;
+            }
+            var total = lh.Value + rh.Value;
             return new Attribute(total);
         }
 
         public static Attribute operator/(Attribute lh, double rh)
         {
-            return new Attribute((int) Math.Floor( lh.Value()/rh ));
+            if (lh == null)
+            {
+                return null;
+            }
+            return new Attribute((int) Math.Floor( lh.Value/rh ));
+        }
+        
+        public static implicit operator Attribute(int value)
+        {
+            return new Attribute(value);
         }
 
-        private int Value()
+        public static implicit operator Attribute(string str)
         {
-            return UnlimitedDice6 * 4 + Bonus;
+            return new Attribute(str);
         }
+
     }
 }

@@ -52,7 +52,7 @@ namespace DrunkenChair.Migrations
                 new Race
                 {
                     Name = "Adasier",
-                    StartingAttributes = new Attributes
+                    StartingAttributes = new CharacterBaseAttributes
                     {
                         Strength = new Models.Attribute(1, 2),
                         Stamina = new Models.Attribute(2, 3),
@@ -69,7 +69,7 @@ namespace DrunkenChair.Migrations
                 new Race
                 {
                     Name = "Cirefalier",
-                    StartingAttributes = new Attributes
+                    StartingAttributes = new CharacterBaseAttributes
                     {
                         Strength = new Attribute(2, 0),
                         Stamina = new Attribute(2, 0),

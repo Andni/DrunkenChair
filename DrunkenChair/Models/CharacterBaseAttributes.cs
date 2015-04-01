@@ -7,10 +7,25 @@ using System.Web;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
+using DrunkenChair.Models.Interfaces;
+
 namespace DrunkenChair.Models
 {
+
+    public enum BaseAttributes
+    {
+        STRENGTH,
+        STAMINA,
+        AGILITY,
+        PERCEPTION,
+        WILL,
+        PSYCHE,
+        WISDOM,
+        CHARISMA
+    }
+
     [ComplexType]
-    public class CharacterBaseAttributes
+    public class CharacterBaseAttributes : EonIVCharacterModifier
     {
         [Display(Name = "Styrka")]
         public Attribute Strength { get; set; }
@@ -46,5 +61,20 @@ namespace DrunkenChair.Models
             Wisdom = wis;
             Charisma = cha;
         }
+
+        public static CharacterBaseAttributes operator +(CharacterBaseAttributes lh, CharacterBaseAttributes rh)
+        {
+            lh.Agility += rh.Agility;
+            lh.Charisma += rh.Charisma;
+            lh.Perception += rh.Perception;
+            lh.Psyche += rh.Psyche;
+            lh.Stamina += rh.Stamina;
+            lh.Strength += rh.Strength;
+            lh.Will += rh.Will;
+            lh.Wisdom += rh.Wisdom;
+            
+            return lh;
+        }
+
     }
 }

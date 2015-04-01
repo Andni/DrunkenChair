@@ -58,6 +58,11 @@ namespace DrunkenChair.Models
             }
         }
 
+        public object Clone()
+        {
+            return new Attribute(this.Value);
+        }
+
         public static Attribute operator+(Attribute lh, Attribute rh)
         {
             if (lh == null || rh == null)

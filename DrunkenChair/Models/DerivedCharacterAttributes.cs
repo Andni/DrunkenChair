@@ -104,6 +104,28 @@ namespace DrunkenChair.Models
                 return BonusVigilance + (Perception + Psyche) / 2;
             }
         }
+
+        public static DerivedCharacterAttributes operator +(DerivedCharacterAttributes lh, DerivedCharacterAttributes rh)
+        {
+            lh.Agility += rh.Agility;
+            lh.Charisma += rh.Charisma;
+            lh.Perception += rh.Perception;
+            lh.Psyche += rh.Psyche;
+            lh.Stamina += rh.Stamina;
+            lh.Strength += rh.Strength;
+            lh.Will += rh.Will;
+            lh.Wisdom += rh.Wisdom;
+
+            lh.BonusBuild += rh.BonusBuild;
+            lh.BonusImpression += rh.BonusImpression;
+            lh.BonusLifeforce += rh.BonusLifeforce;
+            lh.BonusMovement += rh.BonusMovement;
+            lh.BonusReaction += rh.BonusReaction;
+            lh.BonusSelfcontrol += rh.BonusSelfcontrol;
+            lh.BonusVigilance += rh.BonusVigilance;
+            
+            return lh;
+        }
         
     }
 }

@@ -1,0 +1,16 @@
+﻿@model DrunkenChair.Models.CharacterEventDetails
+
+@{
+    ViewBag.Title = "Händelser";
+
+    Model.CharacterConstructionSite.Character.Modify(new DrunkenChair.Models.Skill() { Name = "testSkill", LearningModifier = DrunkenChair.Models.LearningModifier.FAST_LEARNER, Value = 3 });
+}
+
+<h2>View</h2>
+
+
+@using(Html.BeginForm())
+{
+    @Html.DisplayFor(m => m.CharacterConstructionSite.Character);
+   
+}

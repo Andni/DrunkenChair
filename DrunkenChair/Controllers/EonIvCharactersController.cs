@@ -110,6 +110,13 @@ namespace DrunkenChair.Controllers
             return View(new CharacterAttributeDetails(DicesToDistribute, MaxDicesPerAttribute, GetCharacterConstructionSite() ));
         }
 
+        // GET: EonIvCharacters/CharacterEventDetails
+        public ActionResult CharacterEventDetails()
+        {
+            GetCharacterConstructionSite().Character.Skills = new CharacterSkills();
+            return View(new CharacterEventDetails() {CharacterConstructionSite = GetCharacterConstructionSite()});
+        }
+
 
         // GET: EonIvCharacters/Edit/5
         public ActionResult Edit(int? id)

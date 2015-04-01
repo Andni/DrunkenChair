@@ -12,7 +12,12 @@ function updatePreviewValue(id)
     $(id).val(res);
 }
 
+
 eon.CharacterAttributeDetails = {};
+
+eon.CharacterAttributeDetails.DicesToSpend = 10;
+
+
 eon.CharacterAttributeDetails.UpdatePreviewDetails = function (event) {
     var val = parseInt($(this).val());
     var target = $(event.data);
@@ -20,6 +25,35 @@ eon.CharacterAttributeDetails.UpdatePreviewDetails = function (event) {
     target.text(res);
 };
 
+eon.CharacterAttributeDetails.UpdateOtherSpinnersMaxValue = function (event)
+{
+    var previousValue = $(this).data('lastValue') || parseInt( $(this).attr('value') );
+    var currentValue = parseInt($(this).val());
+    var diff = previousValue - currentValue;
+    $(this).data('lastValue', currentValue);
+    eon.CharacterAttributeDetails.DicesToSpend = eon.CharacterAttributeDetails.DicesToSpend + diff;
+    
+    var CapSpinnerMax = function(index, element)
+    {
+        var localValue = parseInt($(element).val());
+        var localMax = localValue + eon.CharacterAttributeDetails.DicesToSpend;
+        $(element).attr('max', Math.min(localMax, 5));
+    }
+
+    $('.attribute-spinner').each(CapSpinnerMax);
+}
+
+eon.CharacterAttributeDetails.StepUp = function (x, fun)
+{
+    if(x > eon.CharacterAttributeDetails.DicesToSpend)
+    {
+        fun(eon.CharacterAttributeDetails.DicesToSpend);
+    }
+    else
+    {
+        fun(x);
+    }
+}
 
 eon.CharacterAttributeDetails.UpdateDerivedAttributes = function (jsonStringCharacterData)
 {
@@ -47,6 +81,8 @@ eon.CharacterAttributeDetails.Initialize = function () {
     var elements = $('[data-onchange-target]');
     
     elements.each(function (i, e) {
+        $(e).on("change", null, null, eon.CharacterAttributeDetails.UpdateOtherSpinnersMaxValue);
+        //e.stepUp = eon.CharacterAttributeDetails.StepUp;
         $(e).on("change", null, $(e).data('onchange-target'), eon.CharacterAttributeDetails.UpdatePreviewDetails);
         $(e).on("change", null, null, function () {
             $.get('/EonIvCharacters/GetDerivedAttributes',

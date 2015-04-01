@@ -5,12 +5,13 @@ namespace DrunkenChair.Migrations
     using System.Linq;
 
     using DrunkenChair.Models;
+    using DrunkenChair.Models.DatabaseTables;
 
     internal sealed class Configuration : DbMigrationsConfiguration<DrunkenChair.Models.EonIvCharacterDbContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(DrunkenChair.Models.EonIvCharacterDbContext context)
@@ -31,6 +32,7 @@ namespace DrunkenChair.Migrations
             SeedArchetypes(context);
             SeedRaces(context);
             SeedEnvironments(context);
+            SeedEvents(context);
             SeedConstants(context);
         }
 
@@ -119,6 +121,22 @@ namespace DrunkenChair.Migrations
                         Social = 5,
                         Battle = 2
                     })
+                );
+        }
+
+        private void SeedEvents(DrunkenChair.Models.EonIvCharacterDbContext context)
+        {
+            context.Events.AddOrUpdate(
+                e => e.Id,
+                new Event()
+                {
+                    Name = "Test",
+                    Description = "herep herp derp",
+                    Modifications = new System.Collections.Generic.List<Models.EonIVCharacterModifier>() {
+                        new CharacterBaseAttributes() { Strength = 2},
+                        new Skill {Name = "herpging"}
+                    }
+                }
                 );
         }
 

@@ -38,3 +38,5 @@ D:\Documents\Development\Projects\DrunkenChair\DrunkenChair\obj\Debug\DrunkenCha
 D:\Documents\Development\Projects\DrunkenChair\DrunkenChair\obj\Debug\DrunkenChair.Migrations.addSkills2Environments1.resources
 D:\Documents\Development\Projects\DrunkenChair\DrunkenChair\obj\Debug\DrunkenChair.Migrations.skillpointsUpdate.resources
 D:\Documents\Development\Projects\DrunkenChair\DrunkenChair\obj\Debug\DrunkenChair.Migrations.AttributeChanges.resources
+D:\Documents\Development\Projects\DrunkenChair\DrunkenChair\obj\Debug\DrunkenChair.Migrations.AddEventTable.resources
+D:\Documents\Development\Projects\DrunkenChair\DrunkenChair\obj\Debug\DrunkenChair.Migrations.skillID.resources

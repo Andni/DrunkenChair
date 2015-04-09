@@ -3,9 +3,11 @@ namespace DrunkenChair.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using System.Collections.Generic;
 
     using DrunkenChair.Models;
     using DrunkenChair.Models.DatabaseTables;
+    using DrunkenChair.Models.DatabaseTables.Helpers;
 
     internal sealed class Configuration : DbMigrationsConfiguration<DrunkenChair.Models.EonIvCharacterDbContext>
     {
@@ -32,7 +34,7 @@ namespace DrunkenChair.Migrations
             SeedArchetypes(context);
             SeedRaces(context);
             SeedEnvironments(context);
-            SeedEvents(context);
+            EventSeeder.SeedEvents(context);
             SeedConstants(context);
         }
 
@@ -54,16 +56,16 @@ namespace DrunkenChair.Migrations
                 new Race
                 {
                     Name = "Adasier",
-                    StartingAttributes = new CharacterBaseAttributes
+                    StartingAttributes = new CharacterBaseAttributeSet
                     {
-                        Strength = new Models.Attribute(1, 2),
-                        Stamina = new Models.Attribute(2, 3),
-                        Agility = new Models.Attribute(3, 0),
-                        Perception = new Models.Attribute(2, 2),
-                        Will = new Models.Attribute(2, 1),
-                        Psyche = new Models.Attribute(1, 3),
-                        Wisdom = new Models.Attribute(1, 0),
-                        Charisma = new Models.Attribute(1, 3)
+                        Strength = new Models.DiceRollCheck(1, 2),
+                        Stamina = new Models.DiceRollCheck(2, 3),
+                        Agility = new Models.DiceRollCheck(3, 0),
+                        Perception = new Models.DiceRollCheck(2, 2),
+                        Will = new Models.DiceRollCheck(2, 1),
+                        Psyche = new Models.DiceRollCheck(1, 3),
+                        Wisdom = new Models.DiceRollCheck(1, 0),
+                        Charisma = new Models.DiceRollCheck(1, 3)
                     },
                     Perks = "Flexible"
                 },
@@ -71,16 +73,16 @@ namespace DrunkenChair.Migrations
                 new Race
                 {
                     Name = "Cirefalier",
-                    StartingAttributes = new CharacterBaseAttributes
+                    StartingAttributes = new CharacterBaseAttributeSet
                     {
-                        Strength = new Attribute(2, 0),
-                        Stamina = new Attribute(2, 0),
-                        Agility = new Attribute(2, 0),
-                        Perception = new Attribute(1, 2),
-                        Will = new Attribute(2, 0),
-                        Psyche = new Attribute(2, 0),
-                        Wisdom = new Attribute(2, 2),
-                        Charisma = new Attribute(2, 2),
+                        Strength = new DiceRollCheck(2, 0),
+                        Stamina = new DiceRollCheck(2, 0),
+                        Agility = new DiceRollCheck(2, 0),
+                        Perception = new DiceRollCheck(1, 2),
+                        Will = new DiceRollCheck(2, 0),
+                        Psyche = new DiceRollCheck(2, 0),
+                        Wisdom = new DiceRollCheck(2, 2),
+                        Charisma = new DiceRollCheck(2, 2),
                     },
                     Perks = "A plan within a plan"
                 }
@@ -124,21 +126,7 @@ namespace DrunkenChair.Migrations
                 );
         }
 
-        private void SeedEvents(DrunkenChair.Models.EonIvCharacterDbContext context)
-        {
-            context.Events.AddOrUpdate(
-                e => e.Id,
-                new Event()
-                {
-                    Name = "Test",
-                    Description = "herep herp derp",
-                    Modifications = new System.Collections.Generic.List<Models.EonIVCharacterModifier>() {
-                        new CharacterBaseAttributes() { Strength = 2},
-                        new Skill {Name = "herpging"}
-                    }
-                }
-                );
-        }
+        
 
         private void SeedConstants(DrunkenChair.Models.EonIvCharacterDbContext context)
         {
@@ -148,5 +136,6 @@ namespace DrunkenChair.Migrations
                 new CharacterCreationConstants(Constant.MaxBonusAttributeDicesSpentOnOneAttribute, 5)
                 );
         }
+
     }
 }

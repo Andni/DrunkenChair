@@ -40,3 +40,7 @@ D:\Documents\Development\Projects\DrunkenChair\DrunkenChair\obj\Debug\DrunkenCha
 D:\Documents\Development\Projects\DrunkenChair\DrunkenChair\obj\Debug\DrunkenChair.Migrations.AttributeChanges.resources
 D:\Documents\Development\Projects\DrunkenChair\DrunkenChair\obj\Debug\DrunkenChair.Migrations.AddEventTable.resources
 D:\Documents\Development\Projects\DrunkenChair\DrunkenChair\obj\Debug\DrunkenChair.Migrations.skillID.resources
+D:\Documents\Development\Projects\DrunkenChair\DrunkenChair\bin\EntityFramework.SqlServer.dll
+D:\Documents\Development\Projects\DrunkenChair\DrunkenChair\bin\EntityFramework.SqlServer.xml
+D:\Documents\Development\Projects\DrunkenChair\DrunkenChair\bin\Toolbox.dll
+D:\Documents\Development\Projects\DrunkenChair\DrunkenChair\bin\Toolbox.pdb

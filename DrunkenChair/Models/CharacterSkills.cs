@@ -7,12 +7,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DrunkenChair.Models
 {
-    public class CharacterSkills : SortedSet<Skill>
+    public class CharacterSkills : SortedSet<CharacterSkill>
     {
 
-        private class SkillComparer : Comparer<Skill>
+        private class SkillComparer : Comparer<CharacterSkill>
         {
-            public override int Compare(Skill lh, Skill rh)
+            public override int Compare(CharacterSkill lh, CharacterSkill rh)
             {
                 return lh.CompareTo(rh);
             }
@@ -20,13 +20,13 @@ namespace DrunkenChair.Models
 
         //private SortedSet<Skill> skills = new SortedSet<Skill>( new SkillComparer());
 
-        private Attribute baseChance = new Attribute(2, 0);
+        private DiceRollCheck baseChance = new DiceRollCheck(2, 0);
 
-        public Skill this[string key]
+        public CharacterSkill this[string key]
         {
             get
             {
-                Skill foundSkill;
+                CharacterSkill foundSkill;
                 foundSkill = this.SingleOrDefault( s => s.Name.ToLower() == key.ToLower());
                 return foundSkill;
             }
@@ -38,82 +38,77 @@ namespace DrunkenChair.Models
             }
         }
 
-        public bool Add(Skill s)
-        {
-            return Add(s);
-        }
-
         public CharacterSkills()
         {
-            this["Armborst"] = new Skill(SkillCategory.BATTLE) { Value = baseChance.Value };
-            this["Båge"] = new Skill(SkillCategory.BATTLE) { Value = baseChance.Value };
-            this["Dolk"] = new Skill(SkillCategory.BATTLE) { Value = baseChance.Value };
-            this["Kastvapen"] = new Skill(SkillCategory.BATTLE) { Value = baseChance.Value };
-            this["Klubba"] = new Skill(SkillCategory.BATTLE) { Value = baseChance.Value };
-            this["Kedjevapen"] = new Skill(SkillCategory.BATTLE) { Value = baseChance.Value };
-            this["Sköld"] = new Skill(SkillCategory.BATTLE) { Value = baseChance.Value };
-            this["Slagsmål"] = new Skill(SkillCategory.BATTLE) { Value = baseChance.Value };
-            this["Spjut"] = new Skill(SkillCategory.BATTLE) { Value = baseChance.Value };
-            this["Stav"] = new Skill(SkillCategory.BATTLE) { Value = baseChance.Value };
-            this["Svärd"] = new Skill(SkillCategory.BATTLE) { Value = baseChance.Value };
-            this["Yxa"] = new Skill(SkillCategory.BATTLE) { Value = baseChance.Value };
+            this["Armborst"] = new CharacterSkill(SkillCategory.BATTLE) { Value = baseChance.Value };
+            this["Båge"] = new CharacterSkill(SkillCategory.BATTLE) { Value = baseChance.Value };
+            this["Dolk"] = new CharacterSkill(SkillCategory.BATTLE) { Value = baseChance.Value };
+            this["Kastvapen"] = new CharacterSkill(SkillCategory.BATTLE) { Value = baseChance.Value };
+            this["Klubba"] = new CharacterSkill(SkillCategory.BATTLE) { Value = baseChance.Value };
+            this["Kedjevapen"] = new CharacterSkill(SkillCategory.BATTLE) { Value = baseChance.Value };
+            this["Sköld"] = new CharacterSkill(SkillCategory.BATTLE) { Value = baseChance.Value };
+            this["Slagsmål"] = new CharacterSkill(SkillCategory.BATTLE) { Value = baseChance.Value };
+            this["Spjut"] = new CharacterSkill(SkillCategory.BATTLE) { Value = baseChance.Value };
+            this["Stav"] = new CharacterSkill(SkillCategory.BATTLE) { Value = baseChance.Value };
+            this["Svärd"] = new CharacterSkill(SkillCategory.BATTLE) { Value = baseChance.Value };
+            this["Yxa"] = new CharacterSkill(SkillCategory.BATTLE) { Value = baseChance.Value };
             
-            this["Dansa"] = new Skill(SkillCategory.MOVEMENT) { Value = baseChance.Value };
-            this["Fingerfärdighet"] = new Skill(SkillCategory.MOVEMENT) { Value = baseChance.Value };
-            this["Gömma"] = new Skill(SkillCategory.MOVEMENT) { Value = baseChance.Value };
-            this["Hoppa"] = new Skill(SkillCategory.MOVEMENT) { Value = baseChance.Value };
-            this["Klättra"] = new Skill(SkillCategory.MOVEMENT) { Value = baseChance.Value };
-            this["Låsdyrkning"] = new Skill(SkillCategory.MOVEMENT);
-            this["Simma"] = new Skill(SkillCategory.MOVEMENT);
-            this["Smyga"] = new Skill(SkillCategory.MOVEMENT) { Value = baseChance.Value };
-            this["Undvika"] = new Skill(SkillCategory.MOVEMENT) { Value = baseChance.Value };
+            this["Dansa"] = new CharacterSkill(SkillCategory.MOVEMENT) { Value = baseChance.Value };
+            this["Fingerfärdighet"] = new CharacterSkill(SkillCategory.MOVEMENT) { Value = baseChance.Value };
+            this["Gömma"] = new CharacterSkill(SkillCategory.MOVEMENT) { Value = baseChance.Value };
+            this["Hoppa"] = new CharacterSkill(SkillCategory.MOVEMENT) { Value = baseChance.Value };
+            this["Klättra"] = new CharacterSkill(SkillCategory.MOVEMENT) { Value = baseChance.Value };
+            this["Låsdyrkning"] = new CharacterSkill(SkillCategory.MOVEMENT);
+            this["Simma"] = new CharacterSkill(SkillCategory.MOVEMENT);
+            this["Smyga"] = new CharacterSkill(SkillCategory.MOVEMENT) { Value = baseChance.Value };
+            this["Undvika"] = new CharacterSkill(SkillCategory.MOVEMENT) { Value = baseChance.Value };
 
-            this["Ceremoni"] = new Skill(SkillCategory.MYSTIC);
-            this["Förnimma"] = new Skill(SkillCategory.MYSTIC);
-            this["Förvränga"] = new Skill(SkillCategory.MYSTIC);
-            this["Kanalisera"] = new Skill(SkillCategory.MYSTIC);
+            this["Ceremoni"] = new CharacterSkill(SkillCategory.MYSTIC);
+            this["Förnimma"] = new CharacterSkill(SkillCategory.MYSTIC);
+            this["Förvränga"] = new CharacterSkill(SkillCategory.MYSTIC);
+            this["Kanalisera"] = new CharacterSkill(SkillCategory.MYSTIC);
             
-            this["Argumentera"] = new Skill(SkillCategory.SOCIAL) { Value = baseChance.Value };
-            this["Berättarkonst"] = new Skill(SkillCategory.SOCIAL) { Value = baseChance.Value };
-            this["Charm"] = new Skill(SkillCategory.SOCIAL) { Value = baseChance.Value };
-            this["Dupera"] = new Skill(SkillCategory.SOCIAL) { Value = baseChance.Value };
-            this["Genomskåda"] = new Skill(SkillCategory.SOCIAL) { Value = baseChance.Value };
-            this["Hovliv"] = new Skill(SkillCategory.SOCIAL);
-            this["Injaga fruktan"] = new Skill(SkillCategory.SOCIAL) { Value = baseChance.Value };
-            this["Ledarskap"] = new Skill(SkillCategory.SOCIAL) { Value = baseChance.Value };
-            this["Skumraskaffärer"] = new Skill(SkillCategory.SOCIAL);
-            this["Spel & dobbel"] = new Skill(SkillCategory.SOCIAL) { Value = baseChance.Value };
-            this["Sång & musik"] = new Skill(SkillCategory.SOCIAL) { Value = baseChance.Value };
+            this["Argumentera"] = new CharacterSkill(SkillCategory.SOCIAL) { Value = baseChance.Value };
+            this["Berättarkonst"] = new CharacterSkill(SkillCategory.SOCIAL) { Value = baseChance.Value };
+            this["Charm"] = new CharacterSkill(SkillCategory.SOCIAL) { Value = baseChance.Value };
+            this["Dupera"] = new CharacterSkill(SkillCategory.SOCIAL) { Value = baseChance.Value };
+            this["Genomskåda"] = new CharacterSkill(SkillCategory.SOCIAL) { Value = baseChance.Value };
+            this["Hovliv"] = new CharacterSkill(SkillCategory.SOCIAL);
+            this["Injaga fruktan"] = new CharacterSkill(SkillCategory.SOCIAL) { Value = baseChance.Value };
+            this["Ledarskap"] = new CharacterSkill(SkillCategory.SOCIAL) { Value = baseChance.Value };
+            this["Skumraskaffärer"] = new CharacterSkill(SkillCategory.SOCIAL);
+            this["Spel & dobbel"] = new CharacterSkill(SkillCategory.SOCIAL) { Value = baseChance.Value };
+            this["Sång & musik"] = new CharacterSkill(SkillCategory.SOCIAL) { Value = baseChance.Value };
 
-            this["Filosofi"] = new Skill(SkillCategory.KNOWLEDGE);
-            this["Geografi"] = new Skill(SkillCategory.KNOWLEDGE);
-            this["Gifter & droger"] = new Skill(SkillCategory.KNOWLEDGE);
-            this["Handel"] = new Skill(SkillCategory.KNOWLEDGE) { Value = baseChance.Value };
-            this["Historia"] = new Skill(SkillCategory.KNOWLEDGE);
-            this["Kalkylera"] = new Skill(SkillCategory.KNOWLEDGE);
-            this["Kirurgi"] = new Skill(SkillCategory.KNOWLEDGE);
-            this["Krigföring"] = new Skill(SkillCategory.KNOWLEDGE);
-            this["Kulturkännedom"] = new Skill(SkillCategory.KNOWLEDGE);
-            this["Lagkunskap"] = new Skill(SkillCategory.KNOWLEDGE);
-            this["Läkekonst"] = new Skill(SkillCategory.KNOWLEDGE);
-            this["Ockultism"] = new Skill(SkillCategory.KNOWLEDGE);
-            this["Teologi"] = new Skill(SkillCategory.KNOWLEDGE);
-            this["Teoretisk magi"] = new Skill(SkillCategory.KNOWLEDGE);
-            this["Undervisa"] = new Skill(SkillCategory.KNOWLEDGE);
+            this["Filosofi"] = new CharacterSkill(SkillCategory.KNOWLEDGE);
+            this["Geografi"] = new CharacterSkill(SkillCategory.KNOWLEDGE);
+            this["Gifter & droger"] = new CharacterSkill(SkillCategory.KNOWLEDGE);
+            this["Handel"] = new CharacterSkill(SkillCategory.KNOWLEDGE) { Value = baseChance.Value };
+            this["Historia"] = new CharacterSkill(SkillCategory.KNOWLEDGE);
+            this["Kalkylera"] = new CharacterSkill(SkillCategory.KNOWLEDGE);
+            this["Kirurgi"] = new CharacterSkill(SkillCategory.KNOWLEDGE);
+            this["Krigföring"] = new CharacterSkill(SkillCategory.KNOWLEDGE);
+            this["Kulturkännedom"] = new CharacterSkill(SkillCategory.KNOWLEDGE);
+            this["Lagkunskap"] = new CharacterSkill(SkillCategory.KNOWLEDGE);
+            this["Läkekonst"] = new CharacterSkill(SkillCategory.KNOWLEDGE);
+            this["Ockultism"] = new CharacterSkill(SkillCategory.KNOWLEDGE);
+            this["Teologi"] = new CharacterSkill(SkillCategory.KNOWLEDGE);
+            this["Teoretisk magi"] = new CharacterSkill(SkillCategory.KNOWLEDGE);
+            this["Undervisa"] = new CharacterSkill(SkillCategory.KNOWLEDGE);
 
-            this["Genomsöka"] = new Skill(SkillCategory.WILDERNESS) { Value = baseChance.Value };
-            this["Jakt & fiske"] = new Skill(SkillCategory.WILDERNESS);
-            this["Köra vagn"] = new Skill(SkillCategory.WILDERNESS) { Value = baseChance.Value };
-            this["Marsh"] = new Skill(SkillCategory.WILDERNESS) { Value = baseChance.Value };
-            this["Naturlära"] = new Skill(SkillCategory.WILDERNESS);
-            this["Navigation"] = new Skill(SkillCategory.WILDERNESS);
-            this["Orintering"] = new Skill(SkillCategory.WILDERNESS) { Value = baseChance.Value };
-            this["Rida"] = new Skill(SkillCategory.WILDERNESS) { Value = baseChance.Value };
-            this["Filosofi"] = new Skill(SkillCategory.WILDERNESS);
-            this["Sjömanskap"] = new Skill(SkillCategory.WILDERNESS);
-            this["Speja"] = new Skill(SkillCategory.WILDERNESS) { Value = baseChance.Value };
-            this["Spåra"] = new Skill(SkillCategory.WILDERNESS) { Value = baseChance.Value };
-            this["Vildmarksvana"] = new Skill(SkillCategory.WILDERNESS);
+            this["Genomsöka"] = new CharacterSkill(SkillCategory.WILDERNESS) { Value = baseChance.Value };
+            this["Jakt & fiske"] = new CharacterSkill(SkillCategory.WILDERNESS);
+            this["Köra vagn"] = new CharacterSkill(SkillCategory.WILDERNESS) { Value = baseChance.Value };
+            this["Marsh"] = new CharacterSkill(SkillCategory.WILDERNESS) { Value = baseChance.Value };
+            this["Naturlära"] = new CharacterSkill(SkillCategory.WILDERNESS);
+            this["Navigation"] = new CharacterSkill(SkillCategory.WILDERNESS);
+            this["Orintering"] = new CharacterSkill(SkillCategory.WILDERNESS) { Value = baseChance.Value };
+            this["Rida"] = new CharacterSkill(SkillCategory.WILDERNESS) { Value = baseChance.Value };
+            this["Filosofi"] = new CharacterSkill(SkillCategory.WILDERNESS);
+            this["Sjömanskap"] = new CharacterSkill(SkillCategory.WILDERNESS);
+            this["Speja"] = new CharacterSkill(SkillCategory.WILDERNESS) { Value = baseChance.Value };
+            this["Spåra"] = new CharacterSkill(SkillCategory.WILDERNESS) { Value = baseChance.Value };
+            this["Vildmarksvana"] = new CharacterSkill(SkillCategory.WILDERNESS);
             
         }
 

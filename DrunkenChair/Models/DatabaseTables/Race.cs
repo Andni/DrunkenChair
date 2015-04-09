@@ -11,7 +11,7 @@ namespace DrunkenChair.Models
     {
         [Key]
         public string Name { get; set; }
-        public CharacterBaseAttributes StartingAttributes {get; set;}
+        public CharacterBaseAttributeSet StartingAttributes {get; set;}
         public string Perks { get; set; }
     }
 }

@@ -39,14 +39,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -180,28 +182,46 @@
       <DependentUpon>201504011402061_skillID.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\CharacterBaseAttributes.cs" />
+    <Compile Include="Character\Attributes.cs" />
+    <Compile Include="Models\CharacterBaseAttributeSet.cs" />
     <Compile Include="Models\CharacterEvent.cs" />
     <Compile Include="Models\CharacterEventDetails.cs" />
     <Compile Include="Models\CharacterEvents.cs" />
     <Compile Include="Models\CharacterSkills.cs" />
     <Compile Include="Models\DatabaseTables\Archetype.cs" />
-    <Compile Include="Models\Attribute.cs" />
+    <Compile Include="Models\DiceRollCheck.cs" />
     <Compile Include="Models\BasicCharacterDetails.cs" />
     <Compile Include="Models\CharacterAttributeDetails.cs" />
     <Compile Include="Models\CharacterBasicDetails.cs" />
+    <Compile Include="Models\DatabaseTables\AttributeModification.cs" />
     <Compile Include="Models\DatabaseTables\CharacterCreationConstants.cs" />
+    <Compile Include="Models\DatabaseTables\Characteristicts.cs" />
+    <Compile Include="Models\DatabaseTables\CharacterModificationList.cs" />
+    <Compile Include="Models\DatabaseTables\Craft.cs" />
     <Compile Include="Models\DatabaseTables\Event.cs" />
-    <Compile Include="Models\DerivedCharacterAttributes.cs" />
+    <Compile Include="Models\DatabaseTables\EventResource.cs" />
+    <Compile Include="Models\DatabaseTables\EventSkillpoints.cs" />
+    <Compile Include="Models\DatabaseTables\Expertise.cs" />
+    <Compile Include="Models\DatabaseTables\Helpers\AttributeModificationParser.cs" />
+    <Compile Include="Models\DatabaseTables\Helpers\EventParser.cs" />
+    <Compile Include="Models\DatabaseTables\Helpers\EventSeeder.cs" />
+    <Compile Include="Models\DatabaseTables\Helpers\IEventProvider.cs" />
+    <Compile Include="Models\DatabaseTables\Helpers\IAttributeModificationParser.cs" />
+    <Compile Include="Models\DatabaseTables\Helpers\IModificationParser.cs" />
+    <Compile Include="Models\DatabaseTables\Perk.cs" />
+    <Compile Include="Models\DatabaseTables\SpecialSkill.cs" />
+    <Compile Include="Models\DatabaseTables\BaseSkillModification.cs" />
+    <Compile Include="Models\CharacterAttributeSet.cs" />
     <Compile Include="Models\DatabaseTables\Environment.cs" />
     <Compile Include="Models\DatabaseTables\EonIvCharacter.cs" />
     <Compile Include="Models\EonIVCharacterConstructionSite.cs" />
     <Compile Include="Models\EonIVCharacterModifier.cs" />
     <Compile Include="Models\EonIVCharacterScaffolding.cs" />
+    <Compile Include="Models\Helpers\EonIVValue.cs" />
     <Compile Include="Models\ICharacterAttributes.cs" />
     <Compile Include="Models\DatabaseTables\Race.cs" />
     <Compile Include="Models\Interfaces\IEonIVCharacterModifier.cs" />
-    <Compile Include="Models\Skill.cs" />
+    <Compile Include="Models\CharacterSkill.cs" />
     <Compile Include="Models\Skillpoints.cs" />
     <Compile Include="Models\EventTableRolls.cs" />
     <Compile Include="Models\TypeMerger.cs" />
@@ -333,6 +353,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="General\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Toolbox\Toolbox\Toolbox.csproj">
+      <Project>{ace3e00e-475e-4718-9785-0eda5a25958d}</Project>
+      <Name>Toolbox</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

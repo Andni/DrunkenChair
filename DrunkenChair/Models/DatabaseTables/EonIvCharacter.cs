@@ -13,29 +13,29 @@ namespace DrunkenChair.Models
     {
         public int ID { get; set; }
         public CharacterBasicDetails Basics { get; set; }
-        public DerivedCharacterAttributes Attributes { get; set; }
+        public CharacterAttributeSet Attributes { get; set; }
+        [Column("CharacterSkills")]
         public CharacterSkills Skills { get; set; }
-        //public SortedSet<Skill> Skills2 { get; set; }
-
+        
         public EonIvCharacter()
         {
             Basics = new CharacterBasicDetails();
-            Attributes = new DerivedCharacterAttributes();
+            Attributes = new CharacterAttributeSet();
         }
 
-        public EonIvCharacter Modify(CharacterBaseAttributes a)
+        public EonIvCharacter Modify(CharacterBaseAttributeSet a)
         {
             this.Attributes.Base += a;
             return this;
         }
 
-        public EonIvCharacter Modify(DerivedCharacterAttributes a)
+        public EonIvCharacter Modify(CharacterAttributeSet a)
         {
             this.Attributes += a;
             return this;
         }
 
-        public EonIvCharacter Modify(Skill s)
+        public EonIvCharacter Modify(CharacterSkill s)
         {
             this.Skills.Add(s);
             return this;

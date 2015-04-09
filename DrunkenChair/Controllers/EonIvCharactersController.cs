@@ -59,7 +59,7 @@ namespace DrunkenChair.Controllers
             EnvironmentList.AddRange(EnvironmentQuerry);
 
             var ccs = GetCharacterConstructionSite();
-            ccs.Character.Attributes = new DerivedCharacterAttributes();
+            ccs.Character.Attributes = new CharacterAttributeSet();
             ccs.Scaffolding.EventRolls = new EventTableRolls();
             ccs.Scaffolding.Skillpoints = new Skillpoints();
 
@@ -195,7 +195,7 @@ namespace DrunkenChair.Controllers
         public JsonResult GetDerivedAttributes(string str, string sta, string agl, string per, string wil, string psy, string wis, string cha)
         {
             var res = new JsonResult();
-            var atr = new DerivedCharacterAttributes()
+            var atr = new CharacterAttributeSet()
             {
                 Strength = str,
                 Stamina = sta,

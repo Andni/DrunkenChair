@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.ComponentModel;
 using System.Xml.Serialization;
@@ -13,38 +14,32 @@ using DrunkenChair.Models.Interfaces;
 
 namespace DrunkenChair.Models.DatabaseTables
 {
+    public enum EventCategory
+    {
+        TRAVELS_AND_ADVENTURES = 1,
+        INTRIGUE_AND_ILLDEADS = 2,
+        KNOWLEDGE_AND_MYSTERIES = 3,
+        BATTLES_AND_SKIRMISHES = 4,
+        UNCATEGORIZED = 0
+    }
+
     public class Event
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        
-        [NotMapped]
-        public List<EonIVCharacterModifier> Modifications { get; set; }
 
-        [Column("CharacterModifications")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        public string CharacterModificationsXml
-        {
-            get
-            {
-                var serializer = new XmlSerializer(Modifications.GetType(), new Type[] { typeof(Skill), typeof(CharacterBaseAttributes)} );
-                using (var stringWriter = new StringWriter())
-                {
-                    serializer.Serialize(stringWriter, Modifications.ToList());
-                    stringWriter.Flush();
-                    return stringWriter.ToString();
-                }
-            }
-            set
-            {
-                var serializer = new XmlSerializer(Modifications.GetType(), new Type[] { typeof(Skill), typeof(CharacterBaseAttributes)} );
-                using (var stringReader = new StringReader(value))
-                {
-                    Modifications = (List<EonIVCharacterModifier>)serializer.Deserialize(stringReader);
-                }
-            }
-        }
+        [Required]
+        public int Number { get; set; }
+        
+        [Required]
+        public EventCategory Category { get; set; }
+        
+        [Required]
+        public string Name { get; set; }
+        
+        [Required]
+        public string Description { get; set; }
+
+        public List<CharacterModificationOpitons> Modifications { get; set; }
+     
     }
 }

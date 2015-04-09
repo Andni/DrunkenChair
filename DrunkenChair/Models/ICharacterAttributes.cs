@@ -8,24 +8,24 @@ namespace DrunkenChair.Models
 {
     public interface ICharacterAttributes
     {
-        CharacterBaseAttributes Base { get; set; }
-        DerivedCharacterAttributes Derived { get; }
+        CharacterBaseAttributeSet Base { get; set; }
+        CharacterAttributeSet Derived { get; }
 
-        Attribute Strength { get; }
-        Attribute Stamina { get; }
-        Attribute Agility { get; }
-        Attribute Perception { get; }
-        Attribute Will { get; }
-        Attribute Psyche { get; }
-        Attribute Wisdom { get; }
-        Attribute Charisma { get; }
+        DiceRollCheck Strength { get; }
+        DiceRollCheck Stamina { get; }
+        DiceRollCheck Agility { get; }
+        DiceRollCheck Perception { get; }
+        DiceRollCheck Will { get; }
+        DiceRollCheck Psyche { get; }
+        DiceRollCheck Wisdom { get; }
+        DiceRollCheck Charisma { get; }
 
-        Attribute Movement { get;}
-        Attribute Impression { get; }
-        Attribute Build { get; }
-        Attribute Lifeforce { get; }
-        Attribute Reaction { get; }
-        Attribute Selfcontrol { get; }
-        Attribute Vigilance { get; }
+        DiceRollCheck Movement { get;}
+        DiceRollCheck Impression { get; }
+        DiceRollCheck Build { get; }
+        DiceRollCheck Lifeforce { get; }
+        DiceRollCheck Reaction { get; }
+        DiceRollCheck Selfcontrol { get; }
+        DiceRollCheck Vigilance { get; }
     }
 }

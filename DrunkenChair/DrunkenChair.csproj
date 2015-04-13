@@ -120,6 +120,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Character\Helpers\AttributeHelper.cs" />
+    <Compile Include="Character\SkillCategory.cs" />
     <Compile Include="Controllers\EonIvCharactersController.cs" />
     <Compile Include="Controllers\HelloWorldController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -189,6 +191,8 @@
     <Compile Include="Models\CharacterEvents.cs" />
     <Compile Include="Models\CharacterSkills.cs" />
     <Compile Include="Models\DatabaseTables\Archetype.cs" />
+    <Compile Include="Models\DatabaseTables\Helpers\ISkillModificationParser.cs" />
+    <Compile Include="Models\DatabaseTables\Helpers\SkillModificationParser.cs" />
     <Compile Include="Models\DiceRollCheck.cs" />
     <Compile Include="Models\BasicCharacterDetails.cs" />
     <Compile Include="Models\CharacterAttributeDetails.cs" />
@@ -210,7 +214,7 @@
     <Compile Include="Models\DatabaseTables\Helpers\IModificationParser.cs" />
     <Compile Include="Models\DatabaseTables\Perk.cs" />
     <Compile Include="Models\DatabaseTables\SpecialSkill.cs" />
-    <Compile Include="Models\DatabaseTables\BaseSkillModification.cs" />
+    <Compile Include="Models\DatabaseTables\SkillModification.cs" />
     <Compile Include="Models\CharacterAttributeSet.cs" />
     <Compile Include="Models\DatabaseTables\Environment.cs" />
     <Compile Include="Models\DatabaseTables\EonIvCharacter.cs" />

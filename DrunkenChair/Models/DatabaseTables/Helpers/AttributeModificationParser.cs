@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 
 using System.Text.RegularExpressions;
+
+using DrunkenChair.Character.Helpers;
 using DrunkenChair.Character;
 using Attribute = DrunkenChair.Character.Attribute;
 
@@ -13,12 +15,13 @@ namespace DrunkenChair.Models.DatabaseTables.Helpers
 {
     public class AttributeModificationParser : IAttributeModificationParser
     {
-        private Regex regex = new Regex(@"+(?<value>\d) (?<attribute>[\w]+)");
+        private Regex regex = new Regex(@"(?<value>\d) (?<attribute>[\w]+)");
         private static IEnumerable<Attribute> attributes = EnumUtil.GetValues<Attribute>();
         
-        public AttributeModification TryParse(string text)
+        public EonIVCharacterModifier TryParse(string text)
         {
-            var lc = text.ToLower();
+            var textWithoutLinebreaks = text.Replace(System.Environment.NewLine, "");
+            var lc = textWithoutLinebreaks.ToLower();
             var match = regex.Match(lc);
             
             if(match.Success)
@@ -29,38 +32,25 @@ namespace DrunkenChair.Models.DatabaseTables.Helpers
             return null;
         }
 
-        private AttributeModification CreateAttribute(string value, string attribute)
+        private AttributeModification CreateAttribute(string attribute, string value)
         {
             int parsedValue;
-            Attribute matchedAttribute;
-            if (MatchAttribute(value, out matchedAttribute)
-                && Int32.TryParse(attribute, out parsedValue))
+            var attr = AttributeHelper.ParseAttribute(attribute);
+            if( Int32.TryParse(value, out parsedValue) &&
+                attr != Attribute.UNDEFINED)
             {
+
                 return new AttributeModification()
                 {
                     Value = parsedValue,
-                    Attribute = matchedAttribute
+                    Attribute = attr
                 };
+                
             }
             else
             {
                 return null;
             }
-        }
-
-        private bool MatchAttribute(string attribute, out Attribute matchedAttribute)
-        {
-
-            foreach(Attribute a in attributes)
-            {
-                if(a.ToString().ToLower().Equals(attribute))
-                {
-                    matchedAttribute = a;
-                    return true;
-                }
-            }
-            matchedAttribute = 0;
-            return false;
         }
     }
 }

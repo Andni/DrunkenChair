@@ -13,7 +13,7 @@ namespace DrunkenChair.Models.DatabaseTables
         UNCATEGORIZED = 0
     }
 
-    public abstract class SpecialSkill : Skill
+    public abstract class SpecialSkill : SkillModification
     {
         public SpecialSkill()
         {

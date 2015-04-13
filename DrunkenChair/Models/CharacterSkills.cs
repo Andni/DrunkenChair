@@ -5,6 +5,8 @@ using System.Web;
 
 using System.ComponentModel.DataAnnotations.Schema;
 
+using DrunkenChair.Character;
+
 namespace DrunkenChair.Models
 {
     public class CharacterSkills : SortedSet<CharacterSkill>

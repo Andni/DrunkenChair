@@ -19,19 +19,6 @@ namespace DrunkenChair.Models
         FAST_LEARNER = 1
     }
 
-    public enum SkillCategory
-    {
-        BATTLE,
-        SOCIAL,
-        WILDERNESS,
-        MOVEMENT,
-        MYSTIC,
-        KNOWLEDGE,
-        LANGUAGE,
-        MISC,
-        UNCATEGORIZED = 0
-    }
-
     public class CharacterSkill : IComparable
     {
         [Key]

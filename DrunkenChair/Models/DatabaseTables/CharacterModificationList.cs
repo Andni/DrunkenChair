@@ -12,6 +12,11 @@ namespace DrunkenChair.Models.DatabaseTables
         public int ID { get; set; }
         public List<EonIVCharacterModifier> Alternatives { get; set; }
 
+        public CharacterModificationOpitons()
+        {
+            Alternatives = new List<EonIVCharacterModifier>();
+        }
+
         public static implicit operator CharacterModificationOpitons(EonIVCharacterModifier mod)
         {
             return new CharacterModificationOpitons() { Alternatives = new List<EonIVCharacterModifier> { mod } };

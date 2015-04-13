@@ -12,9 +12,14 @@ namespace DrunkenChair.Models.DatabaseTables.Helpers
     {
 
 
-        private Regex eventBasics = new Regex(@"(?<number>/d/d?) (?<name>[/s/w]+): (?<description>[/s/w]+) /[(?<modifications>[/s/w/]+)]");
+        static string regexEvent = @"(?<number>\d\d?\d?) (?<name>[\s\w\n]+):\n?\w?(?<description>[.\,\w\n\s\’\?\”\\&(\)-]+)\n?\w?\[(?<modifications>[\n\w\s\×.\’\?\”\\&(\)\,\+\:\–]+)]";
+        private Regex eventBasics = new Regex(regexEvent);
         private Regex attributeMods = new Regex(@"styrka");
 
+        static List<IModificationParser> parsers = new List<IModificationParser>() {
+            new AttributeModificationParser(),
+            new SkillModificationParser()
+        };
         
         public void ParseEventFile(string filepath)
         {
@@ -40,11 +45,13 @@ namespace DrunkenChair.Models.DatabaseTables.Helpers
         public Event ParseEvent(string text)
         {
             Event res = new Event();
-            var basics = eventBasics.Match(text);
+            var textWithoutLinebreaks = text.Replace(System.Environment.NewLine, " ");
+            var basics = eventBasics.Match(textWithoutLinebreaks);
 
             res.Name = basics.Groups["name"].Value;
             res.Number = Convert.ToInt32(basics.Groups["number"].Value);
             res.Description = basics.Groups["description"].Value;
+            res.Modifications = ParseModifiers(basics.Groups["modifications"].Value);
 
             return res;
         }
@@ -69,11 +76,15 @@ namespace DrunkenChair.Models.DatabaseTables.Helpers
             var lowerCase = text.ToLower();
             var res = new CharacterModificationOpitons();
 
-            if (lowerCase.Contains("styrka"))
+            foreach(IModificationParser p in parsers)
             {
-                res.Alternatives.Add(new AttributeModification());
+                var m = p.TryParse(text);
+                if(m != null)
+                {
+                    res.Alternatives.Add(m);
+                    return res;
+                }
             }
-
             return res;
         }
 

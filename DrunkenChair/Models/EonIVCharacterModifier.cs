@@ -11,5 +11,6 @@ namespace DrunkenChair.Models
     {
         public int ID { get; set; }
         public int CharacterModificationList_ID { get; set; }
+        public string Condition { get; set; }
     }
 }

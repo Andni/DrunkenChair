@@ -5,8 +5,8 @@ using System.Web;
 
 namespace DrunkenChair.Models.DatabaseTables.Helpers
 {
-    interface IAttributeModificationParser
+    interface IAttributeModificationParser : IModificationParser
     {
-        AttributeModification TryParse(string text);
+//        AttributeModification TryParse(string text);
     }
 }

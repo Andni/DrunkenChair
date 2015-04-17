@@ -44,3 +44,4 @@ D:\Documents\Development\Projects\DrunkenChair\DrunkenChair\bin\EntityFramework.
 D:\Documents\Development\Projects\DrunkenChair\DrunkenChair\bin\EntityFramework.SqlServer.xml
 D:\Documents\Development\Projects\DrunkenChair\DrunkenChair\bin\Toolbox.dll
 D:\Documents\Development\Projects\DrunkenChair\DrunkenChair\bin\Toolbox.pdb
+D:\Documents\Development\Projects\DrunkenChair\DrunkenChair\obj\Debug\DrunkenChair.Migrations.test.resources

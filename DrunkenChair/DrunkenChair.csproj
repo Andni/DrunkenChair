@@ -183,51 +183,59 @@
     <Compile Include="Migrations\201504011402061_skillID.Designer.cs">
       <DependentUpon>201504011402061_skillID.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201504170826065_test.cs" />
+    <Compile Include="Migrations\201504170826065_test.Designer.cs">
+      <DependentUpon>201504170826065_test.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Character\Attributes.cs" />
-    <Compile Include="Models\CharacterBaseAttributeSet.cs" />
+    <Compile Include="Character\CharacterBaseAttributeSet.cs" />
     <Compile Include="Models\CharacterEvent.cs" />
-    <Compile Include="Models\CharacterEventDetails.cs" />
-    <Compile Include="Models\CharacterEvents.cs" />
-    <Compile Include="Models\CharacterSkills.cs" />
-    <Compile Include="Models\DatabaseTables\Archetype.cs" />
-    <Compile Include="Models\DatabaseTables\Helpers\ISkillModificationParser.cs" />
-    <Compile Include="Models\DatabaseTables\Helpers\SkillModificationParser.cs" />
+    <Compile Include="Character\CharacterEventDetails.cs" />
+    <Compile Include="Character\CharacterEvents.cs" />
+    <Compile Include="Character\CharacterSkills.cs" />
+    <Compile Include="DatabaseTables\Archetype.cs" />
+    <Compile Include="DatabaseTables\Background.cs" />
+    <Compile Include="DatabaseTables\Helpers\ExpertiseParser.cs" />
+    <Compile Include="DatabaseTables\Helpers\ISkillPointModificationParser.cs" />
+    <Compile Include="DatabaseTables\Helpers\ModificationListParser.cs" />
+    <Compile Include="DatabaseTables\Helpers\SkillModificationParser.cs" />
+    <Compile Include="DatabaseTables\Helpers\SkillPointModificationParser.cs" />
     <Compile Include="Models\DiceRollCheck.cs" />
-    <Compile Include="Models\BasicCharacterDetails.cs" />
-    <Compile Include="Models\CharacterAttributeDetails.cs" />
     <Compile Include="Models\CharacterBasicDetails.cs" />
-    <Compile Include="Models\DatabaseTables\AttributeModification.cs" />
-    <Compile Include="Models\DatabaseTables\CharacterCreationConstants.cs" />
-    <Compile Include="Models\DatabaseTables\Characteristicts.cs" />
-    <Compile Include="Models\DatabaseTables\CharacterModificationList.cs" />
-    <Compile Include="Models\DatabaseTables\Craft.cs" />
-    <Compile Include="Models\DatabaseTables\Event.cs" />
-    <Compile Include="Models\DatabaseTables\EventResource.cs" />
-    <Compile Include="Models\DatabaseTables\EventSkillpoints.cs" />
-    <Compile Include="Models\DatabaseTables\Expertise.cs" />
-    <Compile Include="Models\DatabaseTables\Helpers\AttributeModificationParser.cs" />
-    <Compile Include="Models\DatabaseTables\Helpers\EventParser.cs" />
-    <Compile Include="Models\DatabaseTables\Helpers\EventSeeder.cs" />
-    <Compile Include="Models\DatabaseTables\Helpers\IEventProvider.cs" />
-    <Compile Include="Models\DatabaseTables\Helpers\IAttributeModificationParser.cs" />
-    <Compile Include="Models\DatabaseTables\Helpers\IModificationParser.cs" />
-    <Compile Include="Models\DatabaseTables\Perk.cs" />
-    <Compile Include="Models\DatabaseTables\SpecialSkill.cs" />
-    <Compile Include="Models\DatabaseTables\SkillModification.cs" />
-    <Compile Include="Models\CharacterAttributeSet.cs" />
-    <Compile Include="Models\DatabaseTables\Environment.cs" />
-    <Compile Include="Models\DatabaseTables\EonIvCharacter.cs" />
+    <Compile Include="Models\CharacterAttributeDetails.cs" />
+    <Compile Include="Character\CharacterBasics.cs" />
+    <Compile Include="DatabaseTables\AttributeModification.cs" />
+    <Compile Include="DatabaseTables\CharacterCreationConstants.cs" />
+    <Compile Include="DatabaseTables\Characteristicts.cs" />
+    <Compile Include="DatabaseTables\CharacterModificationList.cs" />
+    <Compile Include="DatabaseTables\Craft.cs" />
+    <Compile Include="DatabaseTables\Event.cs" />
+    <Compile Include="DatabaseTables\EventResource.cs" />
+    <Compile Include="DatabaseTables\EventSkillpoints.cs" />
+    <Compile Include="DatabaseTables\Expertise.cs" />
+    <Compile Include="DatabaseTables\Helpers\AttributeModificationParser.cs" />
+    <Compile Include="DatabaseTables\Helpers\EventParser.cs" />
+    <Compile Include="DatabaseTables\Helpers\EventSeeder.cs" />
+    <Compile Include="DatabaseTables\Helpers\IEventProvider.cs" />
+    <Compile Include="DatabaseTables\Helpers\IAttributeModificationParser.cs" />
+    <Compile Include="DatabaseTables\Helpers\IModificationParser.cs" />
+    <Compile Include="DatabaseTables\Perk.cs" />
+    <Compile Include="DatabaseTables\SpecialSkill.cs" />
+    <Compile Include="DatabaseTables\SkillModification.cs" />
+    <Compile Include="Character\CharacterAttributeSet.cs" />
+    <Compile Include="DatabaseTables\Environment.cs" />
+    <Compile Include="DatabaseTables\EonIvCharacter.cs" />
     <Compile Include="Models\EonIVCharacterConstructionSite.cs" />
-    <Compile Include="Models\EonIVCharacterModifier.cs" />
+    <Compile Include="DatabaseTables\EonIVCharacterModifier.cs" />
     <Compile Include="Models\EonIVCharacterScaffolding.cs" />
     <Compile Include="Models\Helpers\EonIVValue.cs" />
     <Compile Include="Models\ICharacterAttributes.cs" />
-    <Compile Include="Models\DatabaseTables\Race.cs" />
+    <Compile Include="DatabaseTables\Race.cs" />
     <Compile Include="Models\Interfaces\IEonIVCharacterModifier.cs" />
-    <Compile Include="Models\CharacterSkill.cs" />
-    <Compile Include="Models\Skillpoints.cs" />
-    <Compile Include="Models\EventTableRolls.cs" />
+    <Compile Include="Character\CharacterSkill.cs" />
+    <Compile Include="DatabaseTables\Skillpoints.cs" />
+    <Compile Include="Character\EventTableRolls.cs" />
     <Compile Include="Models\TypeMerger.cs" />
     <Compile Include="Models\TypeMergerPolicy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -353,6 +361,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201504011402061_skillID.resx">
       <DependentUpon>201504011402061_skillID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504170826065_test.resx">
+      <DependentUpon>201504170826065_test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

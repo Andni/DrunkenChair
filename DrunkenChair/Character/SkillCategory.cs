@@ -15,6 +15,7 @@ namespace DrunkenChair.Character
         MYSTIC = 6,
         SOCIAL = 7,
         WILDERNESS = 8,
+        FREE_CHOISE = 9,
         UNCATEGORIZED = 0
     }
 
@@ -29,6 +30,7 @@ namespace DrunkenChair.Character
             {SkillCategory.KNOWLEDGE, "kunskap"},
             {SkillCategory.LANGUAGE, "språk"},
             {SkillCategory.MISC, "övrigt"},
+            {SkillCategory.FREE_CHOISE, "valfria"},
             {SkillCategory.UNCATEGORIZED, "okategoriserat"}
         };
 

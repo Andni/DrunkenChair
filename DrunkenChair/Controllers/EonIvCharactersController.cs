@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+
+
 using DrunkenChair.Models;
+using DrunkenChair.Character;
+using DrunkenChair.DatabaseTables;
 
 namespace DrunkenChair.Controllers
 {
@@ -39,13 +42,13 @@ namespace DrunkenChair.Controllers
         // GET: EonIvCharacters/Create
         public ActionResult Create()
         {
-            var ArchetypeList = new List<string>();
+            var ArchetypeList = new List<Archetype>();
             var RaceList = new List<Race>();
-            var EnvironmentList = new List<string>();
+            var EnvironmentList = new List<Environment>();
 
             var ArchetypeQuerry = from d in db.Archetypes
                                   orderby d.Name
-                                  select d.Name;
+                                  select d;
             ArchetypeList.AddRange(ArchetypeQuerry);
 
             var RaceQuerry = from d in db.Races
@@ -55,7 +58,7 @@ namespace DrunkenChair.Controllers
 
             var EnvironmentQuerry = from d in db.Environments
                              orderby d.Name
-                             select d.Name;
+                             select d;
             EnvironmentList.AddRange(EnvironmentQuerry);
 
             var ccs = GetCharacterConstructionSite();
@@ -63,10 +66,10 @@ namespace DrunkenChair.Controllers
             ccs.Scaffolding.EventRolls = new EventTableRolls();
             ccs.Scaffolding.Skillpoints = new Skillpoints();
 
-            return View(new BasicCharacterDetails(
+            return View(new CharacterBasicDetails(
                 new SelectList(ArchetypeList),
                 new SelectList(EnvironmentList),
-                RaceList)
+                new SelectList(RaceList))
                 {
                     CharacterConstructionSite = ccs
                 });
@@ -77,16 +80,13 @@ namespace DrunkenChair.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(BasicCharacterDetails basicDetails)
+        public ActionResult Create(CharacterBasicDetails basicDetails)
         {
             if (ModelState.IsValid)
             {
                 var cs = GetCharacterConstructionSite();
-                cs.Character.Basics.Archetype = basicDetails.Archetype;
-                cs.Character.Basics.Background = basicDetails.Background;
-                cs.Character.Basics.Environment = basicDetails.Environment;
-                cs.Character.Basics.Race = basicDetails.Race;
-
+                cs.BasicsDetails = basicDetails;
+                
                 return View("CharacterAttributeDetails",
                     new CharacterAttributeDetails(
                         db.CreationConstants.Single( c => c.Constant == Constant.BonusAttributeDiceses).Value,
@@ -108,6 +108,21 @@ namespace DrunkenChair.Controllers
             ViewBag.MaxDiceesPerAttribute = MaxDicesPerAttribute;
 
             return View(new CharacterAttributeDetails(DicesToDistribute, MaxDicesPerAttribute, GetCharacterConstructionSite() ));
+        }
+
+        // GET: EonIvCharacters/CharacterAttributeDetails
+        [HttpPost]
+        public ActionResult CharacterAttributeDetails(CharacterAttributeDetails attributeDetails)
+        {
+            if(ModelState.IsValid)
+            {
+                var cs = GetCharacterConstructionSite();
+                cs.BonusDiceDistribution = attributeDetails.GetBonusDiceDistribution();
+
+                return View("CharacterEventDetails", new CharacterEventDetails());
+            }
+
+            return View();
         }
 
         // GET: EonIvCharacters/CharacterEventDetails
@@ -185,7 +200,7 @@ namespace DrunkenChair.Controllers
             var theEnvironment = db.Environments.Single(r => r.Name == environment);
 
             ccs.Character.Attributes.Base = theRace.StartingAttributes;
-            ccs.Scaffolding.EventRolls = theArchetype.LifeEventRolls + theEnvironment.Events;
+            ccs.Scaffolding.EventRolls = theArchetype.EventRolls + theEnvironment.EventRolls;
             ccs.Scaffolding.Skillpoints = theEnvironment.Skills;
 
             return PartialView("CharacterPreview",  ccs);

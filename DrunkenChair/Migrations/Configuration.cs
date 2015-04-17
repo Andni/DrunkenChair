@@ -6,8 +6,9 @@ namespace DrunkenChair.Migrations
     using System.Collections.Generic;
 
     using DrunkenChair.Models;
-    using DrunkenChair.Models.DatabaseTables;
-    using DrunkenChair.Models.DatabaseTables.Helpers;
+    using DrunkenChair.DatabaseTables;
+    using DrunkenChair.Character;
+    using DrunkenChair.DatabaseTables.Helpers;
 
     internal sealed class Configuration : DbMigrationsConfiguration<DrunkenChair.Models.EonIvCharacterDbContext>
     {
@@ -42,8 +43,8 @@ namespace DrunkenChair.Migrations
         {
             context.Archetypes.AddOrUpdate(
                   a => a.Name,
-                  new Archetype { Name = "Krigare", LifeEventRolls = new EventTableRolls(1, 0, 0, 2, 0) },
-                  new Archetype { Name = "Mystiker", LifeEventRolls = new EventTableRolls(0, 0, 2, 0, 1) }
+                  new Archetype { Name = "Krigare", EventRolls = new EventTableRolls(1, 0, 0, 2, 0) },
+                  new Archetype { Name = "Mystiker", EventRolls = new EventTableRolls(0, 0, 2, 0, 1) }
                 );
             
         }

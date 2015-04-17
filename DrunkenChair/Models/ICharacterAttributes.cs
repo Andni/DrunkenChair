@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DrunkenChair.Models
+using DrunkenChair.Models;
+
+namespace DrunkenChair.Character
 {
     public interface ICharacterAttributes
     {

@@ -9,9 +9,9 @@
 
 
     ns.selectorChanged = function (selector)  {
-        var archetype = $('#Archetype').val();
-        var environment = $('#Environment').val();
-        var race = $('#Race').val();
+        var archetype = $('#selectedArchetype').val();
+        var environment = $('#selectedEnvironment').val();
+        var race = $('#selectedRace').val();
         $('#divCharacterPreview').load(
             $(selector).data("action-url") +
             '?archetype=' + archetype +
@@ -24,7 +24,7 @@
 
 $(this.document).ready(function () {
 
-    eon.attachOnChange('#Archetype', eon.selectorChanged);
-    eon.attachOnChange('#Environment', eon.selectorChanged);
-    eon.attachOnChange('#Race', eon.selectorChanged);
+    eon.attachOnChange('#selectedArchetype', eon.selectorChanged);
+    eon.attachOnChange('#selectedEnvironment', eon.selectorChanged);
+    eon.attachOnChange('#selectedRace', eon.selectorChanged);
 });

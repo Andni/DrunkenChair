@@ -58,6 +58,16 @@ namespace DrunkenChair.Models
             }
         }
 
+        public static DiceRollCheck CreateFromDice(int dice)
+        {
+            return new DiceRollCheck(EonIVValue.DiceToValue(dice));
+        }
+
+        public void AddDice(int dices = 1)
+        {
+            this.Value += EonIVValue.DiceToValue(dices);
+        }
+
         public object Clone()
         {
             return new DiceRollCheck(this.Value);

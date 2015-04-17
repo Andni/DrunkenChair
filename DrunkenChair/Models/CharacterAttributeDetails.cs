@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 
 using DrunkenChair.Extensions;
+using DrunkenChair.Character;
 
 namespace DrunkenChair.Models
 {
@@ -11,8 +12,6 @@ namespace DrunkenChair.Models
     {
         public int DicesToDistribute = 0;
         public int MaxDicesPerAttribute = 0;
-
-        public CharacterBaseAttributeSet BaseAttributes { get; set; }
 
         public EonIVCharacterConstructionSite CharacterConstructionSite { get; set; }
 
@@ -29,8 +28,22 @@ namespace DrunkenChair.Models
         {
             this.DicesToDistribute = dicesToDistribute;
             this.MaxDicesPerAttribute = maxDicesPerAttribute;
-            BaseAttributes = new CharacterBaseAttributeSet();
+            //BaseAttributes = new CharacterBaseAttributeSet();
             CharacterConstructionSite = ccs;
+        }
+
+        public CharacterBaseAttributeSet GetBonusDiceDistribution()
+        {
+            return CharacterBaseAttributeSet.CreateFromDiceSet(
+                StrenghtBonusDices,
+                StaminaBonusDices,
+                AgilityBonusDices,
+                PerceptionBonusDices,
+                WillBonusDices,
+                PsycheBonusDices,
+                WisdomBonusDices,
+                CharismaBonusDices
+            );
         }
     }
 }

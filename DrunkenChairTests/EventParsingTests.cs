@@ -10,7 +10,7 @@ namespace DrunkenChair.Tests.EventParsing
     public class EventParsingTests
     {
         [TestMethod]
-        public void ParseAttribute()
+        public void ParseAttributeModification()
         {
             string attributeString = @"+2 Utstrålning.";
 
@@ -21,13 +21,27 @@ namespace DrunkenChair.Tests.EventParsing
             Assert.AreEqual(2, attr.Value);
             Assert.AreEqual(Attribute.CHARISMA, attr.Attribute);
         }
+        [TestMethod]
+        public void ParseSkillpointModificationWithCondition()
+        {
+            string attributeString = @"2 valfria enheter knutna till dådet.";
+
+            var p = new SkillPointModificationParser();
+            var skillpoints = (EventSkillpoints) p.TryParse(attributeString);
+
+            Assert.IsNotNull(skillpoints);
+            Assert.AreEqual(2, skillpoints.Value);
+            Assert.AreEqual(SkillCategory.FREE_CHOISE, skillpoints.ApplicableCategory);
+            Assert.AreEqual(skillpoints.Condition, "knutna till dådet.");
+
+        }
 
         [TestMethod]
-        public void ParseSkillpoints()
+        public void ParseSkillpointModification()
         {
             string attributeString = @"4 enheter Sociala färdigheter.";
 
-            var p = new SkillModificationParser();
+            var p = new SkillPointModificationParser();
             var skillpoints = (EventSkillpoints)p.TryParse(attributeString);
 
             Assert.IsNotNull(skillpoints);
@@ -52,5 +66,18 @@ Sociala färdigheter.]";
             Assert.IsNotNull(res);
             Assert.AreEqual(2, res.Modifications.Count);
         }
+
+        [TestMethod]
+        public void ParseMultipleModifications()
+        {
+            string text = @"+1 Psyke, +1 Utstrålning. 3 enheter
+Sociala färdigheter.";
+
+            ModificationListParser p = new ModificationListParser();
+            var res = p.TryParse(text);
+
+            Assert.AreEqual(3, res.Count);
+        }
+
     }
 }

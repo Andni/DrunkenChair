@@ -1,11 +1,10 @@
-﻿@model DrunkenChair.Models.BasicCharacterDetails
+﻿@model DrunkenChair.Models.CharacterBasicDetails
 
 @{
     ViewBag.Title = "Karaktärsgrunder";
 
     var labelAttributes = new { @class = "control-label col-md-2"};
     var dropdownListAttributes = new { @class = "form-control", data_action_url = Url.Action("GetCharacterPreview", "EonIvCharacters") };
-    var races = new SelectList(Model.Races.Select(r => r.Name));
 }
 
 <h2>Karaktärsgrunder</h2>
@@ -28,21 +27,21 @@
 
             @Html.LabelFor(model => model.Archetype, htmlAttributes: labelAttributes)
             <div>
-                @Html.DropDownListFor(model => model.Archetype, Model.Archetypes, dropdownListAttributes)
+                @Html.DropDownListFor(model => model.selectedArchetype, Model.Archetypes, dropdownListAttributes)
             </div>
             
             <br />
 
             @Html.LabelFor(model => model.Race, htmlAttributes: labelAttributes)
             <div>
-                @Html.DropDownListFor(model => model.Race, races, dropdownListAttributes)
+                @Html.DropDownListFor(model => model.selectedRace, Model.Races, dropdownListAttributes)
             </div>
 
             <br />
 
             @Html.LabelFor(model => model.Environment, htmlAttributes: labelAttributes)
             <div>
-                @Html.DropDownListFor(model => model.Environment, Model.Environments, dropdownListAttributes)
+                @Html.DropDownListFor(model => model.selectedEnvironment, Model.Environments, dropdownListAttributes)
             </div>
 
         </div>

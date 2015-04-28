@@ -5,13 +5,13 @@ using System.Web;
 
 using System.Text.RegularExpressions;
 
-using DrunkenChair.Character.Helpers;
-using DrunkenChair.Character;
-using Attribute = DrunkenChair.Character.Attribute;
+using Niklasson.DrunkenChair.Character.Helpers;
+using Niklasson.DrunkenChair.Character;
+using Attribute =Niklasson.DrunkenChair.Character.Attribute;
 
 using Niklasson.Toolbox.Enumerable;
 
-namespace DrunkenChair.DatabaseTables.Helpers
+namespace Niklasson.DrunkenChair.DatabaseTables.Helpers
 {
     public class AttributeModificationParser : IAttributeModificationParser
     {

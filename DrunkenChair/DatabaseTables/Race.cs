@@ -5,9 +5,10 @@ using System.Web;
 
 using System.ComponentModel.DataAnnotations;
 
-using DrunkenChair.Character;
+using Niklasson.DrunkenChair.Character;
+using Niklasson.DrunkenChair.Model;
 
-namespace DrunkenChair.DatabaseTables
+namespace Niklasson.DrunkenChair.DatabaseTables
 {
     public class Race
     {

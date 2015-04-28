@@ -5,11 +5,11 @@ using System.Web;
 
 using System.Text.RegularExpressions;
 
-using DrunkenChair.Character.Helpers;
-using DrunkenChair.Character;
-using DrunkenChair.DatabaseTables;
+using Niklasson.DrunkenChair.Character.Helpers;
+using Niklasson.DrunkenChair.Character;
+using Niklasson.DrunkenChair.DatabaseTables;
 
-namespace DrunkenChair.DatabaseTables.Helpers
+namespace Niklasson.DrunkenChair.DatabaseTables.Helpers
 {
     public class SkillPointModificationParser : ISkillPointModificationParser
     {

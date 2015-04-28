@@ -6,22 +6,24 @@ using System.Web;
 using System.Web.Mvc;
 using System.ComponentModel.DataAnnotations;
 
-using DrunkenChair.Character;
-using DrunkenChair.DatabaseTables;
+using Niklasson.DrunkenChair.Character;
+using Niklasson.DrunkenChair.DatabaseTables;
 
-namespace DrunkenChair.Models
+namespace Niklasson.DrunkenChair.Model
 {
-    public class CharacterBasicDetails : CharacterBasics
+    public class CharacterBasicDetails
     {
-        public SelectList Races { get; set; }
         public SelectList Archetypes { get; set; }
+        public SelectList Backgrounds { get; set; }
         public SelectList Environments { get; set; }
+        public SelectList Races { get; set; }
 
-        public string selectedArchetype { get; set; }
-        public string selectedEnvironment { get; set; }
-        public string selectedRace { get; set; }
+        public string SelectedArchetype { get; set; }
+        public string SelectedBackground { get; set; }
+        public string SelectedEnvironment { get; set; }
+        public string SelectedRace { get; set; }
 
-        public EonIVCharacterConstructionSite CharacterConstructionSite { get; set; }
+        public CharacterConstructionSite CharacterConstructionSite { get; set; }
 
         public CharacterBasicDetails() : this(null, null, null) { }
 

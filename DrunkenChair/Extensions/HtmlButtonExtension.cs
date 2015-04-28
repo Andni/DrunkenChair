@@ -5,7 +5,7 @@ using System.Web;
 
 using System.Web.Mvc;
 
-namespace DrunkenChair.Extensions
+namespace Niklasson.DrunkenChair.Extensions
 {
     public static class HtmlButtonExtension
     {

@@ -1,14 +1,22 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-using DrunkenChair.DatabaseTables;
+using Niklasson.DrunkenChair.DatabaseTables;
+using Niklasson.DrunkenChair.Model;
 
-
-namespace DrunkenChair.Character
+namespace Niklasson.DrunkenChair.Character
 {
     [ComplexType]
     public class CharacterBasics
     {
+        public CharacterBasics()
+        {
+            Archetype = new Archetype();
+            Background = new Background();
+            Environment = new Environment();
+            Race = new Race();
+        }
+
         [Display(Name = "Bakgrund")]
         public Background Background{ get; set; }
 

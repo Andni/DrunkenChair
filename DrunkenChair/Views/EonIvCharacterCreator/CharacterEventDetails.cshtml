@@ -1,0 +1,20 @@
+﻿@model Niklasson.DrunkenChair.Model.CharacterEventDetails
+
+@{
+    ViewBag.Title = "Händelser";
+}
+
+<h2>View</h2>
+
+
+@using(Html.BeginForm())
+{
+ 
+    <div>
+        @Html.DisplayFor(m => m.RolledEvents);
+    </div>   
+    
+    <div>
+        @Html.DisplayFor(m => m.CharacterConstructionSite.Character);
+    </div>
+}

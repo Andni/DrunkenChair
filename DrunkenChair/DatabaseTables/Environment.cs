@@ -4,9 +4,10 @@ using System.Linq;
 using System.Web;
 
 using System.ComponentModel.DataAnnotations;
-using DrunkenChair.Character;
+using Niklasson.DrunkenChair.Character;
+using Niklasson.DrunkenChair.Model;
 
-namespace DrunkenChair.DatabaseTables
+namespace Niklasson.DrunkenChair.DatabaseTables
 {
     public class Environment
     {
@@ -15,7 +16,11 @@ namespace DrunkenChair.DatabaseTables
         public Skillpoints Skills { get; set; }
         public EventTableRolls EventRolls { get; set; }
 
-        public Environment() : this("Default", new EventTableRolls(), new Skillpoints()) { }
+        public Environment()
+        {
+            EventRolls = new EventTableRolls();
+            Skills = new Skillpoints();
+        }
 
         public Environment(string name, EventTableRolls eventRolls, Skillpoints skills)
         {

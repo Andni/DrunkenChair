@@ -6,10 +6,10 @@ using System.Web;
 using System.Data.Entity;
 using System.ComponentModel.DataAnnotations.Schema;
 
-using DrunkenChair.Character;
-using DrunkenChair.DatabaseTables;
+using Niklasson.DrunkenChair.Character;
+using Niklasson.DrunkenChair.DatabaseTables;
 
-namespace DrunkenChair.Models
+namespace Niklasson.DrunkenChair.Model
 {
     public class EonIvCharacter
     {
@@ -55,8 +55,9 @@ namespace DrunkenChair.Models
         public DbSet<Archetype> Archetypes { get; set; }
         public DbSet<Race> Races { get; set; }
         public DbSet<Environment> Environments { get; set; }
-        public DbSet<DatabaseTables.Event> Events { get; set; } 
+        public DbSet<DatabaseTables.Event> Events { get; set; }
+        public DbSet<Background> Backgrounds { get; set; }
 
-        public DbSet<CharacterCreationConstants> CreationConstants { get; set; }
+        //public DbSet<CharacterCreationConstants> CreationConstants { get; set; }
     }
 }

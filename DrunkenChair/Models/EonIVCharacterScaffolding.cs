@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-using DrunkenChair.Character;
-using DrunkenChair.DatabaseTables;
+using Niklasson.DrunkenChair.Character;
+using Niklasson.DrunkenChair.DatabaseTables;
 
-namespace DrunkenChair.Models
+namespace Niklasson.DrunkenChair.Model
 {
     public class EonIVCharacterScaffolding
     {

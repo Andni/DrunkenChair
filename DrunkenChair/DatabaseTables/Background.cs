@@ -4,9 +4,10 @@ using System.Linq;
 using System.Web;
 
 using System.ComponentModel.DataAnnotations;
-using DrunkenChair.Character;
+using Niklasson.DrunkenChair.Character;
+using Niklasson.DrunkenChair.Model;
 
-namespace DrunkenChair.DatabaseTables
+namespace Niklasson.DrunkenChair.DatabaseTables
 {
     public class Background
     {
@@ -15,6 +16,12 @@ namespace DrunkenChair.DatabaseTables
         public string Description { get; set; }
         public EventTableRolls EventRolls { get; set; }
         public List<EonIVCharacterModifier> Modifications { get; private set; }
+
+        public Background()
+        {
+            EventRolls = new EventTableRolls();
+            Modifications = new List<EonIVCharacterModifier>();
+        }
 
         public static implicit operator string(Background b)
         {

@@ -1,10 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-using DrunkenChair.Models.DatabaseTables;
-using DrunkenChair.Models.DatabaseTables.Helpers;
-using DrunkenChair.Character;
+using Niklasson.DrunkenChair.DatabaseTables;
+using Niklasson.DrunkenChair.DatabaseTables.Helpers;
+using Niklasson.DrunkenChair.Character;
 
-namespace DrunkenChair.Tests.EventParsing
+namespace Niklasson.DrunkenChair.Tests.EventParsing
 {
     [TestClass]
     public class EventParsingTests

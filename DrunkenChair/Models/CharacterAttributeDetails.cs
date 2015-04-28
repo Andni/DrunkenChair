@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-using DrunkenChair.Extensions;
-using DrunkenChair.Character;
+using Niklasson.DrunkenChair.Extensions;
+using Niklasson.DrunkenChair.Character;
 
-namespace DrunkenChair.Models
+namespace Niklasson.DrunkenChair.Model
 {
     public class CharacterAttributeDetails
     {
-        public int DicesToDistribute = 0;
-        public int MaxDicesPerAttribute = 0;
+        public int DicesToDistribute = 10;
+        public int MaxDicesPerAttribute = 5;
 
-        public EonIVCharacterConstructionSite CharacterConstructionSite { get; set; }
+        public CharacterConstructionSite CharacterConstructionSite { get; set; }
 
         public int StrenghtBonusDices { get; set; }
         public int StaminaBonusDices { get; set; }
@@ -24,11 +24,10 @@ namespace DrunkenChair.Models
         public int WisdomBonusDices { get; set; }
         public int CharismaBonusDices { get; set; }
 
-        public CharacterAttributeDetails(int dicesToDistribute, int maxDicesPerAttribute, EonIVCharacterConstructionSite ccs)
+        public CharacterAttributeDetails() { }
+
+        public CharacterAttributeDetails(CharacterConstructionSite ccs)
         {
-            this.DicesToDistribute = dicesToDistribute;
-            this.MaxDicesPerAttribute = maxDicesPerAttribute;
-            //BaseAttributes = new CharacterBaseAttributeSet();
             CharacterConstructionSite = ccs;
         }
 

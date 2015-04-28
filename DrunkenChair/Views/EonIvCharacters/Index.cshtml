@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DrunkenChair.Models.EonIvCharacter>
+﻿@model IEnumerable<Niklasson.DrunkenChair.Model.EonIvCharacter>
 
 @{
     ViewBag.Title = "Index";
@@ -12,7 +12,19 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Basics)
+            @Html.DisplayNameFor(model => model.Archetype)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Background)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Environment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Race)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Attributes)
         </th>
         <th></th>
     </tr>
@@ -20,7 +32,19 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Basics)
+            @Html.DisplayFor(modelItem => item.Archetype)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Background)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Environment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Race)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Attributes)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |

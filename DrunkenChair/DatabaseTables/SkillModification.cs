@@ -6,10 +6,10 @@ using System.Web;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-using DrunkenChair.Models;
-using DrunkenChair.Character;
+using Niklasson.DrunkenChair.Model;
+using Niklasson.DrunkenChair.Character;
 
-namespace DrunkenChair.DatabaseTables
+namespace Niklasson.DrunkenChair.DatabaseTables
 {
     public class SkillModification : EonIVCharacterModifier
     {

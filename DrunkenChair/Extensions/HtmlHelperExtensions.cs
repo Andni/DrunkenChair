@@ -4,7 +4,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System;
 
-namespace DrunkenChair.Extensions
+namespace Niklasson.DrunkenChair.Extensions
 {
     public static partial class HtmlHelperExtensions
     {

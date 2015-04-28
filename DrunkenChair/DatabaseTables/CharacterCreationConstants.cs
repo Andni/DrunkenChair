@@ -5,7 +5,7 @@ using System.Text;
 
 using System.ComponentModel.DataAnnotations;
 
-namespace DrunkenChair.Models
+namespace Niklasson.DrunkenChair.Model
 {
     public enum Constant
     {

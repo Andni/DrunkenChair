@@ -1,0 +1,9 @@
+﻿@using Niklasson.DrunkenChair.DatabaseTables;
+@model Niklasson.DrunkenChair.DatabaseTables.CharacterModificationOpitons
+
+@{
+    foreach (EonIVCharacterModifier mod in Model.Alternatives)
+    {
+        Html.DisplayFor(mod);
+    }
+}

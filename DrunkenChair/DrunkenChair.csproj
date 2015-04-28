@@ -11,7 +11,7 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DrunkenChair</RootNamespace>
+    <RootNamespace>Niklasson.DrunkenChair</RootNamespace>
     <AssemblyName>DrunkenChair</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
@@ -47,7 +47,37 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common">
+      <HintPath>..\packages\Ninject.Web.Common.3.2.0.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc">
+      <HintPath>..\packages\Ninject.MVC5.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Composition.AttributedModel, Version=1.0.30.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Composition.1.0.30\lib\portable-net45+win8+wp8+wpa81\System.Composition.AttributedModel.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Composition.Convention, Version=1.0.30.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Composition.1.0.30\lib\portable-net45+win8+wp8+wpa81\System.Composition.Convention.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Composition.Hosting, Version=1.0.30.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Composition.1.0.30\lib\portable-net45+win8+wp8+wpa81\System.Composition.Hosting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Composition.Runtime, Version=1.0.30.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Composition.1.0.30\lib\portable-net45+win8+wp8+wpa81\System.Composition.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Composition.TypedParts, Version=1.0.30.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Composition.1.0.30\lib\portable-net45+win8+wp8+wpa81\System.Composition.TypedParts.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
@@ -102,6 +132,9 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="WebActivatorEx">
+      <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -119,11 +152,12 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Character\Helpers\AttributeHelper.cs" />
     <Compile Include="Character\SkillCategory.cs" />
+    <Compile Include="Controllers\EonIVCharacterCreatorController.cs" />
     <Compile Include="Controllers\EonIvCharactersController.cs" />
-    <Compile Include="Controllers\HelloWorldController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Extensions\HtmlButtonExtension.cs" />
     <Compile Include="Extensions\HtmlHelperExtensions.cs" />
@@ -131,6 +165,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\DiceRoller.cs" />
+    <Compile Include="Helpers\IDiceRoller.cs" />
     <Compile Include="Migrations\201503050936345_InitialCreate.cs" />
     <Compile Include="Migrations\201503050936345_InitialCreate.Designer.cs">
       <DependentUpon>201503050936345_InitialCreate.cs</DependentUpon>
@@ -190,8 +226,8 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Character\Attributes.cs" />
     <Compile Include="Character\CharacterBaseAttributeSet.cs" />
-    <Compile Include="Models\CharacterEvent.cs" />
-    <Compile Include="Character\CharacterEventDetails.cs" />
+    <Compile Include="Character\CharacterEvent.cs" />
+    <Compile Include="Models\CharacterEventDetails.cs" />
     <Compile Include="Character\CharacterEvents.cs" />
     <Compile Include="Character\CharacterSkills.cs" />
     <Compile Include="DatabaseTables\Archetype.cs" />
@@ -226,7 +262,7 @@
     <Compile Include="Character\CharacterAttributeSet.cs" />
     <Compile Include="DatabaseTables\Environment.cs" />
     <Compile Include="DatabaseTables\EonIvCharacter.cs" />
-    <Compile Include="Models\EonIVCharacterConstructionSite.cs" />
+    <Compile Include="Models\CharacterConstructionSite.cs" />
     <Compile Include="DatabaseTables\EonIVCharacterModifier.cs" />
     <Compile Include="Models\EonIVCharacterScaffolding.cs" />
     <Compile Include="Models\Helpers\EonIVValue.cs" />
@@ -236,9 +272,17 @@
     <Compile Include="Character\CharacterSkill.cs" />
     <Compile Include="DatabaseTables\Skillpoints.cs" />
     <Compile Include="Character\EventTableRolls.cs" />
+    <Compile Include="Models\RolledEvents.cs" />
     <Compile Include="Models\TypeMerger.cs" />
     <Compile Include="Models\TypeMergerPolicy.cs" />
+    <Compile Include="Parts\CharacterCreationTablesService.cs" />
+    <Compile Include="Parts\ISampleService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositoryLayer\EonIVCharacterGenerationDbContext.cs" />
+    <Compile Include="RepositoryLayer\EonIVCharacterGenerationTables.cs" />
+    <Compile Include="RepositoryLayer\IEonIVCharacterGenerationTables.cs" />
+    <Compile Include="ServiceLayer\EonIVCharacterGenerationService.cs" />
+    <Compile Include="ServiceLayer\IEonIVCharacterGenerationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -292,25 +336,23 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\HelloWorld\Index.cshtml" />
-    <Content Include="Views\HelloWorld\Welcome.cshtml" />
-    <Content Include="Views\Archetypes\Create.cshtml" />
-    <Content Include="Views\Archetypes\Delete.cshtml" />
-    <Content Include="Views\Archetypes\Details.cshtml" />
-    <Content Include="Views\Archetypes\Edit.cshtml" />
-    <Content Include="Views\Archetypes\Index.cshtml" />
-    <Content Include="Views\EonIvCharacters\Create.cshtml" />
-    <Content Include="Views\EonIvCharacters\Delete.cshtml" />
-    <Content Include="Views\EonIvCharacters\Details.cshtml" />
-    <Content Include="Views\EonIvCharacters\Edit.cshtml" />
-    <Content Include="Views\EonIvCharacters\Index.cshtml" />
-    <Content Include="Views\EonIvCharacters\CharacterAttributeDetails.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\eInt32.cshtml" />
-    <Content Include="Views\EonIvCharacters\CharacterPreview.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\DerivedCharacterAttributes.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\Attribute.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\EonIVCharacterConstructionSite.cshtml" />
-    <Content Include="Views\EonIvCharacters\CharacterEventDetails.cshtml" />
+    <Content Include="Views\EonIvCharacterCreator\Create.cshtml" />
+    <Content Include="Views\EonIVCharacters\Delete.cshtml" />
+    <Content Include="Views\EonIVCharacters\Details.cshtml" />
+    <Content Include="Views\EonIVCharacters\Edit.cshtml" />
+    <Content Include="Views\EonIVCharacters\Index.cshtml" />
+    <Content Include="Views\EonIvCharacterCreator\CharacterAttributeDetails.cshtml" />
+    <Content Include="Views\EonIvCharacterCreator\CharacterPreview.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\CharacterAttributeSet.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DiceRollCheck.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\CharacterConstructionSite.cshtml" />
+    <Content Include="Views\EonIvCharacterCreator\CharacterEventDetails.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\RolledEvents.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Event.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\CharacterModificationOptions.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SkillModification.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\AttributeModification.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\ExpertiseModification.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -369,6 +411,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="General\" />
+    <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Toolbox\Toolbox\Toolbox.csproj">

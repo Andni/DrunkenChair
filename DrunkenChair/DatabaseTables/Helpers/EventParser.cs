@@ -6,9 +6,9 @@ using System.Web;
 using System.IO;
 using System.Text.RegularExpressions;
 
-using DrunkenChair.DatabaseTables;
+using Niklasson.DrunkenChair.DatabaseTables;
 
-namespace DrunkenChair.DatabaseTables.Helpers
+namespace Niklasson.DrunkenChair.DatabaseTables.Helpers
 {
     public class EventParser : IEventProvider
     {

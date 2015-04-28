@@ -5,7 +5,7 @@ using System.Text;
 
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DrunkenChair.DatabaseTables
+namespace Niklasson.DrunkenChair.DatabaseTables
 {
     [ComplexType]
     public class Skillpoints

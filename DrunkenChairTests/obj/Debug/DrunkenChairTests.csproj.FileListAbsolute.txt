@@ -21,3 +21,9 @@ D:\Documents\Development\Projects\DrunkenChair\DrunkenChairTests\bin\Debug\Syste
 D:\Documents\Development\Projects\DrunkenChair\DrunkenChairTests\obj\Debug\DrunkenChairTests.csprojResolveAssemblyReference.cache
 D:\Documents\Development\Projects\DrunkenChair\DrunkenChairTests\obj\Debug\DrunkenChairTests.dll
 D:\Documents\Development\Projects\DrunkenChair\DrunkenChairTests\obj\Debug\DrunkenChairTests.pdb
+D:\Documents\Development\Projects\DrunkenChair\DrunkenChairTests\bin\Debug\DrunkenChairTests.dll.config
+D:\Documents\Development\Projects\DrunkenChair\DrunkenChairTests\bin\Debug\Ninject.Web.Common.dll
+D:\Documents\Development\Projects\DrunkenChair\DrunkenChairTests\bin\Debug\Ninject.dll
+D:\Documents\Development\Projects\DrunkenChair\DrunkenChairTests\bin\Debug\WebActivatorEx.dll
+D:\Documents\Development\Projects\DrunkenChair\DrunkenChairTests\bin\Debug\Ninject.Web.Common.xml
+D:\Documents\Development\Projects\DrunkenChair\DrunkenChairTests\bin\Debug\Ninject.xml

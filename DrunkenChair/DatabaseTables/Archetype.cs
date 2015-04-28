@@ -7,9 +7,10 @@ using System.Data.Entity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-using DrunkenChair.Character;
+using Niklasson.DrunkenChair.Model;
+using Niklasson.DrunkenChair.Character;
 
-namespace DrunkenChair.DatabaseTables
+namespace Niklasson.DrunkenChair.DatabaseTables
 {
     public class Archetype
     {

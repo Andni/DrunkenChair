@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-using DrunkenChair.Character;
+using Niklasson.DrunkenChair.Character;
 
-namespace DrunkenChair.DatabaseTables
+namespace Niklasson.DrunkenChair.DatabaseTables
 {
     public class EventSkillpoints : EonIVCharacterModifier
     {

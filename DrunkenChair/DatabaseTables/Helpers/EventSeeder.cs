@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-using DrunkenChair.Migrations;
-using DrunkenChair.DatabaseTables;
+using Niklasson.DrunkenChair.Migrations;
+using Niklasson.DrunkenChair.DatabaseTables;
 
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
 
-using DrunkenChair.Models;
-using DrunkenChair.Character;
-using DrunkenChair.DatabaseTables;
+using Niklasson.DrunkenChair.Model;
+using Niklasson.DrunkenChair.Character;
+using Niklasson.DrunkenChair.DatabaseTables;
 
-namespace DrunkenChair.DatabaseTables.Helpers
+namespace Niklasson.DrunkenChair.DatabaseTables.Helpers
 {
     public class EventSeeder
     {
@@ -23,7 +23,7 @@ namespace DrunkenChair.DatabaseTables.Helpers
 
         }
 
-        public static void SeedEvents(DrunkenChair.Models.EonIvCharacterDbContext context)
+        public static void SeedEvents(DrunkenChair.Model.EonIvCharacterDbContext context)
         {
             context.Events.AddOrUpdate(
                 e => e.Id,

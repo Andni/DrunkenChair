@@ -5,12 +5,12 @@ using System.Web;
 
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using DrunkenChair.DatabaseTables;
-using DrunkenChair.Character;
+using Niklasson.DrunkenChair.DatabaseTables;
+using Niklasson.DrunkenChair.Character;
 
-using DrunkenChair.Models;
+using Niklasson.DrunkenChair.Model;
 
-namespace DrunkenChair.Character
+namespace Niklasson.DrunkenChair.Character
 {
 
     [ComplexType]

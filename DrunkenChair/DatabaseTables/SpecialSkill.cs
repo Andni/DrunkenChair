@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-using DrunkenChair.Models;
+using Niklasson.DrunkenChair.Model;
 
-namespace DrunkenChair.DatabaseTables
+namespace Niklasson.DrunkenChair.DatabaseTables
 {
     public enum SpecialSkillCategory
     {
@@ -19,7 +19,7 @@ namespace DrunkenChair.DatabaseTables
     {
         public SpecialSkill()
         {
-            LearningModifier = Models.LearningModifier.FAST_LEARNER;
+            LearningModifier = Model.LearningModifier.FAST_LEARNER;
             Value = EonIVValue.DiceToValue(4);
         }
     }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace DrunkenChair.Extensions
+namespace Niklasson.DrunkenChair.Extensions
 {
     public static class ObjectPropertyMergerHelper
     {

@@ -1,37 +1,34 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Niklasson.DrunkenChair.Model;
 
-
-using DrunkenChair.Models;
-using DrunkenChair.Character;
-using DrunkenChair.DatabaseTables;
-
-namespace DrunkenChair.Controllers
+namespace Niklasson.DrunkenChair.Controllers
 {
     public class EonIvCharactersController : Controller
     {
         private EonIvCharacterDbContext db = new EonIvCharacterDbContext();
-        private string sessionStringCharacter = "character";
 
         // GET: EonIvCharacters
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View(db.EonIvCharacters.ToList());
+            return View(await db.EonIvCharacters.ToListAsync());
         }
 
         // GET: EonIvCharacters/Details/5
-        public ActionResult Details(int? id)
+        public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EonIvCharacter eonIvCharacter = db.EonIvCharacters.Find(id);
+            EonIvCharacter eonIvCharacter = await db.EonIvCharacters.FindAsync(id);
             if (eonIvCharacter == null)
             {
                 return HttpNotFound();
@@ -42,37 +39,7 @@ namespace DrunkenChair.Controllers
         // GET: EonIvCharacters/Create
         public ActionResult Create()
         {
-            var ArchetypeList = new List<Archetype>();
-            var RaceList = new List<Race>();
-            var EnvironmentList = new List<Environment>();
-
-            var ArchetypeQuerry = from d in db.Archetypes
-                                  orderby d.Name
-                                  select d;
-            ArchetypeList.AddRange(ArchetypeQuerry);
-
-            var RaceQuerry = from d in db.Races
-                             orderby d.Name
-                             select d;
-            RaceList.AddRange(RaceQuerry);
-
-            var EnvironmentQuerry = from d in db.Environments
-                             orderby d.Name
-                             select d;
-            EnvironmentList.AddRange(EnvironmentQuerry);
-
-            var ccs = GetCharacterConstructionSite();
-            ccs.Character.Attributes = new CharacterAttributeSet();
-            ccs.Scaffolding.EventRolls = new EventTableRolls();
-            ccs.Scaffolding.Skillpoints = new Skillpoints();
-
-            return View(new CharacterBasicDetails(
-                new SelectList(ArchetypeList),
-                new SelectList(EnvironmentList),
-                new SelectList(RaceList))
-                {
-                    CharacterConstructionSite = ccs
-                });
+            return View();
         }
 
         // POST: EonIvCharacters/Create
@@ -80,67 +47,26 @@ namespace DrunkenChair.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CharacterBasicDetails basicDetails)
+        public async Task<ActionResult> Create([Bind(Include = "ID,Archetype,Background,Environment,Race,Attributes")] EonIvCharacter eonIvCharacter)
         {
             if (ModelState.IsValid)
             {
-                var cs = GetCharacterConstructionSite();
-                cs.BasicsDetails = basicDetails;
-                
-                return View("CharacterAttributeDetails",
-                    new CharacterAttributeDetails(
-                        db.CreationConstants.Single( c => c.Constant == Constant.BonusAttributeDiceses).Value,
-                        db.CreationConstants.Single( c => c.Constant == Constant.MaxBonusAttributeDicesSpentOnOneAttribute).Value,
-                        cs
-                        ));
+                db.EonIvCharacters.Add(eonIvCharacter);
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
             }
 
-            return View();
+            return View(eonIvCharacter);
         }
-
-        // GET: EonIvCharacters/CharacterAttributeDetails
-        public ActionResult CharacterAttributeDetails()
-        {
-            int DicesToDistribute = db.CreationConstants.Single(c => c.Constant == Constant.BonusAttributeDiceses).Value;
-            int MaxDicesPerAttribute = db.CreationConstants.Single(c => c.Constant == Constant.MaxBonusAttributeDicesSpentOnOneAttribute).Value;
-            
-            ViewBag.DicesToDistribute = DicesToDistribute;
-            ViewBag.MaxDiceesPerAttribute = MaxDicesPerAttribute;
-
-            return View(new CharacterAttributeDetails(DicesToDistribute, MaxDicesPerAttribute, GetCharacterConstructionSite() ));
-        }
-
-        // GET: EonIvCharacters/CharacterAttributeDetails
-        [HttpPost]
-        public ActionResult CharacterAttributeDetails(CharacterAttributeDetails attributeDetails)
-        {
-            if(ModelState.IsValid)
-            {
-                var cs = GetCharacterConstructionSite();
-                cs.BonusDiceDistribution = attributeDetails.GetBonusDiceDistribution();
-
-                return View("CharacterEventDetails", new CharacterEventDetails());
-            }
-
-            return View();
-        }
-
-        // GET: EonIvCharacters/CharacterEventDetails
-        public ActionResult CharacterEventDetails()
-        {
-            GetCharacterConstructionSite().Character.Skills = new CharacterSkills();
-            return View(new CharacterEventDetails() {CharacterConstructionSite = GetCharacterConstructionSite()});
-        }
-
 
         // GET: EonIvCharacters/Edit/5
-        public ActionResult Edit(int? id)
+        public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EonIvCharacter eonIvCharacter = db.EonIvCharacters.Find(id);
+            EonIvCharacter eonIvCharacter = await db.EonIvCharacters.FindAsync(id);
             if (eonIvCharacter == null)
             {
                 return HttpNotFound();
@@ -153,25 +79,25 @@ namespace DrunkenChair.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Basics")] EonIvCharacter eonIvCharacter)
+        public async Task<ActionResult> Edit([Bind(Include = "ID,Archetype,Background,Environment,Race,Attributes")] EonIvCharacter eonIvCharacter)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(eonIvCharacter).State = EntityState.Modified;
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View(eonIvCharacter);
         }
 
         // GET: EonIvCharacters/Delete/5
-        public ActionResult Delete(int? id)
+        public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EonIvCharacter eonIvCharacter = db.EonIvCharacters.Find(id);
+            EonIvCharacter eonIvCharacter = await db.EonIvCharacters.FindAsync(id);
             if (eonIvCharacter == null)
             {
                 return HttpNotFound();
@@ -182,48 +108,12 @@ namespace DrunkenChair.Controllers
         // POST: EonIvCharacters/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            EonIvCharacter eonIvCharacter = db.EonIvCharacters.Find(id);
+            EonIvCharacter eonIvCharacter = await db.EonIvCharacters.FindAsync(id);
             db.EonIvCharacters.Remove(eonIvCharacter);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
             return RedirectToAction("Index");
-        }
-            
-        [HttpGet]
-        public ActionResult GetCharacterPreview(string archetype, string race, string environment)
-        {
-            EonIVCharacterConstructionSite ccs = GetCharacterConstructionSite();
-
-            var theArchetype = db.Archetypes.Single(a => a.Name == archetype);
-            var theRace = db.Races.Single(r => r.Name == race);
-            var theEnvironment = db.Environments.Single(r => r.Name == environment);
-
-            ccs.Character.Attributes.Base = theRace.StartingAttributes;
-            ccs.Scaffolding.EventRolls = theArchetype.EventRolls + theEnvironment.EventRolls;
-            ccs.Scaffolding.Skillpoints = theEnvironment.Skills;
-
-            return PartialView("CharacterPreview",  ccs);
-        }
-
-        [HttpGet]
-        public JsonResult GetDerivedAttributes(string str, string sta, string agl, string per, string wil, string psy, string wis, string cha)
-        {
-            var res = new JsonResult();
-            var atr = new CharacterAttributeSet()
-            {
-                Strength = str,
-                Stamina = sta,
-                Agility = agl,
-                Perception = per,
-                Will = per,
-                Psyche = psy,
-                Wisdom = wis,
-                Charisma = cha
-            };
-            res.Data = new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(atr);
-            res.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
-            return res;
         }
 
         protected override void Dispose(bool disposing)
@@ -234,20 +124,5 @@ namespace DrunkenChair.Controllers
             }
             base.Dispose(disposing);
         }
-
-        private EonIVCharacterConstructionSite GetCharacterConstructionSite()
-        {
-            if (Session[sessionStringCharacter] == null)
-            {
-                Session[sessionStringCharacter] = new EonIVCharacterConstructionSite();
-            }
-            return (EonIVCharacterConstructionSite)Session[sessionStringCharacter];
-        }
-
-        private void RemoveCharacter()
-        {
-            Session.Remove(sessionStringCharacter);
-        }
-
     }
 }

@@ -5,7 +5,7 @@ using System.Web;
 
 using System.ComponentModel.DataAnnotations;
 
-namespace DrunkenChair.DatabaseTables
+namespace Niklasson.DrunkenChair.DatabaseTables
 {
     public class Perk : EonIVCharacterModifier
     {

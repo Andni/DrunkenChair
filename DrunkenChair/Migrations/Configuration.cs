@@ -1,23 +1,23 @@
-namespace DrunkenChair.Migrations
+namespace Niklasson.DrunkenChair.Migrations
 {
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
     using System.Collections.Generic;
 
-    using DrunkenChair.Models;
-    using DrunkenChair.DatabaseTables;
-    using DrunkenChair.Character;
-    using DrunkenChair.DatabaseTables.Helpers;
+    using Niklasson.DrunkenChair.Model;
+    using Niklasson.DrunkenChair.DatabaseTables;
+    using Niklasson.DrunkenChair.Character;
+    using Niklasson.DrunkenChair.DatabaseTables.Helpers;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<DrunkenChair.Models.EonIvCharacterDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<DrunkenChair.Model.EonIvCharacterDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(DrunkenChair.Models.EonIvCharacterDbContext context)
+        protected override void Seed(DrunkenChair.Model.EonIvCharacterDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
@@ -36,10 +36,10 @@ namespace DrunkenChair.Migrations
             SeedRaces(context);
             SeedEnvironments(context);
             EventSeeder.SeedEvents(context);
-            SeedConstants(context);
+            //SeedConstants(context);
         }
 
-        private void SeedArchetypes(DrunkenChair.Models.EonIvCharacterDbContext context)
+        private void SeedArchetypes(DrunkenChair.Model.EonIvCharacterDbContext context)
         {
             context.Archetypes.AddOrUpdate(
                   a => a.Name,
@@ -49,7 +49,7 @@ namespace DrunkenChair.Migrations
             
         }
 
-        private void SeedRaces(DrunkenChair.Models.EonIvCharacterDbContext context)
+        private void SeedRaces(DrunkenChair.Model.EonIvCharacterDbContext context)
         {
             context.Races.AddOrUpdate(
                 r => r.Name,
@@ -59,14 +59,14 @@ namespace DrunkenChair.Migrations
                     Name = "Adasier",
                     StartingAttributes = new CharacterBaseAttributeSet
                     {
-                        Strength = new Models.DiceRollCheck(1, 2),
-                        Stamina = new Models.DiceRollCheck(2, 3),
-                        Agility = new Models.DiceRollCheck(3, 0),
-                        Perception = new Models.DiceRollCheck(2, 2),
-                        Will = new Models.DiceRollCheck(2, 1),
-                        Psyche = new Models.DiceRollCheck(1, 3),
-                        Wisdom = new Models.DiceRollCheck(1, 0),
-                        Charisma = new Models.DiceRollCheck(1, 3)
+                        Strength = new Model.DiceRollCheck(1, 2),
+                        Stamina = new Model.DiceRollCheck(2, 3),
+                        Agility = new Model.DiceRollCheck(3, 0),
+                        Perception = new Model.DiceRollCheck(2, 2),
+                        Will = new Model.DiceRollCheck(2, 1),
+                        Psyche = new Model.DiceRollCheck(1, 3),
+                        Wisdom = new Model.DiceRollCheck(1, 0),
+                        Charisma = new Model.DiceRollCheck(1, 3)
                     },
                     Perks = "Flexible"
                 },
@@ -90,7 +90,7 @@ namespace DrunkenChair.Migrations
             );
         }
 
-        private void SeedEnvironments(DrunkenChair.Models.EonIvCharacterDbContext context)
+        private void SeedEnvironments(DrunkenChair.Model.EonIvCharacterDbContext context)
         {
             context.Environments.AddOrUpdate(
                 e => e.Name,
@@ -129,14 +129,14 @@ namespace DrunkenChair.Migrations
 
         
 
-        private void SeedConstants(DrunkenChair.Models.EonIvCharacterDbContext context)
-        {
-            context.CreationConstants.AddOrUpdate(
-                c => c.Constant,
-                new CharacterCreationConstants(Constant.BonusAttributeDiceses, 10),
-                new CharacterCreationConstants(Constant.MaxBonusAttributeDicesSpentOnOneAttribute, 5)
-                );
-        }
+        //private void SeedConstants(DrunkenChair.Model.EonIvCharacterDbContext context)
+        //{
+        //    context.CreationConstants.AddOrUpdate(
+        //        c => c.Constant,
+        //        new CharacterCreationConstants(Constant.BonusAttributeDiceses, 10),
+        //        new CharacterCreationConstants(Constant.MaxBonusAttributeDicesSpentOnOneAttribute, 5)
+        //        );
+        //}
 
     }
 }

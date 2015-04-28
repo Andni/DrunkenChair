@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using DrunkenChair.DatabaseTables;
-namespace DrunkenChair.DatabaseTables.Helpers
+using Niklasson.DrunkenChair.DatabaseTables;
+namespace Niklasson.DrunkenChair.DatabaseTables.Helpers
 {
     interface IModificationParser
     {

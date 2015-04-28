@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-using DrunkenChair.Models.Interfaces;
+using Niklasson.DrunkenChair.Model.Interfaces;
 
-namespace DrunkenChair.DatabaseTables
+namespace Niklasson.DrunkenChair.DatabaseTables
 {
     public abstract class EonIVCharacterModifier : IEonIVCharacterModifier
     {

@@ -7,10 +7,10 @@ using System.Web;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-using DrunkenChair.Models;
-using DrunkenChair.Models.Interfaces;
+using Niklasson.DrunkenChair.Model;
+using Niklasson.DrunkenChair.Model.Interfaces;
 
-namespace DrunkenChair.Character
+namespace Niklasson.DrunkenChair.Character
 {
     [ComplexType]
     public class CharacterBaseAttributeSet
@@ -67,11 +67,6 @@ namespace DrunkenChair.Character
 
         public static CharacterBaseAttributeSet operator +(CharacterBaseAttributeSet lh, CharacterBaseAttributeSet rh)
         {
-            if (rh == null)
-            { 
-                return lh;
-            }
-
             lh.Agility += rh.Agility;
             lh.Charisma += rh.Charisma;
             lh.Perception += rh.Perception;

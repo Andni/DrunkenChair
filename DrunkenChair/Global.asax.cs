@@ -6,7 +6,10 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
-namespace DrunkenChair
+using System.Reflection;
+using System.ComponentModel.Composition.Hosting;
+
+namespace Niklasson.DrunkenChair
 {
     public class MvcApplication : System.Web.HttpApplication
     {
@@ -16,6 +19,11 @@ namespace DrunkenChair
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+         
+            //var catalog = new AssemblyCatalog(Assembly.GetExecutingAssembly());
+            //var composition = new CompositionContainer(catalog, true);
+            //IControllerFactory mefControllerFactory = new CharacterConstructionControllerFactory(composition);
+            //ControllerBuilder.Current.SetControllerFactory(mefControllerFactory);
         }
 
         protected void Application_EndRequest()

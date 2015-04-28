@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace DrunkenChair
+namespace Niklasson.DrunkenChair
 {
     public class FilterConfig
     {

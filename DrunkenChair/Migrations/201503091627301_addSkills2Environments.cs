@@ -1,4 +1,4 @@
-namespace DrunkenChair.Migrations
+namespace Niklasson.DrunkenChair.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;

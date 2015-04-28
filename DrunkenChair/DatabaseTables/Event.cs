@@ -10,9 +10,9 @@ using System.ComponentModel;
 using System.Xml.Serialization;
 using System.IO;
 
-using DrunkenChair.Models.Interfaces;
+using Niklasson.DrunkenChair.Model.Interfaces;
 
-namespace DrunkenChair.DatabaseTables
+namespace Niklasson.DrunkenChair.DatabaseTables
 {
     public enum EventCategory
     {

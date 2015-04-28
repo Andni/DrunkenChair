@@ -1,4 +1,4 @@
-﻿@model DrunkenChair.Models.EonIvCharacter
+﻿@model Niklasson.DrunkenChair.Model.EonIvCharacter
 
 @{
     ViewBag.Title = "Delete";
@@ -12,11 +12,43 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Basics)
+            @Html.DisplayNameFor(model => model.Archetype)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Basics)
+            @Html.DisplayFor(model => model.Archetype)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Background)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Background)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Environment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Environment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Race)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Race)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Attributes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Attributes)
         </dd>
 
     </dl>

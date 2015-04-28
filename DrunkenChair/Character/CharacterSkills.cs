@@ -5,9 +5,9 @@ using System.Web;
 
 using System.ComponentModel.DataAnnotations.Schema;
 
-using DrunkenChair.Character;
+using Niklasson.DrunkenChair.Character;
 
-namespace DrunkenChair.Models
+namespace Niklasson.DrunkenChair.Model
 {
     public class CharacterSkills : SortedSet<CharacterSkill>
     {

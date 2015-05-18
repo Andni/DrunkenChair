@@ -1,5 +1,5 @@
 ﻿@model Niklasson.DrunkenChair.DatabaseTables.AttributeModification
 
-@Html.DisplayFor(m => m.Attribute)
+@Html.DisplayFor(m => Niklasson.DrunkenChair.Character.Helpers.AttributeHelper.GetAttributeTranslation(m.Attribute))
 @Html.DisplayFor(m => m.Value)
 @Html.DisplayFor(m => m.Condition)

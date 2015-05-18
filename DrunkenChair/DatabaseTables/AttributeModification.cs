@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-using Niklasson.DrunkenChair.Model;
+using Niklasson.DrunkenChair.Models;
+using Niklasson.DrunkenChair.Character.Helpers;
 
 namespace Niklasson.DrunkenChair.DatabaseTables
 {
@@ -21,6 +22,13 @@ namespace Niklasson.DrunkenChair.DatabaseTables
         public void SubtractDie(int dies = 1)
         {
             Value -= dies * EonIVValue.valuePerD6;
+        }
+
+        public override string ToString()
+        {
+            var sign = Value > 0 ? "+" : "-";
+            return AttributeHelper.GetAttributeTranslation(Attribute) + " " + 
+                sign + Value.ToString();
         }
     }
 }

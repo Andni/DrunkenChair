@@ -5,7 +5,7 @@ using System.Web;
 
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Niklasson.DrunkenChair.Model
+namespace Niklasson.DrunkenChair.Models
 {
     [ComplexType]
     public class DiceRollCheck

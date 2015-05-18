@@ -1,0 +1,30 @@
+﻿@model Niklasson.DrunkenChair.Models.CharacterBasicDetails
+
+@{
+    var labelAttributes = new { @class = "control-label col-md-2" };
+    var dropdownListAttributes = new { @class = "form-control", data_action_url = Url.Action("GetCharacterPreview", "EonIvCharacters") };
+}
+
+@Html.LabelFor(model => model.SelectedBackground, htmlAttributes: labelAttributes)
+<div>
+    @Html.RadioButtonFor(model => model.SelectedBackground, dropdownListAttributes)
+</div>
+
+@Html.LabelFor(model => model.SelectedArchetype, htmlAttributes: labelAttributes)
+<div>
+    @Html.DropDownListFor(model => model.SelectedArchetype, Model.Archetypes, dropdownListAttributes)
+</div>
+
+<br />
+
+@Html.LabelFor(model => model.SelectedRace, htmlAttributes: labelAttributes)
+<div>
+    @Html.DropDownListFor(model => model.SelectedRace, Model.Races, dropdownListAttributes)
+</div>
+
+<br />
+
+@Html.LabelFor(model => model.SelectedEnvironment, htmlAttributes: labelAttributes)
+<div>
+    @Html.DropDownListFor(model => model.SelectedEnvironment, Model.Environments, dropdownListAttributes)
+</div>

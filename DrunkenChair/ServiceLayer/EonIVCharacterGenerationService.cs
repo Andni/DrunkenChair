@@ -4,7 +4,7 @@ using System.Web;
 
 using Niklasson.DrunkenChair.DatabaseTables;
 using Niklasson.DrunkenChair.Repository;
-using Niklasson.DrunkenChair.Model;
+using Niklasson.DrunkenChair.Models;
 
 namespace Niklasson.DrunkenChair.ServiceLayer
 {
@@ -16,6 +16,11 @@ namespace Niklasson.DrunkenChair.ServiceLayer
         public EonIVCharacterGenerationService(IEonIVCharacterGenerationTables tables)
         {
             generationTables = tables;
+        }
+
+        public Event GetRandomEvent(EventCategory cat)
+        {
+            return generationTables.GetRandomEvent(cat);
         }
 
         public IEnumerable<Archetype> Archetypes
@@ -54,7 +59,7 @@ namespace Niklasson.DrunkenChair.ServiceLayer
             RolledEvents events = new RolledEvents();
 
             events.Travels = GetRandomEvents(EventCategory.TRAVELS_AND_ADVENTURES, eventRolls.TravlesAndAdventures);
-            events.Intrigue = GetRandomEvents(EventCategory.INTRIGUE_AND_ILLDEADS, eventRolls.IntrigueAndIlldeads);
+            events.Intrigue = GetRandomEvents(EventCategory.INTRIGUE_AND_MISDEADS, eventRolls.IntrigueAndIlldeads);
             events.Knowledge = GetRandomEvents(EventCategory.KNOWLEDGE_AND_MYSTERIES, eventRolls.KnowledgeAndMysteries);
             events.Battles = GetRandomEvents(EventCategory.BATTLES_AND_SKIRMISHES, eventRolls.BattlesAndSkirmishes);
 

@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 using Niklasson.DrunkenChair.Character;
 
-namespace Niklasson.DrunkenChair.Model
+namespace Niklasson.DrunkenChair.Models
 {
     public class CharacterSkills : SortedSet<CharacterSkill>
     {

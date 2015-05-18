@@ -57,9 +57,9 @@ namespace Niklasson.DrunkenChair.DatabaseTables.Helpers
             return res;
         }
 
-        private List<CharacterModificationOpitons> ParseModifiers(string text)
+        private List<CharacterModificationOptions> ParseModifiers(string text)
         {
-            var res = new List<CharacterModificationOpitons>();
+            var res = new List<CharacterModificationOptions>();
             var strArr = text.Split(new char[]{',','.'});
             foreach(string s in strArr)
             {
@@ -72,10 +72,10 @@ namespace Niklasson.DrunkenChair.DatabaseTables.Helpers
             return res;
         }
 
-        private CharacterModificationOpitons ParseModifier(string text)
+        private CharacterModificationOptions ParseModifier(string text)
         {
             var lowerCase = text.ToLower();
-            var res = new CharacterModificationOpitons();
+            var res = new CharacterModificationOptions();
 
             foreach(IModificationParser p in parsers)
             {

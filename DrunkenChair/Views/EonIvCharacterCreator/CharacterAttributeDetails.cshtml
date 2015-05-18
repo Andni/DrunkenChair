@@ -1,10 +1,10 @@
-﻿@model Niklasson.DrunkenChair.Model.CharacterAttributeDetails
+﻿@model Niklasson.DrunkenChair.Models.CharacterAttributeDetails
 
 @using Niklasson.DrunkenChair.Extensions
 @using Finley.Common
 
 @{
-    ViewBag.Title = "CharacterAttributeDetails";
+    ViewBag.Title = "Karaktärsgrunder";
     var dices = Model.DicesToDistribute;
     var max = Model.MaxDicesPerAttribute;
 
@@ -38,7 +38,7 @@
 
 <h2>CharacterAttributeDetails</h2>
 
-@using (Html.BeginForm("CharacterAttributeDetails", "EonIvCharacters", FormMethod.Post))
+@using (Html.BeginForm("CharacterAttributeDetails", "EonIvCharacterCreator", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
@@ -52,62 +52,62 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.StrenghtBonusDices, htmlAttributes: labelHtmlAttributes)
-            @Html.EditorFor(model => model.StrenghtBonusDices,
+            @Html.EditorFor(model => Model.StrenghtBonusDices,
             new { htmlAttributes = TypeMerger.MergeTypes(diceHtmlAttributes,
                 new { data_onchange_target = "#" + Html.IdFor(model => model.CharacterConstructionSite.Character.Attributes.Strength.UnlimitedDice6) }) })
             <br/>
-            @Html.LabelFor(model => model.StaminaBonusDices, htmlAttributes: labelHtmlAttributes)
-            @Html.EditorFor(model => model.StaminaBonusDices, new
+            @Html.LabelFor(model => Model.StaminaBonusDices, htmlAttributes: labelHtmlAttributes)
+            @Html.EditorFor(model => Model.StaminaBonusDices, new
                {
                    htmlAttributes = TypeMerger.MergeTypes(diceHtmlAttributes,
                        new { data_onchange_target = "#" + Html.IdFor(model => model.CharacterConstructionSite.Character.Attributes.Stamina.UnlimitedDice6) })
                })
             <br />
-            @Html.LabelFor(model => model.AgilityBonusDices, htmlAttributes: labelHtmlAttributes)
-            @Html.EditorFor(model => model.AgilityBonusDices, new
+            @Html.LabelFor(model => Model.AgilityBonusDices, htmlAttributes: labelHtmlAttributes)
+            @Html.EditorFor(model => Model.AgilityBonusDices, new
                {
                    htmlAttributes = TypeMerger.MergeTypes(diceHtmlAttributes,
-                       new { data_onchange_target = "#" + Html.IdFor(model => model.CharacterConstructionSite.Character.Attributes.Agility.UnlimitedDice6) })
+                       new { data_onchange_target = "#" + Html.IdFor(model => Model.CharacterConstructionSite.Character.Attributes.Agility.UnlimitedDice6) })
                })
 
             <br />
-            @Html.LabelFor(model => model.PerceptionBonusDices, htmlAttributes: labelHtmlAttributes)
-            @Html.EditorFor(model => model.PerceptionBonusDices, new
+            @Html.LabelFor(model => Model.PerceptionBonusDices, htmlAttributes: labelHtmlAttributes)
+            @Html.EditorFor(model => Model.PerceptionBonusDices, new
                {
                    htmlAttributes = TypeMerger.MergeTypes(diceHtmlAttributes,
-                       new { data_onchange_target = "#" + Html.IdFor(model => model.CharacterConstructionSite.Character.Attributes.Perception.UnlimitedDice6) })
+                       new { data_onchange_target = "#" + Html.IdFor(model => Model.CharacterConstructionSite.Character.Attributes.Perception.UnlimitedDice6) })
                })
 
             <br />
-            @Html.LabelFor(model => model.WillBonusDices, htmlAttributes: labelHtmlAttributes)
-            @Html.EditorFor(model => model.WillBonusDices, new
+            @Html.LabelFor(model => Model.WillBonusDices, htmlAttributes: labelHtmlAttributes)
+            @Html.EditorFor(model => Model.WillBonusDices, new
                {
                    htmlAttributes = TypeMerger.MergeTypes(diceHtmlAttributes,
-                       new { data_onchange_target = "#" + Html.IdFor(model => model.CharacterConstructionSite.Character.Attributes.Will.UnlimitedDice6) })
+                       new { data_onchange_target = "#" + Html.IdFor(model => Model.CharacterConstructionSite.Character.Attributes.Will.UnlimitedDice6) })
                })
 
             <br />
-            @Html.LabelFor(model => model.PsycheBonusDices, htmlAttributes: labelHtmlAttributes)
-            @Html.EditorFor(model => model.PsycheBonusDices, new
+            @Html.LabelFor(model => Model.PsycheBonusDices, htmlAttributes: labelHtmlAttributes)
+            @Html.EditorFor(model => Model.PsycheBonusDices, new
                {
                    htmlAttributes = TypeMerger.MergeTypes(diceHtmlAttributes,
-                       new { data_onchange_target = "#" + Html.IdFor(model => model.CharacterConstructionSite.Character.Attributes.Psyche.UnlimitedDice6) })
+                       new { data_onchange_target = "#" + Html.IdFor(model => Model.CharacterConstructionSite.Character.Attributes.Psyche.UnlimitedDice6) })
                })
 
             <br />
-            @Html.LabelFor(model => model.WisdomBonusDices, htmlAttributes: labelHtmlAttributes)
-            @Html.EditorFor(model => model.WisdomBonusDices, new
+            @Html.LabelFor(model => Model.WisdomBonusDices, htmlAttributes: labelHtmlAttributes)
+            @Html.EditorFor(model => Model.WisdomBonusDices, new
                {
                    htmlAttributes = TypeMerger.MergeTypes(diceHtmlAttributes,
-                       new { data_onchange_target = "#" + Html.IdFor(model => model.CharacterConstructionSite.Character.Attributes.Wisdom.UnlimitedDice6) })
+                       new { data_onchange_target = "#" + Html.IdFor(model => Model.CharacterConstructionSite.Character.Attributes.Wisdom.UnlimitedDice6) })
                })
 
             <br />
-            @Html.LabelFor(model => model.CharismaBonusDices, htmlAttributes: labelHtmlAttributes)
-            @Html.EditorFor(model => model.CharismaBonusDices, new
+            @Html.LabelFor(model => Model.CharismaBonusDices, htmlAttributes: labelHtmlAttributes)
+            @Html.EditorFor(model => Model.CharismaBonusDices, new
                {
                    htmlAttributes = TypeMerger.MergeTypes(diceHtmlAttributes,
-                       new { data_onchange_target = "#" + Html.IdFor(model => model.CharacterConstructionSite.Character.Attributes.Charisma.UnlimitedDice6) })
+                       new { data_onchange_target = "#" + Html.IdFor(model => Model.CharacterConstructionSite.Character.Attributes.Charisma.UnlimitedDice6) })
                })
 
 
@@ -119,8 +119,8 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" name="nextButton" value="Next" class="btn btn-default" />
                 <input type="submit" name="previousButton" value="Previous" class="btn btn-default" />
+                <input type="submit" name="nextButton" value="Next" class="btn btn-default" />
             </div>
         </div>
     </div>

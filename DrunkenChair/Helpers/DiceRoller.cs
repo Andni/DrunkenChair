@@ -1,14 +1,12 @@
-﻿using System;
+﻿using Niklasson.Toolbox;
 
 namespace Niklasson.DrunkenChair.Helpers
 {
     public class DiceRoller : IDiceRoller
     {
-        private static Random randomGenerator = new Random();
-
         public int RollD100()
         {
-            return randomGenerator.Next(1, 100);
+            return RandomNumberGenerator.Next(1, 100);
         }
 
         public int RollD6(int dices = 1)
@@ -22,7 +20,7 @@ namespace Niklasson.DrunkenChair.Helpers
             var dicesToRoll = dices;
             while(dicesToRoll > 0)
             {
-                var tmp = randomGenerator.Next(1, 6);
+                var tmp = RandomNumberGenerator.Next(1, 6);
                 if (tmp == 6)
                 {
                     dicesToRoll++;

@@ -5,13 +5,15 @@ using System.Web;
 
 using Niklasson.DrunkenChair.DatabaseTables;
 
-namespace Niklasson.DrunkenChair.Model
+namespace Niklasson.DrunkenChair.Models
 {
-    public class CharacterEventDetails
+    public class CharacterEventDetails : EventDetails
     {
-        public int FreeEventRolls { get; set; }
-        public RolledEvents RolledEvents { get; set; }
-
         public CharacterConstructionSite CharacterConstructionSite { get; set; }
+
+        public CharacterEventDetails()
+        {
+            CharacterConstructionSite = new CharacterConstructionSite();
+        }
     }
 }

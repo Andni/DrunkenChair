@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
 using Niklasson.DrunkenChair.DatabaseTables;
-using Niklasson.DrunkenChair.Model;
+using Niklasson.DrunkenChair.Models;
 
 namespace Niklasson.DrunkenChair.Character
 {

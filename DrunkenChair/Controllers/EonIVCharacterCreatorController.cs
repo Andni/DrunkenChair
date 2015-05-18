@@ -6,10 +6,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
+
 using System.ComponentModel.Composition;
 
 
-using Niklasson.DrunkenChair.Model;
+using Niklasson.DrunkenChair.Models;
 using Niklasson.DrunkenChair.Character;
 using Niklasson.DrunkenChair.DatabaseTables;
 
@@ -30,6 +31,7 @@ namespace Niklasson.DrunkenChair.Controllers
 
         //private EonIvCharacterDbContext db = new EonIvCharacterDbContext();
         private string sessionStringCharacter = "character";
+        private const string wizardStepsSessionString = "wizardsteps";
 
         // GET: EonIvCharacters
         public ActionResult Index()
@@ -44,7 +46,7 @@ namespace Niklasson.DrunkenChair.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EonIvCharacter eonIvCharacter = new EonIvCharacter();
+            EonIvCharacterSheet eonIvCharacter = new EonIvCharacterSheet();
             if (eonIvCharacter == null)
             {
                 return HttpNotFound();
@@ -54,19 +56,19 @@ namespace Niklasson.DrunkenChair.Controllers
 
         // GET: EonIvCharacters/Create
         public ActionResult Create()
-        {
-            var ccs = GetCharacterConstructionSite();
-            ccs.Character.Attributes = new CharacterAttributeSet();
-            ccs.Scaffolding.EventRolls = new EventTableRolls();
-            ccs.Scaffolding.Skillpoints = new Skillpoints();
+        {   
+            return View(GetBlankCharacterBasicDetails());
+        }
 
-            return View(new CharacterBasicDetails(
-                new SelectList(characterGenerationService.Archetypes),
-                new SelectList(characterGenerationService.Environments),
-                new SelectList(characterGenerationService.Races))
-                {
-                    CharacterConstructionSite = ccs
-                });
+        private CharacterBasicDetails GetBlankCharacterBasicDetails()
+        {
+            return new CharacterBasicDetails()
+            {
+                Archetypes = new SelectList(characterGenerationService.Archetypes),
+                Environments = new SelectList(characterGenerationService.Environments),
+                Races = new SelectList(characterGenerationService.Races),
+                CharacterConstructionSite = new CharacterConstructionSite()
+            };
         }
 
         // POST: EonIvCharacters/Create
@@ -76,20 +78,23 @@ namespace Niklasson.DrunkenChair.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(CharacterBasicDetails basicDetails, string previousButton, string nextButton)
         {
+            var ccs = GetCharacterConstructionSite();
             if(nextButton != null)
             {
                 if (ModelState.IsValid)
                 {
 
-                    var cs = GetCharacterConstructionSite();
-                    cs.BasicsDetails = ResolveCharacterBasics(basicDetails);
-                
-                    return View("CharacterAttributeDetails",
-                        new CharacterAttributeDetails(cs));
+                    ccs.Character.Basics = ResolveCharacterBasics(basicDetails);
+                    var attributeDetails =  new CharacterAttributeDetails()
+                    {
+                        CharacterConstructionSite = ccs
+                    };
+
+                    return View("CharacterAttributeDetails", attributeDetails);
                 }
             }
 
-            return View();
+            return View(ccs);
         }
 
         // GET: EonIvCharacters/CharacterAttributeDetails
@@ -101,27 +106,36 @@ namespace Niklasson.DrunkenChair.Controllers
             ViewBag.DicesToDistribute = DicesToDistribute;
             ViewBag.MaxDiceesPerAttribute = MaxDicesPerAttribute;
 
-            return View(new CharacterAttributeDetails(GetCharacterConstructionSite() ));
+
+
+            return View(new CharacterAttributeDetails() { CharacterConstructionSite = GetCharacterConstructionSite()});
         }
 
-        // GET: EonIvCharacters/CharacterAttributeDetails
         [HttpPost]
         public ActionResult CharacterAttributeDetails(CharacterAttributeDetails attributeDetails, string previousButton, string nextButton)
         {
+            var ccs = GetCharacterConstructionSite();
             if(nextButton != null)
             {
                 if(ModelState.IsValid)
                 {
-                    var cs = GetCharacterConstructionSite();
-                    cs.BonusDiceDistribution = attributeDetails.GetBonusDiceDistribution();
-
-                    return View("CharacterEventDetails", new CharacterEventDetails());
+                    var wizardSteps = GetWizardSteps();
+                    wizardSteps.AttributeDetails = attributeDetails;
+                    ccs.Scaffolding.BonusDiceDistribution = attributeDetails.GetBonusDiceDistribution();
+                    var characterEventDetails = new CharacterEventDetails()
+                    {
+                        CharacterConstructionSite = ccs,
+                        RolledEvents = GetTestRolledEvents(),
+                        FreeEventRolls = 2
+                    };
+                    wizardSteps.EventDetails = characterEventDetails;
+                    return View("CharacterEventDetails", characterEventDetails);
                 }
             }
             
             if(previousButton != null)
             {
-                return View("Create");
+                return View("Create", GetWizardSteps().BasicDetails);
             }
             
             return View();
@@ -130,16 +144,110 @@ namespace Niklasson.DrunkenChair.Controllers
         // GET: EonIvCharacters/CharacterEventDetails
         public ActionResult CharacterEventDetails()
         {
-            var eventDetails = CreateCharacterEventDetails();
-            
-            return View(eventDetails);
+            var eventDetails = GetCharacterEventDetails();
+            eventDetails.RolledEvents = GetTestRolledEvents();
+            GetWizardSteps().EventDetails = eventDetails;
+            var ccs = GetCharacterConstructionSite();
+            ccs.Scaffolding.EventDetails = eventDetails;
+
+            eventDetails.CharacterConstructionSite = ccs;
+            return View("CharacterEventDetails", eventDetails);
         }
 
-        private CharacterEventDetails CreateCharacterEventDetails()
+        private static RolledEvents GetTestRolledEvents()
+        {
+            var rolledEvents = new RolledEvents()
+            {
+                Intrigue = new List<Event>()
+                {
+                    new Event()
+                    {
+                        Id = 3,
+                        Name = "testEvent",
+                        Number = 123,
+                        Category = EventCategory.INTRIGUE_AND_MISDEADS,
+                        Description = "test event description that is very silly and slightly longish to test how linebreaks are displayed.",
+                        Modifications = new List<CharacterModificationOptions> {
+                            new CharacterModificationOptions()
+                            {
+                                Alternatives = {
+                                    new AttributeModification()
+                                    {
+                                        Attribute = Attribute.AGILITY,
+                                        Value = 3
+                                    },
+                                    new AttributeModification()
+                                    {
+                                        Attribute = Attribute.PERCEPTION,
+                                        Value = 3
+                                    }
+                                }
+                            },
+
+                            new CharacterModificationOptions()
+                            {
+                                Alternatives = new List<EonIVCharacterModifier>()
+                                {
+                                    new SkillModification()
+                                    {
+                                        Name = "Ljuga",
+                                        Value = 5,
+                                        LearningModifier = LearningModifier.FAST_LEARNER
+                                    }
+                                }
+                            }
+                        }
+                    },
+
+                    new Event()
+                    {
+
+                        Id = 3,
+                        Name = "testEvent",
+                        Category = EventCategory.INTRIGUE_AND_MISDEADS,
+                        Number = 123,
+                        Description = "test event 2 description that is very silly and slightly longish to test how linebreaks are displayed.",
+                        Modifications = new List<CharacterModificationOptions> {
+                            new CharacterModificationOptions()
+                            {
+                                Alternatives = {
+                                    new AttributeModification()
+                                    {
+                                        Attribute = Attribute.AGILITY,
+                                        Value = 3
+                                    },
+                                    new AttributeModification()
+                                    {
+                                        Attribute = Attribute.PERCEPTION,
+                                        Value = 3
+                                    }
+                                }
+                            },
+
+                            new CharacterModificationOptions()
+                            {
+                                Alternatives = new List<EonIVCharacterModifier>()
+                                {
+                                    new SkillModification()
+                                    {
+                                        Name = "Ljuga",
+                                        Value = 5,
+                                        LearningModifier = LearningModifier.FAST_LEARNER
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+            return rolledEvents;
+        }
+
+        private CharacterEventDetails GetCharacterEventDetails()
         {
             var ccs = GetCharacterConstructionSite();
 
-            var eventRolls = ccs.GetEventRolls();
+            var eventRolls = ccs.Scaffolding.EventRolls;
             var rolledEvents = characterGenerationService.RollEvents(eventRolls);
             return new CharacterEventDetails()
             {
@@ -147,6 +255,27 @@ namespace Niklasson.DrunkenChair.Controllers
                 FreeEventRolls = eventRolls.FreeChoise,
                 CharacterConstructionSite = ccs
             };
+        }
+
+        [HttpPost]
+        public ActionResult RerollEvent(RerollEventRequest request)
+        {
+            //TODO: get events, reroll the one selected, and post the updated set back
+            var list = GetWizardSteps().EventDetails.RolledEvents[request.Category].ToList();
+
+            //var ccs = GetCharacterConstructionSite();
+            //var list = ccs.Scaffolding.EventDetails.RolledEvents[request.Category].ToList();
+            if(request.Index + 1 > list.Count() )
+            {
+                return null;
+            }
+            else
+            {
+                list[request.Index] = characterGenerationService.GetRandomEvent(request.Category);
+                GetWizardSteps().EventDetails.RolledEvents[request.Category] = list;
+            }
+
+            return PartialView("RolledEvents", GetWizardSteps().EventDetails.RolledEvents);
         }
 
         [HttpPost]
@@ -162,10 +291,10 @@ namespace Niklasson.DrunkenChair.Controllers
             
             if (previousButton != null)
             {
-                return View("CharacterAttributeDetails", new CharacterAttributeDetails(GetCharacterConstructionSite()));
+                return View("CharacterAttributeDetails", GetCharacterConstructionSite());
             }
             
-            return View("CharacterEventDetails", eventDetails);
+            return View("CharacterEventDetails", GetCharacterConstructionSite());
         }
     
         [HttpGet]
@@ -188,6 +317,16 @@ namespace Niklasson.DrunkenChair.Controllers
             return res;
         }
 
+        [HttpPost]
+        public JsonResult GetRandomEvent(RandomEventRequest request)
+        {
+            var result = new JsonResult();
+
+            var ev = characterGenerationService.GetRandomEvent(request.EventCategory);
+            result.Data = new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(ev);
+            return result;
+        }
+
         private CharacterBasics ResolveCharacterBasics(CharacterBasicDetails details)
         {
             CharacterBasics res = new CharacterBasics();
@@ -207,6 +346,15 @@ namespace Niklasson.DrunkenChair.Controllers
                 Session[sessionStringCharacter] = new CharacterConstructionSite();
             }
             return (CharacterConstructionSite)Session[sessionStringCharacter];
+        }
+
+        private WizardSteps GetWizardSteps()
+        {
+            if (Session[wizardStepsSessionString] == null)
+            {
+                Session[wizardStepsSessionString] = new WizardSteps();
+            }
+            return (WizardSteps)Session[wizardStepsSessionString];
         }
 
         private void RemoveCharacter()

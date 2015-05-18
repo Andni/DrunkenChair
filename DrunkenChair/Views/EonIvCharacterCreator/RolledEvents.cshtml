@@ -1,0 +1,20 @@
+﻿@model Niklasson.DrunkenChair.Models.RolledEvents 
+
+@{
+    object attributes = new {type = "button"};
+ 
+    <h4>Färder @Html.Raw("&") Äventyr</h4>
+    @Html.DisplayFor(m => m.Travels) @Html.Button("Slå valfri", attributes)
+    <br />
+
+    <h4>Intriger @Html.Raw("&") Illdåd</h4>
+    @Html.DisplayFor(m => m.Intrigue) @Html.Button("Slå valfri", attributes)
+    <br />
+
+    <h4>Kunskap @Html.Raw("&") Mysterier</h4>
+    @Html.DisplayFor(m => m.Knowledge) @Html.Button("Slå valfri", attributes)
+    <br />
+
+    <h4>Strider @Html.Raw("&") Drabbningar</h4>
+    @Html.DisplayFor(m => m.Battles) @Html.Button("Slå valfri", attributes)
+}

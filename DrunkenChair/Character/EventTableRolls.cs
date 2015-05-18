@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
 
-namespace Niklasson.DrunkenChair.Model
+namespace Niklasson.DrunkenChair.Models
 {
     [ComplexType]
     public class EventTableRolls

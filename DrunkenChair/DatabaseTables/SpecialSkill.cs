@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-using Niklasson.DrunkenChair.Model;
+using Niklasson.DrunkenChair.Models;
 
 namespace Niklasson.DrunkenChair.DatabaseTables
 {
@@ -19,7 +19,7 @@ namespace Niklasson.DrunkenChair.DatabaseTables
     {
         public SpecialSkill()
         {
-            LearningModifier = Model.LearningModifier.FAST_LEARNER;
+            LearningModifier = Models.LearningModifier.FAST_LEARNER;
             Value = EonIVValue.DiceToValue(4);
         }
     }

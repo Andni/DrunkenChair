@@ -7,8 +7,8 @@ using System.Web;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-using Niklasson.DrunkenChair.Model;
-using Niklasson.DrunkenChair.Model.Interfaces;
+using Niklasson.DrunkenChair.Models;
+using Niklasson.DrunkenChair.Models.Interfaces;
 
 namespace Niklasson.DrunkenChair.Character
 {

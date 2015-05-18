@@ -1,20 +1,27 @@
-﻿@model Niklasson.DrunkenChair.Model.CharacterEventDetails
+﻿@model Niklasson.DrunkenChair.Models.CharacterEventDetails
 
 @{
     ViewBag.Title = "Händelser";
 }
 
-<h2>View</h2>
+<h2>Händelser</h2>
 
 
-@using(Html.BeginForm())
+@using(Html.BeginForm("CharacterEventDetails", "EonIvCharacterCreator", FormMethod.Post))
 {
- 
     <div>
-        @Html.DisplayFor(m => m.RolledEvents);
-    </div>   
+        <div style="display:inline-block; width:50%">
+            @{Html.RenderPartial("RolledEvents", Model.RolledEvents);}
+        </div>   
     
-    <div>
-        @Html.DisplayFor(m => m.CharacterConstructionSite.Character);
+        <div style="display:inline-block">
+            @Html.DisplayFor(m => m.CharacterConstructionSite)
+        </div>
     </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript" src="@Url.Content("~/js/EonIvCharacters/characterEventDetails.js")"></script>
+
 }

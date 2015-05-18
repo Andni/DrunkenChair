@@ -4,15 +4,15 @@ using System.Linq;
 using Random = System.Random;
 
 using Niklasson.DrunkenChair.DatabaseTables;
-using Niklasson.DrunkenChair.Model;
+using Niklasson.DrunkenChair.Models;
 
 namespace Niklasson.DrunkenChair.Repository
 {
     public class EonIVCharacterGenerationTables : IEonIVCharacterGenerationTables
     {
-        private EonIvCharacterDbContext gererationDbContext;
+        private EonIVCharacterGenerationDbContext gererationDbContext;
 
-        public EonIVCharacterGenerationTables(EonIvCharacterDbContext context)
+        public EonIVCharacterGenerationTables(EonIVCharacterGenerationDbContext context)
         {
             gererationDbContext = context;
         }
@@ -47,6 +47,17 @@ namespace Niklasson.DrunkenChair.Repository
             {
                 return gererationDbContext.Environments;
             }
+        }
+
+        public IEnumerable<Event> Events
+        {
+            get { return gererationDbContext.Events; }
+        }
+
+        public Event GetRandomEvent(EventCategory cat)
+        {
+            var categoryEvents = gererationDbContext.Events.Where(e => e.Category == cat);
+            return categoryEvents.GetRandom();
         }
 
         public IEnumerable<Event> GetRandomEvents(EventCategory cat, int nb)

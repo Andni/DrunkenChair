@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.Composition;
 
 using Niklasson.DrunkenChair.DatabaseTables;
-using Niklasson.DrunkenChair.Model;
+using Niklasson.DrunkenChair.Models;
 
 namespace Niklasson.DrunkenChair.ServiceLayer
 {
@@ -21,5 +21,7 @@ namespace Niklasson.DrunkenChair.ServiceLayer
         IEnumerable<Race> Races { get; }
         
         //IEnumerable<Event> GetRandomEvents(EventCategory cat, int number);
+
+        Event GetRandomEvent(EventCategory cat);
     }
 }

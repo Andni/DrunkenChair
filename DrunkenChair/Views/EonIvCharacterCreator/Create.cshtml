@@ -1,62 +1,31 @@
-﻿@model Niklasson.DrunkenChair.Model.EonIvCharacter
+﻿@model Niklasson.DrunkenChair.Models.CharacterBasicDetails
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Karaktärsgrunder";
 }
 
-<h2>Create</h2>
+<h2>Karaktärsgrunder</h2>
 
-@using (Html.BeginForm()) 
+
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>EonIvCharacter</h4>
+        <h4>Karaktärsgrunder</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.Archetype, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Archetype, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Archetype, "", new { @class = "text-danger" })
-            </div>
+            @Html.EditorFor(m => m);
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Background, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Background, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Background, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Environment, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Environment, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Environment, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Race, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Race, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Race, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Attributes, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Attributes, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Attributes, "", new { @class = "text-danger" })
-            </div>
+        <div id="divCharacterPreview">
+            @{Html.RenderPartial("CharacterPreview", Model.CharacterConstructionSite);}
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" name="nextButton" value="Next" class="btn btn-default" />
             </div>
         </div>
     </div>
@@ -65,3 +34,9 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript" src="@Url.Content("~/js/EonIvCharacters/create.js")"></script>
+}

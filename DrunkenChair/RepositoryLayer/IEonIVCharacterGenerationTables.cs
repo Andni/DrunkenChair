@@ -15,5 +15,7 @@ namespace Niklasson.DrunkenChair.Repository
         IEnumerable<Background> Backgrounds { get; }
         IEnumerable<Environment> Environments { get; }
         IEnumerable<Race> Races { get; }
+
+        Event GetRandomEvent(EventCategory cat);
     }
 }

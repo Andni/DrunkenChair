@@ -9,9 +9,9 @@ using Niklasson.DrunkenChair.DatabaseTables;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
 
-using Niklasson.DrunkenChair.Model;
+using Niklasson.DrunkenChair.Models;
 using Niklasson.DrunkenChair.Character;
-using Niklasson.DrunkenChair.DatabaseTables;
+using Niklasson.DrunkenChair.Repository;
 
 namespace Niklasson.DrunkenChair.DatabaseTables.Helpers
 {
@@ -23,7 +23,7 @@ namespace Niklasson.DrunkenChair.DatabaseTables.Helpers
 
         }
 
-        public static void SeedEvents(DrunkenChair.Model.EonIvCharacterDbContext context)
+        public static void SeedEvents(EonIVCharacterGenerationDbContext context)
         {
             context.Events.AddOrUpdate(
                 e => e.Id,
@@ -38,9 +38,9 @@ namespace Niklasson.DrunkenChair.DatabaseTables.Helpers
                         som skett. Det kan röra sig om brutna
                         ben, eldskador eller bettskador från ett
                         vilt djur.",
-                    Modifications = new List<CharacterModificationOpitons>()
+                    Modifications = new List<CharacterModificationOptions>()
                     {
-                        new CharacterModificationOpitons()
+                        new CharacterModificationOptions()
                         {
                             Alternatives = new List<EonIVCharacterModifier>()
                             {
@@ -50,7 +50,7 @@ namespace Niklasson.DrunkenChair.DatabaseTables.Helpers
                                 new AttributeModification() {Attribute = Attribute.PERCEPTION, Value = -2}
                             }
                         },
-                        new CharacterModificationOpitons()
+                        new CharacterModificationOptions()
                         {
                             Alternatives = new List<EonIVCharacterModifier>()
                             {
@@ -71,7 +71,7 @@ namespace Niklasson.DrunkenChair.DatabaseTables.Helpers
                         sig olika tekniker för att kontrollera andningen
                         och kan till och med spela död
                         under en kortare tid.",
-                    Modifications = new List<CharacterModificationOpitons>()
+                    Modifications = new List<CharacterModificationOptions>()
                     {
                             new Expertise() { Name = "Spela död"},
                             new Perk() { Description = @"Ignorerar efterverkningen Omtöcknad 
@@ -79,6 +79,37 @@ namespace Niklasson.DrunkenChair.DatabaseTables.Helpers
                                 +3T6 när det gäller att hålla andan eller
                                 uthärda syrebrist, exempelvis vid dykning
                                 eller strypning."}
+                    }
+                },
+                new Event()
+                {
+                    Category = EventCategory.INTRIGUE_AND_MISDEADS,
+                    Number = 564,
+                    Name = "Test event",
+                    Description = @"Rollpersonen har varit
+                        med om en allvarlig olycka och kroppen
+                        har blivit sargad och bär märken efter det
+                        som skett. Det kan röra sig om brutna
+                        ben, eldskador eller bettskador från ett
+                        vilt djur.",
+                    Modifications = new List<CharacterModificationOptions>()
+                    {
+                        new CharacterModificationOptions()
+                        {
+                            Alternatives = new List<EonIVCharacterModifier>()
+                            {
+                                new AttributeModification() {Attribute = Attribute.MOVEMENT, Value = -2},
+                                new AttributeModification() {Attribute = Attribute.PERCEPTION, Value = -2}
+                            }
+                        },
+                        new CharacterModificationOptions()
+                        {
+                            Alternatives = new List<EonIVCharacterModifier>()
+                            {
+                                new AttributeModification() {Attribute = Attribute.WILL, Value = EonIVValue.DiceToValue(1)},
+                                new AttributeModification() {Attribute = Attribute.PSYCHE, Value = EonIVValue.DiceToValue(1)},
+                            }
+                        }
                     }
                 }
             );

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Niklasson.DrunkenChair.Model;
+using Niklasson.DrunkenChair.Models;
 
 namespace Niklasson.DrunkenChair.Controllers
 {
@@ -28,7 +28,7 @@ namespace Niklasson.DrunkenChair.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EonIvCharacter eonIvCharacter = await db.EonIvCharacters.FindAsync(id);
+            EonIvCharacterSheet eonIvCharacter = await db.EonIvCharacters.FindAsync(id);
             if (eonIvCharacter == null)
             {
                 return HttpNotFound();
@@ -47,7 +47,7 @@ namespace Niklasson.DrunkenChair.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ID,Archetype,Background,Environment,Race,Attributes")] EonIvCharacter eonIvCharacter)
+        public async Task<ActionResult> Create([Bind(Include = "ID,Archetype,Background,Environment,Race,Attributes")] EonIvCharacterSheet eonIvCharacter)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +66,7 @@ namespace Niklasson.DrunkenChair.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EonIvCharacter eonIvCharacter = await db.EonIvCharacters.FindAsync(id);
+            EonIvCharacterSheet eonIvCharacter = await db.EonIvCharacters.FindAsync(id);
             if (eonIvCharacter == null)
             {
                 return HttpNotFound();
@@ -79,7 +79,7 @@ namespace Niklasson.DrunkenChair.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ID,Archetype,Background,Environment,Race,Attributes")] EonIvCharacter eonIvCharacter)
+        public async Task<ActionResult> Edit([Bind(Include = "ID,Archetype,Background,Environment,Race,Attributes")] EonIvCharacterSheet eonIvCharacter)
         {
             if (ModelState.IsValid)
             {
@@ -97,7 +97,7 @@ namespace Niklasson.DrunkenChair.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EonIvCharacter eonIvCharacter = await db.EonIvCharacters.FindAsync(id);
+            EonIvCharacterSheet eonIvCharacter = await db.EonIvCharacters.FindAsync(id);
             if (eonIvCharacter == null)
             {
                 return HttpNotFound();
@@ -110,7 +110,7 @@ namespace Niklasson.DrunkenChair.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            EonIvCharacter eonIvCharacter = await db.EonIvCharacters.FindAsync(id);
+            EonIvCharacterSheet eonIvCharacter = await db.EonIvCharacters.FindAsync(id);
             db.EonIvCharacters.Remove(eonIvCharacter);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");

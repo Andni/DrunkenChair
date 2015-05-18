@@ -20,17 +20,17 @@ namespace Niklasson.DrunkenChair.DatabaseTables.Helpers
             return textWithoutLinebreaks.ToLower().Trim();
         }
 
-        public ICollection<CharacterModificationOpitons> TryParse(string text)
+        public ICollection<CharacterModificationOptions> TryParse(string text)
         {
             return ParseModifiers(NormalizeText(text));
         }
 
-        private List<CharacterModificationOpitons> ParseModifiers(string text)
+        private List<CharacterModificationOptions> ParseModifiers(string text)
         {
-            var res = new List<CharacterModificationOpitons>();
+            var res = new List<CharacterModificationOptions>();
             var strArr = text.Split(new char[] { ',', '.' });
 
-            CharacterModificationOpitons lastModifierParsed = null;
+            CharacterModificationOptions lastModifierParsed = null;
 
             foreach (string s in strArr)
             {
@@ -52,10 +52,10 @@ namespace Niklasson.DrunkenChair.DatabaseTables.Helpers
         }
 
 
-        private CharacterModificationOpitons ParseModifier(string text)
+        private CharacterModificationOptions ParseModifier(string text)
         {
             var lowerCase = text.ToLower();
-            var res = new CharacterModificationOpitons();
+            var res = new CharacterModificationOptions();
 
             foreach (IModificationParser p in parsers)
             {

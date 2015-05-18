@@ -6,10 +6,10 @@ using System.Web;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-using Niklasson.DrunkenChair.Model.Interfaces;
+using Niklasson.DrunkenChair.Models.Interfaces;
 using Niklasson.DrunkenChair.Character;
 
-namespace Niklasson.DrunkenChair.Model
+namespace Niklasson.DrunkenChair.Models
 {
 
     public enum LearningModifier
@@ -36,7 +36,7 @@ namespace Niklasson.DrunkenChair.Model
         {
             Name = "";
             Value = 0;
-            LearningModifier = Model.LearningModifier.NONE;
+            LearningModifier = Models.LearningModifier.NONE;
             Category = SkillCategory.UNCATEGORIZED;
         }
 

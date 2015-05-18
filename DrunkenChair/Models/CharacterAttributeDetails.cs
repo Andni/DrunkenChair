@@ -6,7 +6,7 @@ using System.Web;
 using Niklasson.DrunkenChair.Extensions;
 using Niklasson.DrunkenChair.Character;
 
-namespace Niklasson.DrunkenChair.Model
+namespace Niklasson.DrunkenChair.Models
 {
     public class CharacterAttributeDetails
     {
@@ -26,11 +26,6 @@ namespace Niklasson.DrunkenChair.Model
 
         public CharacterAttributeDetails() { }
 
-        public CharacterAttributeDetails(CharacterConstructionSite ccs)
-        {
-            CharacterConstructionSite = ccs;
-        }
-
         public CharacterBaseAttributeSet GetBonusDiceDistribution()
         {
             return CharacterBaseAttributeSet.CreateFromDiceSet(
@@ -44,5 +39,6 @@ namespace Niklasson.DrunkenChair.Model
                 CharismaBonusDices
             );
         }
+
     }
 }

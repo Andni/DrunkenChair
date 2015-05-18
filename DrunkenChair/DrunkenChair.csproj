@@ -88,6 +88,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -154,11 +155,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Character\CharacterData.cs" />
     <Compile Include="Character\Helpers\AttributeHelper.cs" />
     <Compile Include="Character\SkillCategory.cs" />
     <Compile Include="Controllers\EonIVCharacterCreatorController.cs" />
     <Compile Include="Controllers\EonIvCharactersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RandomEventRequest.cs" />
+    <Compile Include="Controllers\RerollEventRequest.cs" />
     <Compile Include="Extensions\HtmlButtonExtension.cs" />
     <Compile Include="Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="Extensions\ObjectPropertyMergerHelper.cs" />
@@ -167,66 +171,11 @@
     </Compile>
     <Compile Include="Helpers\DiceRoller.cs" />
     <Compile Include="Helpers\IDiceRoller.cs" />
-    <Compile Include="Migrations\201503050936345_InitialCreate.cs" />
-    <Compile Include="Migrations\201503050936345_InitialCreate.Designer.cs">
-      <DependentUpon>201503050936345_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201503050949190_raceUpdate.cs" />
-    <Compile Include="Migrations\201503050949190_raceUpdate.Designer.cs">
-      <DependentUpon>201503050949190_raceUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201503051415044_raceStartingResources2Perks.cs" />
-    <Compile Include="Migrations\201503051415044_raceStartingResources2Perks.Designer.cs">
-      <DependentUpon>201503051415044_raceStartingResources2Perks.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201503061613592_characterAttributeUpdates.cs" />
-    <Compile Include="Migrations\201503061613592_characterAttributeUpdates.Designer.cs">
-      <DependentUpon>201503061613592_characterAttributeUpdates.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201503061624277_characterAttributeUpdates1.cs" />
-    <Compile Include="Migrations\201503061624277_characterAttributeUpdates1.Designer.cs">
-      <DependentUpon>201503061624277_characterAttributeUpdates1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201503091404070_attributeUpdate.cs" />
-    <Compile Include="Migrations\201503091404070_attributeUpdate.Designer.cs">
-      <DependentUpon>201503091404070_attributeUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201503091607295_addEnvironmentsTable.cs" />
-    <Compile Include="Migrations\201503091607295_addEnvironmentsTable.Designer.cs">
-      <DependentUpon>201503091607295_addEnvironmentsTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201503091627301_addSkills2Environments.cs" />
-    <Compile Include="Migrations\201503091627301_addSkills2Environments.Designer.cs">
-      <DependentUpon>201503091627301_addSkills2Environments.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201503091631343_addSkills2Environments1.cs" />
-    <Compile Include="Migrations\201503091631343_addSkills2Environments1.Designer.cs">
-      <DependentUpon>201503091631343_addSkills2Environments1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201503100927598_skillpointsUpdate.cs" />
-    <Compile Include="Migrations\201503100927598_skillpointsUpdate.Designer.cs">
-      <DependentUpon>201503100927598_skillpointsUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201503191058429_AttributeChanges.cs" />
-    <Compile Include="Migrations\201503191058429_AttributeChanges.Designer.cs">
-      <DependentUpon>201503191058429_AttributeChanges.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201503231127279_AddEventTable.cs" />
-    <Compile Include="Migrations\201503231127279_AddEventTable.Designer.cs">
-      <DependentUpon>201503231127279_AddEventTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201504011402061_skillID.cs" />
-    <Compile Include="Migrations\201504011402061_skillID.Designer.cs">
-      <DependentUpon>201504011402061_skillID.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201504170826065_test.cs" />
-    <Compile Include="Migrations\201504170826065_test.Designer.cs">
-      <DependentUpon>201504170826065_test.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Helpers\RandomNumberGenerator.cs" />
     <Compile Include="Character\Attributes.cs" />
     <Compile Include="Character\CharacterBaseAttributeSet.cs" />
     <Compile Include="Character\CharacterEvent.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CharacterEventDetails.cs" />
     <Compile Include="Character\CharacterEvents.cs" />
     <Compile Include="Character\CharacterSkills.cs" />
@@ -244,7 +193,7 @@
     <Compile Include="DatabaseTables\AttributeModification.cs" />
     <Compile Include="DatabaseTables\CharacterCreationConstants.cs" />
     <Compile Include="DatabaseTables\Characteristicts.cs" />
-    <Compile Include="DatabaseTables\CharacterModificationList.cs" />
+    <Compile Include="DatabaseTables\CharacterModificationOptions.cs" />
     <Compile Include="DatabaseTables\Craft.cs" />
     <Compile Include="DatabaseTables\Event.cs" />
     <Compile Include="DatabaseTables\EventResource.cs" />
@@ -261,10 +210,11 @@
     <Compile Include="DatabaseTables\SkillModification.cs" />
     <Compile Include="Character\CharacterAttributeSet.cs" />
     <Compile Include="DatabaseTables\Environment.cs" />
-    <Compile Include="DatabaseTables\EonIvCharacter.cs" />
+    <Compile Include="DatabaseTables\EonIvCharacterSheet.cs" />
     <Compile Include="Models\CharacterConstructionSite.cs" />
     <Compile Include="DatabaseTables\EonIVCharacterModifier.cs" />
-    <Compile Include="Models\EonIVCharacterScaffolding.cs" />
+    <Compile Include="Models\CharacterMetaData.cs" />
+    <Compile Include="Models\EventDetails.cs" />
     <Compile Include="Models\Helpers\EonIVValue.cs" />
     <Compile Include="Models\ICharacterAttributes.cs" />
     <Compile Include="DatabaseTables\Race.cs" />
@@ -272,9 +222,11 @@
     <Compile Include="Character\CharacterSkill.cs" />
     <Compile Include="DatabaseTables\Skillpoints.cs" />
     <Compile Include="Character\EventTableRolls.cs" />
+    <Compile Include="Models\RerollRolledEventModelView.cs" />
     <Compile Include="Models\RolledEvents.cs" />
     <Compile Include="Models\TypeMerger.cs" />
     <Compile Include="Models\TypeMergerPolicy.cs" />
+    <Compile Include="Models\WizardSteps.cs" />
     <Compile Include="Parts\CharacterCreationTablesService.cs" />
     <Compile Include="Parts\ISampleService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -292,6 +244,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="js\EonIvCharacters\characterAttributeDetails.js" />
+    <Content Include="js\EonIvCharacters\characterEventDetails.js" />
     <Content Include="js\EonIvCharacters\eonIVCharacters.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -353,6 +306,8 @@
     <Content Include="Views\Shared\DisplayTemplates\SkillModification.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\AttributeModification.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\ExpertiseModification.cshtml" />
+    <Content Include="Views\EonIvCharacterCreator\RolledEvents.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\CharacterBasicDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -365,53 +320,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201503050936345_InitialCreate.resx">
-      <DependentUpon>201503050936345_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201503050949190_raceUpdate.resx">
-      <DependentUpon>201503050949190_raceUpdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201503051415044_raceStartingResources2Perks.resx">
-      <DependentUpon>201503051415044_raceStartingResources2Perks.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201503061613592_characterAttributeUpdates.resx">
-      <DependentUpon>201503061613592_characterAttributeUpdates.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201503061624277_characterAttributeUpdates1.resx">
-      <DependentUpon>201503061624277_characterAttributeUpdates1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201503091404070_attributeUpdate.resx">
-      <DependentUpon>201503091404070_attributeUpdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201503091607295_addEnvironmentsTable.resx">
-      <DependentUpon>201503091607295_addEnvironmentsTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201503091627301_addSkills2Environments.resx">
-      <DependentUpon>201503091627301_addSkills2Environments.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201503091631343_addSkills2Environments1.resx">
-      <DependentUpon>201503091631343_addSkills2Environments1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201503100927598_skillpointsUpdate.resx">
-      <DependentUpon>201503100927598_skillpointsUpdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201503191058429_AttributeChanges.resx">
-      <DependentUpon>201503191058429_AttributeChanges.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201503231127279_AddEventTable.resx">
-      <DependentUpon>201503231127279_AddEventTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504011402061_skillID.resx">
-      <DependentUpon>201504011402061_skillID.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504170826065_test.resx">
-      <DependentUpon>201504170826065_test.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="General\" />
-    <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Toolbox\Toolbox\Toolbox.csproj">

@@ -4,6 +4,10 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System;
 
+using System.Web.Mvc.Html;
+
+using Niklasson.DrunkenChair.DatabaseTables;
+
 namespace Niklasson.DrunkenChair.Extensions
 {
     public static partial class HtmlHelperExtensions
@@ -39,14 +43,27 @@ namespace Niklasson.DrunkenChair.Extensions
             return defaultHtmlAttributes;
         }
 
-
-        public static MvcHtmlString CustomEditorFor<TModel, TValue>(
-            this HtmlHelper htmlHelper,
-            System.Linq.Expressions.Expression<Func<TModel, TValue>> expression,
-            object additionalViewData, object additionalHtmlAttributes)
+        public static MvcHtmlString GenerateEventList(this HtmlHelper helper, IEnumerable<Niklasson.DrunkenChair.DatabaseTables.Event> events)
         {
+            TagBuilder tb = new TagBuilder("dl");
+            tb.GenerateId(helper.ViewData.ModelMetadata.DisplayName);
 
-            return new MvcHtmlString("");
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            foreach(Niklasson.DrunkenChair.DatabaseTables.Event e in events)
+            {
+                sb.Append(String.Format("<dt>{0} {1}</dt><br/>", e.Number, e.Name));
+
+                sb.Append(String.Format("<dd>{0}[", e.Description, e.Modifications));
+
+                foreach(CharacterModificationOptions mod in e.Modifications)
+                {
+                    sb.Append(String.Format("<br/>", mod.Alternatives));
+                }
+                sb.Append("]</dd>");
+            }
+            tb.InnerHtml = sb.ToString();
+            var tmp = tb.ToString(TagRenderMode.Normal);
+            return new MvcHtmlString(tmp);
         }
     }
 }

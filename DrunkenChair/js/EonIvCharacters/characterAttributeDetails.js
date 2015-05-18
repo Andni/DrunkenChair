@@ -85,7 +85,7 @@ eon.CharacterAttributeDetails.Initialize = function () {
         //e.stepUp = eon.CharacterAttributeDetails.StepUp;
         $(e).on("change", null, $(e).data('onchange-target'), eon.CharacterAttributeDetails.UpdatePreviewDetails);
         $(e).on("change", null, null, function () {
-            $.get('/EonIvCharacters/GetDerivedAttributes',
+            $.get('/EonIvCharacterCreator/GetDerivedAttributes',
                 {
                     str: RemoveWhiteSpace($('#CharacterConstructionSite_Character_Attributes_Strength').text()),
                     sta: RemoveWhiteSpace($('#CharacterConstructionSite_Character_Attributes_Stamina').text()),

@@ -7,7 +7,7 @@ using System.Data.Entity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-using Niklasson.DrunkenChair.Model;
+using Niklasson.DrunkenChair.Models;
 using Niklasson.DrunkenChair.Character;
 
 namespace Niklasson.DrunkenChair.DatabaseTables
@@ -33,11 +33,6 @@ namespace Niklasson.DrunkenChair.DatabaseTables
         {
             return Name;
         }
-    }
-
-    public class ArchetypeDbContext : DbContext
-    {
-        public DbSet<Archetype> Archetypes { get; set; }
     }
 }
 

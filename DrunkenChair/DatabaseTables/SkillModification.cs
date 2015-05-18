@@ -6,7 +6,7 @@ using System.Web;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-using Niklasson.DrunkenChair.Model;
+using Niklasson.DrunkenChair.Models;
 using Niklasson.DrunkenChair.Character;
 
 namespace Niklasson.DrunkenChair.DatabaseTables

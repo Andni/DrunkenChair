@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Niklasson.DrunkenChair.Model;
+using Niklasson.DrunkenChair.Models;
 
-namespace Niklasson.DrunkenChair.Model.Interfaces
+namespace Niklasson.DrunkenChair.Models.Interfaces
 {
     public interface IEonIVCharacterModifier
     {

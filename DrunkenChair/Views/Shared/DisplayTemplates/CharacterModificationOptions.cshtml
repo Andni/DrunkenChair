@@ -1,9 +1,21 @@
-﻿@using Niklasson.DrunkenChair.DatabaseTables;
-@model Niklasson.DrunkenChair.DatabaseTables.CharacterModificationOpitons
+﻿@model Niklasson.DrunkenChair.DatabaseTables.CharacterModificationOptions
+@using Niklasson.DrunkenChair.DatabaseTables;
 
+<div style="margin-left:24px">
 @{
-    foreach (EonIVCharacterModifier mod in Model.Alternatives)
+    if (Model.Alternatives.Count == 1)
     {
-        Html.DisplayFor(mod);
+        <br />
+        @Html.DisplayFor(m => m.Alternatives[0]);
+    }
+    else
+    {
+        foreach (EonIVCharacterModifier mod in Model.Alternatives)
+        {
+            <br />  
+            @Html.RadioButton(Model.ID.ToString(), mod);
+            @mod.ToString();
+        }
     }
 }
+</div>

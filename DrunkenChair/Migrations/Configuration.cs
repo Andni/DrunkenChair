@@ -1,23 +1,25 @@
+using System.Data.Entity;
+using System.Data.Entity.Migrations;
+using System.Linq;
+
+using Niklasson.DrunkenChair.Models;
+using Niklasson.DrunkenChair.DatabaseTables;
+using Niklasson.DrunkenChair.Character;
+using Niklasson.DrunkenChair.DatabaseTables.Helpers;
+using Niklasson.DrunkenChair.Repository;
+
+
 namespace Niklasson.DrunkenChair.Migrations
 {
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
-    using System.Collections.Generic;
-
-    using Niklasson.DrunkenChair.Model;
-    using Niklasson.DrunkenChair.DatabaseTables;
-    using Niklasson.DrunkenChair.Character;
-    using Niklasson.DrunkenChair.DatabaseTables.Helpers;
-
-    internal sealed class Configuration : DbMigrationsConfiguration<DrunkenChair.Model.EonIvCharacterDbContext>
+    
+    internal sealed class Configuration : DbMigrationsConfiguration<EonIVCharacterGenerationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(DrunkenChair.Model.EonIvCharacterDbContext context)
+        protected override void Seed(EonIVCharacterGenerationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
@@ -39,17 +41,17 @@ namespace Niklasson.DrunkenChair.Migrations
             //SeedConstants(context);
         }
 
-        private void SeedArchetypes(DrunkenChair.Model.EonIvCharacterDbContext context)
+        private void SeedArchetypes(EonIVCharacterGenerationDbContext context)
         {
             context.Archetypes.AddOrUpdate(
                   a => a.Name,
                   new Archetype { Name = "Krigare", EventRolls = new EventTableRolls(1, 0, 0, 2, 0) },
                   new Archetype { Name = "Mystiker", EventRolls = new EventTableRolls(0, 0, 2, 0, 1) }
                 );
-            
+
         }
 
-        private void SeedRaces(DrunkenChair.Model.EonIvCharacterDbContext context)
+        private void SeedRaces(EonIVCharacterGenerationDbContext context)
         {
             context.Races.AddOrUpdate(
                 r => r.Name,
@@ -59,14 +61,14 @@ namespace Niklasson.DrunkenChair.Migrations
                     Name = "Adasier",
                     StartingAttributes = new CharacterBaseAttributeSet
                     {
-                        Strength = new Model.DiceRollCheck(1, 2),
-                        Stamina = new Model.DiceRollCheck(2, 3),
-                        Agility = new Model.DiceRollCheck(3, 0),
-                        Perception = new Model.DiceRollCheck(2, 2),
-                        Will = new Model.DiceRollCheck(2, 1),
-                        Psyche = new Model.DiceRollCheck(1, 3),
-                        Wisdom = new Model.DiceRollCheck(1, 0),
-                        Charisma = new Model.DiceRollCheck(1, 3)
+                        Strength = new Models.DiceRollCheck(1, 2),
+                        Stamina = new Models.DiceRollCheck(2, 3),
+                        Agility = new Models.DiceRollCheck(3, 0),
+                        Perception = new Models.DiceRollCheck(2, 2),
+                        Will = new Models.DiceRollCheck(2, 1),
+                        Psyche = new Models.DiceRollCheck(1, 3),
+                        Wisdom = new Models.DiceRollCheck(1, 0),
+                        Charisma = new Models.DiceRollCheck(1, 3)
                     },
                     Perks = "Flexible"
                 },
@@ -90,7 +92,7 @@ namespace Niklasson.DrunkenChair.Migrations
             );
         }
 
-        private void SeedEnvironments(DrunkenChair.Model.EonIvCharacterDbContext context)
+        private void SeedEnvironments(EonIVCharacterGenerationDbContext context)
         {
             context.Environments.AddOrUpdate(
                 e => e.Name,
@@ -126,17 +128,6 @@ namespace Niklasson.DrunkenChair.Migrations
                     })
                 );
         }
-
-        
-
-        //private void SeedConstants(DrunkenChair.Model.EonIvCharacterDbContext context)
-        //{
-        //    context.CreationConstants.AddOrUpdate(
-        //        c => c.Constant,
-        //        new CharacterCreationConstants(Constant.BonusAttributeDiceses, 10),
-        //        new CharacterCreationConstants(Constant.MaxBonusAttributeDicesSpentOnOneAttribute, 5)
-        //        );
-        //}
 
     }
 }

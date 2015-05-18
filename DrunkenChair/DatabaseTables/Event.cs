@@ -10,14 +10,15 @@ using System.ComponentModel;
 using System.Xml.Serialization;
 using System.IO;
 
-using Niklasson.DrunkenChair.Model.Interfaces;
+using Niklasson.Toolbox;
+using Niklasson.DrunkenChair.Models.Interfaces;
 
 namespace Niklasson.DrunkenChair.DatabaseTables
 {
     public enum EventCategory
     {
         TRAVELS_AND_ADVENTURES = 1,
-        INTRIGUE_AND_ILLDEADS = 2,
+        INTRIGUE_AND_MISDEADS = 2,
         KNOWLEDGE_AND_MYSTERIES = 3,
         BATTLES_AND_SKIRMISHES = 4,
         UNCATEGORIZED = 0
@@ -38,8 +39,51 @@ namespace Niklasson.DrunkenChair.DatabaseTables
         
         [Required]
         public string Description { get; set; }
-
-        public List<CharacterModificationOpitons> Modifications { get; set; }
+       
+        [Required]
+        public virtual List<CharacterModificationOptions> Modifications { get; set; }
      
+    }
+
+    public static class EventExtensions
+    {
+
+        public static IEnumerable<Event> IntrigueAndMisdeads(this IEnumerable<Event> events)
+        {
+            return events.Where(e => e.Category == EventCategory.INTRIGUE_AND_MISDEADS);
+        }
+        
+        public static IEnumerable<Event> BattlesAndSkirmishes(this IEnumerable<Event> events)
+        {
+            return events.Where(e => e.Category == EventCategory.BATTLES_AND_SKIRMISHES);
+        }
+
+        public static IEnumerable<Event> TravelsAndAdventures(this IEnumerable<Event> events)
+        {
+            return events.Where(e => e.Category == EventCategory.TRAVELS_AND_ADVENTURES);
+        }
+
+        public static IEnumerable<Event> KnowledgeAndMysteries(this IEnumerable<Event> events)
+        {
+            return events.Where(e => e.Category == EventCategory.KNOWLEDGE_AND_MYSTERIES);
+        }
+
+        public static Event GetRandom(this IEnumerable<Event> events)
+        {
+            var noEvents = events.Count();
+            if (noEvents == 0)
+            { 
+                return new Event();
+            }
+            else if (noEvents == 1)
+            {
+                return events.First();
+            }
+            else
+            {
+                var maxVal = noEvents - 1;
+                return events.ToArray()[RandomNumberGenerator.Next(0, maxVal)];
+            }
+        }
     }
 }

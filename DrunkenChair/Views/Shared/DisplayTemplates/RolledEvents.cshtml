@@ -1,14 +1,16 @@
-﻿@model Niklasson.DrunkenChair.Model.RolledEvents 
+﻿@model Niklasson.DrunkenChair.Models.RolledEvents 
 
-Färder @Html.Raw("&") Äventyr
-@Html.DisplayFor(m => m.Travels);
+<h4>Färder @Html.Raw("&") Äventyr</h4>
+@Html.DisplayFor(m => m.Travels)
+<br />
 
-Intriger @Html.Raw("&") Illdåd
-@Html.DisplayFor(m => m.Intrigue);
+<h4>Intriger @Html.Raw("&") Illdåd</h4>
+@Html.DisplayFor(m => m.Intrigue)
+<br />
 
-Kunskap @Html.Raw("&") Mysterier
-@Html.DisplayFor(m => m.Knowledge);
+<h4>Kunskap @Html.Raw("&") Mysterier</h4>
+@Html.DisplayFor(m => m.Knowledge)
+<br />
 
-Strider @Html.Raw("&") Drabbningar
-@Html.DisplayFor(m => m.Battles);
-
+<h4>Strider @Html.Raw("&") Drabbningar</h4>
+@Html.DisplayFor(m => m.Battles)

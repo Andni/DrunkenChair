@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Niklasson.DrunkenChair.Models;
 
 namespace Niklasson.DrunkenChair.DatabaseTables
@@ -12,13 +13,13 @@ namespace Niklasson.DrunkenChair.DatabaseTables
     {
         [Key]
         public int ID { get; set; }
-
         public int EventsID { get; set; }
         public virtual Event Events { get; set; }
-
-        public int testdata { get; set; }
-
         public virtual List<EonIVCharacterModifier> Alternatives { get; set; }
+        
+        [NotMapped]
+        public int SelectedAlternativeIndex { get; set; }
+
 
         public CharacterModificationOptions()
         {

@@ -78,23 +78,29 @@ namespace Niklasson.DrunkenChair.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(CharacterBasicDetails basicDetails, string previousButton, string nextButton)
         {
-            var ccs = GetCharacterConstructionSite();
             if(nextButton != null)
             {
                 if (ModelState.IsValid)
                 {
-
-                    ccs.Character.Basics = ResolveCharacterBasics(basicDetails);
-                    var attributeDetails =  new CharacterAttributeDetails()
-                    {
-                        CharacterConstructionSite = ccs
-                    };
-
-                    return View("CharacterAttributeDetails", attributeDetails);
+                    HandleBasicDetailsPost(basicDetails);
+                    return View("CharacterAttributeDetails", WizardSteps.AttributeDetails);
                 }
             }
 
-            return View(ccs);
+            return View(WizardSteps.BasicDetails);
+        }
+
+        private void HandleBasicDetailsPost(CharacterBasicDetails basicDetails)
+        {
+            var ccs = GetCharacterConstructionSite();
+            ccs.Character.Basics = ResolveCharacterBasics(basicDetails);
+
+            WizardSteps.BasicDetails = basicDetails;
+            WizardSteps.AttributeDetails = new CharacterAttributeDetails()
+            {
+                CharacterConstructionSite = ccs
+            };
+
         }
 
         // GET: EonIvCharacters/CharacterAttributeDetails
@@ -114,31 +120,37 @@ namespace Niklasson.DrunkenChair.Controllers
         [HttpPost]
         public ActionResult CharacterAttributeDetails(CharacterAttributeDetails attributeDetails, string previousButton, string nextButton)
         {
-            var ccs = GetCharacterConstructionSite();
             if(nextButton != null)
             {
                 if(ModelState.IsValid)
                 {
-                    var wizardSteps = GetWizardSteps();
-                    wizardSteps.AttributeDetails = attributeDetails;
-                    ccs.Scaffolding.BonusDiceDistribution = attributeDetails.GetBonusDiceDistribution();
-                    var characterEventDetails = new CharacterEventDetails()
-                    {
-                        CharacterConstructionSite = ccs,
-                        RolledEvents = GetTestRolledEvents(),
-                        FreeEventRolls = 2
-                    };
-                    wizardSteps.EventDetails = characterEventDetails;
-                    return View("CharacterEventDetails", characterEventDetails);
+                    HandleAttributeDetailsPost(attributeDetails);
+                    return View("CharacterEventDetails", WizardSteps.EventDetails);
                 }
             }
             
             if(previousButton != null)
             {
-                return View("Create", GetWizardSteps().BasicDetails);
+                return View("Create", WizardSteps.BasicDetails);
             }
             
             return View();
+        }
+
+        private void HandleAttributeDetailsPost(Models.CharacterAttributeDetails attributeDetails)
+        {
+
+            var ccs = GetCharacterConstructionSite();
+            ccs.Scaffolding.BonusDiceDistribution = attributeDetails.GetBonusDiceDistribution();
+            
+            var wizardSteps = WizardSteps;
+            wizardSteps.AttributeDetails = attributeDetails;
+            wizardSteps.EventDetails = new CharacterEventDetails()
+            {
+                CharacterConstructionSite = ccs,
+                RolledEvents = GetTestRolledEvents(),
+                FreeEventRolls = 2
+            };
         }
 
         // GET: EonIvCharacters/CharacterEventDetails
@@ -146,7 +158,7 @@ namespace Niklasson.DrunkenChair.Controllers
         {
             var eventDetails = GetCharacterEventDetails();
             eventDetails.RolledEvents = GetTestRolledEvents();
-            GetWizardSteps().EventDetails = eventDetails;
+            WizardSteps.EventDetails = eventDetails;
             var ccs = GetCharacterConstructionSite();
             ccs.Scaffolding.EventDetails = eventDetails;
 
@@ -261,7 +273,7 @@ namespace Niklasson.DrunkenChair.Controllers
         public ActionResult RerollEvent(RerollEventRequest request)
         {
             //TODO: get events, reroll the one selected, and post the updated set back
-            var list = GetWizardSteps().EventDetails.RolledEvents[request.Category].ToList();
+            var list = WizardSteps.EventDetails.RolledEvents[request.Category].ToList();
 
             //var ccs = GetCharacterConstructionSite();
             //var list = ccs.Scaffolding.EventDetails.RolledEvents[request.Category].ToList();
@@ -272,10 +284,10 @@ namespace Niklasson.DrunkenChair.Controllers
             else
             {
                 list[request.Index] = characterGenerationService.GetRandomEvent(request.Category);
-                GetWizardSteps().EventDetails.RolledEvents[request.Category] = list;
+                WizardSteps.EventDetails.RolledEvents[request.Category] = list;
             }
 
-            return PartialView("RolledEvents", GetWizardSteps().EventDetails.RolledEvents);
+            return PartialView("RolledEvents", WizardSteps.EventDetails.RolledEvents);
         }
 
         [HttpPost]
@@ -285,16 +297,23 @@ namespace Niklasson.DrunkenChair.Controllers
             {
                 if(ModelState.IsValid)
                 {
+                    HandleEventDetailsPost(eventDetails);
                     return View(); //placeholder, should return next view
                 }
             }
             
             if (previousButton != null)
             {
-                return View("CharacterAttributeDetails", GetCharacterConstructionSite());
+                return View("CharacterAttributeDetails", WizardSteps.AttributeDetails);
             }
             
-            return View("CharacterEventDetails", GetCharacterConstructionSite());
+            return View("CharacterEventDetails", WizardSteps.EventDetails);
+        }
+
+        private void HandleEventDetailsPost(Models.CharacterEventDetails eventDetails)
+        {
+            var ccs = GetCharacterConstructionSite();
+            //resolve events
         }
     
         [HttpGet]
@@ -348,13 +367,15 @@ namespace Niklasson.DrunkenChair.Controllers
             return (CharacterConstructionSite)Session[sessionStringCharacter];
         }
 
-        private WizardSteps GetWizardSteps()
+        private WizardSteps WizardSteps
         {
-            if (Session[wizardStepsSessionString] == null)
-            {
-                Session[wizardStepsSessionString] = new WizardSteps();
+            get{
+                if (Session[wizardStepsSessionString] == null)
+                {
+                    Session[wizardStepsSessionString] = new WizardSteps();
+                }
+                return (WizardSteps)Session[wizardStepsSessionString];
             }
-            return (WizardSteps)Session[wizardStepsSessionString];
         }
 
         private void RemoveCharacter()

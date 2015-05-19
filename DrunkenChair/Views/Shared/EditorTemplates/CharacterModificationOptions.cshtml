@@ -1,0 +1,21 @@
+﻿@model Niklasson.DrunkenChair.Models.CharacterModificationOptionsViewModel
+@using Niklasson.DrunkenChair.DatabaseTables;
+
+<div style="margin-left:24px">
+    @{
+        if (Model.Alternatives.Count == 1)
+        {
+            <br />
+            @Html.DisplayFor(m => m.Alternatives)
+        }
+        else
+        {
+            foreach (EonIVCharacterModifier mod in Model.Alternatives)
+            {
+                <br />
+                @Html.RadioButtonFor(m => m.SelectedModification, mod.ToString()) @mod.ToString()
+            }
+        }
+        @Html.HiddenFor(m => m.Alternatives)
+    }
+</div>

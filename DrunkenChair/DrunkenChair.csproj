@@ -223,6 +223,7 @@
     <Compile Include="DatabaseTables\Skillpoints.cs" />
     <Compile Include="Character\EventTableRolls.cs" />
     <Compile Include="Models\RerollRolledEventModelView.cs" />
+    <Compile Include="Models\RolledEvent.cs" />
     <Compile Include="Models\RolledEvents.cs" />
     <Compile Include="Models\TypeMerger.cs" />
     <Compile Include="Models\TypeMergerPolicy.cs" />
@@ -308,6 +309,9 @@
     <Content Include="Views\Shared\DisplayTemplates\ExpertiseModification.cshtml" />
     <Content Include="Views\EonIvCharacterCreator\RolledEvents.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\CharacterBasicDetails.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\RolledEvents.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Event.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\CharacterModificationOptions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

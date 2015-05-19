@@ -62,17 +62,22 @@ namespace Niklasson.DrunkenChair.Repository
 
         public IEnumerable<Event> GetRandomEvents(EventCategory cat, int nb)
         {
-            Event[] arr = gererationDbContext.Events.Where(e => e.Category == cat).ToArray();
-
-            var count = arr.Count();
+            var events = gererationDbContext.Events.Where(e => e.Category == cat);
+            
+            var count = events.Count();
+            if(count == 0)
+            {
+                yield break;
+            }
+            List<Event> eventList = events.ToList();
+            
             int numerOfEventsToGet = nb > count ? count : nb;
             var rand = new Random();
-            List<Event> events = new List<Event>();
 
             int i = 0;
             while (i < numerOfEventsToGet)
             {
-                yield return arr[rand.Next(0, count - 1)];
+                yield return eventList[rand.Next(0, count - 1)];
                 i++;
             }
         }

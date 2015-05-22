@@ -163,6 +163,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RandomEventRequest.cs" />
     <Compile Include="Controllers\RerollEventRequest.cs" />
+    <Compile Include="DatabaseTables\EonIVCharacterModifier.cs" />
     <Compile Include="Extensions\HtmlButtonExtension.cs" />
     <Compile Include="Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="Extensions\ObjectPropertyMergerHelper.cs" />
@@ -175,6 +176,14 @@
     <Compile Include="Character\Attributes.cs" />
     <Compile Include="Character\CharacterBaseAttributeSet.cs" />
     <Compile Include="Character\CharacterEvent.cs" />
+    <Compile Include="Migrations\201505211603431_collectionTest.cs" />
+    <Compile Include="Migrations\201505211603431_collectionTest.Designer.cs">
+      <DependentUpon>201505211603431_collectionTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505221125162_collectionTest2.cs" />
+    <Compile Include="Migrations\201505221125162_collectionTest2.Designer.cs">
+      <DependentUpon>201505221125162_collectionTest2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CharacterEventDetails.cs" />
     <Compile Include="Character\CharacterEvents.cs" />
@@ -212,7 +221,6 @@
     <Compile Include="DatabaseTables\Environment.cs" />
     <Compile Include="DatabaseTables\EonIvCharacterSheet.cs" />
     <Compile Include="Models\CharacterConstructionSite.cs" />
-    <Compile Include="DatabaseTables\EonIVCharacterModifier.cs" />
     <Compile Include="Models\CharacterMetaData.cs" />
     <Compile Include="Models\EventDetails.cs" />
     <Compile Include="Models\Helpers\EonIVValue.cs" />
@@ -332,6 +340,14 @@
       <Project>{ace3e00e-475e-4718-9785-0eda5a25958d}</Project>
       <Name>Toolbox</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201505211603431_collectionTest.resx">
+      <DependentUpon>201505211603431_collectionTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505221125162_collectionTest2.resx">
+      <DependentUpon>201505221125162_collectionTest2.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

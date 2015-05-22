@@ -1,4 +1,3 @@
-D:\Documents\Development\Projects\DrunkenChair\DrunkenChair\obj\Debug\DrunkenChair.csprojResolveAssemblyReference.cache
 D:\Documents\Development\Projects\DrunkenChair\DrunkenChair\bin\DrunkenChair.dll.config
 D:\Documents\Development\Projects\DrunkenChair\DrunkenChair\bin\DrunkenChair.dll
 D:\Documents\Development\Projects\DrunkenChair\DrunkenChair\bin\DrunkenChair.pdb
@@ -45,5 +44,9 @@ D:\Documents\Development\Projects\DrunkenChair\DrunkenChair\bin\System.Web.WebPa
 D:\Documents\Development\Projects\DrunkenChair\DrunkenChair\bin\System.Web.WebPages.Razor.xml
 D:\Documents\Development\Projects\DrunkenChair\DrunkenChair\bin\Antlr3.Runtime.pdb
 D:\Documents\Development\Projects\DrunkenChair\DrunkenChair\bin\Newtonsoft.Json.xml
+D:\Documents\Development\Projects\DrunkenChair\DrunkenChair\obj\Debug\DrunkenChair.csprojResolveAssemblyReference.cache
+D:\Documents\Development\Projects\DrunkenChair\DrunkenChair\obj\Debug\Niklasson.DrunkenChair.Migrations.collectionTest.resources
+D:\Documents\Development\Projects\DrunkenChair\DrunkenChair\obj\Debug\DrunkenChair.csproj.GenerateResource.Cache
 D:\Documents\Development\Projects\DrunkenChair\DrunkenChair\obj\Debug\DrunkenChair.dll
 D:\Documents\Development\Projects\DrunkenChair\DrunkenChair\obj\Debug\DrunkenChair.pdb
+D:\Documents\Development\Projects\DrunkenChair\DrunkenChair\obj\Debug\Niklasson.DrunkenChair.Migrations.collectionTest2.resources

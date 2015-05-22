@@ -39,6 +39,33 @@ namespace Niklasson.DrunkenChair.Migrations
             SeedEnvironments(context);
             EventSeeder.SeedEvents(context);
             //SeedConstants(context);
+
+            //context.Event2.AddOrUpdate(
+            //        a => a.Name,
+            //        new Event2
+            //        {
+            //            Name = "event2 1",
+            //            Category = EventCategory.BATTLES_AND_SKIRMISHES,
+            //            Description = "aoeuaoeuaoeua",
+            //            Number = 1,
+            //            Modifiers = 
+            //            {
+            //                new AttributeModification()
+            //                {
+            //                    Attribute = Attribute.AGILITY,
+            //                    Value = 2
+            //                },
+            //                new EonIVCharacterModifierSelector()
+            //                {
+            //                    Alternatives = 
+            //                    {
+            //                        new AttributeModification() {Attribute = Attribute.CHARISMA, Value = 3},
+            //                        new AttributeModification() {Attribute = Attribute.PERCEPTION, Value = 3}
+            //                    }
+            //                }
+            //            }
+            //        }
+            //    );
         }
 
         private void SeedArchetypes(EonIVCharacterGenerationDbContext context)

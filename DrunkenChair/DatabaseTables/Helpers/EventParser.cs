@@ -52,7 +52,7 @@ namespace Niklasson.DrunkenChair.DatabaseTables.Helpers
             res.Name = basics.Groups["name"].Value;
             res.Number = Convert.ToInt32(basics.Groups["number"].Value);
             res.Description = basics.Groups["description"].Value;
-            res.Modifications = ParseModifiers(basics.Groups["modifications"].Value);
+            //res.Modifications = ParseModifiers(basics.Groups["modifications"].Value);
 
             return res;
         }

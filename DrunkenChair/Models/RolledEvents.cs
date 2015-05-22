@@ -54,9 +54,9 @@ namespace Niklasson.DrunkenChair.Models
 
         private IEnumerable<Event> GetRandomEvents(EonIVCharacterGenerationDbContext db, EventCategory cat, int nb)
         {
-            Event[] arr = db.Events.Where(e => e.Category == cat).ToArray();
+            Event[] arr = db.Event.Where(e => e.Category == cat).ToArray();
                 
-            var count = db.Events.Count(e => e.Category == cat);
+            var count = db.Event.Count(e => e.Category == cat);
             int numerOfEventsToGet = nb > count ? count : nb;
             var rand = new Random();
             List<Event> events = new List<Event>();

@@ -6,12 +6,13 @@
 
 <h2>Händelser</h2>
 
+Valfria slag: @Html.DisplayFor(m => m.FreeEventRolls)
 
 @using(Html.BeginForm("CharacterEventDetails", "EonIvCharacterCreator", FormMethod.Post))
 {
     <div>
         <div style="display:inline-block; width:50%">
-            @{Html.EditorFor(m => m.RolledEvents);}
+            @Html.EditorFor(m => m.RolledEvents);
         </div>   
     
         <div style="display:inline-block">

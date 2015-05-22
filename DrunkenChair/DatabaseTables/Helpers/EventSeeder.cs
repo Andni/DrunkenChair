@@ -25,7 +25,7 @@ namespace Niklasson.DrunkenChair.DatabaseTables.Helpers
 
         public static void SeedEvents(EonIVCharacterGenerationDbContext context)
         {
-            context.Events.AddOrUpdate(
+            context.Event.AddOrUpdate(
                 e => e.Id,
                 new Event()
                 {

@@ -9,8 +9,7 @@ using Niklasson.DrunkenChair.Models;
 
 namespace Niklasson.DrunkenChair.DatabaseTables
 {
-    public class CharacterModificationOptions
-    {
+    public class CharacterModificationOptions    {
         [Key]
         public int ID { get; set; }
         public int EventsID { get; set; }
@@ -18,7 +17,7 @@ namespace Niklasson.DrunkenChair.DatabaseTables
         public virtual List<EonIVCharacterModifier> Alternatives { get; set; }
         
         [NotMapped]
-        public int SelectedAlternativeIndex { get; set; }
+        public int? SelectedAlternativeIndex { get; set; }
 
 
         public CharacterModificationOptions()

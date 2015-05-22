@@ -183,6 +183,7 @@ namespace Niklasson.DrunkenChair.Controllers
                             new CharacterModificationOptions()
                             {
                                 Alternatives = {
+
                                     new AttributeModification()
                                     {
                                         Attribute = Attribute.AGILITY,

@@ -1,4 +1,4 @@
-﻿@model Niklasson.DrunkenChair.Models.CharacterModificationOptionsViewModel
+﻿@model Niklasson.DrunkenChair.DatabaseTables.CharacterModificationOptions
 @using Niklasson.DrunkenChair.DatabaseTables;
 
 <div style="margin-left:24px">
@@ -13,7 +13,7 @@
             foreach (EonIVCharacterModifier mod in Model.Alternatives)
             {
                 <br />
-                @Html.RadioButtonFor(m => m.SelectedModification, mod.ToString()) @mod.ToString()
+                @Html.RadioButtonFor(m => m.SelectedAlternativeIndex, mod.ToString()) @mod.ToString()
             }
         }
         @Html.HiddenFor(m => m.Alternatives)

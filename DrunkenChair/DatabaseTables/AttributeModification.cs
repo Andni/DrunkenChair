@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 
 using Niklasson.DrunkenChair.Models;
+using Niklasson.DrunkenChair.Models.Interfaces;
 using Niklasson.DrunkenChair.Character.Helpers;
 
 namespace Niklasson.DrunkenChair.DatabaseTables

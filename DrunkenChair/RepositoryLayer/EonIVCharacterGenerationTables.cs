@@ -51,18 +51,18 @@ namespace Niklasson.DrunkenChair.Repository
 
         public IEnumerable<Event> Events
         {
-            get { return gererationDbContext.Events; }
+            get { return gererationDbContext.Event; }
         }
 
         public Event GetRandomEvent(EventCategory cat)
         {
-            var categoryEvents = gererationDbContext.Events.Where(e => e.Category == cat);
+            var categoryEvents = gererationDbContext.Event.Where(e => e.Category == cat);
             return categoryEvents.GetRandom();
         }
 
         public IEnumerable<Event> GetRandomEvents(EventCategory cat, int nb)
         {
-            var events = gererationDbContext.Events.Where(e => e.Category == cat);
+            var events = gererationDbContext.Event.Where(e => e.Category == cat);
             
             var count = events.Count();
             if(count == 0)

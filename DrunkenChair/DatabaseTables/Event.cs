@@ -41,8 +41,8 @@ namespace Niklasson.DrunkenChair.DatabaseTables
         public string Description { get; set; }
        
         [Required]
+        //public virtual List<CharacterModifierBase> Modifications { get; set; }
         public virtual List<CharacterModificationOptions> Modifications { get; set; }
-     
     }
 
     public static class EventExtensions

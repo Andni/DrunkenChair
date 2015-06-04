@@ -19,8 +19,6 @@ namespace Niklasson.DrunkenChair.ServiceLayer
         IEnumerable<Background> Backgrounds { get; }
         IEnumerable<Environment> Environments { get; }
         IEnumerable<Race> Races { get; }
-        
-        //IEnumerable<Event> GetRandomEvents(EventCategory cat, int number);
 
         Event GetRandomEvent(EventCategory cat);
     }

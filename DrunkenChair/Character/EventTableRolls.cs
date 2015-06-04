@@ -36,6 +36,19 @@ namespace Niklasson.DrunkenChair.Models
 
         public static EventTableRolls operator+(EventTableRolls lh, EventTableRolls rh)
         {
+            if(lh == null)
+            {
+                return rh;
+            }
+            else if(rh == null)
+            {
+                return lh;
+            }
+            else if(lh == null && rh == null)
+            {
+                return null;
+            }
+
             return new EventTableRolls(
                 travels: lh.TravlesAndAdventures + rh.TravlesAndAdventures,
                 intrigue: lh.IntrigueAndIlldeads + rh.IntrigueAndIlldeads,

@@ -9,19 +9,72 @@ namespace Niklasson.DrunkenChair.Character
 {
     public class CharacterData
     {
-
-        public CharacterBasics Basics { get; set; }
-        public CharacterAttributeSet Attributes { get; set; }
-        public CharacterEvents Events { get; set; }
-
-        public CharacterSkills SkillSet { get; set; }
+        private CharacterMetaData scaffolding;
+        private CharacterBaseAttributeSet attributeBonusDices = new CharacterBaseAttributeSet();
 
         public CharacterData()
         {
+            scaffolding = new CharacterMetaData(this);
             Basics = new CharacterBasics();
-            Attributes = new CharacterAttributeSet();
-            Events = new CharacterEvents();
+            RolledEvents = new RolledEvents();
             SkillSet = new CharacterSkills();
+        }
+
+        public CharacterBasics Basics { get; set; }
+        public RolledEvents RolledEvents { get; set; }
+
+        public CharacterMetaData Scaffolding
+        {
+            get
+            {
+                return scaffolding;
+            }
+        }
+
+        public CharacterAttributeSet Attributes
+        {
+            get
+            {
+                CharacterBaseAttributeSet baseAttributes = new CharacterBaseAttributeSet();
+                if(Basics.Race != null)
+                {
+                    baseAttributes += Basics.Race.StartingAttributes;
+                }
+                if(attributeBonusDices != null)
+                {
+                    baseAttributes += attributeBonusDices;
+                }
+                 CharacterAttributeSet res = new CharacterAttributeSet(baseAttributes);
+                return res;
+            }
+        }
+        
+        public CharacterBaseAttributeSet AttributeBonusDices
+        {
+            get{
+                if(attributeBonusDices == null)
+                {
+                    return new CharacterBaseAttributeSet();
+                }
+                else
+                { 
+                    return attributeBonusDices;
+                }
+            }
+            set { attributeBonusDices = value; }
+        }
+
+        public CharacterSkills SkillSet { get; set; }
+
+        public CharacterBasicDetails GetBasicDetails()
+        {
+            return new CharacterBasicDetails()
+            {
+                SelectedArchetype = Basics.Archetype,
+                SelectedBackground = Basics.Background,
+                SelectedEnvironment = Basics.Environment,
+                SelectedRace = Basics.Race
+            };
         }
 
         public EonIvCharacterSheet ToCharacterSheet()

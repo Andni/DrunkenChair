@@ -185,8 +185,9 @@
       <DependentUpon>201505221125162_collectionTest2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="CustomBinders\CharacterModifierModelMinder.cs" />
+    <Compile Include="Models\BaseAttributeDetails.cs" />
     <Compile Include="Models\CharacterEventDetails.cs" />
-    <Compile Include="Character\CharacterEvents.cs" />
     <Compile Include="Character\CharacterSkills.cs" />
     <Compile Include="DatabaseTables\Archetype.cs" />
     <Compile Include="DatabaseTables\Background.cs" />
@@ -236,8 +237,6 @@
     <Compile Include="Models\TypeMerger.cs" />
     <Compile Include="Models\TypeMergerPolicy.cs" />
     <Compile Include="Models\WizardSteps.cs" />
-    <Compile Include="Parts\CharacterCreationTablesService.cs" />
-    <Compile Include="Parts\ISampleService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositoryLayer\EonIVCharacterGenerationDbContext.cs" />
     <Compile Include="RepositoryLayer\EonIVCharacterGenerationTables.cs" />
@@ -270,7 +269,11 @@
     <Content Include="Scripts\globalize\plural.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-2.1.4.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <None Include="Scripts\jquery-2.1.4-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -320,6 +323,13 @@
     <Content Include="Views\Shared\EditorTemplates\RolledEvents.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Event.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\CharacterModificationOptions.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\AttributeModification.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ExpertiseModification.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\SkillModification.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Attribute.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Attribute.cshtml" />
+    <Content Include="Views\EonIvCharacterCreator\CollectionView.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\EonIVCharacterModifier.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

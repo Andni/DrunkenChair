@@ -11,7 +11,7 @@ namespace Niklasson.DrunkenChair.Character
     public interface ICharacterAttributes
     {
         CharacterBaseAttributeSet Base { get; set; }
-        CharacterAttributeSet Derived { get; }
+        //CharacterAttributeSet Derived { get; }
 
         DiceRollCheck Strength { get; }
         DiceRollCheck Stamina { get; }

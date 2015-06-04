@@ -10,15 +10,22 @@ namespace Niklasson.DrunkenChair.Models
 {
     public class CharacterMetaData
     {
-        public CharacterBaseAttributeSet BonusDiceDistribution { get; set; }
-        public EventTableRolls EventRolls { get; set; }
-        public EventDetails EventDetails { get; set; }
-        public Skillpoints Skillpoints { get; set; } 
+        private CharacterData character;
 
-        public CharacterMetaData()
+        public CharacterMetaData(CharacterData character)
         {
-            EventRolls = new EventTableRolls();
+            this.character = character;
             Skillpoints = new Skillpoints();
         }
+
+        public EventTableRolls EventRolls {
+            get
+            { return character.Basics.GetEventRolls(); }    
+        }
+        public CharacterBaseAttributeSet BonusDiceDistribution { get; set; }
+        public Skillpoints Skillpoints { get; set; }
+
+
+        public int FreeEventRolls { get; set; }
     }
 }

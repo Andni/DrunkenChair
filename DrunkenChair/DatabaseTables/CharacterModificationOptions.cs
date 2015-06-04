@@ -9,7 +9,8 @@ using Niklasson.DrunkenChair.Models;
 
 namespace Niklasson.DrunkenChair.DatabaseTables
 {
-    public class CharacterModificationOptions    {
+    public class CharacterModificationOptions : IValidatableObject
+    {
         [Key]
         public int ID { get; set; }
         public int EventsID { get; set; }
@@ -19,10 +20,42 @@ namespace Niklasson.DrunkenChair.DatabaseTables
         [NotMapped]
         public int? SelectedAlternativeIndex { get; set; }
 
-
         public CharacterModificationOptions()
         {
             Alternatives = new List<EonIVCharacterModifier>();
+        }
+
+        public EonIVCharacterModifier Collapse()
+        {
+
+            if(Alternatives.Count() > 1 && IsValid())
+            {
+                return Alternatives[SelectedAlternativeIndex.Value];
+            }
+            else if (Alternatives.Count() == 1)
+            {
+                return Alternatives.First();
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        private bool IsValid()
+        {
+            if (Alternatives.Count() > 1)
+            {
+                if (SelectedAlternativeIndex.HasValue && SelectedAlternativeIndex.Value < Alternatives.Count())
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         public static implicit operator CharacterModificationOptions(EonIVCharacterModifier mod)
@@ -38,6 +71,14 @@ namespace Niklasson.DrunkenChair.DatabaseTables
                 sb.AppendLine(m.ToString());
             }
             return sb.ToString();
+        }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext context)
+        {
+            if(!IsValid())
+            {
+                yield return new ValidationResult("One option must be selected.", new [] { "SelectedAlternativeIndex" } );
+            }
         }
     }
 }   

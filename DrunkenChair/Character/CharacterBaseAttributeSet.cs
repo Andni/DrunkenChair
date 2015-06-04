@@ -65,6 +65,19 @@ namespace Niklasson.DrunkenChair.Character
             };
         }
 
+        public int GetTotalAttributeDices()
+        {
+            int res = Strength.UnlimitedDice6 +
+                Stamina.UnlimitedDice6 +
+                Agility.UnlimitedDice6 +
+                Perception.UnlimitedDice6 +
+                Psyche.UnlimitedDice6 +
+                Will.UnlimitedDice6 +
+                Wisdom.UnlimitedDice6 +
+                Charisma.UnlimitedDice6;
+            return res;
+        }
+
         public static CharacterBaseAttributeSet operator +(CharacterBaseAttributeSet lh, CharacterBaseAttributeSet rh)
         {
             lh.Agility += rh.Agility;

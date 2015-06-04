@@ -70,6 +70,5 @@ namespace Niklasson.DrunkenChair.ServiceLayer
         {
             return generationTables.GetRandomEvents(cat, number).ToList();
         }
-
     }
 }

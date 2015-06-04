@@ -19,7 +19,11 @@ namespace Niklasson.DrunkenChair
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-         
+
+            ModelBinders.Binders.Add(
+                typeof(Niklasson.DrunkenChair.DatabaseTables.EonIVCharacterModifier),
+                new Niklasson.DrunkenChair.CustomBinders.CharacterModifierModelMinder());
+
             //var catalog = new AssemblyCatalog(Assembly.GetExecutingAssembly());
             //var composition = new CompositionContainer(catalog, true);
             //IControllerFactory mefControllerFactory = new CharacterConstructionControllerFactory(composition);

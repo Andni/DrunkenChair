@@ -6,19 +6,15 @@
 
 <h2>Händelser</h2>
 
-Valfria slag: @Html.DisplayFor(m => m.FreeEventRolls)
 
-@using(Html.BeginForm("CharacterEventDetails", "EonIvCharacterCreator", FormMethod.Post))
+@using (Html.BeginForm("CharacterEventDetails", "EonIvCharacterCreator", FormMethod.Post, new { style = "display:inline-block; width:50%" }))
 {
     <div>
-        <div style="display:inline-block; width:50%">
-            @Html.EditorFor(m => m.RolledEvents);
-        </div>   
-    
-        <div style="display:inline-block">
-            @Html.DisplayFor(m => m.CharacterConstructionSite)
-        </div>
-    </div>
+        Valfria slag: @Html.DisplayFor(m => m.FreeEventRolls)
+        @Html.HiddenFor(m => m.FreeEventRolls)
+        @Html.ValidationMessageFor(m => m.FreeEventRolls)
+        @Html.EditorFor(m => m.RolledEvents)
+    </div>   
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
@@ -27,6 +23,10 @@ Valfria slag: @Html.DisplayFor(m => m.FreeEventRolls)
         </div>
     </div>
 }
+    <div style="display:inline-block">
+        @Html.DisplayFor(m => m.CharacterConstructionSite)
+    </div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

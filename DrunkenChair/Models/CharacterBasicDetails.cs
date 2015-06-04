@@ -18,24 +18,20 @@ namespace Niklasson.DrunkenChair.Models
         public SelectList Environments { get; set; }
         public SelectList Races { get; set; }
 
+        [Required]
         [Display(Name="Arketyp")]
         public string SelectedArchetype { get; set; }
-        [Display(Name="Bakgrund")]
+        [Required]
+        [Display(Name = "Bakgrund")]
         public string SelectedBackground { get; set; }
-        [Display(Name="Miljö")]
+        [Required]
+        [Display(Name = "Miljö")]
         public string SelectedEnvironment { get; set; }
-        [Display(Name="Folkslag")]
+        [Required]
+        [Display(Name = "Folkslag")]
         public string SelectedRace { get; set; }
 
         public CharacterConstructionSite CharacterConstructionSite { get; set; }
 
-        public CharacterBasicDetails() : this(null, null, null) { }
-
-        public CharacterBasicDetails(SelectList archetypes, SelectList environments, SelectList races)
-        {
-            Archetypes = archetypes;
-            Environments = environments;
-            Races = races;
-        }
     }
 }

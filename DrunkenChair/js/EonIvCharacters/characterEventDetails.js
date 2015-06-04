@@ -25,15 +25,26 @@ eon.CharacterEventDetails.RerollEvent = function RerollEvent(event) {
 
 
 eon.CharacterEventDetails.RerollEvent2 = function RerollEvent(event) {
-    $(this).parent().parent().load("/EonIvCharacterCreator/RerollEvent", { index: 0, category: 2});
+    $(this).parent().parent().load("/EonIvCharacterCreator/RerollEvent", { index: event.data.index, category: event.data.EventCategory });
 };
 
 eon.CharacterEventDetails.Initialize = function () {
     var elements = $(".reroll");
     elements.each(function (index, element) {
-        $(element).on("click", null, $(element).data("eventCategory"),  eon.CharacterEventDetails.RerollEvent2)
+        $(element).on("click", null, {
+            EventCategory: parseInt($(element).data("eventcategory")),
+            index: eon.CharacterEventDetails.ParseIndexFromId($(element).attr("id"))
+        },
+        eon.CharacterEventDetails.RerollEvent2)
     });
 };
+
+eon.CharacterEventDetails.ParseIndexFromId = function (elementIdString)
+{
+    var start = elementIdString.indexOf('[');
+    var end = elementIdString.indexOf(']');
+    return parseInt(elementIdString.substring(start + 1, end));
+}
 
 $(document).ready(function () {
     eon.CharacterEventDetails.Initialize();

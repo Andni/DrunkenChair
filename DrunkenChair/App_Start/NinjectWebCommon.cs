@@ -1,4 +1,3 @@
-using Niklasson.DrunkenChair.Parts;
 using Niklasson.DrunkenChair.ServiceLayer;
 using Niklasson.DrunkenChair.Repository;
 
@@ -51,6 +50,7 @@ namespace Niklasson.DrunkenChair.App_Start
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
                 kernel.Bind<EonIVCharacterGenerationDbContext>().ToSelf().InRequestScope();
+                //kernel.Bind<IEonIVCharacterGenerationTables>().ToSelf().InRequestScope();
 
                 RegisterServices(kernel);
                 return kernel;
@@ -68,9 +68,8 @@ namespace Niklasson.DrunkenChair.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<ISampleService>().To<CharacterCreationTablesService>();
-            kernel.Bind<IEonIVCharacterGenerationService>().To<EonIVCharacterGenerationService>();
-            kernel.Bind<IEonIVCharacterGenerationTables>().To<EonIVCharacterGenerationTables>();
+            kernel.Bind<IEonIVCharacterGenerationService>().To<EonIVCharacterGenerationService>().InRequestScope();
+            kernel.Bind<IEonIVCharacterGenerationTables>().To<EonIVCharacterGenerationTables>().InRequestScope();
         }        
     }
 }

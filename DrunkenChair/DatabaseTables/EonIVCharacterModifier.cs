@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Web.Mvc;
 
 using Niklasson.DrunkenChair.Models.Interfaces;
 using System.ComponentModel.DataAnnotations;
@@ -17,6 +17,9 @@ namespace Niklasson.DrunkenChair.DatabaseTables
         public int? CharacterModificationOptions_ID { get; set; }
         public string Condition { get; set; }
         public virtual CharacterModificationOptions CharacterModificationOptions { get; set; }
+
+        [HiddenInput(DisplayValue = false)]
+        public string ConcreteModelType { get { return this.GetType().ToString(); } }
 
         //[ForeignKey("Events")]
         //public int? EventsID { get; set; }

@@ -13,10 +13,10 @@ namespace Niklasson.DrunkenChair.Models
     {
         private List<Event> events = new List<Event>();
 
-        public IEnumerable<Event> Travels
+        public List<Event> Travels
         {
             get
-            { return this[EventCategory.TRAVELS_AND_ADVENTURES]; }
+            { return this[EventCategory.TRAVELS_AND_ADVENTURES].ToList(); }
 
             set
             {
@@ -24,28 +24,28 @@ namespace Niklasson.DrunkenChair.Models
             }
         }
 
-        public IEnumerable<Event> Intrigue {
+        public List<Event> Intrigue {
             get
-            { return this[EventCategory.INTRIGUE_AND_MISDEADS]; }
+            { return this[EventCategory.INTRIGUE_AND_MISDEADS].ToList(); }
             set
             {
                 Replace(EventCategory.INTRIGUE_AND_MISDEADS, value);
             }
         }
 
-        public IEnumerable<Event> Knowledge
+        public List<Event> Knowledge
         {
-            get 
-            { return this[EventCategory.KNOWLEDGE_AND_MYSTERIES]; }
+            get
+            { return this[EventCategory.KNOWLEDGE_AND_MYSTERIES].ToList(); }
             set
             {
                 Replace(EventCategory.KNOWLEDGE_AND_MYSTERIES, value);
             }
         }
-        public IEnumerable<Event> Battles
+        public List<Event> Battles
         {
             get
-            { return this[EventCategory.BATTLES_AND_SKIRMISHES]; }
+            { return this[EventCategory.BATTLES_AND_SKIRMISHES].ToList(); }
             set
             {
                 Replace(EventCategory.BATTLES_AND_SKIRMISHES, value);
@@ -59,7 +59,6 @@ namespace Niklasson.DrunkenChair.Models
             var count = db.Event.Count(e => e.Category == cat);
             int numerOfEventsToGet = nb > count ? count : nb;
             var rand = new Random();
-            List<Event> events = new List<Event>();
             
             int i = 0;
             while(i < numerOfEventsToGet)
@@ -86,5 +85,20 @@ namespace Niklasson.DrunkenChair.Models
             events.AddRange(newEvents.Where(e => e.Category == cat));
         }
 
+
+        public IEnumerable<CharacterEvent> ToCharacterEvents()
+        {
+            var res = new List<CharacterEvent>();
+            foreach(Event e in events)
+            {
+                res.Add(e.ToCharacterEvent());
+            }
+            return new List<CharacterEvent>();
+        }
+
+        public void Add(Event ev)
+        {
+            events.Add(ev);
+        }
     }
 }

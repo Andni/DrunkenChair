@@ -11,9 +11,9 @@ namespace Niklasson.DrunkenChair.Models
     {
         public CharacterConstructionSite CharacterConstructionSite { get; set; }
 
-        public CharacterEventDetails()
-        {
-            CharacterConstructionSite = new CharacterConstructionSite();
-        }
+        //public CharacterEventDetails()
+        //{
+        //    CharacterConstructionSite = new CharacterConstructionSite();
+        //}
     }
 }

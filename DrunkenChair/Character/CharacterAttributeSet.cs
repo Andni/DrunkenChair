@@ -35,27 +35,28 @@ namespace Niklasson.DrunkenChair.Character
             }
         }
         
-        [System.Runtime.Serialization.IgnoreDataMember]
-        [System.Web.Script.Serialization.ScriptIgnore]
-        public CharacterAttributeSet Derived { get { return this; } }
+        //[System.Runtime.Serialization.IgnoreDataMember]
+        //[System.Web.Script.Serialization.ScriptIgnore]
+        //public CharacterAttributeSet Derived { get { return this; } }
 
-        public DiceRollCheck BonusBuild { get; set; }
-        public DiceRollCheck BonusImpression { get; set; }
-        public DiceRollCheck BonusLifeforce { get; set; }
-        public DiceRollCheck BonusMovement { get; set; }
-        public DiceRollCheck BonusReaction { get; set; }
-        public DiceRollCheck BonusSelfcontrol { get; set; }
-        public DiceRollCheck BonusVigilance { get; set; }
+        //public DiceRollCheck BonusBuild { get; set; }
+        //public DiceRollCheck BonusImpression { get; set; }
+        //public DiceRollCheck BonusLifeforce { get; set; }
+        //public DiceRollCheck BonusMovement { get; set; }
+        //public DiceRollCheck BonusReaction { get; set; }
+        //public DiceRollCheck BonusSelfcontrol { get; set; }
+        //public DiceRollCheck BonusVigilance { get; set; }
 
-        public CharacterAttributeSet() : base()
+        public CharacterAttributeSet()
+            : base()
         {
-            BonusBuild = 0;
-            BonusImpression = 0;
-            BonusLifeforce = 0;
-            BonusMovement = 0;
-            BonusReaction= 0;
-            BonusSelfcontrol = 0;
-            BonusVigilance = 0;
+        //    BonusBuild = 0;
+        //    BonusImpression = 0;
+        //    BonusLifeforce = 0;
+        //    BonusMovement = 0;
+        //    BonusReaction= 0;
+        //    BonusSelfcontrol = 0;
+        //    BonusVigilance = 0;
         }
 
         public CharacterAttributeSet(CharacterBaseAttributeSet baseAttributes)
@@ -67,7 +68,8 @@ namespace Niklasson.DrunkenChair.Character
         {
             get
             {
-                return BonusMovement + (Agility + Stamina) / 2;
+                return //BonusMovement + 
+                    (Agility + Stamina) / 2;
             }
         }
 
@@ -75,7 +77,8 @@ namespace Niklasson.DrunkenChair.Character
         {
             get
             {
-                return BonusImpression + (Wisdom + Charisma) / 2;
+                return //BonusImpression + 
+                    (Wisdom + Charisma) / 2;
             }
         }
 
@@ -83,7 +86,8 @@ namespace Niklasson.DrunkenChair.Character
         {
             get
             {
-                return BonusBuild + (Strength + Stamina) / 2;
+                return //BonusBuild + 
+                    (Strength + Stamina) / 2;
             }
         }
 
@@ -91,7 +95,8 @@ namespace Niklasson.DrunkenChair.Character
         {
             get
             {
-                return BonusLifeforce + (Will + Stamina) / 2;
+                return //BonusLifeforce + 
+                    (Will + Stamina) / 2;
             }
         }
 
@@ -99,7 +104,8 @@ namespace Niklasson.DrunkenChair.Character
         {
             get
             {
-                return BonusReaction + (Agility + Perception) / 2;
+                return //BonusReaction + 
+                    (Agility + Perception) / 2;
             }
         }
 
@@ -107,7 +113,8 @@ namespace Niklasson.DrunkenChair.Character
         {
             get
             {
-                return BonusSelfcontrol + (Will + Psyche) / 2;
+                return //BonusSelfcontrol + 
+                    (Will + Psyche) / 2;
             }
         }
 
@@ -115,7 +122,8 @@ namespace Niklasson.DrunkenChair.Character
         {
             get
             {
-                return BonusVigilance + (Perception + Psyche) / 2;
+                return //BonusVigilance +
+                    (Perception + Psyche) / 2;
             }
         }
 
@@ -132,13 +140,13 @@ namespace Niklasson.DrunkenChair.Character
             lh.Will += rh.Will;
             lh.Wisdom += rh.Wisdom;
 
-            lh.BonusBuild += rh.BonusBuild;
-            lh.BonusImpression += rh.BonusImpression;
-            lh.BonusLifeforce += rh.BonusLifeforce;
-            lh.BonusMovement += rh.BonusMovement;
-            lh.BonusReaction += rh.BonusReaction;
-            lh.BonusSelfcontrol += rh.BonusSelfcontrol;
-            lh.BonusVigilance += rh.BonusVigilance;
+            //lh.BonusBuild += rh.BonusBuild;
+            //lh.BonusImpression += rh.BonusImpression;
+            //lh.BonusLifeforce += rh.BonusLifeforce;
+            //lh.BonusMovement += rh.BonusMovement;
+            //lh.BonusReaction += rh.BonusReaction;
+            //lh.BonusSelfcontrol += rh.BonusSelfcontrol;
+            //lh.BonusVigilance += rh.BonusVigilance;
             
             return lh;
         }

@@ -12,6 +12,7 @@ using System.IO;
 
 using Niklasson.Toolbox;
 using Niklasson.DrunkenChair.Models.Interfaces;
+using Niklasson.DrunkenChair.Character;
 
 namespace Niklasson.DrunkenChair.DatabaseTables
 {
@@ -41,8 +42,28 @@ namespace Niklasson.DrunkenChair.DatabaseTables
         public string Description { get; set; }
        
         [Required]
-        //public virtual List<CharacterModifierBase> Modifications { get; set; }
         public virtual List<CharacterModificationOptions> Modifications { get; set; }
+
+        public CharacterEvent ToCharacterEvent()
+        {
+            return new CharacterEvent()
+            {
+                Category = Category,
+                Name = Name,
+                Description = Description,
+                Modifications = CollapseModificationOptions()
+            };
+        }
+
+        private List<EonIVCharacterModifier> CollapseModificationOptions()
+        {
+            var res = new List<EonIVCharacterModifier>();
+            foreach(CharacterModificationOptions o in Modifications)
+            {
+                res.Add(o.Collapse());
+            }
+            return res;
+        }
     }
 
     public static class EventExtensions

@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 
+using Niklasson.DrunkenChair.Character;
+
 namespace Niklasson.DrunkenChair.Models
 {
     public class EventDetails

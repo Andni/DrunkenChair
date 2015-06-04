@@ -5,62 +5,122 @@ using System.Web;
 using Niklasson.DrunkenChair.Character;
 using Niklasson.DrunkenChair.DatabaseTables;
 
+using Niklasson.DrunkenChair.ServiceLayer;
+using System.Web.Mvc;
+
 namespace Niklasson.DrunkenChair.Models
 {
     public class CharacterConstructionSite
     {
-        ////first step
-        //public CharacterBasics BasicsDetails { get; set; }
+        private CharacterData character = new CharacterData();
 
-        ////second step
-        //public CharacterAttributeDetails AttributeDetails{ get; set; }
+        public CharacterMetaData Scaffolding { get { return Character.Scaffolding; } }
+
+        public CharacterData Character {
+            get
+            {
+                return character;
+            }
+        }
         
-        ////third step
-        //public EventDetails EventDetails{ get; set; }
+        public CharacterBasicDetails CharacterBasicDetails{
+            get
+            {
+                var basics = Character.GetBasicDetails();
+                basics.CharacterConstructionSite = this;
+                return basics;
+            }
+        }
+
+        public void SetCharacterBasicDetails(CharacterBasicDetails details, IEonIVCharacterGenerationService service)
+        {
+            Character.Basics = ResolveCharacterBasics(details, service);
+        }
+
+
+        public CharacterAttributeDetails CharacterAttributeDetails
+        {
+            get
+            {
+                var res = new CharacterAttributeDetails()
+                {
+                    CharacterBaseAttributeSet = Character.AttributeBonusDices,
+                    CharacterConstructionSite = this
+                };
+                return res;
+            }
+            set
+            {
+                Character.AttributeBonusDices = value.GetCharacterBaseAttributeSet();
+            }
+        }
+
+        public CharacterEventDetails CharacterEventDetails {
+            get
+            {
+                CharacterEventDetails res = new Models.CharacterEventDetails();
+                res.RolledEvents = Character.RolledEvents;
+                res.FreeEventRolls = Scaffolding.FreeEventRolls;
+                res.CharacterConstructionSite = this;
+                return res;
+            }
+            set
+            {
+                Character.RolledEvents = value.RolledEvents;
+            }
+        }
 
         public EonIvCharacterSheet CharacterSheet
-        {
+        {   
             get
             {
                 return Character.ToCharacterSheet();
             }
         }
 
-        public CharacterData Character { get; set; }
-        
-
-        
-        public CharacterMetaData Scaffolding { get; set; }
-
-        public EventTableRolls GetEventRolls { get; set; }
-
         public EonIvCharacterSheet GetCharacterPreview()
         {
             return Character.ToCharacterSheet();
-
-            //var c = new EonIvCharacter()
-            //{
-            //    Archetype = BasicsDetails.Archetype ?? new Archetype(),
-            //    Background = BasicsDetails.Background ?? new Background(),
-            //    Environment = BasicsDetails.Environment ?? new Environment(),
-            //    Race = BasicsDetails.Race ?? new Race(),
-            //    Skills = SkillSet
-            //};
-
-            //CharacterBaseAttributeSet attributes = AttributeDetails.GetBonusDiceDistribution() ?? new CharacterBaseAttributeSet();
-            //if(BasicsDetails.Race != null)
-            //{
-            //    attributes += BasicsDetails.Race.StartingAttributes;
-            //}
-            //c.Attributes = new CharacterAttributeSet(attributes);
-
-            //return c;
         }
 
-        public CharacterConstructionSite()
+        public bool RerollEvent(EventCategory cat, int index, IEonIVCharacterGenerationService characterGenerationService)
         {
-            Character = new CharacterData();
-            Scaffolding = new CharacterMetaData();
+            if(index + 1 > character.RolledEvents[cat].Count() )
+            {
+                return false;
+            }
+            else
+            {
+                var e = characterGenerationService.GetRandomEvent(cat);
+                var updatedList = character.RolledEvents[cat].ToList();
+                updatedList[index] = e;
+                character.RolledEvents[cat] = (IEnumerable<Event>)updatedList;
+                return true;
+            }
+        }
+
+        private CharacterBasics ResolveCharacterBasics(CharacterBasicDetails details, IEonIVCharacterGenerationService characterGenerationService)
+        {
+            CharacterBasics res = new CharacterBasics();
+
+            res.Archetype = characterGenerationService.Archetypes.SingleOrDefault(a => a.Name == details.SelectedArchetype) ?? new Archetype();
+            res.Background = characterGenerationService.Backgrounds.SingleOrDefault(a => a.Name == details.SelectedBackground) ?? new Background();
+            res.Environment = characterGenerationService.Environments.SingleOrDefault(a => a.Name == details.SelectedEnvironment) ?? new Environment();
+            res.Race = characterGenerationService.Races.SingleOrDefault(a => a.Name == details.SelectedRace) ?? new Race();
+            
+            return res;
+        }
+
+        public void RollEvents(IEonIVCharacterGenerationService service)
+        {
+            character.RolledEvents = service.RollEvents(character.Scaffolding.EventRolls);
+        }
+
+        public Event AddRandomEvent(EventCategory eventCategory, IEonIVCharacterGenerationService service)
+        {
+            var ev = service.GetRandomEvent(eventCategory);
+            character.RolledEvents.Add(ev);
+            return ev;
         }
     }
 }

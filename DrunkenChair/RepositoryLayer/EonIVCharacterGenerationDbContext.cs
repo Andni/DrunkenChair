@@ -1,5 +1,5 @@
 ﻿using System.Data.Entity;
-using Niklasson.DrunkenChair.DatabaseTables;
+using Niklasson.EonIV.CharacterGeneration.Contracts;
 
 namespace Niklasson.DrunkenChair.Repository
 {

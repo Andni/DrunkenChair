@@ -1,0 +1,7 @@
+D:\Documents\Development\Projects\DrunkenChair\EonIVCharacterGenerationService\obj\Debug\EonIVCharacterGenerationService.csprojResolveAssemblyReference.cache
+D:\Documents\Development\Projects\DrunkenChair\EonIVCharacterGenerationService\bin\Debug\EonIVCharacterGenerationService.dll
+D:\Documents\Development\Projects\DrunkenChair\EonIVCharacterGenerationService\bin\Debug\EonIVCharacterGenerationService.pdb
+D:\Documents\Development\Projects\DrunkenChair\EonIVCharacterGenerationService\bin\Debug\EonIVCharacterGenerationContracts.dll
+D:\Documents\Development\Projects\DrunkenChair\EonIVCharacterGenerationService\bin\Debug\EonIVCharacterGenerationContracts.pdb
+D:\Documents\Development\Projects\DrunkenChair\EonIVCharacterGenerationService\obj\Debug\EonIVCharacterGenerationService.dll
+D:\Documents\Development\Projects\DrunkenChair\EonIVCharacterGenerationService\obj\Debug\EonIVCharacterGenerationService.pdb

@@ -10,8 +10,7 @@ using System.ComponentModel.Composition;
 
 using Niklasson.DrunkenChair.Models;
 using Niklasson.DrunkenChair.Character;
-using Niklasson.DrunkenChair.DatabaseTables;
-using Niklasson.DrunkenChair.ServiceLayer;
+using Niklasson.EonIV.CharacterGeneration.Contracts;
 
 namespace Niklasson.DrunkenChair.Controllers
 {
@@ -55,11 +54,10 @@ namespace Niklasson.DrunkenChair.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    ccs.SetCharacterBasicDetails(basicDetails, characterGenerationService);
+                    ccs.SetCharacterBasicDetails(characterGenerationService.ResolveBasicChoices(basicDetails));
                     return View("CharacterAttributeDetails", ccs.CharacterAttributeDetails);
                 }
             }
-
             return View(ccs.CharacterBasicDetails);
         }
 
@@ -84,7 +82,7 @@ namespace Niklasson.DrunkenChair.Controllers
                 if(ModelState.IsValid)
                 {
                     ccs.CharacterAttributeDetails = attributeDetails;
-                    ccs.RollEvents(characterGenerationService);
+                    ccs.Character.RolledEvents = RollEvents(ccs.GetScaffolding().EventRolls);
                     return View("CharacterEventDetails", ccs.CharacterEventDetails);
                 }
             }
@@ -101,7 +99,8 @@ namespace Niklasson.DrunkenChair.Controllers
         public ActionResult RerollEvent(RerollEventRequest request)
         {
             var ccs = GetCharacterConstructionSite();
-            ccs.RerollEvent(request.Category, request.Index, characterGenerationService);
+            var newEvent = characterGenerationService.GetRandomEvent(request.Category);
+            ccs.Character.RolledEvents.ReplaceEvent(request.Category, request.Index, newEvent);
             return PartialView("RolledEvents", ccs.Character.RolledEvents);
         }
 
@@ -113,7 +112,7 @@ namespace Niklasson.DrunkenChair.Controllers
                 if(ModelState.IsValid)
                 {
                     GetCharacterConstructionSite().CharacterEventDetails = eventDetails;
-                    return View(eventDetails); //placeholder, should return next view
+                    return View("CharacterResourceDetials"); //placeholder, should return next view
                 }
                 else
                 {   
@@ -150,10 +149,11 @@ namespace Niklasson.DrunkenChair.Controllers
         }
 
         [HttpPost]
-        public JsonResult GetRandomEvent(RandomEventRequest request)
+        public JsonResult AddRandomEventToCategory(RandomEventRequest request)
         {
             var result = new JsonResult();
-            var ev = GetCharacterConstructionSite().AddRandomEvent(request.EventCategory, characterGenerationService);
+            var ev = characterGenerationService.GetRandomEvent(request.EventCategory);
+            GetCharacterConstructionSite().Character.RolledEvents.Add(ev);
             result.Data = new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(ev);
             return result;
         }
@@ -171,5 +171,51 @@ namespace Niklasson.DrunkenChair.Controllers
         {
             Session.Remove(sessionStringCharacter);
         }
+
+        public bool RerollEvent(EventCategory cat, int index)
+        {
+            var character = GetCharacterConstructionSite().Character;
+            if (index + 1 > character.RolledEvents[cat].Count())
+            {
+                return false;
+            }
+            else
+            {
+                var e = characterGenerationService.GetRandomEvent(cat);
+                var updatedList = character.RolledEvents[cat].ToList();
+                updatedList[index] = e;
+                character.RolledEvents[cat] = (IEnumerable<Event>)updatedList;
+                return true;
+            }
+        }
+
+        private CharacterBasics ResolveCharacterBasics(CharacterBasicDetails details)
+        {
+            CharacterBasics res = new CharacterBasics();
+
+            res.Archetype = characterGenerationService.Archetypes.SingleOrDefault(a => a.Name == details.SelectedArchetype) ?? new Archetype();
+            res.Background = characterGenerationService.Backgrounds.SingleOrDefault(a => a.Name == details.SelectedBackground) ?? new Background();
+            res.Environment = characterGenerationService.Environments.SingleOrDefault(a => a.Name == details.SelectedEnvironment) ?? new Environment();
+            res.Race = characterGenerationService.Races.SingleOrDefault(a => a.Name == details.SelectedRace) ?? new Race();
+
+            return res;
+        }
+
+        public RolledEvents RollEvents(EventTableRolls rolls)
+        {
+            var character = GetCharacterConstructionSite().Character;
+            var events = characterGenerationService.RollEvents(rolls);
+
+            var res = new RolledEvents(events);
+            return res;
+        }
+
+        public Event AddRandomEvent(EventCategory eventCategory, IEonIVCharacterGenerationService service)
+        {
+            var ev = service.GetRandomEvent(eventCategory);
+            GetCharacterConstructionSite().Character.RolledEvents.Add(ev);
+            return ev;
+        }
+
     }
 }

@@ -1,6 +1,3 @@
-using Niklasson.DrunkenChair.ServiceLayer;
-using Niklasson.DrunkenChair.Repository;
-
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Niklasson.DrunkenChair.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Niklasson.DrunkenChair.App_Start.NinjectWebCommon), "Stop")]
 
@@ -14,6 +11,12 @@ namespace Niklasson.DrunkenChair.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
+
+    using Niklasson.EonIV.CharacterGeneration.Contracts;
+    using Niklasson.EonIV.CharacterGeneration;
+    using Niklasson.EonIV.CharacterGeneration.Service;
+    using Niklasson.EonIV.CharacterGeneration.Repository;
+    using Niklasson.EonIV.CharacterRepository;
 
     public static class NinjectWebCommon 
     {
@@ -49,7 +52,7 @@ namespace Niklasson.DrunkenChair.App_Start
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
-                kernel.Bind<EonIVCharacterGenerationDbContext>().ToSelf().InRequestScope();
+                //kernel.Bind<EonIVCharacterGenerationDbContext>().ToSelf().InRequestScope();
                 //kernel.Bind<IEonIVCharacterGenerationTables>().ToSelf().InRequestScope();
 
                 RegisterServices(kernel);

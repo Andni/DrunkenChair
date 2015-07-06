@@ -1,0 +1,5 @@
+D:\Documents\Development\Projects\DrunkenChair\EonIVCharacterRepository.Contracts\bin\Debug\EonIVCharacterRepository.Contracts.dll
+D:\Documents\Development\Projects\DrunkenChair\EonIVCharacterRepository.Contracts\bin\Debug\EonIVCharacterRepository.Contracts.pdb
+D:\Documents\Development\Projects\DrunkenChair\EonIVCharacterRepository.Contracts\obj\Debug\EonIVCharacterRepository.Contracts.dll
+D:\Documents\Development\Projects\DrunkenChair\EonIVCharacterRepository.Contracts\obj\Debug\EonIVCharacterRepository.Contracts.pdb
+D:\Documents\Development\Projects\DrunkenChair\EonIVCharacterRepository.Contracts\obj\Debug\EonIVCharacterRepository.Contracts.csprojResolveAssemblyReference.cache

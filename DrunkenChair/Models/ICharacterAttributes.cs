@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Niklasson.DrunkenChair.Models;
+using Niklasson.EonIV.CharacterGeneration.Contracts;
 
 namespace Niklasson.DrunkenChair.Character
 {

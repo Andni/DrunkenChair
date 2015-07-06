@@ -1,0 +1,4 @@
+D:\Documents\Development\Projects\DrunkenChair\Shared\bin\Debug\Shared.dll
+D:\Documents\Development\Projects\DrunkenChair\Shared\bin\Debug\Shared.pdb
+D:\Documents\Development\Projects\DrunkenChair\Shared\obj\Debug\Shared.dll
+D:\Documents\Development\Projects\DrunkenChair\Shared\obj\Debug\Shared.pdb

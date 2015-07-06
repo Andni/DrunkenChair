@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-using Niklasson.DrunkenChair.DatabaseTables;
-using Niklasson.DrunkenChair.Character;
-using Niklasson.DrunkenChair.Repository;
+using Niklasson.EonIV.CharacterGeneration.Contracts;
 
 namespace Niklasson.DrunkenChair.Models
 {
     public class RolledEvents
     {
         private List<Event> events = new List<Event>();
+
+        public RolledEvents() {}
+
+        public RolledEvents(IEnumerable<Event> events1)
+        {
+            events = events1.ToList();
+        }
 
         public List<Event> Travels
         {
@@ -52,22 +57,6 @@ namespace Niklasson.DrunkenChair.Models
             }
         }
 
-        private IEnumerable<Event> GetRandomEvents(EonIVCharacterGenerationDbContext db, EventCategory cat, int nb)
-        {
-            Event[] arr = db.Event.Where(e => e.Category == cat).ToArray();
-                
-            var count = db.Event.Count(e => e.Category == cat);
-            int numerOfEventsToGet = nb > count ? count : nb;
-            var rand = new Random();
-            
-            int i = 0;
-            while(i < numerOfEventsToGet)
-            {
-                yield return arr[rand.Next(0, count - 1)];
-                i++;
-            }
-        }
-
         public IEnumerable<Event> this[EventCategory key]
         {
             get{
@@ -77,6 +66,12 @@ namespace Niklasson.DrunkenChair.Models
             {
                 Replace(key, value);
             }
+        }
+
+        public void ReplaceEvent(EventCategory cat, int index, Event evnt)
+        {
+            var ev = events.Where(e => e.Category == cat).ElementAt(index);
+            ev = evnt;
         }
 
         private void Replace(EventCategory cat, IEnumerable<Event> newEvents)

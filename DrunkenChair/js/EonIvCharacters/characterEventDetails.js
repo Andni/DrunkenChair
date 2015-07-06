@@ -31,11 +31,14 @@ eon.CharacterEventDetails.RerollEvent2 = function RerollEvent(event) {
 eon.CharacterEventDetails.Initialize = function () {
     var elements = $(".reroll");
     elements.each(function (index, element) {
-        $(element).on("click", null, {
-            EventCategory: parseInt($(element).data("eventcategory")),
-            index: eon.CharacterEventDetails.ParseIndexFromId($(element).attr("id"))
-        },
-        eon.CharacterEventDetails.RerollEvent2)
+        $(element).on(
+            "click",
+            null,
+            {
+                EventCategory: parseInt($(element).data("eventcategory")),
+                index: eon.CharacterEventDetails.ParseIndexFromId($(element).attr("id"))
+            },
+            eon.CharacterEventDetails.RerollEvent2)
     });
 };
 

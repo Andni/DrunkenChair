@@ -2,9 +2,11 @@
 using System.Linq;
 using System.Web;
 
-using Niklasson.DrunkenChair.DatabaseTables;
+using Niklasson.EonIV.CharacterGeneration.Contracts;
 using Niklasson.DrunkenChair.Repository;
 using Niklasson.DrunkenChair.Models;
+using Niklasson.DrunkenChair.Character;
+
 
 namespace Niklasson.DrunkenChair.ServiceLayer
 {
@@ -64,6 +66,18 @@ namespace Niklasson.DrunkenChair.ServiceLayer
             events.Battles = GetRandomEvents(EventCategory.BATTLES_AND_SKIRMISHES, eventRolls.BattlesAndSkirmishes);
 
             return events;
+        }
+
+        public CharacterBasics ResolveBasicDetails(CharacterBasicDetails details)
+        {
+            CharacterBasics res = new CharacterBasics();
+
+            res.Archetype = Archetypes.SingleOrDefault(a => a.Name == details.SelectedArchetype) ?? new Archetype();
+            res.Background = Backgrounds.SingleOrDefault(a => a.Name == details.SelectedBackground) ?? new Background();
+            res.Environment = Environments.SingleOrDefault(a => a.Name == details.SelectedEnvironment) ?? new Environment();
+            res.Race = Races.SingleOrDefault(a => a.Name == details.SelectedRace) ?? new Race();
+
+            return res;
         }
 
         private List<Event> GetRandomEvents(EventCategory cat, int number)

@@ -6,7 +6,9 @@ using System;
 
 using System.Web.Mvc.Html;
 
-using Niklasson.DrunkenChair.DatabaseTables;
+using Event = Niklasson.EonIV.CharacterGeneration.Contracts.Event;
+
+using Niklasson.EonIV.CharacterGeneration.Contracts;
 
 namespace Niklasson.DrunkenChair.Extensions
 {
@@ -43,13 +45,13 @@ namespace Niklasson.DrunkenChair.Extensions
             return defaultHtmlAttributes;
         }
 
-        public static MvcHtmlString GenerateEventList(this HtmlHelper helper, IEnumerable<Niklasson.DrunkenChair.DatabaseTables.Event> events)
+        public static MvcHtmlString GenerateEventList(this HtmlHelper helper, IEnumerable<Event> events)
         {
             TagBuilder tb = new TagBuilder("dl");
             tb.GenerateId(helper.ViewData.ModelMetadata.DisplayName);
 
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            foreach(Niklasson.DrunkenChair.DatabaseTables.Event e in events)
+            foreach(Event e in events)
             {
                 sb.Append(String.Format("<dt>{0} {1}</dt><br/>", e.Number, e.Name));
 

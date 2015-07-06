@@ -52,12 +52,5 @@ namespace Niklasson.DrunkenChair.Models
     public class EonIvCharacterDbContext : DbContext
     {
         public DbSet<EonIvCharacterSheet> EonIvCharacters { get; set; }
-        public DbSet<Archetype> Archetypes { get; set; }
-        public DbSet<Race> Races { get; set; }
-        public DbSet<Environment> Environments { get; set; }
-        public DbSet<DatabaseTables.Event> Events { get; set; }
-        public DbSet<Background> Backgrounds { get; set; }
-
-        //public DbSet<CharacterCreationConstants> CreationConstants { get; set; }
     }
 }

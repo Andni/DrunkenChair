@@ -9,6 +9,8 @@ using System.Web.Routing;
 using System.Reflection;
 using System.ComponentModel.Composition.Hosting;
 
+using Niklasson.EonIV.CharacterGeneration.Contracts;
+
 namespace Niklasson.DrunkenChair
 {
     public class MvcApplication : System.Web.HttpApplication
@@ -21,13 +23,8 @@ namespace Niklasson.DrunkenChair
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             ModelBinders.Binders.Add(
-                typeof(Niklasson.DrunkenChair.DatabaseTables.EonIVCharacterModifier),
-                new Niklasson.DrunkenChair.CustomBinders.CharacterModifierModelMinder());
-
-            //var catalog = new AssemblyCatalog(Assembly.GetExecutingAssembly());
-            //var composition = new CompositionContainer(catalog, true);
-            //IControllerFactory mefControllerFactory = new CharacterConstructionControllerFactory(composition);
-            //ControllerBuilder.Current.SetControllerFactory(mefControllerFactory);
+                typeof(EonIVCharacterModifier),
+                new Niklasson.DrunkenChair.CustomBinders.CharacterModifierModelBinder());
         }
 
         protected void Application_EndRequest()

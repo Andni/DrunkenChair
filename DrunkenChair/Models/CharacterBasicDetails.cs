@@ -7,11 +7,11 @@ using System.Web.Mvc;
 using System.ComponentModel.DataAnnotations;
 
 using Niklasson.DrunkenChair.Character;
-using Niklasson.DrunkenChair.DatabaseTables;
+using Niklasson.EonIV.CharacterGeneration.Contracts;
 
 namespace Niklasson.DrunkenChair.Models
 {
-    public class CharacterBasicDetails
+    public class CharacterBasicDetails : ICharacterBasicChoices
     {
         public SelectList Archetypes { get; set; }
         public SelectList Backgrounds { get; set; }

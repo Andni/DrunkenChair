@@ -6,6 +6,10 @@
     <title>@ViewBag.Title - Herp</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @if (IsSectionDefined("AddToHead"))
+    {
+        @RenderSection("AddToHead", required: false)
+    }
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">

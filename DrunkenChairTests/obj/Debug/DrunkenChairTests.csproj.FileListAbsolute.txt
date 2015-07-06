@@ -27,3 +27,5 @@ D:\Documents\Development\Projects\DrunkenChair\DrunkenChairTests\bin\Debug\Syste
 D:\Documents\Development\Projects\DrunkenChair\DrunkenChairTests\obj\Debug\DrunkenChairTests.csprojResolveAssemblyReference.cache
 D:\Documents\Development\Projects\DrunkenChair\DrunkenChairTests\obj\Debug\DrunkenChairTests.dll
 D:\Documents\Development\Projects\DrunkenChair\DrunkenChairTests\obj\Debug\DrunkenChairTests.pdb
+D:\Documents\Development\Projects\DrunkenChair\DrunkenChairTests\bin\Debug\Shared.dll
+D:\Documents\Development\Projects\DrunkenChair\DrunkenChairTests\bin\Debug\Shared.pdb

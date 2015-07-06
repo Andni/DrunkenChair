@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 
 using Niklasson.DrunkenChair.Character;
-using Niklasson.DrunkenChair.DatabaseTables;
+using Niklasson.EonIV.CharacterGeneration.Contracts;
 
 namespace Niklasson.DrunkenChair.Models
 {

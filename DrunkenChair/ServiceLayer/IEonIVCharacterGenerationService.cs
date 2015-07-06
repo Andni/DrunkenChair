@@ -8,6 +8,8 @@ using System.ComponentModel.Composition;
 using Niklasson.DrunkenChair.DatabaseTables;
 using Niklasson.DrunkenChair.Models;
 
+using Niklasson.DrunkenChair.Character;
+
 namespace Niklasson.DrunkenChair.ServiceLayer
 {
     [InheritedExport]
@@ -21,5 +23,8 @@ namespace Niklasson.DrunkenChair.ServiceLayer
         IEnumerable<Race> Races { get; }
 
         Event GetRandomEvent(EventCategory cat);
+
+        CharacterBasics ResolveBasicDetails(CharacterBasicDetails basics);
+
     }
 }

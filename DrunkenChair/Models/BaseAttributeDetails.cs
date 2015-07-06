@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using Niklasson.DrunkenChair.ServiceLayer;
+
+using Niklasson.EonIV.CharacterGeneration;
+using Niklasson.EonIV.CharacterGeneration.Contracts;
 
 namespace Niklasson.DrunkenChair.Character
 {
@@ -50,7 +52,7 @@ namespace Niklasson.DrunkenChair.Character
             }
             set
             {
-                var MaxBonusDices = CharacterCreationConstants.MaxBonusDicesToSpend;
+                var MaxBonusDices = CharacterGenerationsConstants.MaxBonusDicesToSpend;
                 var currentBonus = value.GetTotalAttributeDices();
                 if( currentBonus> MaxBonusDices)
                 {

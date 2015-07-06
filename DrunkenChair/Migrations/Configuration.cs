@@ -3,11 +3,10 @@ using System.Data.Entity.Migrations;
 using System.Linq;
 
 using Niklasson.DrunkenChair.Models;
-using Niklasson.DrunkenChair.DatabaseTables;
 using Niklasson.DrunkenChair.Character;
-using Niklasson.DrunkenChair.DatabaseTables.Helpers;
 using Niklasson.DrunkenChair.Repository;
 
+using Niklasson.EonIV.CharacterGeneration.Contracts;
 
 namespace Niklasson.DrunkenChair.Migrations
 {

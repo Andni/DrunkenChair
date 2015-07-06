@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-using Niklasson.DrunkenChair.DatabaseTables;
+using Niklasson.EonIV.CharacterGeneration.Contracts;
 
 namespace Niklasson.DrunkenChair.Models
 {

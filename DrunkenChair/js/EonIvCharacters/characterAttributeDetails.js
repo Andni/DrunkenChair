@@ -38,6 +38,7 @@ eon.CharacterAttributeDetails.UpdateOtherSpinnersMaxValue = function (event)
     }
 
     $('.attribute-spinner').each(CapSpinnerMax);
+    $("#DicesLeftToDistribute").val(eon.CharacterAttributeDetails.DicesLeftToDistribute);
 }
 
 eon.CharacterAttributeDetails.UpdateDerivedAttributes = function (jsonStringCharacterData)

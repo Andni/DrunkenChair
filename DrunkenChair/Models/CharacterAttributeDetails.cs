@@ -5,7 +5,6 @@ using System.Web;
 
 using Niklasson.DrunkenChair.Extensions;
 using Niklasson.DrunkenChair.Character;
-using Niklasson.DrunkenChair.ServiceLayer;
 
 using System.ComponentModel.DataAnnotations;
 

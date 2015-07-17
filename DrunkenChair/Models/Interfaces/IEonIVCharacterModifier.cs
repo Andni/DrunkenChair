@@ -14,6 +14,6 @@ namespace Niklasson.DrunkenChair.Models.Interfaces
         int ID { get; set; }
         int EventID { get; set; }
         string Condition { get; set; }
-        Event Event { get; set; }
+        EventViewModel Event { get; set; }
     }
 }

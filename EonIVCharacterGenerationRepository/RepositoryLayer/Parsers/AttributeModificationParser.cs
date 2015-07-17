@@ -19,7 +19,7 @@ namespace Niklasson.DrunkenChair.Repository.Parsers
         private Regex regex = new Regex(@"(?<value>\d) (?<attribute>[\w]+)");
         private static IEnumerable<Attribute> attributes = EnumUtil.GetValues<Attribute>();
         
-        public EonIVCharacterModifier TryParse(string text)
+        public CharacterModifier TryParse(string text)
         {
             var textWithoutLinebreaks = text.Replace(System.Environment.NewLine, "");
             var lc = textWithoutLinebreaks.ToLower();

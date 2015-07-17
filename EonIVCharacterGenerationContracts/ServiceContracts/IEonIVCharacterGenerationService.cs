@@ -16,9 +16,9 @@ namespace Niklasson.EonIV.CharacterGeneration.Contracts
         IEnumerable<Environment> Environments { get; }
         IEnumerable<Race> Races { get; }
         
-        IEnumerable<Event> RollEvents(EventTableRolls eventRolls);
+        IEnumerable<IRuleBookEvent> RollEvents(EventTableRolls eventRolls);
 
-        Event GetRandomEvent(EventCategory cat);
+        IRuleBookEvent GetRandomEvent(EventCategory cat);
 
         CharacterBasics ResolveBasicChoices(ICharacterBasicChoices basics);
 

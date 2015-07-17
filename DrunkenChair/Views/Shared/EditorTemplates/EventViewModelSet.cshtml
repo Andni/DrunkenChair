@@ -1,0 +1,20 @@
+﻿@model Niklasson.DrunkenChair.Models.EventViewModelSet
+
+@{
+    object attributes = new {type = "button"};
+ 
+    <h4>Färder @Html.Raw("&") Äventyr</h4>
+    @Html.EditorFor(m => m.TravelsAndAdventures) @Html.Button("Slå valfri", attributes)
+    <br />
+
+    <h4>Intriger @Html.Raw("&") Illdåd</h4>
+    @Html.EditorFor(m => m.IntrigueAndMisdeads) @Html.Button("Slå valfri", attributes)
+    <br />
+
+    <h4>Kunskap @Html.Raw("&") Mysterier</h4>
+    @Html.EditorFor(m => m.KnowledgeAndMysteries) @Html.Button("Slå valfri", attributes)
+    <br />
+
+    <h4>Strider @Html.Raw("&") Drabbningar</h4>
+    @Html.EditorFor(m => m.BattlesAndSkirmishes) @Html.Button("Slå valfri", attributes)
+}

@@ -16,12 +16,13 @@ namespace Niklasson.DrunkenChair.Models
         {
             scaffolding = new CharacterMetaData(this);
             Basics = new CharacterBasics();
-            RolledEvents = new RolledEvents();
-            SkillSet = new CharacterSkills();
+            Events = new EventViewModelSet();
+            SkillSet = new CharacterSkillSet();
         }
 
         public CharacterBasics Basics { get; set; }
-        public RolledEvents RolledEvents { get; set; }
+        public EventViewModelSet Events { get; set; }
+        //public List<EventViewModel> Events { get; set; }
 
         public CharacterMetaData Scaffolding
         {
@@ -64,7 +65,7 @@ namespace Niklasson.DrunkenChair.Models
             set { attributeBonusDices = value; }
         }
 
-        public CharacterSkills SkillSet { get; set; }
+        public CharacterSkillSet SkillSet { get; set; }
 
         public CharacterBasicDetails GetBasicDetails()
         {
@@ -77,9 +78,9 @@ namespace Niklasson.DrunkenChair.Models
             };
         }
 
-        public EonIVCharacterSheet ToCharacterSheet()
+        public CharacterSheet ToCharacterSheet()
         {
-            return new EonIVCharacterSheet()
+            return new CharacterSheet()
             {
                 Archetype = Basics.Archetype,
                 Background = Basics.Background,

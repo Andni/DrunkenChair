@@ -1,4 +1,4 @@
-﻿@model Niklasson.DrunkenChair.DatabaseTables.Event
+﻿@model Niklasson.EonIV.CharacterGeneration.Contracts.RuleBookEvent
 
 @{
     var id = ViewData.TemplateInfo.HtmlFieldPrefix;
@@ -21,7 +21,7 @@
         </span>
         <br />
         <span class="modifications">
-            @Html.DisplayFor(e => e.Modifications)
+            @Html.DisplayFor(e => e.ModificationOptions)
         </span>
     </span>
 }

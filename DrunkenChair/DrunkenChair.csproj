@@ -14,7 +14,7 @@
     <RootNamespace>Niklasson.DrunkenChair</RootNamespace>
     <AssemblyName>DrunkenChair</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <MvcBuildViews>false</MvcBuildViews>
+    <MvcBuildViews>true</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -160,7 +160,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RandomEventRequest.cs" />
     <Compile Include="Controllers\RerollEventRequest.cs" />
-    <Compile Include="Extensions\EventExtensions.cs" />
+    <Compile Include="Extensions\EventViewModelCollectionExtension.cs" />
     <Compile Include="Extensions\HtmlButtonExtension.cs" />
     <Compile Include="Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="Extensions\ObjectPropertyMergerHelper.cs" />
@@ -172,20 +172,22 @@
     <Compile Include="Helpers\RandomNumberGenerator.cs" />
     <Compile Include="CustomBinders\CharacterModifierModelBinder.cs" />
     <Compile Include="Models\BaseAttributeDetails.cs" />
+    <Compile Include="Models\CharacterBasicDetails.cs" />
     <Compile Include="Models\CharacterData.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\CharacterEventDetails.cs" />
-    <Compile Include="Models\CharacterBasicDetails.cs" />
     <Compile Include="Models\CharacterAttributeDetails.cs" />
     <Compile Include="Models\CharacterConstructionSite.cs" />
     <Compile Include="Models\CharacterMetaData.cs" />
+    <Compile Include="Models\CharacterModificationOptionsViewModel.cs" />
+    <Compile Include="Models\EventViewModel.cs" />
     <Compile Include="Models\EventDetails.cs" />
+    <Compile Include="Models\EventViewModelSet.cs" />
     <Compile Include="Models\Helpers\EonIVValue.cs" />
     <Compile Include="Models\ICharacterAttributes.cs" />
     <Compile Include="Models\ICharacterConstructionSite.cs" />
     <Compile Include="Models\Interfaces\IEonIVCharacterModifier.cs" />
-    <Compile Include="Models\RolledEvent.cs" />
     <Compile Include="Models\RolledEvents.cs" />
     <Compile Include="Models\TypeMerger.cs" />
     <Compile Include="Models\TypeMergerPolicy.cs" />
@@ -267,20 +269,20 @@
     <Content Include="Views\Shared\DisplayTemplates\CharacterModificationOptions.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\SkillModification.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\AttributeModification.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\ExpertiseModification.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Expertise.cshtml" />
     <Content Include="Views\EonIvCharacterCreator\RolledEvents.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\CharacterBasicDetails.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\RolledEvents.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\Event.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\EventViewModel.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\CharacterModificationOptions.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\AttributeModification.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\ExpertiseModification.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\SkillModification.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Attribute.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Attribute.cshtml" />
-    <Content Include="Views\EonIvCharacterCreator\CollectionView.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\EonIVCharacterModifier.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\CharacterModifier.cshtml" />
     <Content Include="Views\EonIvCharacterCreator\CharacterResourceDetails.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\EventViewModelSet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

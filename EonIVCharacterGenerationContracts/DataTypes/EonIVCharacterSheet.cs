@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Niklasson.EonIV.CharacterGeneration.Contracts
 {
-    public class EonIVCharacterSheet
+    public class CharacterSheet
     {
         public int ID { get; set; }
      
@@ -19,9 +19,9 @@ namespace Niklasson.EonIV.CharacterGeneration.Contracts
 
         public CharacterAttributeSet Attributes { get; set; }
         [Column("CharacterSkills")]
-        public CharacterSkills Skills { get; set; }
+        public CharacterSkillSet Skills { get; set; }
         
-        public EonIVCharacterSheet()
+        public CharacterSheet()
         {
             //Basics = new CharacterBasics();
             Attributes = new CharacterAttributeSet();

@@ -17,7 +17,7 @@ namespace Niklasson.DrunkenChair.Repository.Parsers
         private const string free = "free";
         private Regex regex = new Regex(@"(?<" + value + @">\d) (?<" + free + ">valfria)? ?enheter (?<skills>(?<" + category + @">[\w]+) färdigheter)?(?<condition>[\w\s.]*)?");
 
-        public EonIVCharacterModifier TryParse(string text)
+        public CharacterModifier TryParse(string text)
         {
             var textWithoutLinebreaks = text.Replace(System.Environment.NewLine, " ");
             var lc = textWithoutLinebreaks.ToLower();
@@ -25,7 +25,7 @@ namespace Niklasson.DrunkenChair.Repository.Parsers
 
             if (match.Success)
             {
-                EonIVCharacterModifier res;
+                CharacterModifier res;
                 if(match.Groups[free].Success && !match.Groups["skills"].Success)
                 {
                     res = CreateSkillPointModification(match.Groups[free].Value, match.Groups[value].Value);
@@ -45,7 +45,7 @@ namespace Niklasson.DrunkenChair.Repository.Parsers
             return null;
         }
 
-        private EonIVCharacterModifier CreateSkillPointModification(string skillCategory, string value)
+        private CharacterModifier CreateSkillPointModification(string skillCategory, string value)
         {
             int val;
             var h = SkillCategoryHelper.TryParse(skillCategory);

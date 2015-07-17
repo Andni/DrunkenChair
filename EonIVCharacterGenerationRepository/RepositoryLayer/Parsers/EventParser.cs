@@ -43,9 +43,9 @@ namespace Niklasson.DrunkenChair.Repository.Parsers
             }
         }
 
-        public Event ParseEvent(string text)
+        public RuleBookEvent ParseEvent(string text)
         {
-            Event res = new Event();
+            RuleBookEvent res = new RuleBookEvent();
             var textWithoutLinebreaks = text.Replace(System.Environment.NewLine, " ");
             var basics = eventBasics.Match(textWithoutLinebreaks);
 

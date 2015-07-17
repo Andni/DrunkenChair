@@ -13,9 +13,9 @@ namespace Niklasson.DrunkenChair.CustomBinders
         {
             var typeValue = bindingContext.ValueProvider.GetValue(bindingContext.ModelName + ".ConcreteModelType");
             var type = Type.GetType((string) typeValue.ConvertTo(typeof(string)), true);
-            if(!typeof(EonIVCharacterModifier).IsAssignableFrom(type))
+            if(!typeof(CharacterModifier).IsAssignableFrom(type))
             {
-                throw new InvalidOperationException(typeValue + " is not a subclass of" + typeof(EonIVCharacterModifier).ToString() + ", unable to bind model.");
+                throw new InvalidOperationException(typeValue + " is not a subclass of" + typeof(CharacterModifier).ToString() + ", unable to bind model.");
             }
 
             var model = Activator.CreateInstance(type);

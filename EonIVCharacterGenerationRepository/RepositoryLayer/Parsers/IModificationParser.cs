@@ -10,6 +10,6 @@ namespace Niklasson.DrunkenChair.Repository.Parsers
 {
     interface IModificationParser
     {
-        EonIVCharacterModifier TryParse(string text);
+        CharacterModifier TryParse(string text);
     }
 }

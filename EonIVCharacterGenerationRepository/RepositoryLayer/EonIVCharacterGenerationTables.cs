@@ -48,27 +48,27 @@ namespace Niklasson.EonIV.CharacterGeneration.Repository
             }
         }
 
-        public IEnumerable<Event> Events
+        public IEnumerable<IRuleBookEvent> Events
         {
-            get { return gererationDbContext.Event; }
+            get { return gererationDbContext.Events; }
         }
 
-        public Event GetRandomEvent(EventCategory cat)
+        public IRuleBookEvent GetRandomEvent(EventCategory cat)
         {
-            var categoryEvents = gererationDbContext.Event.Where(e => e.Category == cat);
+            var categoryEvents = gererationDbContext.Events.Where(e => e.Category == cat);
             return categoryEvents.GetRandom();
         }
 
-        public IEnumerable<Event> GetRandomEvents(EventCategory cat, int nb)
+        public IEnumerable<IRuleBookEvent> GetRandomEvents(EventCategory cat, int nb)
         {
-            var events = gererationDbContext.Event.Where(e => e.Category == cat);
+            var events = gererationDbContext.Events.Where(e => e.Category == cat);
             
             var count = events.Count();
             if(count == 0)
             {
                 yield break;
             }
-            List<Event> eventList = events.ToList();
+            List<RuleBookEvent> eventList = events.ToList();
             
             int numerOfEventsToGet = nb > count ? count : nb;
             var rand = new Random();

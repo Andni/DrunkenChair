@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Web;
 
-
 using Niklasson.EonIV.CharacterGeneration.Contracts;
 
 namespace Niklasson.EonIV.CharacterGeneration.Service
@@ -17,7 +16,7 @@ namespace Niklasson.EonIV.CharacterGeneration.Service
             generationTables = tables;
         }
 
-        public Event GetRandomEvent(EventCategory cat)
+        public IRuleBookEvent GetRandomEvent(EventCategory cat)
         {
             return generationTables.GetRandomEvent(cat);
         }
@@ -53,11 +52,12 @@ namespace Niklasson.EonIV.CharacterGeneration.Service
             }
         }
 
-        public IEnumerable<Event> RollEvents(EventTableRolls eventRolls)
-        {
-            var events = new List<Event>();
+        public IEnumerable<IRuleBookEvent> RollEvents(EventTableRolls eventRolls)
+       { 
+            var events = new List<IRuleBookEvent>();
 
-            events.AddRange(GetRandomEvents(EventCategory.TRAVELS_AND_ADVENTURES, eventRolls.TravlesAndAdventures));
+            var v = GetRandomEvents(EventCategory.TRAVELS_AND_ADVENTURES, eventRolls.TravlesAndAdventures);
+            events.AddRange( v); 
             events.AddRange(GetRandomEvents(EventCategory.INTRIGUE_AND_MISDEADS, eventRolls.IntrigueAndIlldeads));
             events.AddRange(GetRandomEvents(EventCategory.KNOWLEDGE_AND_MYSTERIES, eventRolls.KnowledgeAndMysteries));
             events.AddRange(GetRandomEvents(EventCategory.BATTLES_AND_SKIRMISHES, eventRolls.BattlesAndSkirmishes));
@@ -77,7 +77,7 @@ namespace Niklasson.EonIV.CharacterGeneration.Service
             return res;
         }
 
-        private List<Event> GetRandomEvents(EventCategory cat, int number)
+        private List<IRuleBookEvent> GetRandomEvents(EventCategory cat, int number)
         {
             return generationTables.GetRandomEvents(cat, number).ToList();
         }

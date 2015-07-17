@@ -18,9 +18,9 @@ namespace Niklasson.EonIV.CharacterGeneration.Repository.Parsers
 
         public static void SeedEvents(EonIVCharacterGenerationDbContext context)
         {
-            context.Event.AddOrUpdate(
+            context.Events.AddOrUpdate(
                 e => e.Id,
-                new Event()
+                new RuleBookEvent()
                 {
                     Category = EventCategory.TRAVELS_AND_ADVENTURES,
                     Number = 1,
@@ -31,11 +31,11 @@ namespace Niklasson.EonIV.CharacterGeneration.Repository.Parsers
                         som skett. Det kan röra sig om brutna
                         ben, eldskador eller bettskador från ett
                         vilt djur.",
-                    Modifications = new List<CharacterModificationOptions>()
+                    ModificationOptions = new List<CharacterModificationOptions>()
                     {
                         new CharacterModificationOptions()
                         {
-                            Alternatives = new List<EonIVCharacterModifier>()
+                            Alternatives = new List<CharacterModifier>()
                             {
                                 new AttributeModification() {Attribute = Attribute.STRENGTH, Value = -2},
                                 new AttributeModification() {Attribute = Attribute.STAMINA, Value = -2},
@@ -45,7 +45,7 @@ namespace Niklasson.EonIV.CharacterGeneration.Repository.Parsers
                         },
                         new CharacterModificationOptions()
                         {
-                            Alternatives = new List<EonIVCharacterModifier>()
+                            Alternatives = new List<CharacterModifier>()
                             {
                                 new AttributeModification() {Attribute = Attribute.WILL, Value = EonIVValue.DiceToValue(1)},
                                 new AttributeModification() {Attribute = Attribute.PSYCHE, Value = EonIVValue.DiceToValue(1)},
@@ -55,7 +55,7 @@ namespace Niklasson.EonIV.CharacterGeneration.Repository.Parsers
                         }
                     }
                 },
-                new Event()
+                new RuleBookEvent()
                 {
                     Category = EventCategory.TRAVELS_AND_ADVENTURES,
                     Number = 2,
@@ -64,7 +64,7 @@ namespace Niklasson.EonIV.CharacterGeneration.Repository.Parsers
                         sig olika tekniker för att kontrollera andningen
                         och kan till och med spela död
                         under en kortare tid.",
-                    Modifications = new List<CharacterModificationOptions>()
+                    ModificationOptions = new List<CharacterModificationOptions>()
                     {
                             new Expertise() { Name = "Spela död"},
                             new Perk() { Description = @"Ignorerar efterverkningen Omtöcknad 
@@ -74,7 +74,7 @@ namespace Niklasson.EonIV.CharacterGeneration.Repository.Parsers
                                 eller strypning."}
                     }
                 },
-                new Event()
+                new RuleBookEvent()
                 {
                     Category = EventCategory.INTRIGUE_AND_MISDEADS,
                     Number = 564,
@@ -85,11 +85,11 @@ namespace Niklasson.EonIV.CharacterGeneration.Repository.Parsers
                         som skett. Det kan röra sig om brutna
                         ben, eldskador eller bettskador från ett
                         vilt djur.",
-                    Modifications = new List<CharacterModificationOptions>()
+                    ModificationOptions = new List<CharacterModificationOptions>()
                     {
                         new CharacterModificationOptions()
                         {
-                            Alternatives = new List<EonIVCharacterModifier>()
+                            Alternatives = new List<CharacterModifier>()
                             {
                                 new AttributeModification() {Attribute = Attribute.MOVEMENT, Value = -2},
                                 new AttributeModification() {Attribute = Attribute.PERCEPTION, Value = -2}
@@ -97,7 +97,7 @@ namespace Niklasson.EonIV.CharacterGeneration.Repository.Parsers
                         },
                         new CharacterModificationOptions()
                         {
-                            Alternatives = new List<EonIVCharacterModifier>()
+                            Alternatives = new List<CharacterModifier>()
                             {
                                 new AttributeModification() {Attribute = Attribute.WILL, Value = EonIVValue.DiceToValue(1)},
                                 new AttributeModification() {Attribute = Attribute.PSYCHE, Value = EonIVValue.DiceToValue(1)},

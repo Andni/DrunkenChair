@@ -30,7 +30,7 @@ namespace Niklasson.DrunkenChair.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EonIVCharacterSheet eonIvCharacter = await characterRepository.FindAsync(id);
+            CharacterSheet eonIvCharacter = await characterRepository.FindAsync(id);
             if (eonIvCharacter == null)
             {
                 return HttpNotFound();
@@ -49,7 +49,7 @@ namespace Niklasson.DrunkenChair.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ID,Archetype,Background,Environment,Race,Attributes")] EonIVCharacterSheet eonIvCharacter)
+        public async Task<ActionResult> Create([Bind(Include = "ID,Archetype,Background,Environment,Race,Attributes")] CharacterSheet eonIvCharacter)
         {
             if (ModelState.IsValid)
             {
@@ -68,7 +68,7 @@ namespace Niklasson.DrunkenChair.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EonIVCharacterSheet eonIvCharacter = await characterRepository.FindAsync(id);
+            CharacterSheet eonIvCharacter = await characterRepository.FindAsync(id);
             if (eonIvCharacter == null)
             {
                 return HttpNotFound();
@@ -81,7 +81,7 @@ namespace Niklasson.DrunkenChair.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ID,Archetype,Background,Environment,Race,Attributes")] EonIVCharacterSheet eonIvCharacter)
+        public async Task<ActionResult> Edit([Bind(Include = "ID,Archetype,Background,Environment,Race,Attributes")] CharacterSheet eonIvCharacter)
         {
             if (ModelState.IsValid)
             {
@@ -99,7 +99,7 @@ namespace Niklasson.DrunkenChair.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EonIVCharacterSheet eonIvCharacter = await characterRepository.FindAsync(id);
+            CharacterSheet eonIvCharacter = await characterRepository.FindAsync(id);
             if (eonIvCharacter == null)
             {
                 return HttpNotFound();
@@ -112,7 +112,7 @@ namespace Niklasson.DrunkenChair.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            EonIVCharacterSheet eonIvCharacter = await characterRepository.FindAsync(id);
+            CharacterSheet eonIvCharacter = await characterRepository.FindAsync(id);
             characterRepository.Remove(eonIvCharacter);
             await characterRepository.SaveChangesAsync();
             return RedirectToAction("Index");

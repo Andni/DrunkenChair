@@ -1,7 +1,9 @@
 D:\Documents\Development\Projects\DrunkenChair\EonIVCharacterRepository\bin\Debug\EonIVCharacterRepository.dll
 D:\Documents\Development\Projects\DrunkenChair\EonIVCharacterRepository\bin\Debug\EonIVCharacterRepository.pdb
+D:\Documents\Development\Projects\DrunkenChair\EonIVCharacterRepository\bin\Debug\EonIVCharacterGenerationContracts.dll
+D:\Documents\Development\Projects\DrunkenChair\EonIVCharacterRepository\bin\Debug\NiklassonToolbox.dll
+D:\Documents\Development\Projects\DrunkenChair\EonIVCharacterRepository\bin\Debug\EonIVCharacterGenerationContracts.pdb
+D:\Documents\Development\Projects\DrunkenChair\EonIVCharacterRepository\bin\Debug\NiklassonToolbox.pdb
+D:\Documents\Development\Projects\DrunkenChair\EonIVCharacterRepository\obj\Debug\EonIVCharacterRepository.csprojResolveAssemblyReference.cache
 D:\Documents\Development\Projects\DrunkenChair\EonIVCharacterRepository\obj\Debug\EonIVCharacterRepository.dll
 D:\Documents\Development\Projects\DrunkenChair\EonIVCharacterRepository\obj\Debug\EonIVCharacterRepository.pdb
-D:\Documents\Development\Projects\DrunkenChair\EonIVCharacterRepository\bin\Debug\EonIVCharacterGenerationContracts.dll
-D:\Documents\Development\Projects\DrunkenChair\EonIVCharacterRepository\bin\Debug\EonIVCharacterGenerationContracts.pdb
-D:\Documents\Development\Projects\DrunkenChair\EonIVCharacterRepository\obj\Debug\EonIVCharacterRepository.csprojResolveAssemblyReference.cache

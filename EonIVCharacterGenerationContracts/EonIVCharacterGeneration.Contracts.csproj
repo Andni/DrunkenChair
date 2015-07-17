@@ -44,54 +44,64 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessObjects\BaseItem.cs" />
+    <Compile Include="BusinessObjects\CharacterLanguageSkill.cs" />
     <Compile Include="CharacterCreationConstants.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DatabaseTables\Archetype.cs" />
-    <Compile Include="DatabaseTables\AttributeModification.cs" />
-    <Compile Include="DatabaseTables\Background.cs" />
-    <Compile Include="DatabaseTables\CharacterAttributeSet.cs" />
-    <Compile Include="DatabaseTables\CharacterBaseAttributeSet.cs" />
-    <Compile Include="DatabaseTables\CharacterBasics.cs" />
-    <Compile Include="DatabaseTables\CharacterEvent.cs" />
-    <Compile Include="DatabaseTables\Characteristicts.cs" />
-    <Compile Include="DatabaseTables\CharacterModificationOptions.cs" />
-    <Compile Include="DatabaseTables\CharacterSkill.cs" />
-    <Compile Include="DatabaseTables\CharacterSkills.cs" />
-    <Compile Include="DatabaseTables\Craft.cs" />
-    <Compile Include="DatabaseTables\Environment.cs" />
-    <Compile Include="DatabaseTables\EonIVCharacterModifier.cs" />
-    <Compile Include="DatabaseTables\Event.cs" />
-    <Compile Include="DatabaseTables\EventResource.cs" />
-    <Compile Include="DatabaseTables\EventSkillpoints.cs" />
-    <Compile Include="DatabaseTables\EventTableRolls.cs" />
-    <Compile Include="DatabaseTables\Expertise.cs" />
-    <Compile Include="DatabaseTables\Helpers\AttributeHelper.cs" />
-    <Compile Include="DatabaseTables\ICharacterAttributes.cs" />
-    <Compile Include="DatabaseTables\Interfaces\IEonIVCharacterModifier.cs" />
-    <Compile Include="DatabaseTables\Perk.cs" />
-    <Compile Include="DatabaseTables\Race.cs" />
-    <Compile Include="DatabaseTables\SkillModification.cs" />
-    <Compile Include="DatabaseTables\Skillpoints.cs" />
-    <Compile Include="DatabaseTables\SpecialSkill.cs" />
+    <Compile Include="BusinessObjects\Archetype.cs" />
+    <Compile Include="BusinessObjects\AttributeModification.cs" />
+    <Compile Include="BusinessObjects\Background.cs" />
+    <Compile Include="BusinessObjects\CharacterAttributeSet.cs" />
+    <Compile Include="BusinessObjects\CharacterBaseAttributeSet.cs" />
+    <Compile Include="BusinessObjects\CharacterBasics.cs" />
+    <Compile Include="BusinessObjects\CharacterEvent.cs" />
+    <Compile Include="BusinessObjects\Characteristicts.cs" />
+    <Compile Include="BusinessObjects\CharacterModificationOptions.cs" />
+    <Compile Include="BusinessObjects\CharacterResource.cs" />
+    <Compile Include="BusinessObjects\CharacterSkill.cs" />
+    <Compile Include="BusinessObjects\CharacterSkillSet.cs" />
+    <Compile Include="BusinessObjects\Craft.cs" />
+    <Compile Include="BusinessObjects\Environment.cs" />
+    <Compile Include="BusinessObjects\CharacterModifier.cs" />
+    <Compile Include="BusinessObjects\CharacterSheet.cs" />
+    <Compile Include="BusinessObjects\RuleBookEvent.cs" />
+    <Compile Include="BusinessObjects\EventResource.cs" />
+    <Compile Include="BusinessObjects\EventSkillpoints.cs" />
+    <Compile Include="BusinessObjects\EventTableRolls.cs" />
+    <Compile Include="BusinessObjects\Expertise.cs" />
+    <Compile Include="BusinessObjects\Helpers\AttributeHelper.cs" />
+    <Compile Include="BusinessObjects\ICharacterAttributes.cs" />
+    <Compile Include="BusinessObjects\IEonIVCharacterModifier.cs" />
+    <Compile Include="BusinessObjects\CharacterJadedness.cs" />
+    <Compile Include="BusinessObjects\Perk.cs" />
+    <Compile Include="BusinessObjects\Race.cs" />
+    <Compile Include="BusinessObjects\Resource.cs" />
+    <Compile Include="BusinessObjects\SkillModification.cs" />
+    <Compile Include="BusinessObjects\Skillpoints.cs" />
+    <Compile Include="BusinessObjects\SpecialSkill.cs" />
+    <Compile Include="DataContracts\BaseEventSet.cs" />
+    <Compile Include="DataContracts\CharacterEventSet.cs" />
+    <Compile Include="DataContracts\IBaseEvent.cs" />
+    <Compile Include="DataContracts\ICharacterEvent.cs" />
+    <Compile Include="DataContracts\IEvent.cs" />
     <Compile Include="DataTypes\Attributes.cs" />
     <Compile Include="DataTypes\DiceRollCheck.cs" />
-    <Compile Include="DataTypes\EonIVCharacterSheet.cs" />
     <Compile Include="DataTypes\EonIVValue.cs" />
     <Compile Include="DataTypes\SkillCategory.cs" />
     <Compile Include="DataContracts\ICharacterBasicDetails.cs" />
+    <Compile Include="EventExtensions.cs" />
     <Compile Include="ServiceContracts\IEonIVCharacterGenerationService.cs" />
     <Compile Include="ServiceContracts\IEonIVCharacterGenerationTables.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceContracts\IEonIVCharacterRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Shared\Shared.csproj">
-      <Project>{4db7efce-0754-4928-82f9-0580cac63b21}</Project>
-      <Name>Shared</Name>
+    <ProjectReference Include="..\..\Toolbox\Toolbox\Toolbox.csproj">
+      <Project>{ace3e00e-475e-4718-9785-0eda5a25958d}</Project>
+      <Name>Toolbox</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

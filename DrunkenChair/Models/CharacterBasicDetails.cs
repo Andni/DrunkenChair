@@ -5,8 +5,6 @@ using System.Web;
 
 using System.Web.Mvc;
 using System.ComponentModel.DataAnnotations;
-
-using Niklasson.DrunkenChair.Character;
 using Niklasson.EonIV.CharacterGeneration.Contracts;
 
 namespace Niklasson.DrunkenChair.Models
@@ -32,6 +30,5 @@ namespace Niklasson.DrunkenChair.Models
         public string SelectedRace { get; set; }
 
         public CharacterConstructionSite CharacterConstructionSite { get; set; }
-
     }
 }

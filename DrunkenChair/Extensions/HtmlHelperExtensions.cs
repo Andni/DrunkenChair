@@ -6,7 +6,7 @@ using System;
 
 using System.Web.Mvc.Html;
 
-using Event = Niklasson.EonIV.CharacterGeneration.Contracts.Event;
+using Event = Niklasson.EonIV.CharacterGeneration.Contracts.RuleBookEvent;
 
 using Niklasson.EonIV.CharacterGeneration.Contracts;
 
@@ -51,13 +51,13 @@ namespace Niklasson.DrunkenChair.Extensions
             tb.GenerateId(helper.ViewData.ModelMetadata.DisplayName);
 
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            foreach(Event e in events)
+            foreach(RuleBookEvent e in events)
             {
                 sb.Append(String.Format("<dt>{0} {1}</dt><br/>", e.Number, e.Name));
 
-                sb.Append(String.Format("<dd>{0}[", e.Description, e.Modifications));
+                sb.Append(String.Format("<dd>{0}[", e.Description, e.ModificationOptions));
 
-                foreach(CharacterModificationOptions mod in e.Modifications)
+                foreach(CharacterModificationOptions mod in e.ModificationOptions)
                 {
                     sb.Append(String.Format("<br/>", mod.Alternatives));
                 }

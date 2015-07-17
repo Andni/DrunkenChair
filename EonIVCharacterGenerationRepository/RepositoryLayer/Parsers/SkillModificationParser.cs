@@ -18,9 +18,9 @@ namespace Niklasson.DrunkenChair.Repository.Parsers
         private const string learning = "learning";
         private Regex regex = new Regex(@"(lättlärd i) (?<" + free + ">valfri färdighet)|(?<" + skill + @">[\w\&\s]+).? ?(?<condition>[\w\s.]*)?");
         
-        public EonIVCharacterModifier TryParse(string text)
+        public CharacterModifier TryParse(string text)
         {
-            EonIVCharacterModifier res = null;
+            CharacterModifier res = null;
             var textWithoutLinebreaks = text.Replace(System.Environment.NewLine, " ");
             var lc = textWithoutLinebreaks.ToLower();
 

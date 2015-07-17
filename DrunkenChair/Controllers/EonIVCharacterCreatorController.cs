@@ -11,6 +11,7 @@ using System.ComponentModel.Composition;
 using Niklasson.DrunkenChair.Models;
 using Niklasson.DrunkenChair.Character;
 using Niklasson.EonIV.CharacterGeneration.Contracts;
+using Niklasson.DrunkenChair.Extensions;
 
 namespace Niklasson.DrunkenChair.Controllers
 {
@@ -82,7 +83,8 @@ namespace Niklasson.DrunkenChair.Controllers
                 if(ModelState.IsValid)
                 {
                     ccs.CharacterAttributeDetails = attributeDetails;
-                    ccs.Character.RolledEvents = RollEvents(ccs.GetScaffolding().EventRolls);
+                    var rolledEvents = RollEvents(ccs.GetScaffolding().EventRolls);
+                    ccs.Character.Events = new EventViewModelSet(rolledEvents);
                     return View("CharacterEventDetails", ccs.CharacterEventDetails);
                 }
             }
@@ -99,9 +101,9 @@ namespace Niklasson.DrunkenChair.Controllers
         public ActionResult RerollEvent(RerollEventRequest request)
         {
             var ccs = GetCharacterConstructionSite();
-            var newEvent = characterGenerationService.GetRandomEvent(request.Category);
-            ccs.Character.RolledEvents.ReplaceEvent(request.Category, request.Index, newEvent);
-            return PartialView("RolledEvents", ccs.Character.RolledEvents);
+            var newEvent = new EventViewModel(characterGenerationService.GetRandomEvent(request.Category));
+            ccs.Character.Events[request.Category][request.Index] = newEvent;
+            return PartialView("RolledEvents", ccs.Character.Events);
         }
 
         [HttpPost]
@@ -152,8 +154,8 @@ namespace Niklasson.DrunkenChair.Controllers
         public JsonResult AddRandomEventToCategory(RandomEventRequest request)
         {
             var result = new JsonResult();
-            var ev = characterGenerationService.GetRandomEvent(request.EventCategory);
-            GetCharacterConstructionSite().Character.RolledEvents.Add(ev);
+            var ev = new EventViewModel(characterGenerationService.GetRandomEvent(request.EventCategory));
+            GetCharacterConstructionSite().Character.Events.Add(ev);
             result.Data = new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(ev);
             return result;
         }
@@ -175,16 +177,14 @@ namespace Niklasson.DrunkenChair.Controllers
         public bool RerollEvent(EventCategory cat, int index)
         {
             var character = GetCharacterConstructionSite().Character;
-            if (index + 1 > character.RolledEvents[cat].Count())
+            if (index + 1 > character.Events[cat].Count())
             {
                 return false;
             }
             else
             {
-                var e = characterGenerationService.GetRandomEvent(cat);
-                var updatedList = character.RolledEvents[cat].ToList();
-                updatedList[index] = e;
-                character.RolledEvents[cat] = (IEnumerable<Event>)updatedList;
+                var newEvent = new EventViewModel(characterGenerationService.GetRandomEvent(cat));
+                character.Events[cat][index] = newEvent;
                 return true;
             }
         }
@@ -201,21 +201,18 @@ namespace Niklasson.DrunkenChair.Controllers
             return res;
         }
 
-        public RolledEvents RollEvents(EventTableRolls rolls)
+        public IEnumerable<IRuleBookEvent> RollEvents(EventTableRolls rolls)
         {
             var character = GetCharacterConstructionSite().Character;
             var events = characterGenerationService.RollEvents(rolls);
-
-            var res = new RolledEvents(events);
-            return res;
+            return events;
         }
 
-        public Event AddRandomEvent(EventCategory eventCategory, IEonIVCharacterGenerationService service)
+        public EventViewModel AddRandomEvent(EventCategory eventCategory, IEonIVCharacterGenerationService service)
         {
-            var ev = service.GetRandomEvent(eventCategory);
-            GetCharacterConstructionSite().Character.RolledEvents.Add(ev);
+            var ev = new EventViewModel(service.GetRandomEvent(eventCategory));
+            GetCharacterConstructionSite().Character.Events.Add(ev);
             return ev;
         }
-
     }
 }

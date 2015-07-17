@@ -9,16 +9,19 @@ namespace Niklasson.DrunkenChair.Models
 {
     public class RolledEvents
     {
-        private List<Event> events = new List<Event>();
+        private List<EventViewModel> events = new List<EventViewModel>();
 
         public RolledEvents() {}
 
-        public RolledEvents(IEnumerable<Event> events1)
+        public RolledEvents(IEnumerable<IRuleBookEvent> events1)
         {
-            events = events1.ToList();
+            foreach( IRuleBookEvent e in events1)
+            {
+                events.Add(new EventViewModel(e));
+            }
         }
 
-        public List<Event> Travels
+        public List<EventViewModel> Travels
         {
             get
             { return this[EventCategory.TRAVELS_AND_ADVENTURES].ToList(); }
@@ -29,7 +32,7 @@ namespace Niklasson.DrunkenChair.Models
             }
         }
 
-        public List<Event> Intrigue {
+        public List<EventViewModel> Intrigue {
             get
             { return this[EventCategory.INTRIGUE_AND_MISDEADS].ToList(); }
             set
@@ -38,7 +41,7 @@ namespace Niklasson.DrunkenChair.Models
             }
         }
 
-        public List<Event> Knowledge
+        public List<EventViewModel> Knowledge
         {
             get
             { return this[EventCategory.KNOWLEDGE_AND_MYSTERIES].ToList(); }
@@ -47,7 +50,7 @@ namespace Niklasson.DrunkenChair.Models
                 Replace(EventCategory.KNOWLEDGE_AND_MYSTERIES, value);
             }
         }
-        public List<Event> Battles
+        public List<EventViewModel> Battles
         {
             get
             { return this[EventCategory.BATTLES_AND_SKIRMISHES].ToList(); }
@@ -57,7 +60,7 @@ namespace Niklasson.DrunkenChair.Models
             }
         }
 
-        public IEnumerable<Event> this[EventCategory key]
+        public IEnumerable<EventViewModel> this[EventCategory key]
         {
             get{
                 return events.Where(e => e.Category == key);
@@ -68,30 +71,19 @@ namespace Niklasson.DrunkenChair.Models
             }
         }
 
-        public void ReplaceEvent(EventCategory cat, int index, Event evnt)
+        public void ReplaceEvent(EventCategory cat, int index, EventViewModel evnt)
         {
             var ev = events.Where(e => e.Category == cat).ElementAt(index);
             ev = evnt;
         }
 
-        private void Replace(EventCategory cat, IEnumerable<Event> newEvents)
+        private void Replace(EventCategory cat, IEnumerable<EventViewModel> newEvents)
         {
             events.RemoveAll(e => e.Category == cat);
             events.AddRange(newEvents.Where(e => e.Category == cat));
         }
 
-
-        public IEnumerable<CharacterEvent> ToCharacterEvents()
-        {
-            var res = new List<CharacterEvent>();
-            foreach(Event e in events)
-            {
-                res.Add(e.ToCharacterEvent());
-            }
-            return new List<CharacterEvent>();
-        }
-
-        public void Add(Event ev)
+        public void Add(EventViewModel ev)
         {
             events.Add(ev);
         }

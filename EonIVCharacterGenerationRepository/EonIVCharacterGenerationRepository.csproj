@@ -7,7 +7,7 @@
     <ProjectGuid>{21A68370-385F-4E2F-B86A-2399B670A7CD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EonIVCharacterGenerationRepository</RootNamespace>
+    <RootNamespace>Niklasson.EonIV.CharacterGeneration.Repository</RootNamespace>
     <AssemblyName>EonIVCharacterGenerationRepository</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -49,6 +49,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EventExtensions.cs" />
+    <Compile Include="Migrations\201507071033412_Initial.cs" />
+    <Compile Include="Migrations\201507071033412_Initial.Designer.cs">
+      <DependentUpon>201507071033412_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\AttributeModificationParser.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\EventParser.cs" />
+    <Compile Include="Migrations\EventSeeder.cs" />
+    <Compile Include="Migrations\ExpertiseParser.cs" />
+    <Compile Include="Migrations\IAttributeModificationParser.cs" />
+    <Compile Include="Migrations\IEventProvider.cs" />
+    <Compile Include="Migrations\IModificationParser.cs" />
+    <Compile Include="Migrations\ISkillPointModificationParser.cs" />
+    <Compile Include="Migrations\ModificationListParser.cs" />
+    <Compile Include="Migrations\SkillModificationParser.cs" />
+    <Compile Include="Migrations\SkillPointModificationParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositoryLayer\EonIVCharacterGenerationDbContext.cs" />
     <Compile Include="RepositoryLayer\EonIVCharacterGenerationTables.cs" />
@@ -77,6 +93,11 @@
       <Project>{06269a13-2b0f-409c-b5de-f636664a3ff3}</Project>
       <Name>EonIVCharacterGeneration.Contracts</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201507071033412_Initial.resx">
+      <DependentUpon>201507071033412_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

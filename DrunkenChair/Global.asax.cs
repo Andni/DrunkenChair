@@ -23,7 +23,7 @@ namespace Niklasson.DrunkenChair
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             ModelBinders.Binders.Add(
-                typeof(EonIVCharacterModifier),
+                typeof(CharacterModifier),
                 new Niklasson.DrunkenChair.CustomBinders.CharacterModifierModelBinder());
         }
 

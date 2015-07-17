@@ -52,7 +52,6 @@
   </Choose>
   <ItemGroup>
     <Compile Include="CharacterConstructorSiteTests.cs" />
-    <Compile Include="EventParsingTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

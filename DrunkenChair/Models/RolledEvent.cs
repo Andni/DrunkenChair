@@ -4,7 +4,7 @@ using Niklasson.EonIV.CharacterGeneration.Contracts;
 
 namespace Niklasson.DrunkenChair.Models
 {
-    public class RolledEvent : Event
+    public class RolledEvent : EventViewModel
     {
 
     }

@@ -60,18 +60,18 @@ namespace Niklasson.DrunkenChair.Models
             get
             {
                 CharacterEventDetails res = new Models.CharacterEventDetails();
-                res.RolledEvents = Character.RolledEvents;
+                res.RolledEvents = Character.Events;
                 res.FreeEventRolls = GetScaffolding().FreeEventRolls;
                 res.CharacterConstructionSite = this;
                 return res;
             }
             set
             {
-                Character.RolledEvents = value.RolledEvents;
+                Character.Events = value.RolledEvents;
             }
         }
 
-        public EonIVCharacterSheet CharacterSheet
+        public CharacterSheet CharacterSheet
         {   
             get
             {
@@ -79,7 +79,7 @@ namespace Niklasson.DrunkenChair.Models
             }
         }
 
-        public EonIVCharacterSheet GetCharacterPreview()
+        public CharacterSheet GetCharacterPreview()
         {
             return Character.ToCharacterSheet();
         }

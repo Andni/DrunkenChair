@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-using Niklasson.DrunkenChair.Character;
 using Niklasson.EonIV.CharacterGeneration.Contracts;
 
 namespace Niklasson.DrunkenChair.Models

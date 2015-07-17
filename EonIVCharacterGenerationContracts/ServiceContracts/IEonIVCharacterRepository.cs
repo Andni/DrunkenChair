@@ -8,12 +8,12 @@ namespace Niklasson.EonIV.CharacterGeneration.Contracts
 {
     public interface IEonIVCharacterRepository
     {
-        Task<IEnumerable<EonIVCharacterSheet>> GetLatestCharacters(int numberOfCharactersToGet);
-        Task<EonIVCharacterSheet> FindAsync(int? id);
+        Task<IEnumerable<CharacterSheet>> GetLatestCharacters(int numberOfCharactersToGet);
+        Task<CharacterSheet> FindAsync(int? id);
         Task SaveChangesAsync();
-        void Add(EonIVCharacterSheet character);
-        void Remove(EonIVCharacterSheet character);
+        void Add(CharacterSheet character);
+        void Remove(CharacterSheet character);
         void Dispose();
-        void SetModified(EonIVCharacterSheet character);
+        void SetModified(CharacterSheet character);
     }
 }

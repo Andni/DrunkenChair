@@ -1,7 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using Niklasson.DrunkenChair.DatabaseTables;
-using Niklasson.DrunkenChair.DatabaseTables.Helpers;
 using Niklasson.DrunkenChair.Character;
 
 namespace Niklasson.DrunkenChair.Tests.EventParsing

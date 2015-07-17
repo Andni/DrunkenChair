@@ -16,7 +16,7 @@ namespace Niklasson.DrunkenChair.Repository.Parsers
         private const string free = "free";
         private Regex regex = new Regex(@"((?<" + value + @">\d) poäng Expertiser)|(Expertisen (?<expertise>[\s\&\w]+))(?<condition>[\w\s.]*)?");
 
-        public EonIVCharacterModifier TryParse(string text)
+        public CharacterModifier TryParse(string text)
         {
             SpecialSkill res = null;
             //res.LearningModifier = LearningModifier.FAST_LEARNER;

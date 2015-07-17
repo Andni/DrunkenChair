@@ -1,9 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 
-using Niklasson.DrunkenChair.Shared.DatabaseTables;
-using Niklasson.DrunkenChair.Shared.DataTypes;
-
 using Niklasson.DrunkenChair.Models;
 
 namespace DrunkenChairTests
@@ -14,27 +11,27 @@ namespace DrunkenChairTests
         [TestMethod]
         public void ReplaceEventBasedOnCategoryAndIndex()
         {
-            Event e = new Event();
+            EventViewModel e = new EventViewModel();
             e.Name = "new event";
 
             var ccs = new CharacterConstructionSite();
-            //ccs.Character.RolledEvents.Battles = GetTestEventList();
+            ccs.Character.Events.BattlesAndSkirmishes = GetTestEventList();
 
         }
 
-        private static List<Event> GetTestEventList()
+        private static List<EventViewModel> GetTestEventList()
         {
-            return new List<Event>()
+            return new List<EventViewModel>()
             {
-                new Event
+                new EventViewModel
                 {
                     Name = "event 1"
                 },
-                new Event
+                new EventViewModel
                 {
                     Name = "event 2"
                 },
-                new Event
+                new EventViewModel
                 {
                     Name = "event 3"
                 }

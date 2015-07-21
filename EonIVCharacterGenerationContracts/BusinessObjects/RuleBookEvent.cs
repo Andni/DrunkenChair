@@ -34,6 +34,18 @@ namespace Niklasson.EonIV.CharacterGeneration.Contracts
         [Required]
         public string Description { get; set; }
         [Required]
-        public virtual List<CharacterModificationOptions> ModificationOptions { get; set; }        
+        public virtual List<CharacterModificationOptions> ModificationOptions { get; set; }
+
+        public CharacterEvent ToCharacterEvent()
+        {
+            return new CharacterEvent()
+            {
+                Category = this.Category,
+                Description = this.Description,
+                Name = this.Name,
+                Number = this.Number
+            };
+        }
     }
+
 }

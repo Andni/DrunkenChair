@@ -6,10 +6,11 @@ using System.Web;
 using System.Web.Mvc;
 using System.ComponentModel.DataAnnotations;
 using Niklasson.EonIV.CharacterGeneration.Contracts;
+using Niklasson.EonIV.CharacterGeneration.BusinessObjects;
 
 namespace Niklasson.DrunkenChair.Models
 {
-    public class CharacterBasicDetails : ICharacterBasicChoices
+    public class CharacterBasicStepViewModel : ICharacterBasicChoices
     {
         public SelectList Archetypes { get; set; }
         public SelectList Backgrounds { get; set; }
@@ -29,6 +30,6 @@ namespace Niklasson.DrunkenChair.Models
         [Display(Name = "Folkslag")]
         public string SelectedRace { get; set; }
 
-        public CharacterConstructionSite CharacterConstructionSite { get; set; }
+        public CharacterPreview CharacterPreview { get; set; }
     }
 }

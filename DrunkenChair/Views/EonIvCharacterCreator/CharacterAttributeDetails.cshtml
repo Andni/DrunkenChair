@@ -1,4 +1,4 @@
-﻿@model Niklasson.DrunkenChair.Models.CharacterAttributeDetails
+﻿@model Niklasson.DrunkenChair.Models.CharacterAttributeStepViewModel
 
 @using Niklasson.DrunkenChair.Extensions
 @using Finley.Common
@@ -54,10 +54,10 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             <div>
-                @Html.LabelFor(model => model.StrenghtBonusDices, htmlAttributes: labelHtmlAttributes)
-                @Html.EditorFor(model => Model.StrenghtBonusDices,
+                @Html.LabelFor(model => model.StrengthBonusDices, htmlAttributes: labelHtmlAttributes)
+                @Html.EditorFor(model => Model.StrengthBonusDices,
                 new { htmlAttributes = TypeMerger.MergeTypes(diceHtmlAttributes,
-                    new { data_onchange_target = "#" + Html.IdFor(model => model.CharacterConstructionSite.Character.Attributes.Strength.UnlimitedDice6) }) })
+                    new { data_onchange_target = "#" + Html.IdFor(model => model.Preview.CharacterSheet.Attributes.Strength.UnlimitedDice6) }) })
             </div>
             <br/>
             <div>
@@ -65,7 +65,7 @@
                 @Html.EditorFor(model => Model.StaminaBonusDices, new
                    {
                        htmlAttributes = TypeMerger.MergeTypes(diceHtmlAttributes,
-                           new { data_onchange_target = "#" + Html.IdFor(model => model.CharacterConstructionSite.Character.Attributes.Stamina.UnlimitedDice6) })
+                           new { data_onchange_target = "#" + Html.IdFor(model => model.Preview.CharacterSheet.Attributes.Stamina.UnlimitedDice6) })
                    })
             </div>
             <br />
@@ -74,7 +74,7 @@
                 @Html.EditorFor(model => Model.AgilityBonusDices, new
                    {
                        htmlAttributes = TypeMerger.MergeTypes(diceHtmlAttributes,
-                           new { data_onchange_target = "#" + Html.IdFor(model => Model.CharacterConstructionSite.Character.Attributes.Agility.UnlimitedDice6) })
+                           new { data_onchange_target = "#" + Html.IdFor(model => model.Preview.CharacterSheet.Attributes.Agility.UnlimitedDice6) })
                    })
             </div>
             <br />
@@ -83,7 +83,7 @@
                 @Html.EditorFor(model => Model.PerceptionBonusDices, new
                {
                    htmlAttributes = TypeMerger.MergeTypes(diceHtmlAttributes,
-                       new { data_onchange_target = "#" + Html.IdFor(model => Model.CharacterConstructionSite.Character.Attributes.Perception.UnlimitedDice6) })
+                       new { data_onchange_target = "#" + Html.IdFor(model => model.Preview.CharacterSheet.Attributes.Perception.UnlimitedDice6) })
                })
             </div>
             <br />
@@ -92,7 +92,7 @@
                 @Html.EditorFor(model => Model.WillBonusDices, new
                    {
                        htmlAttributes = TypeMerger.MergeTypes(diceHtmlAttributes,
-                           new { data_onchange_target = "#" + Html.IdFor(model => Model.CharacterConstructionSite.Character.Attributes.Will.UnlimitedDice6) })
+                           new { data_onchange_target = "#" + Html.IdFor(model => model.Preview.CharacterSheet.Attributes.Will.UnlimitedDice6) })
                    })
                 </div>
             <br />
@@ -101,7 +101,7 @@
                 @Html.EditorFor(model => Model.PsycheBonusDices, new
                    {
                        htmlAttributes = TypeMerger.MergeTypes(diceHtmlAttributes,
-                           new { data_onchange_target = "#" + Html.IdFor(model => Model.CharacterConstructionSite.Character.Attributes.Psyche.UnlimitedDice6) })
+                           new { data_onchange_target = "#" + Html.IdFor(model => model.Preview.CharacterSheet.Attributes.Psyche.UnlimitedDice6) })
                    })
             </div>
             <br />
@@ -110,7 +110,7 @@
                 @Html.EditorFor(model => Model.WisdomBonusDices, new
                    {
                        htmlAttributes = TypeMerger.MergeTypes(diceHtmlAttributes,
-                           new { data_onchange_target = "#" + Html.IdFor(model => Model.CharacterConstructionSite.Character.Attributes.Wisdom.UnlimitedDice6) })
+                           new { data_onchange_target = "#" + Html.IdFor(model => model.Preview.CharacterSheet.Attributes.Wisdom.UnlimitedDice6) })
                    })
             </div>
             <br />
@@ -119,7 +119,7 @@
                 @Html.EditorFor(model => Model.CharismaBonusDices, new
                    {
                        htmlAttributes = TypeMerger.MergeTypes(diceHtmlAttributes,
-                           new { data_onchange_target = "#" + Html.IdFor(model => Model.CharacterConstructionSite.Character.Attributes.Charisma.UnlimitedDice6) })
+                           new { data_onchange_target = "#" + Html.IdFor(model => model.Preview.CharacterSheet.Attributes.Charisma.UnlimitedDice6) })
                    })
             </div>
 
@@ -135,7 +135,7 @@
 }
 
     <div id="divCharacterPreview" style="display:inline-block">
-            @Html.DisplayFor(m => m.CharacterConstructionSite)
+        @Html.DisplayFor(m => m.Preview)
     </div>
 
     

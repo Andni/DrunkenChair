@@ -4,7 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Niklasson.EonIV.CharacterGeneration.Contracts;
-using Niklasson.EonIV.CharacterGeneration.Contracts;
+using Niklasson.EonIV.CharacterGeneration.BusinessObjects;
 
 namespace Niklasson.EonIV.CharacterGeneration.Contracts
 {

@@ -8,11 +8,13 @@ using Niklasson.DrunkenChair.Character;
 
 using System.ComponentModel.DataAnnotations;
 
+using Niklasson.EonIV.CharacterGeneration.Contracts;
+using Niklasson.EonIV.CharacterGeneration.BusinessObjects;
 
 namespace Niklasson.DrunkenChair.Models
 {
-    public class CharacterAttributeDetails : BaseAttributeDetails
+    public class CharacterAttributeStepViewModel : BaseAttributeDetails
     {
-        public CharacterConstructionSite CharacterConstructionSite { get; set; }        
+        public CharacterPreview Preview { get; set; }
     }
 }

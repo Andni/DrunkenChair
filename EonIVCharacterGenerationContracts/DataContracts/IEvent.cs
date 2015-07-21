@@ -9,5 +9,6 @@ namespace Niklasson.EonIV.CharacterGeneration.Contracts
     public interface IRuleBookEvent : IBaseEvent
     {
         List<CharacterModificationOptions> ModificationOptions { get; set; }
+        CharacterEvent ToCharacterEvent();
     }
 }

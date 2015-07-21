@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web;
 
 using Niklasson.EonIV.CharacterGeneration.Contracts;
+using Niklasson.EonIV.CharacterGeneration.BusinessObjects;
 
 namespace Niklasson.EonIV.CharacterGeneration.Service
 {
@@ -75,6 +76,11 @@ namespace Niklasson.EonIV.CharacterGeneration.Service
             res.Race = Races.SingleOrDefault(a => a.Name == details.SelectedRace) ?? new Race();
 
             return res;
+        }
+
+        public void SetBasicDetails(ICharacterBasicChoices basics)
+        {
+
         }
 
         private List<IRuleBookEvent> GetRandomEvents(EventCategory cat, int number)

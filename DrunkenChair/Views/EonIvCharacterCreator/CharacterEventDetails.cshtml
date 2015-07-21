@@ -1,4 +1,4 @@
-﻿@model Niklasson.DrunkenChair.Models.CharacterEventDetails
+﻿@model Niklasson.DrunkenChair.Models.CharacterEventStepViewModel
 
 @{
     ViewBag.Title = "Händelser";
@@ -13,7 +13,7 @@
         Valfria slag: @Html.DisplayFor(m => m.FreeEventRolls)
         @Html.HiddenFor(m => m.FreeEventRolls)
         @Html.ValidationMessageFor(m => m.FreeEventRolls)
-        @Html.EditorFor(m => m.RolledEvents)
+        @Html.EditorFor(m => m.Events)
     </div>   
 
     <div class="form-group">
@@ -24,7 +24,7 @@
     </div>
 }
     <div style="display:inline-block">
-        @Html.DisplayFor(m => m.CharacterConstructionSite)
+        @Html.DisplayFor(m => m.CharacterPreview)
     </div>
 
 

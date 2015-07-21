@@ -34,28 +34,38 @@ namespace Niklasson.EonIV.CharacterGeneration.Contracts
             FreeChoise = free;
         }
 
+        public EventTableRolls(EventTableRolls rolls)
+        {
+            TravlesAndAdventures = rolls.TravlesAndAdventures;
+            IntrigueAndIlldeads = rolls.IntrigueAndIlldeads;
+            KnowledgeAndMysteries = rolls.KnowledgeAndMysteries;
+            BattlesAndSkirmishes = rolls.BattlesAndSkirmishes;
+        }
+
         public static EventTableRolls operator+(EventTableRolls lh, EventTableRolls rh)
         {
-            if(lh == null)
+            if((lh == null && rh == null))
             {
-                return rh;
+                return new EventTableRolls();
             }
             else if(rh == null)
             {
-                return lh;
+                return new EventTableRolls(lh);
             }
-            else if(lh == null && rh == null)
+            else if(lh == null)
             {
-                return null;
+                return new EventTableRolls(rh);
             }
-
-            return new EventTableRolls(
-                travels: lh.TravlesAndAdventures + rh.TravlesAndAdventures,
-                intrigue: lh.IntrigueAndIlldeads + rh.IntrigueAndIlldeads,
-                knowledge: lh.KnowledgeAndMysteries + rh.KnowledgeAndMysteries,
-                battles: lh.BattlesAndSkirmishes + rh.BattlesAndSkirmishes,
-                free: lh.FreeChoise + rh.FreeChoise
-            );
+            else
+            {
+                return new EventTableRolls(
+                    travels: lh.TravlesAndAdventures + rh.TravlesAndAdventures,
+                    intrigue: lh.IntrigueAndIlldeads + rh.IntrigueAndIlldeads,
+                    knowledge: lh.KnowledgeAndMysteries + rh.KnowledgeAndMysteries,
+                    battles: lh.BattlesAndSkirmishes + rh.BattlesAndSkirmishes,
+                    free: lh.FreeChoise + rh.FreeChoise
+                );
+            }
         }
     }
 }

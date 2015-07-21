@@ -1,4 +1,4 @@
-﻿@model Niklasson.DrunkenChair.Models.CharacterConstructionSite
+﻿@model Niklasson.DrunkenChair.Models.CharacterPreview
 
 <div style="display:inline">
     <div style="float:left">
@@ -7,10 +7,10 @@
 
     <div style="float:left">
 
-        @Html.DisplayFor(model => model.GetScaffolding().EventRolls)
+        @Html.DisplayFor(model => model.Scaffolding.EventRolls)
     </div>
 
     <div style="float:left">
-        @Html.DisplayFor(model => model.GetScaffolding().Skillpoints)
+        @Html.DisplayFor(model => model.Scaffolding.Skillpoints)
     </div>
 </div>

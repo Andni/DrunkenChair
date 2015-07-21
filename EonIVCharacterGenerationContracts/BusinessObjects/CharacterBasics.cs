@@ -1,10 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+using Niklasson.EonIV.CharacterGeneration.BusinessObjects;
+
 namespace Niklasson.EonIV.CharacterGeneration.Contracts
 {
     [ComplexType]
-    public class CharacterBasics
+    public class CharacterBasics : ICharacterBasics
     {
         public CharacterBasics()
         {
@@ -30,6 +32,17 @@ namespace Niklasson.EonIV.CharacterGeneration.Contracts
         {
             return Background.EventRolls + Archetype.EventRolls
                 + Environment.EventRolls + Race.EventRolls;
+        }
+
+        public CharacterBasicChoices ToBasicChoices()
+        {
+            return new CharacterBasicChoices()
+            {
+                SelectedArchetype = Archetype,
+                SelectedBackground = Background,
+                SelectedEnvironment = Environment,
+                SelectedRace = Race
+            };
         }
     }
 }

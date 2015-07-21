@@ -15,6 +15,9 @@ namespace Niklasson.EonIV.CharacterGeneration.Contracts
         public int ID { get; set; }
         public int EventsID { get; set; }
 
+        [NotMapped]
+        public int? SelectedAlternativeIndex { get; set; }
+
         public static implicit operator CharacterModificationOptions(CharacterModifier mod)
         {
             return new CharacterModificationOptions() { Alternatives = new List<CharacterModifier> { mod } };

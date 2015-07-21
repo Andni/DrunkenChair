@@ -4,9 +4,11 @@ using System.ComponentModel.DataAnnotations;
 using Niklasson.EonIV.CharacterGeneration;
 using Niklasson.EonIV.CharacterGeneration.Contracts;
 
+using Niklasson.EonIV.CharacterGeneration.BusinessObjects;
+
 namespace Niklasson.DrunkenChair.Character
 {
-    public class BaseAttributeDetails
+    public class BaseAttributeDetails : IBaseAttributeDices
     {
         [Range(0, 0, ErrorMessage = "Alla bonustärningar måste spenderas.")]
         public int DicesLeftToDistribute { get; set; }
@@ -16,7 +18,7 @@ namespace Niklasson.DrunkenChair.Character
 
         [Required]
         [Range(0, 5, ErrorMessage = rangeErrorMessage)]
-        public int StrenghtBonusDices { get; set; }
+        public int StrengthBonusDices { get; set; }
         [Required]
         [Range(0, 5, ErrorMessage = rangeErrorMessage)]
         public int StaminaBonusDices { get; set; }
@@ -65,7 +67,7 @@ namespace Niklasson.DrunkenChair.Character
                     this.PerceptionBonusDices = value.Perception.UnlimitedDice6;
                     this.PsycheBonusDices = value.Psyche.UnlimitedDice6;
                     this.StaminaBonusDices= value.Stamina.UnlimitedDice6;
-                    this.StrenghtBonusDices = value.Strength.UnlimitedDice6;
+                    this.StrengthBonusDices = value.Strength.UnlimitedDice6;
                     this.WillBonusDices = value.Will.UnlimitedDice6;
                     this.WisdomBonusDices = value.Wisdom.UnlimitedDice6;
                     DicesLeftToDistribute = MaxBonusDices - currentBonus;
@@ -76,7 +78,7 @@ namespace Niklasson.DrunkenChair.Character
         public CharacterBaseAttributeSet GetCharacterBaseAttributeSet()
         {
             return CharacterBaseAttributeSet.CreateFromDiceSet(
-                StrenghtBonusDices,
+                StrengthBonusDices,
                 StaminaBonusDices,
                 AgilityBonusDices,
                 PerceptionBonusDices,

@@ -7,8 +7,8 @@
     <ProjectGuid>{06269A13-2B0F-409C-B5DE-F636664A3FF3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Niklasson.EonIV.CharacterGeneration.Contracts</RootNamespace>
-    <AssemblyName>EonIVCharacterGenerationContracts</AssemblyName>
+    <RootNamespace>Niklasson.EonIV.CharacterGeneration</RootNamespace>
+    <AssemblyName>EonIVCharacterGeneration</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -45,7 +45,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessObjects\BaseItem.cs" />
+    <Compile Include="BusinessObjects\CharacterConstructionSite.cs" />
+    <Compile Include="BusinessObjects\CharacterData.cs" />
+    <Compile Include="BusinessObjects\EventDetails.cs" />
+    <Compile Include="BusinessObjects\RuleBookEventSet.cs" />
+    <Compile Include="BusinessObjects\CharacterGenerationData.cs" />
     <Compile Include="BusinessObjects\CharacterLanguageSkill.cs" />
+    <Compile Include="BusinessObjects\BaseAttributeDices.cs" />
+    <Compile Include="BusinessObjects\IBaseAttributeDices.cs" />
+    <Compile Include="BusinessObjects\ICharacterBasicChoices.cs" />
+    <Compile Include="BusinessObjects\ICharacterBasics.cs" />
+    <Compile Include="BusinessObjects\ICharacterData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BusinessObjects\ICharacterEventChoices.cs" />
     <Compile Include="CharacterCreationConstants.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -80,6 +93,7 @@
     <Compile Include="BusinessObjects\SkillModification.cs" />
     <Compile Include="BusinessObjects\Skillpoints.cs" />
     <Compile Include="BusinessObjects\SpecialSkill.cs" />
+    <Compile Include="CharacterModificationExtensions.cs" />
     <Compile Include="DataContracts\BaseEventSet.cs" />
     <Compile Include="DataContracts\CharacterEventSet.cs" />
     <Compile Include="DataContracts\IBaseEvent.cs" />
@@ -89,7 +103,7 @@
     <Compile Include="DataTypes\DiceRollCheck.cs" />
     <Compile Include="DataTypes\EonIVValue.cs" />
     <Compile Include="DataTypes\SkillCategory.cs" />
-    <Compile Include="DataContracts\ICharacterBasicDetails.cs" />
+    <Compile Include="DataContracts\CharacterBasicChoises.cs" />
     <Compile Include="EventExtensions.cs" />
     <Compile Include="ServiceContracts\IEonIVCharacterGenerationService.cs" />
     <Compile Include="ServiceContracts\IEonIVCharacterGenerationTables.cs" />

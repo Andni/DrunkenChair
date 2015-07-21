@@ -41,5 +41,13 @@ namespace Niklasson.EonIV.CharacterGeneration.Contracts
             Resources = new List<CharacterResource>();
             Languages = new List<CharacterLanguageSkill>();
         }
+
+        public CharacterSheet(ICharacterData data)
+        {
+            Archetype = data.Basics.Archetype;
+            Background = data.Basics.Background;
+            Environment = data.Basics.Environment;
+            Race = data.Basics.Race;
+        }
     }
 }

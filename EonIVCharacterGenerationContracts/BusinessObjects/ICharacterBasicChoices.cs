@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace Niklasson.EonIV.CharacterGeneration.Contracts
+namespace Niklasson.EonIV.CharacterGeneration.BusinessObjects
 {
     public interface ICharacterBasicChoices
     {

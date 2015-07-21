@@ -1,4 +1,4 @@
-﻿@model Niklasson.DrunkenChair.Models.CharacterBasicDetails
+﻿@model Niklasson.DrunkenChair.Models.CharacterBasicStepViewModel
 
 @{
     ViewBag.Title = "Karaktärsgrunder";
@@ -28,7 +28,7 @@
     </div>
 }
         <div id="divCharacterPreview" style="display:inline-block">
-            @{Html.RenderPartial("CharacterPreview", Model.CharacterConstructionSite);}
+            @{Html.RenderPartial("CharacterPreview", Model.CharacterPreview);}
         </div>
 
 

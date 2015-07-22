@@ -7,6 +7,8 @@ using System.Web;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
+using Niklasson.EonIV.CharacterGeneration.BusinessObjects;
+
 namespace Niklasson.EonIV.CharacterGeneration.Contracts
 {
     [ComplexType]
@@ -89,5 +91,18 @@ namespace Niklasson.EonIV.CharacterGeneration.Contracts
             return lh;
         }
 
+        public static CharacterBaseAttributeSet operator +(CharacterBaseAttributeSet lh, BaseAttributeDices rh)
+        {
+            lh.Agility.AddDice(rh.AgilityBonusDices);
+            lh.Charisma.AddDice(rh.CharismaBonusDices);
+            lh.Perception.AddDice(rh.PerceptionBonusDices);
+            lh.Psyche.AddDice(rh.PsycheBonusDices);
+            lh.Stamina.AddDice(rh.StaminaBonusDices);
+            lh.Strength.AddDice(rh.StrengthBonusDices);
+            lh.Will.AddDice(rh.WillBonusDices);
+            lh.Wisdom.AddDice(rh.WisdomBonusDices);
+
+            return lh;
+        }
     }
 }

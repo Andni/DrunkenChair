@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Niklasson.EonIV.CharacterGeneration.BusinessObjects
 {
-    public class EventDetails
+    public class CharacterEventDetails
     {
         protected RuleBookEventSet events = new RuleBookEventSet();
 

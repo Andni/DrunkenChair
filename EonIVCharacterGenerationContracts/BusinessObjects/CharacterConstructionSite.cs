@@ -19,8 +19,8 @@ namespace Niklasson.EonIV.CharacterGeneration.BusinessObjects
             characterGenerationData = new CharacterGenerationData(characterData);
         }
 
-        public CharacterBasicChoices GetCharacterBasicChoises(){
-            return characterData.Basics.ToBasicChoices();
+        public EventTableRolls GetCharacterEventRolls(){
+            return characterData.Basics.GetEventRolls();
         }
 
         public void SetCharacterBasicDetails(ICharacterBasicChoices basicChoices, IEonIVCharacterGenerationService service)
@@ -38,7 +38,7 @@ namespace Niklasson.EonIV.CharacterGeneration.BusinessObjects
             characterData.ExtraAttributeDiceDistribution = new BaseAttributeDices(extraDices);
         }
 
-        public ICharacterEventChoises GetCharacterEventDetails() {
+        public RuleBookEventSet GetCharacterEvents() {
             return characterData.Events;
         }
 

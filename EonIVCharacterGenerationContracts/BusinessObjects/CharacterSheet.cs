@@ -48,6 +48,8 @@ namespace Niklasson.EonIV.CharacterGeneration.Contracts
             Background = data.Basics.Background;
             Environment = data.Basics.Environment;
             Race = data.Basics.Race;
+
+            Attributes = new CharacterAttributeSet(data.Basics.Race.StartingAttributes + data.ExtraAttributeDiceDistribution);
         }
     }
 }

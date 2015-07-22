@@ -171,10 +171,9 @@
     <Compile Include="Helpers\IDiceRoller.cs" />
     <Compile Include="Helpers\RandomNumberGenerator.cs" />
     <Compile Include="CustomBinders\CharacterModifierModelBinder.cs" />
-    <Compile Include="Models\BaseAttributeDetails.cs" />
+    <Compile Include="Models\CharacterAttributeStepViewModel.cs" />
     <Compile Include="Models\CharacterBasicStepViewModel.cs" />
     <Compile Include="Models\CharacterEventStepViewModel.cs" />
-    <Compile Include="Models\CharacterAttributeStepViewModel.cs" />
     <Compile Include="Models\CharacterModificationOptionsViewModel.cs" />
     <Compile Include="Models\CharacterPreview.cs" />
     <Compile Include="Models\EventViewModel.cs" />
@@ -265,7 +264,7 @@
     <Content Include="Views\Shared\DisplayTemplates\SkillModification.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\AttributeModification.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Expertise.cshtml" />
-    <Content Include="Views\EonIvCharacterCreator\RuleBookEventSet.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\RuleBookEventSet.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\CharacterBasicStepViewModel.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\RolledEvents.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\EventViewModel.cshtml" />
@@ -282,6 +281,9 @@
     <Content Include="Views\Shared\DisplayTemplates\CharacterPreview.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\CharacterGenerationData.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\CharacterSheet.cshtml" />
+    <Content Include="Views\EonIvCharacterCreator\RuleBookEventSet.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\RuleBookEvent.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\CharacterModificationOptionsViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

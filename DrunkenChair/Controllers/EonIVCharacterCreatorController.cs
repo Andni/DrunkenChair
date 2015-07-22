@@ -94,7 +94,7 @@ namespace Niklasson.DrunkenChair.Controllers
                 {
                     ccs.SetCharacterAttributeExtraDiceDistribution(attributeDetails);
                     ccs.RollEvents(characterGenerationService);
-                    return View("CharacterEventDetails", new CharacterEventStepViewModel() { CharacterPreview = new CharacterPreview(ccs) });
+                    return View("CharacterEventDetails", new CharacterEventStepViewModel(ccs));
                 }
             }
             
@@ -103,7 +103,7 @@ namespace Niklasson.DrunkenChair.Controllers
                 return View("Create", new CharacterBasicStepViewModel() { CharacterPreview = new CharacterPreview(ccs) });
             }
 
-            return View(new CharacterAttributeStepViewModel() { Preview = new CharacterPreview(ccs)});
+            return View(new CharacterAttributeStepViewModel() { Preview = new CharacterPreview(ccs) });
         }
 
         [HttpPost]
@@ -113,11 +113,11 @@ namespace Niklasson.DrunkenChair.Controllers
 
             ccs.RerollEvent(request.Category, request.Index, characterGenerationService);
 
-            return PartialView("RolledEvents", ccs.ToCharacterSheet().Events);
+            return PartialView("RuleBookEventSet", ccs.GetCharacterEvents());
         }
 
         [HttpPost]
-        public ActionResult CharacterEventDetails(EventDetails eventDetails, string previousButton, string nextButton)
+        public ActionResult CharacterEventDetails(CharacterEventDetails eventDetails, string previousButton, string nextButton)
         {
             if(nextButton != null)
             {
@@ -141,7 +141,7 @@ namespace Niklasson.DrunkenChair.Controllers
                     });
             }
             
-            return View("CharacterEventDetails", GetCharacterConstructionSite().GetCharacterEventDetails());
+            return View("CharacterEventDetails", GetCharacterConstructionSite().GetCharacterEvents());
         }
 
         [HttpGet]

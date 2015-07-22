@@ -7,7 +7,7 @@ using Niklasson.EonIV.CharacterGeneration.Contracts;
 
 namespace Niklasson.EonIV.CharacterGeneration.BusinessObjects
 {
-    public class RuleBookEventSet : BaseEventSet<IRuleBookEvent>, ICharacterEventChoises
+    public class RuleBookEventSet : BaseEventSet<IRuleBookEvent>
     {
         public RuleBookEventSet() : base() { }
         public RuleBookEventSet(IEnumerable<IRuleBookEvent> events) : base(events) { }

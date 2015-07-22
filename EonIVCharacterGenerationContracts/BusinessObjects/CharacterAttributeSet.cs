@@ -31,29 +31,7 @@ namespace Niklasson.EonIV.CharacterGeneration.Contracts
             }
         }
         
-        //[System.Runtime.Serialization.IgnoreDataMember]
-        //[System.Web.Script.Serialization.ScriptIgnore]
-        //public CharacterAttributeSet Derived { get { return this; } }
-
-        //public DiceRollCheck BonusBuild { get; set; }
-        //public DiceRollCheck BonusImpression { get; set; }
-        //public DiceRollCheck BonusLifeforce { get; set; }
-        //public DiceRollCheck BonusMovement { get; set; }
-        //public DiceRollCheck BonusReaction { get; set; }
-        //public DiceRollCheck BonusSelfcontrol { get; set; }
-        //public DiceRollCheck BonusVigilance { get; set; }
-
-        public CharacterAttributeSet()
-            : base()
-        {
-        //    BonusBuild = 0;
-        //    BonusImpression = 0;
-        //    BonusLifeforce = 0;
-        //    BonusMovement = 0;
-        //    BonusReaction= 0;
-        //    BonusSelfcontrol = 0;
-        //    BonusVigilance = 0;
-        }
+        public CharacterAttributeSet() : base() { }
 
         public CharacterAttributeSet(CharacterBaseAttributeSet baseAttributes)
         {
@@ -122,9 +100,7 @@ namespace Niklasson.EonIV.CharacterGeneration.Contracts
                     (Perception + Psyche) / 2;
             }
         }
-
-     
-
+        
         public static CharacterAttributeSet operator +(CharacterAttributeSet lh, CharacterAttributeSet rh)
         {
             lh.Agility += rh.Agility;
@@ -136,14 +112,6 @@ namespace Niklasson.EonIV.CharacterGeneration.Contracts
             lh.Will += rh.Will;
             lh.Wisdom += rh.Wisdom;
 
-            //lh.BonusBuild += rh.BonusBuild;
-            //lh.BonusImpression += rh.BonusImpression;
-            //lh.BonusLifeforce += rh.BonusLifeforce;
-            //lh.BonusMovement += rh.BonusMovement;
-            //lh.BonusReaction += rh.BonusReaction;
-            //lh.BonusSelfcontrol += rh.BonusSelfcontrol;
-            //lh.BonusVigilance += rh.BonusVigilance;
-            
             return lh;
         }
         

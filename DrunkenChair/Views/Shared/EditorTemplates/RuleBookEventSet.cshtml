@@ -1,8 +1,8 @@
 ﻿@model Niklasson.EonIV.CharacterGeneration.BusinessObjects.RuleBookEventSet
 
 @{
-    object attributes = new {type = "button"};
- 
+    object attributes = new { type = "button" };
+
     <h4>Färder @Html.Raw("&") Äventyr</h4>
     @Html.EditorFor(m => m.TravelsAndAdventures) @Html.Button("Slå valfri", attributes)
     <br />

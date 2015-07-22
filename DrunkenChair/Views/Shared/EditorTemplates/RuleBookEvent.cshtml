@@ -1,0 +1,33 @@
+﻿@model Niklasson.EonIV.CharacterGeneration.Contracts.RuleBookEvent
+
+@using Niklasson.DrunkenChair.Models
+
+@{
+    var id = ViewData.TemplateInfo.HtmlFieldPrefix;
+
+    <span class="rolled-event">
+        <span class="number">
+            <b>
+                @Html.DisplayFor(e => e.Number)
+                @Html.HiddenFor(e => e.Number)
+                @Html.HiddenFor(e => e.Category)
+            </b>
+        </span>
+        <span class="name">
+            <b>
+                @Html.DisplayFor(e => e.Name)
+                @Html.HiddenFor(e => e.Name)
+            </b>
+        </span>
+        @Html.Button("Slå om", new { type = "button", id = id, @class = "reroll", data_eventCategory = (Int32)@Model.Category })
+        <br />
+        <span class="description">
+            @Html.DisplayFor(e => e.Description)
+            @Html.HiddenFor(e => e.Description)
+        </span>
+        <br />
+        <span class="modifications">
+            @Html.EditorFor(e => e.ModificationOptions)
+        </span>
+    </span>
+}

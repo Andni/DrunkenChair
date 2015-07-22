@@ -47,7 +47,6 @@
     <Compile Include="BusinessObjects\BaseItem.cs" />
     <Compile Include="BusinessObjects\CharacterConstructionSite.cs" />
     <Compile Include="BusinessObjects\CharacterData.cs" />
-    <Compile Include="BusinessObjects\EventDetails.cs" />
     <Compile Include="BusinessObjects\RuleBookEventSet.cs" />
     <Compile Include="BusinessObjects\CharacterGenerationData.cs" />
     <Compile Include="BusinessObjects\CharacterLanguageSkill.cs" />
@@ -58,7 +57,7 @@
     <Compile Include="BusinessObjects\ICharacterData.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BusinessObjects\ICharacterEventChoices.cs" />
+    <Compile Include="BusinessObjects\CharacterEventDetails.cs" />
     <Compile Include="CharacterCreationConstants.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -1,11 +1,30 @@
 ﻿@model Niklasson.EonIV.CharacterGeneration.Contracts.CharacterSheet
 
-<div style="display:inline">
-    <div style="float:left">
-        @Html.DisplayFor(model => model.Attributes)
-        @Html.DisplayFor(model => model.Archetype)
-        @Html.DisplayFor(model => model.Background)
-        @Html.DisplayFor(model => model.Environment)
-        @Html.DisplayFor(model => model.Race)
-    </div>
+<div id="CharacterBasics">
+    <table>
+        <tbody>
+            <tr>
+                <th colspan="2">Basics</th>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.Race)</td>
+                <td>@Html.DisplayFor(m => m.Race)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.Environment)</td>
+                <td>@Html.DisplayFor(m => m.Environment)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.Archetype)</td>
+                <td>@Html.DisplayFor(m => m.Archetype)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.Background)</td>
+                <td>@Html.DisplayFor(m => m.Background)</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div id="CharacterAttributes">
+    @Html.DisplayFor(model => model.Attributes)
 </div>

@@ -2,9 +2,9 @@
 
 @if (Model != null)
 {
-    <span id="@Html.IdForModel()">
+    <span id="@Html.IdForModel()" class="data">
         <span style="float:left" data-value="@Model.UnlimitedDice6" id="@(Html.IdFor(m => m.UnlimitedDice6))">@Model.UnlimitedDice6</span>
-        <span style="float:left">T6 +</span>
+        <span style="float:left">T6 + </span>
         <span style="float:left" data-value="@Model.Bonus" id="@(Html.IdFor(m => m.Bonus))">@Model.Bonus</span>
     </span>
 }

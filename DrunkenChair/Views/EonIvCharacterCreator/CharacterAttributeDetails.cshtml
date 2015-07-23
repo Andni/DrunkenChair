@@ -39,7 +39,7 @@
 
 <h2>CharacterAttributeDetails</h2>
 
-@using (Html.BeginForm("CharacterAttributeDetails", "EonIvCharacterCreator", FormMethod.Post, new { style = "display:inline-block; width:50%" }))
+@using (Html.BeginForm("CharacterAttributeDetails", "EonIvCharacterCreator", FormMethod.Post, new { style = "display:inline-block; width:50% float: left" }))
 {
     @Html.AntiForgeryToken()
 
@@ -134,16 +134,9 @@
     </div>
 }
 
-    <div id="divCharacterPreview" style="display:inline-block">
+    <div id="CharacterPreview" style="display: inline; float: right">
         @Html.DisplayFor(m => m.Preview)
     </div>
-
-    
-    
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

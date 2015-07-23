@@ -4,10 +4,16 @@
     ViewBag.Title = "Händelser";
 }
 
+@section AddToHead
+{
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+}
+
+
 <h2>Händelser</h2>
 
 
-@using (Html.BeginForm("CharacterEventDetails", "EonIvCharacterCreator", FormMethod.Post, new { style = "display:inline-block; width:50%" }))
+@using (Html.BeginForm("CharacterEventDetails", "EonIvCharacterCreator", FormMethod.Post, new { style = "display:inline-block; width:50%; float: left" }))
 {
     <div>
         Valfria slag: @Html.DisplayFor(m => m.FreeEventRolls)
@@ -23,7 +29,7 @@
         </div>
     </div>
 }
-    <div style="display:inline-block">
+    <div id="CharacterPreview" style="display: inline-block; float: right">
         @Html.DisplayFor(m => m.CharacterPreview)
     </div>
 

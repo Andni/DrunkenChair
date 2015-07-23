@@ -17,27 +17,35 @@ namespace Niklasson.DrunkenChair.Models
         private const string rangeErrorMessage = " max 5";
 
         [Required]
+        [Display(Name="Styrka")]
         [Range(0, 5, ErrorMessage = rangeErrorMessage)]
         public int StrengthBonusDices { get; set; }
         [Required]
+        [Display(Name = "Tålighet")]
         [Range(0, 5, ErrorMessage = rangeErrorMessage)]
         public int StaminaBonusDices { get; set; }
         [Required]
+        [Display(Name = "Rörlighet")]
         [Range(0, 5, ErrorMessage = rangeErrorMessage)]
         public int AgilityBonusDices { get; set; }
         [Required]
+        [Display(Name = "Uppfattning")]
         [Range(0, 5, ErrorMessage = rangeErrorMessage)]
         public int PerceptionBonusDices { get; set; }
         [Required]
+        [Display(Name = "Vilja")]
         [Range(0, 5, ErrorMessage = rangeErrorMessage)]
         public int WillBonusDices { get; set; }
         [Required]
+        [Display(Name = "Psyke")]
         [Range(0, 5, ErrorMessage = rangeErrorMessage)]
         public int PsycheBonusDices { get; set; }
         [Required]
+        [Display(Name = "Visdom")]
         [Range(0, 5, ErrorMessage = rangeErrorMessage)]
         public int WisdomBonusDices { get; set; }
         [Required]
+        [Display(Name = "Utstrålning")]
         [Range(0, 5, ErrorMessage = rangeErrorMessage)]
         public int CharismaBonusDices { get; set; }
 

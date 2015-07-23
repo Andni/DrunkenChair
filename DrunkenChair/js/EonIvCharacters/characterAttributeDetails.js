@@ -45,21 +45,22 @@ eon.CharacterAttributeDetails.UpdateDerivedAttributes = function (jsonStringChar
 {
     data = $.parseJSON(jsonStringCharacterData);
 
-    $('#CharacterConstructionSite_Character_Attributes_Movement_UnlimitedDice6').text(data.Movement.UnlimitedDice6);
-    $('#CharacterConstructionSite_Character_Attributes_Impression_UnlimitedDice6').text(data.Impression.UnlimitedDice6);
-    $('#CharacterConstructionSite_Character_Attributes_Vigilance_UnlimitedDice6').text(data.Vigilance.UnlimitedDice6);
-    $('#CharacterConstructionSite_Character_Attributes_Lifeforce_UnlimitedDice6').text(data.Lifeforce.UnlimitedDice6);
-    $('#CharacterConstructionSite_Character_Attributes_Reaction_UnlimitedDice6').text(data.Reaction.UnlimitedDice6);
-    $('#CharacterConstructionSite_Character_Attributes_Build_UnlimitedDice6').text(data.Build.UnlimitedDice6);
-    $('#CharacterConstructionSite_Character_Attributes_Selfcontrol_UnlimitedDice6').text(data.Selfcontrol.UnlimitedDice6);
+    var prefix = '#Preview_CharacterSheet_Attributes_';
+    $(prefix + 'Movement_UnlimitedDice6').text(data.Movement.UnlimitedDice6);
+    $(prefix + 'Impression_UnlimitedDice6').text(data.Impression.UnlimitedDice6);
+    $(prefix + 'Vigilance_UnlimitedDice6').text(data.Vigilance.UnlimitedDice6);
+    $(prefix + 'Lifeforce_UnlimitedDice6').text(data.Lifeforce.UnlimitedDice6);
+    $(prefix + 'Reaction_UnlimitedDice6').text(data.Reaction.UnlimitedDice6);
+    $(prefix + 'Build_UnlimitedDice6').text(data.Build.UnlimitedDice6);
+    $(prefix + 'Selfcontrol_UnlimitedDice6').text(data.Selfcontrol.UnlimitedDice6);
 
-    $('#CharacterConstructionSite_Character_Attributes_Movement_Bonus').text(data.Movement.Bonus);
-    $('#CharacterConstructionSite_Character_Attributes_Impression_Bonus').text(data.Impression.Bonus);
-    $('#CharacterConstructionSite_Character_Attributes_Vigilance_Bonus').text(data.Vigilance.Bonus);
-    $('#CharacterConstructionSite_Character_Attributes_Lifeforce_Bonus').text(data.Lifeforce.Bonus);
-    $('#CharacterConstructionSite_Character_Attributes_Reaction_Bonus').text(data.Reaction.Bonus);
-    $('#CharacterConstructionSite_Character_Attributes_Build_Bonus').text(data.Build.Bonus);
-    $('#CharacterConstructionSite_Character_Attributes_Selfcontrol_Bonus').text(data.Selfcontrol.Bonus);
+    $(prefix + 'Movement_Bonus').text(data.Movement.Bonus);
+    $(prefix + 'Impression_Bonus').text(data.Impression.Bonus);
+    $(prefix + 'Vigilance_Bonus').text(data.Vigilance.Bonus);
+    $(prefix + 'Lifeforce_Bonus').text(data.Lifeforce.Bonus);
+    $(prefix + 'Reaction_Bonus').text(data.Reaction.Bonus);
+    $(prefix + 'Build_Bonus').text(data.Build.Bonus);
+    $(prefix + 'Selfcontrol_Bonus').text(data.Selfcontrol.Bonus);
 
 }
 
@@ -67,20 +68,21 @@ eon.CharacterAttributeDetails.Initialize = function () {
     var elements = $('[data-onchange-target]');
     eon.CharacterAttributeDetails.DicesLeftToDistribute = parseInt($("#DicesLeftToDistribute").val());
 
+    var prefix = '#Preview_CharacterSheet_Attributes_';
     elements.each(function (i, e) {
         $(e).on("change", null, null, eon.CharacterAttributeDetails.UpdateOtherSpinnersMaxValue);
         $(e).on("change", null, $(e).data('onchange-target'), eon.CharacterAttributeDetails.UpdatePreviewDetails);
         $(e).on("change", null, null, function () {
             $.get('/EonIvCharacterCreator/GetDerivedAttributes',
                 {
-                    str: RemoveWhiteSpace($('#CharacterConstructionSite_Character_Attributes_Strength').text()),
-                    sta: RemoveWhiteSpace($('#CharacterConstructionSite_Character_Attributes_Stamina').text()),
-                    agl: RemoveWhiteSpace($('#CharacterConstructionSite_Character_Attributes_Agility').text()),
-                    per: RemoveWhiteSpace($('#CharacterConstructionSite_Character_Attributes_Perception').text()),
-                    wil: RemoveWhiteSpace($('#CharacterConstructionSite_Character_Attributes_Will').text()),
-                    psy: RemoveWhiteSpace($('#CharacterConstructionSite_Character_Attributes_Psyche').text()),
-                    wis: RemoveWhiteSpace($('#CharacterConstructionSite_Character_Attributes_Wisdom').text()),
-                    cha: RemoveWhiteSpace($('#CharacterConstructionSite_Character_Attributes_Charisma').text()),
+                    str: RemoveWhiteSpace($(prefix + 'Strength').text()),
+                    sta: RemoveWhiteSpace($(prefix + 'Stamina').text()),
+                    agl: RemoveWhiteSpace($(prefix + 'Agility').text()),
+                    per: RemoveWhiteSpace($(prefix + 'Perception').text()),
+                    wil: RemoveWhiteSpace($(prefix + 'Will').text()),
+                    psy: RemoveWhiteSpace($(prefix + 'Psyche').text()),
+                    wis: RemoveWhiteSpace($(prefix + 'Wisdom').text()),
+                    cha: RemoveWhiteSpace($(prefix + 'Charisma').text()),
                 },
                 eon.CharacterAttributeDetails.UpdateDerivedAttributes);
         });

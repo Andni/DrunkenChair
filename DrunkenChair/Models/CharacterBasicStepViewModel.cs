@@ -31,5 +31,16 @@ namespace Niklasson.DrunkenChair.Models
         public string SelectedRace { get; set; }
 
         public CharacterPreview CharacterPreview { get; set; }
+
+        public CharacterBasicStepViewModel() {}
+        
+        public CharacterBasicStepViewModel(CharacterConstructionSite ccs)
+        {
+            CharacterPreview = new CharacterPreview(ccs);
+            SelectedArchetype = ccs.GetArchetype();
+            SelectedBackground = ccs.GetBackground();
+            SelectedEnvironment = ccs.GetEnvironment();
+            SelectedRace = ccs.GetRace();
+        }
     }
 }

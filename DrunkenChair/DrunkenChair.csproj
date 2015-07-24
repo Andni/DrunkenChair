@@ -285,6 +285,8 @@
     <Content Include="Views\Shared\EditorTemplates\RuleBookEvent.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\CharacterModificationOptionsViewModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\CharacterBasics.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\EventTableRolls.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Skillpoints.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

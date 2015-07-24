@@ -1,8 +1,49 @@
-﻿body {
+﻿@font-face{
+    font-family: goudyOldStyle;
+    font-weight: normal;
+    src: url("/Content/fonts/Goudy Old Style BT.ttf");
+}
+
+@font-face{
+    font-family: goudyOldStyle;
+    font-weight: bold;
+    src: url("/Content/fonts/Goudy Old Style Bold BT.ttf");
+}
+
+@font-face{
+    font-family: goudyOldStyleItalic;
+    src: url(/Content/fonts/OFLGoudyStMTT-Italic.ttf);
+    font-size: 16px;
+}
+
+@font-face{
+    font-family: vinque;
+    src: url(/Content/fonts/vinque.regular.ttf);
+}
+
+hr {
+    border-color: #8b0113;
+}
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
     background-color: #ecd9bc;
+    background-image: url(/Content/background/parchment_paper_background_1800x1600.jpg);
     color: #8b0113;
+    font-family: goudyOldStyle;
+}
+
+label, h1, h2, h3, h4, h5, h6, th {
+    font-family: vinque;
+}
+
+td, th {
+    padding: 1px 10px 1px 2px;
+}
+
+table label {
+    margin: 0;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -31,4 +72,20 @@ textarea {
 
 .data span, .data td, .data tr{
     white-space: pre;
+    font-weight: bold;
+}
+
+.left-column, .right-column {
+    width: 46%;
+    padding: 0px;
+    margin: 2%;
+    border: 0px;
+}
+
+.left-column {
+    float: left;
+}
+
+.right-column {
+    float: right;
 }

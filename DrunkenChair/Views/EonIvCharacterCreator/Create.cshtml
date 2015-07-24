@@ -12,18 +12,15 @@
 <h2>Karaktärsgrunder</h2>
 
 
-@using (Html.BeginForm("Create", "EonIvCharacterCreator", FormMethod.Post, new { style = "display:inline-block; width: 50%; float: left" }))
+@using (Html.BeginForm("Create", "EonIvCharacterCreator", FormMethod.Post, new { style = "display:inline-block;", @class = "left-column" }))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
         <h4>Karaktärsgrunder</h4>
         <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.EditorForModel()
-        </div>
-
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })    
+        @Html.EditorForModel()
     </div>
     
     <div class="form-group">
@@ -33,7 +30,7 @@
     </div>
 }
 
-    <div id="CharacterPreview" style="display:inline-block; float: right">
+    <div id="CharacterPreview" class="right-column" style="display:inline-block;">
         @{Html.RenderPartial("CharacterPreview", Model.CharacterPreview);}
     </div>
 

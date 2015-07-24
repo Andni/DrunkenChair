@@ -13,7 +13,7 @@
 <h2>Händelser</h2>
 
 
-@using (Html.BeginForm("CharacterEventDetails", "EonIvCharacterCreator", FormMethod.Post, new { style = "display:inline-block; width:50%; float: left" }))
+@using (Html.BeginForm("CharacterEventDetails", "EonIvCharacterCreator", FormMethod.Post, new { style = "display:inline-block; width:50%; float: left", @class = "left-column"}))
 {
     <div>
         Valfria slag: @Html.DisplayFor(m => m.FreeEventRolls)

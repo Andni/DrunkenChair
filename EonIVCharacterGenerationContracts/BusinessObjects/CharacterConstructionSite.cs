@@ -87,5 +87,25 @@ namespace Niklasson.EonIV.CharacterGeneration.BusinessObjects
         {                                                                
             characterData.Events = events;
         }
+
+        public string GetArchetype()
+        {
+            return characterData.Basics.Archetype;
+        }
+
+        public string GetBackground()
+        {
+            return characterData.Basics.Background;
+        }
+
+        public string GetEnvironment()
+        {
+            return characterData.Basics.Environment;
+        }
+
+        public string GetRace()
+        {
+            return characterData.Basics.Race;
+        }
     }
 }                  

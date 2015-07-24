@@ -120,7 +120,7 @@ namespace Niklasson.DrunkenChair.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing)
+            if (disposing && characterRepository != null)
             {
                 characterRepository.Dispose();
             }

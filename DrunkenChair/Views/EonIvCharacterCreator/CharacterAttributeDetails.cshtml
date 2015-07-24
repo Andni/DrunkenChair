@@ -39,7 +39,7 @@
 
 <h2>CharacterAttributeDetails</h2>
 
-@using (Html.BeginForm("CharacterAttributeDetails", "EonIvCharacterCreator", FormMethod.Post, new { style = "display:inline-block; width:50% float: left" }))
+@using (Html.BeginForm("CharacterAttributeDetails", "EonIvCharacterCreator", FormMethod.Post, new { style = "display:inline-block; width:50% float: left", @class = "left-column" }))
 {
     @Html.AntiForgeryToken()
 
@@ -134,7 +134,7 @@
     </div>
 }
 
-    <div id="CharacterPreview" style="display: inline; float: right">
+    <div id="CharacterPreview" class="right-column" style="display: inline; float: right">
         @Html.DisplayFor(m => m.Preview)
     </div>
 

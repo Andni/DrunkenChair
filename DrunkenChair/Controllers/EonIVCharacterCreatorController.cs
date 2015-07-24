@@ -35,16 +35,25 @@ namespace Niklasson.DrunkenChair.Controllers
 
         private CharacterBasicStepViewModel GetBlankCharacterBasicDetails()
         {
-            return new CharacterBasicStepViewModel()
+            var ccs = GetCharacterConstructionSite();
+            
+            var selectedArchetype = characterGenerationService.Archetypes.FirstOrDefault();
+            var selectedEnvironment = characterGenerationService.Environments.FirstOrDefault();
+            var selectedRace = characterGenerationService.Races.FirstOrDefault();
+            ccs.SetCharacterBasicDetails(new CharacterBasicChoices
+                {
+                    SelectedArchetype = selectedArchetype,
+                    SelectedEnvironment = selectedEnvironment,
+                    SelectedRace = selectedRace
+                },
+                characterGenerationService);
+            return new CharacterBasicStepViewModel(ccs)
             {
                 Archetypes = new SelectList(characterGenerationService.Archetypes),
                 Environments = new SelectList(characterGenerationService.Environments),
                 Races = new SelectList(characterGenerationService.Races),
-                CharacterPreview = new CharacterPreview(GetCharacterConstructionSite()),
 
-                SelectedArchetype = characterGenerationService.Archetypes.FirstOrDefault(),
-                SelectedEnvironment = characterGenerationService.Environments.FirstOrDefault(),
-                SelectedRace = characterGenerationService.Races.FirstOrDefault()
+                CharacterPreview = new CharacterPreview(GetCharacterConstructionSite()),
             };
         }
 
@@ -145,13 +154,13 @@ namespace Niklasson.DrunkenChair.Controllers
         }
 
         [HttpGet]
-        public ActionResult GetCharacterPreview(string selectedArchetype, string selectedRace, string selectedEnvironment)
+        public ActionResult GetCharacterPreview(string archetype, string race, string environment)
         {
             var choices = new CharacterBasicChoices()
             {
-                SelectedArchetype = selectedArchetype,
-                SelectedEnvironment = selectedEnvironment,
-                SelectedRace = selectedEnvironment
+                SelectedArchetype = archetype,
+                SelectedEnvironment = environment,
+                SelectedRace = race
             };
             var ccs = GetCharacterConstructionSite();
             ccs.SetCharacterBasicDetails(choices, characterGenerationService);

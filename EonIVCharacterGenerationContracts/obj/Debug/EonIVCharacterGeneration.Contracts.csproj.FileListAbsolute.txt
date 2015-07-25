@@ -1,7 +1,0 @@
-D:\Documents\Development\Projects\DrunkenChair\EonIVCharacterGenerationContracts\bin\Debug\NiklassonToolbox.dll
-D:\Documents\Development\Projects\DrunkenChair\EonIVCharacterGenerationContracts\bin\Debug\NiklassonToolbox.pdb
-D:\Documents\Development\Projects\DrunkenChair\EonIVCharacterGenerationContracts\obj\Debug\EonIVCharacterGeneration.Contracts.csprojResolveAssemblyReference.cache
-D:\Documents\Development\Projects\DrunkenChair\EonIVCharacterGenerationContracts\bin\Debug\EonIVCharacterGeneration.dll
-D:\Documents\Development\Projects\DrunkenChair\EonIVCharacterGenerationContracts\bin\Debug\EonIVCharacterGeneration.pdb
-D:\Documents\Development\Projects\DrunkenChair\EonIVCharacterGenerationContracts\obj\Debug\EonIVCharacterGeneration.dll
-D:\Documents\Development\Projects\DrunkenChair\EonIVCharacterGenerationContracts\obj\Debug\EonIVCharacterGeneration.pdb

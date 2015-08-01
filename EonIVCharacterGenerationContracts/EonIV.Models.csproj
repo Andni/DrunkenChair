@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="BusinessObjects\BaseItem.cs" />
     <Compile Include="BusinessObjects\CharacterData.cs" />
+    <Compile Include="BusinessObjects\CharacterSheet.cs" />
     <Compile Include="BusinessObjects\ResourceOptions.cs" />
     <Compile Include="BusinessObjects\RuleBookEventSet.cs" />
     <Compile Include="BusinessObjects\CharacterGenerationData.cs" />
@@ -76,7 +77,6 @@
     <Compile Include="BusinessObjects\Craft.cs" />
     <Compile Include="BusinessObjects\Environment.cs" />
     <Compile Include="BusinessObjects\CharacterModifier.cs" />
-    <Compile Include="BusinessObjects\CharacterSheet.cs" />
     <Compile Include="BusinessObjects\RuleBookEvent.cs" />
     <Compile Include="BusinessObjects\EventResource.cs" />
     <Compile Include="BusinessObjects\EventSkillpoints.cs" />

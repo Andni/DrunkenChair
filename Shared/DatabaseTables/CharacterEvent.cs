@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
-using Niklasson.DrunkenChair.Shared.DatabaseTables;
-
-namespace Niklasson.DrunkenChair.Shared.Character
+namespace Shared.DatabaseTables
 {
     public class CharacterEvent
     {

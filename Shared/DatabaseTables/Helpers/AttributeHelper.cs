@@ -1,11 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using Shared.DataTypes;
 
-using Niklasson.DrunkenChair.Shared.DataTypes;
-using Niklasson.DrunkenChair.Shared.DatabaseTables;
-
-namespace Niklasson.DrunkenChair.Shared.DataTypes
+namespace Shared.DatabaseTables.Helpers
 {
     public static class AttributeHelper
     {

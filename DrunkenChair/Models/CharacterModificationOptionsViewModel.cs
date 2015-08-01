@@ -5,7 +5,7 @@ using System.Web;
 
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Niklasson.EonIV.CharacterGeneration.Contracts;
+using Niklasson.EonIV.Models.BusinessObjects;
 
 namespace Niklasson.DrunkenChair.Models
 {

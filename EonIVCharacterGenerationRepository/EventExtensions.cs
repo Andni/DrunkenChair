@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-
-using Niklasson.EonIV.CharacterGeneration.Contracts;
+using Niklasson.EonIV.Models.BusinessObjects;
 using Niklasson.Toolbox;
 
-namespace Niklasson.EonIV.CharacterGeneration.Repository
+namespace Niklasson.EonIV.DataAccess
 {
     public static class EventExtensions
     {

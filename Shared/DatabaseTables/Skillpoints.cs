@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace Niklasson.DrunkenChair.Shared.DatabaseTables
+namespace Shared.DatabaseTables
 {
     [ComplexType]
     public class Skillpoints

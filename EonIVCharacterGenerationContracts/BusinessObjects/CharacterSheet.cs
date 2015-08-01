@@ -1,15 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-
-using System.Data.Entity;
 using System.ComponentModel.DataAnnotations.Schema;
 
-using Niklasson.EonIV.CharacterGeneration.Contracts;
-using Niklasson.EonIV.CharacterGeneration.BusinessObjects;
-
-namespace Niklasson.EonIV.CharacterGeneration.Contracts
+namespace Niklasson.EonIV.Models.BusinessObjects
 {
     [Table("Character")]
     public class CharacterSheet

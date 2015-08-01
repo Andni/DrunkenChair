@@ -1,8 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-
-namespace Niklasson.EonIV.CharacterGeneration.BusinessObjects
+namespace Niklasson.EonIV.Models.BusinessObjects
 {
     [ComplexType]
     public class CharacterJadedness

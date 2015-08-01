@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Shared.DataTypes;
 
-using Niklasson.DrunkenChair.Shared.DataTypes;
-
-namespace Niklasson.DrunkenChair.Shared.DatabaseTables
+namespace Shared.DatabaseTables
 {
     public enum SpecialSkillCategory
     {

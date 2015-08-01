@@ -1,5 +1,6 @@
-﻿@model Niklasson.EonIV.CharacterGeneration.Contracts.AttributeModification
+﻿@using Niklasson.EonIV.Models.BusinessObjects.Helpers
+@model Niklasson.EonIV.Models.BusinessObjects.AttributeModification
 
-@Html.DisplayFor(m => Niklasson.EonIV.CharacterGeneration.Contracts.AttributeHelper.GetAttributeTranslation(m.Attribute))
+@Html.DisplayFor(m => AttributeHelper.GetAttributeTranslation(m.Attribute))
 @Html.DisplayFor(m => m.Value)
 @Html.DisplayFor(m => m.Condition)

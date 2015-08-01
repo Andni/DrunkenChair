@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Niklasson.DrunkenChair.Shared.DataTypes;
+using System.Linq;
 
-namespace Niklasson.DrunkenChair.Shared.DatabaseTables
+namespace Shared.DatabaseTables
 {
     public class CharacterModificationOptions : IValidatableObject
     {

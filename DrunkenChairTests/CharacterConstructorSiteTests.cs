@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 using Niklasson.DrunkenChair.Models;
+using Niklasson.EonIV.Services;
 
 namespace DrunkenChairTests
 {
@@ -15,8 +16,7 @@ namespace DrunkenChairTests
             e.Name = "new event";
 
             var ccs = new CharacterConstructionSite();
-            ccs.Character.Events.BattlesAndSkirmishes = GetTestEventList();
-
+            
         }
 
         private static List<EventViewModel> GetTestEventList()

@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using Shared.DataTypes;
 
-using Niklasson.DrunkenChair.Shared.DatabaseTables;
-
-namespace Niklasson.DrunkenChair.Shared.DataTypes
+namespace Shared.DatabaseTables
 {
 
     public enum LearningModifier

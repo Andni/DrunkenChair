@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Niklasson.DrunkenChair.Shared.DataTypes
+﻿namespace Shared.DataTypes
 {
     public static class EonIVValue
     {

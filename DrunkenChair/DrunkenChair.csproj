@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -169,7 +170,6 @@
     </Compile>
     <Compile Include="Helpers\DiceRoller.cs" />
     <Compile Include="Helpers\IDiceRoller.cs" />
-    <Compile Include="Helpers\RandomNumberGenerator.cs" />
     <Compile Include="CustomBinders\CharacterModifierModelBinder.cs" />
     <Compile Include="Models\CharacterAttributeStepViewModel.cs" />
     <Compile Include="Models\CharacterBasicStepViewModel.cs" />
@@ -259,7 +259,7 @@
     <Content Include="Views\Shared\DisplayTemplates\CharacterConstructionSite.cshtml" />
     <Content Include="Views\EonIvCharacterCreator\CharacterEventDetails.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\RolledEvents.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\Event.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\RuleBookEvent.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\CharacterModificationOptions.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\SkillModification.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\AttributeModification.cshtml" />
@@ -307,17 +307,17 @@
       <Project>{ace3e00e-475e-4718-9785-0eda5a25958d}</Project>
       <Name>Toolbox</Name>
     </ProjectReference>
-    <ProjectReference Include="..\EonIVCharacterGenerationContracts\EonIVCharacterGeneration.Contracts.csproj">
+    <ProjectReference Include="..\EonIVCharacterGenerationContracts\EonIV.Models.csproj">
       <Project>{06269a13-2b0f-409c-b5de-f636664a3ff3}</Project>
-      <Name>EonIVCharacterGeneration.Contracts</Name>
+      <Name>EonIV.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\EonIVCharacterGenerationRepository\EonIVCharacterGenerationRepository.csproj">
+    <ProjectReference Include="..\EonIVCharacterGenerationRepository\EonIV.DataAccess.csproj">
       <Project>{21a68370-385f-4e2f-b86a-2399b670a7cd}</Project>
-      <Name>EonIVCharacterGenerationRepository</Name>
+      <Name>EonIV.DataAccess</Name>
     </ProjectReference>
-    <ProjectReference Include="..\EonIVCharacterGenerationService\EonIVCharacterGenerationService.csproj">
+    <ProjectReference Include="..\EonIVCharacterGenerationService\EonIV.Service.csproj">
       <Project>{385abe5d-d35e-4df8-a004-4dc4a60c8ba6}</Project>
-      <Name>EonIVCharacterGenerationService</Name>
+      <Name>EonIV.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

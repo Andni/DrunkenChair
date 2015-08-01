@@ -1,23 +1,18 @@
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Niklasson.DrunkenChair.App_Start.NinjectWebCommon), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Niklasson.DrunkenChair.App_Start.NinjectWebCommon), "Stop")]
+using System;
+using System.Web;
+using Microsoft.Web.Infrastructure.DynamicModuleHelper;
+using Niklasson.DrunkenChair;
+using Niklasson.EonIV.DataAccess.Repositories;
+using Niklasson.EonIV.Services;
+using Ninject;
+using Ninject.Web.Common;
+
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(NinjectWebCommon), "Start")]
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(NinjectWebCommon), "Stop")]
 
 
-namespace Niklasson.DrunkenChair.App_Start
+namespace Niklasson.DrunkenChair
 {
-    using System;
-    using System.Web;
-
-    using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-
-    using Ninject;
-    using Ninject.Web.Common;
-
-    using Niklasson.EonIV.CharacterGeneration.Contracts;
-    using Niklasson.EonIV.CharacterGeneration;
-    using Niklasson.EonIV.CharacterGeneration.Service;
-    using Niklasson.EonIV.CharacterGeneration.Repository;
-    using Niklasson.EonIV.CharacterRepository;
-
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();

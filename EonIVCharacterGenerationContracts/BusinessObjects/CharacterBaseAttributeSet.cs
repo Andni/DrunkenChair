@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+using Niklasson.EonIV.Models.DataTypes;
 
-using Niklasson.EonIV.CharacterGeneration.BusinessObjects;
-
-namespace Niklasson.EonIV.CharacterGeneration.Contracts
+namespace Niklasson.EonIV.Models.BusinessObjects
 {
     [ComplexType]
     public class CharacterBaseAttributeSet

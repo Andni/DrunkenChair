@@ -1,6 +1,4 @@
-﻿using Niklasson.EonIV.CharacterGeneration.Contracts;
-
-namespace Niklasson.EonIV.CharacterGeneration.BusinessObjects
+﻿namespace Niklasson.EonIV.Models.BusinessObjects
 {
     public interface ICharacterBasics
     {

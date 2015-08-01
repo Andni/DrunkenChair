@@ -1,5 +1,5 @@
 ﻿
-using Niklasson.EonIV.CharacterGeneration.Contracts;
+using Niklasson.EonIV.Models.BusinessObjects;
 
 namespace Niklasson.DrunkenChair.Controllers
 {

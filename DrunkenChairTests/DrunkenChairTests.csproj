@@ -62,9 +62,13 @@
       <Project>{344d522e-6b95-4ff1-b24d-7629a68e442e}</Project>
       <Name>DrunkenChair</Name>
     </ProjectReference>
-    <ProjectReference Include="..\EonIVCharacterGenerationContracts\EonIVCharacterGeneration.Contracts.csproj">
+    <ProjectReference Include="..\EonIVCharacterGenerationContracts\EonIV.Models.csproj">
       <Project>{06269a13-2b0f-409c-b5de-f636664a3ff3}</Project>
-      <Name>EonIVCharacterGeneration.Contracts</Name>
+      <Name>EonIV.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EonIVCharacterGenerationService\EonIV.Service.csproj">
+      <Project>{385abe5d-d35e-4df8-a004-4dc4a60c8ba6}</Project>
+      <Name>EonIV.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

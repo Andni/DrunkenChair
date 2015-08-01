@@ -9,7 +9,8 @@ using System.Web;
 using System.Web.Mvc;
 
 using Niklasson.DrunkenChair.Models;
-using Niklasson.EonIV.CharacterGeneration.Contracts;
+using Niklasson.EonIV.Models.BusinessObjects;
+using Niklasson.EonIV.Services;
 
 namespace Niklasson.DrunkenChair.Controllers
 {

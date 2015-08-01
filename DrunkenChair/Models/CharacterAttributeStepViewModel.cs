@@ -1,10 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-
-using Niklasson.EonIV.CharacterGeneration;
-using Niklasson.EonIV.CharacterGeneration.Contracts;
-
-using Niklasson.EonIV.CharacterGeneration.BusinessObjects;
+using Niklasson.EonIV.Models;
+using Niklasson.EonIV.Models.BusinessObjects;
 
 namespace Niklasson.DrunkenChair.Models
 {

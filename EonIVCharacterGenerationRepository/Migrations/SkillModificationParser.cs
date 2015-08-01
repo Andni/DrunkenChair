@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Text.RegularExpressions;
+using Niklasson.EonIV.Models.BusinessObjects;
 
-using System.Text.RegularExpressions;
-
-using Niklasson.EonIV.CharacterGeneration.Contracts;
-using Niklasson.DrunkenChair.DatabaseTables;
-
-namespace Niklasson.DrunkenChair.DatabaseTables.Helpers
+namespace Niklasson.EonIV.DataAccess.Migrations
 {
     public class SkillModificationParser : IModificationParser
     {

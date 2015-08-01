@@ -1,8 +1,7 @@
-namespace Niklasson.EonIV.CharacterGeneration.Repository.Migrations
+using System.Data.Entity.Migrations;
+
+namespace Niklasson.EonIV.DataAccess.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class Initial : DbMigration
     {
         public override void Up()

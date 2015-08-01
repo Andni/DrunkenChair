@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Niklasson.DrunkenChair.Models
+﻿namespace Niklasson.DrunkenChair.Models.Helpers
 {
     public static class EonIVValue
     {

@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+using Shared.DataTypes;
 
-using Niklasson.DrunkenChair.Shared.DataTypes;
-using Niklasson.DrunkenChair.Shared;
-
-namespace Niklasson.DrunkenChair.Shared.Character
+namespace Shared.DatabaseTables
 {
     [ComplexType]
     public class CharacterBaseAttributeSet

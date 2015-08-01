@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Niklasson.EonIV.Models.BusinessObjects;
+using Niklasson.EonIV.Models.DataTypes;
 
-using Niklasson.DrunkenChair.Models;
-using Niklasson.EonIV.CharacterGeneration.Contracts;
-
-namespace Niklasson.DrunkenChair.Character
+namespace Niklasson.DrunkenChair.Models
 {
     public interface ICharacterAttributes
     {

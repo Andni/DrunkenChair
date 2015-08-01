@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Niklasson.EonIV.CharacterGeneration.BusinessObjects
+﻿namespace Niklasson.EonIV.Models.BusinessObjects
 {
     public class CharacterEventDetails
     {

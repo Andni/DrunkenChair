@@ -1,18 +1,19 @@
-namespace Niklasson.EonIV.CharacterGeneration.Repository.Migrations
+using System.Data.Entity.Migrations;
+using Niklasson.EonIV.DataAccess.Repositories;
+using Niklasson.EonIV.Models.BusinessObjects;
+using Niklasson.EonIV.Models.DataTypes;
+
+namespace Niklasson.EonIV.DataAccess.Migrations
 {
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
-
-    using Niklasson.EonIV.CharacterGeneration.Contracts;
-
-    using Niklasson.EonIV.CharacterGeneration.Repository;
-    
-    internal sealed class Configuration : DbMigrationsConfiguration<Niklasson.EonIV.CharacterGeneration.Repository.EonIVCharacterGenerationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<EonIVCharacterGenerationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            //if (System.Diagnostics.Debugger.IsAttached == false)
+            //{
+            //    System.Diagnostics.Debugger.Launch();
+            //}
         }
 
         protected override void Seed(EonIVCharacterGenerationDbContext context)

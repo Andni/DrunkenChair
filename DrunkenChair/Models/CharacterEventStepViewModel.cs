@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-
-using Niklasson.EonIV.CharacterGeneration.BusinessObjects;
-using Niklasson.EonIV.CharacterGeneration.Contracts;
+using Niklasson.EonIV.Models.BusinessObjects;
+using Niklasson.EonIV.Services;
 
 namespace Niklasson.DrunkenChair.Models
 {

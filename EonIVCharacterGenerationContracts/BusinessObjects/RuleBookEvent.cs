@@ -1,17 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System.Diagnostics;
-using System.ComponentModel;
-using System.Xml.Serialization;
-using System.IO;
 
-using Niklasson.EonIV.CharacterGeneration.Contracts;
-
-namespace Niklasson.EonIV.CharacterGeneration.Contracts
+namespace Niklasson.EonIV.Models.BusinessObjects
 {
     public enum EventCategory
     {

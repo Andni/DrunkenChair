@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Niklasson.EonIV.CharacterGeneration.Contracts;
+using System.Text;
 
-namespace Niklasson.EonIV.CharacterGeneration.Contracts
+namespace Niklasson.EonIV.Models.BusinessObjects
 {
     public class CharacterModificationOptions : BaseCharacterModificationOptions
     {
@@ -37,7 +33,7 @@ namespace Niklasson.EonIV.CharacterGeneration.Contracts
 
         public override string ToString()
         {
-            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            StringBuilder sb = new StringBuilder();
             foreach(CharacterModifier m in Alternatives)
             {
                 sb.AppendLine(m.ToString());

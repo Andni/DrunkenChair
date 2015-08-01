@@ -1,9 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-using Niklasson.EonIV.CharacterGeneration.BusinessObjects;
-
-namespace Niklasson.EonIV.CharacterGeneration.Contracts
+namespace Niklasson.EonIV.Models.BusinessObjects
 {
     [ComplexType]
     public class CharacterBasics : ICharacterBasics

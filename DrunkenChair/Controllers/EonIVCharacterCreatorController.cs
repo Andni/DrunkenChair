@@ -9,10 +9,9 @@ using System.Web.Mvc;
 using System.ComponentModel.Composition;
 
 using Niklasson.DrunkenChair.Models;
-using Niklasson.DrunkenChair.Character;
-using Niklasson.EonIV.CharacterGeneration.Contracts;
 using Niklasson.DrunkenChair.Extensions;
-using Niklasson.EonIV.CharacterGeneration.BusinessObjects;
+using Niklasson.EonIV.Models.BusinessObjects;
+using Niklasson.EonIV.Services;
 
 namespace Niklasson.DrunkenChair.Controllers
 {
@@ -133,7 +132,7 @@ namespace Niklasson.DrunkenChair.Controllers
                 if(ModelState.IsValid)
                 {
                     GetCharacterConstructionSite().SetCharacterEventDetails(eventDetails.Events);
-                    return View("CharacterResourceDetials"); //placeholder, should return next view
+                    return View("CharacterResourceDetails"); //placeholder, should return next view
                 }
                 else
                 {   

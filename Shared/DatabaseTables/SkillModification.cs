@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
+using Shared.DataTypes;
 
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-
-using Niklasson.DrunkenChair.Shared.DataTypes;
-using Niklasson.DrunkenChair.Shared.Character;
-
-namespace Niklasson.DrunkenChair.Shared.DatabaseTables
+namespace Shared.DatabaseTables
 {
     public class SkillModification : EonIVCharacterModifier
     {

@@ -5,8 +5,8 @@ using System.Web;
 
 using System.Web.Mvc;
 using System.ComponentModel.DataAnnotations;
-using Niklasson.EonIV.CharacterGeneration.Contracts;
-using Niklasson.EonIV.CharacterGeneration.BusinessObjects;
+using Niklasson.EonIV.Models.BusinessObjects;
+using Niklasson.EonIV.Services;
 
 namespace Niklasson.DrunkenChair.Models
 {

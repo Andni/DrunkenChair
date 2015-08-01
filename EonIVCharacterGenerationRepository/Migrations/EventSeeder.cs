@@ -1,16 +1,12 @@
 ﻿//using System;
+
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-using Niklasson.DrunkenChair.DatabaseTables;
-
-using System.Data.Entity;
 using System.Data.Entity.Migrations;
-using Niklasson.EonIV.CharacterGeneration.Contracts;
-using Niklasson.EonIV.CharacterGeneration.Repository;
+using Niklasson.EonIV.DataAccess.Repositories;
+using Niklasson.EonIV.Models.BusinessObjects;
+using Niklasson.EonIV.Models.DataTypes;
 
-namespace Niklasson.EonIV.CharacterGeneration.Repository.Migrations
+namespace Niklasson.EonIV.DataAccess.Migrations
 {
     public class EventSeeder
     {

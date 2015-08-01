@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Web.Mvc;
 
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace Niklasson.DrunkenChair.Shared.DatabaseTables
+namespace Shared.DatabaseTables
 {
     public abstract class EonIVCharacterModifier// : CharacterModifierBase
     {

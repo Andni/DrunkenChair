@@ -13,7 +13,7 @@
 <h2>Händelser</h2>
 
 
-@using (Html.BeginForm("CharacterEventDetails", "EonIvCharacterCreator", FormMethod.Post, new { style = "display:inline-block; width:50%; float: left", @class = "left-column"}))
+@using (Html.BeginForm("CharacterEventDetails", "EonIvCharacterCreator", FormMethod.Post, new { @class = "left-column"}))
 {
     <div>
         Valfria slag: @Html.DisplayFor(m => m.FreeEventRolls)
@@ -29,7 +29,7 @@
         </div>
     </div>
 }
-    <div id="CharacterPreview" style="display: inline-block; float: right">
+    <div id="CharacterPreview" class="right-column">
         @Html.DisplayFor(m => m.CharacterPreview)
     </div>
 

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace Niklasson.EonIV.CharacterGeneration.Contracts
+namespace Niklasson.EonIV.Models.BusinessObjects
 {
     [ComplexType]
     public class Skillpoints
@@ -17,6 +12,12 @@ namespace Niklasson.EonIV.CharacterGeneration.Contracts
         public int Movement { get; set; }
         public int Wilderness { get; set; }
         public int FreeChoise { get; set; }
+
+        public int Count()
+        {
+            return Battle + Social + Knowledge + Mystic +
+                Movement + Wilderness + FreeChoise;
+        }
 
         public static Skillpoints operator+(Skillpoints lh, Skillpoints rh)
         {

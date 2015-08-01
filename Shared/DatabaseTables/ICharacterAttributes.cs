@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Shared.DataTypes;
 
-using Niklasson.DrunkenChair.Shared.DataTypes;
-
-namespace Niklasson.DrunkenChair.Shared.Character
+namespace Shared.DatabaseTables
 {
     public interface ICharacterAttributes
     {

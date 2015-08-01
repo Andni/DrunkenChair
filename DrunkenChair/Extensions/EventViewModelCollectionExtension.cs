@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 
 using Niklasson.DrunkenChair.Models;
-using Niklasson.EonIV.CharacterGeneration.Contracts;
+using Niklasson.EonIV.Models.BusinessObjects;
 using Niklasson.Toolbox;
 
 

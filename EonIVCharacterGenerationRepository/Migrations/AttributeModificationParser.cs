@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
 using System.Text.RegularExpressions;
+using Niklasson.EonIV.Models.BusinessObjects;
+using Niklasson.EonIV.Models.BusinessObjects.Helpers;
+using Niklasson.Toolbox;
+using Attribute =Niklasson.EonIV.Models.DataTypes.Attribute;
 
-using Niklasson.EonIV.CharacterGeneration.Contracts;
-using Attribute =Niklasson.EonIV.CharacterGeneration.Contracts.Attribute;
-
-using Niklasson.Toolbox.Enumerable;
-
-namespace Niklasson.DrunkenChair.DatabaseTables.Helpers
+namespace Niklasson.EonIV.DataAccess.Migrations
 {
     public class AttributeModificationParser : IAttributeModificationParser
     {

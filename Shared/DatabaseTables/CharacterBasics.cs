@@ -1,10 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-using Niklasson.DrunkenChair.Shared.DatabaseTables;
-using Niklasson.DrunkenChair.Shared.DataTypes;
-
-namespace Niklasson.DrunkenChair.Shared.Character
+namespace Shared.DatabaseTables
 {
     [ComplexType]
     public class CharacterBasics

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Reflection;
 using System.Reflection.Emit;
-using System.ComponentModel;
 using System.Threading;
 
-namespace Finley.Common
+namespace Niklasson.DrunkenChair.Models
 {
     /// <summary>
     /// A Utility class used to merge the properties of heterogenious objects

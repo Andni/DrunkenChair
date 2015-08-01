@@ -1,8 +1,6 @@
-﻿using System;
+﻿using Niklasson.EonIV.Models.BusinessObjects;
 
-using Niklasson.EonIV.CharacterGeneration.Contracts;
-
-namespace Niklasson.DrunkenChair.DatabaseTables.Helpers
+namespace Niklasson.EonIV.DataAccess.Migrations
 {
     interface IModificationParser
     {

@@ -80,6 +80,7 @@ textarea {
     padding: 0px;
     margin: 2%;
     border: 0px;
+    display: inline-block;
 }
 
 .left-column {

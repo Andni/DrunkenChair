@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
 
-
-namespace Niklasson.EonIV.CharacterGeneration.Contracts
+namespace Niklasson.EonIV.Models.BusinessObjects
 {
     [ComplexType]
     public class EventTableRolls
@@ -40,6 +34,13 @@ namespace Niklasson.EonIV.CharacterGeneration.Contracts
             IntrigueAndIlldeads = rolls.IntrigueAndIlldeads;
             KnowledgeAndMysteries = rolls.KnowledgeAndMysteries;
             BattlesAndSkirmishes = rolls.BattlesAndSkirmishes;
+        }
+
+        public int Count()
+        {
+            return TravlesAndAdventures + BattlesAndSkirmishes +
+                KnowledgeAndMysteries + IntrigueAndIlldeads +
+                FreeChoise; 
         }
 
         public static EventTableRolls operator+(EventTableRolls lh, EventTableRolls rh)

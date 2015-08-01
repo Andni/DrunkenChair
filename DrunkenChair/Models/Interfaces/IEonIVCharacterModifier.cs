@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 
 using Niklasson.DrunkenChair.Models;
 //using Niklasson.DrunkenChair.DatabaseTables;
-using Niklasson.EonIV.CharacterGeneration.Contracts;
 
 namespace Niklasson.DrunkenChair.Models.Interfaces
 {

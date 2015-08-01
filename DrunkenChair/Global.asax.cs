@@ -8,8 +8,7 @@ using System.Web.Routing;
 
 using System.Reflection;
 using System.ComponentModel.Composition.Hosting;
-
-using Niklasson.EonIV.CharacterGeneration.Contracts;
+using Niklasson.EonIV.Models.BusinessObjects;
 
 namespace Niklasson.DrunkenChair
 {

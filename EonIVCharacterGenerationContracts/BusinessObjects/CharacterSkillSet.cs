@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using Niklasson.EonIV.Models.DataTypes;
 
-using System.ComponentModel.DataAnnotations.Schema;
-
-using Niklasson.EonIV.CharacterGeneration.Contracts;
-
-namespace Niklasson.EonIV.CharacterGeneration.Contracts
+namespace Niklasson.EonIV.Models.BusinessObjects
 {
     public class CharacterSkillSet : SortedSet<CharacterSkill>
     {

@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Niklasson.EonIV.CharacterGeneration.Contracts;
-using Niklasson.EonIV.CharacterGeneration.Contracts;
 
-namespace Niklasson.EonIV.CharacterGeneration.Contracts
+namespace Niklasson.EonIV.Models.BusinessObjects
 {
     public class Background
     {

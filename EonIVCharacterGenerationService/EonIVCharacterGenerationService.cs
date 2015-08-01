@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using Niklasson.EonIV.Models.BusinessObjects;
+using Niklasson.EonIV.DataAccess.Repositories;
 
-using Niklasson.EonIV.CharacterGeneration.Contracts;
-using Niklasson.EonIV.CharacterGeneration.BusinessObjects;
-
-namespace Niklasson.EonIV.CharacterGeneration.Service
+namespace Niklasson.EonIV.Services
 {
     public class EonIVCharacterGenerationService : IEonIVCharacterGenerationService
     {

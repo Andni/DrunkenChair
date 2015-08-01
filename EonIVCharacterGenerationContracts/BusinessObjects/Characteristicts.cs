@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Niklasson.EonIV.CharacterGeneration.Contracts
+﻿namespace Niklasson.EonIV.Models.BusinessObjects
 {
     public class Characteristicts : SpecialSkill
     {

@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using Shared.DataTypes;
 
-using System.ComponentModel.DataAnnotations.Schema;
-
-using Niklasson.DrunkenChair.Shared.Character;
-
-namespace Niklasson.DrunkenChair.Shared.DataTypes
+namespace Shared.DatabaseTables
 {
     public class CharacterSkills : SortedSet<CharacterSkill>
     {

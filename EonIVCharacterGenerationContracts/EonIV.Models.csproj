@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{06269A13-2B0F-409C-B5DE-F636664A3FF3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Niklasson.EonIV.Models</RootNamespace>
+    <AssemblyName>EonIV.Models</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BusinessObjects\BaseItem.cs" />
+    <Compile Include="BusinessObjects\CharacterData.cs" />
+    <Compile Include="BusinessObjects\ResourceOptions.cs" />
+    <Compile Include="BusinessObjects\RuleBookEventSet.cs" />
+    <Compile Include="BusinessObjects\CharacterGenerationData.cs" />
+    <Compile Include="BusinessObjects\CharacterLanguageSkill.cs" />
+    <Compile Include="BusinessObjects\BaseAttributeDices.cs" />
+    <Compile Include="BusinessObjects\IBaseAttributeDices.cs" />
+    <Compile Include="BusinessObjects\ICharacterBasicChoices.cs" />
+    <Compile Include="BusinessObjects\ICharacterBasics.cs" />
+    <Compile Include="BusinessObjects\ICharacterData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BusinessObjects\CharacterEventDetails.cs" />
+    <Compile Include="CharacterCreationConstants.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BusinessObjects\Archetype.cs" />
+    <Compile Include="BusinessObjects\AttributeModification.cs" />
+    <Compile Include="BusinessObjects\Background.cs" />
+    <Compile Include="BusinessObjects\CharacterAttributeSet.cs" />
+    <Compile Include="BusinessObjects\CharacterBaseAttributeSet.cs" />
+    <Compile Include="BusinessObjects\CharacterBasics.cs" />
+    <Compile Include="BusinessObjects\CharacterEvent.cs" />
+    <Compile Include="BusinessObjects\Characteristicts.cs" />
+    <Compile Include="BusinessObjects\CharacterModificationOptions.cs" />
+    <Compile Include="BusinessObjects\CharacterResource.cs" />
+    <Compile Include="BusinessObjects\CharacterSkill.cs" />
+    <Compile Include="BusinessObjects\CharacterSkillSet.cs" />
+    <Compile Include="BusinessObjects\Craft.cs" />
+    <Compile Include="BusinessObjects\Environment.cs" />
+    <Compile Include="BusinessObjects\CharacterModifier.cs" />
+    <Compile Include="BusinessObjects\CharacterSheet.cs" />
+    <Compile Include="BusinessObjects\RuleBookEvent.cs" />
+    <Compile Include="BusinessObjects\EventResource.cs" />
+    <Compile Include="BusinessObjects\EventSkillpoints.cs" />
+    <Compile Include="BusinessObjects\EventTableRolls.cs" />
+    <Compile Include="BusinessObjects\Expertise.cs" />
+    <Compile Include="BusinessObjects\Helpers\AttributeHelper.cs" />
+    <Compile Include="BusinessObjects\ICharacterAttributes.cs" />
+    <Compile Include="BusinessObjects\IEonIVCharacterModifier.cs" />
+    <Compile Include="BusinessObjects\CharacterJadedness.cs" />
+    <Compile Include="BusinessObjects\Perk.cs" />
+    <Compile Include="BusinessObjects\Race.cs" />
+    <Compile Include="BusinessObjects\Resource.cs" />
+    <Compile Include="BusinessObjects\SkillModification.cs" />
+    <Compile Include="BusinessObjects\Skillpoints.cs" />
+    <Compile Include="BusinessObjects\SpecialSkill.cs" />
+    <Compile Include="CharacterModificationExtensions.cs" />
+    <Compile Include="BusinessObjects\BaseEventSet.cs" />
+    <Compile Include="BusinessObjects\CharacterEventSet.cs" />
+    <Compile Include="BusinessObjects\IBaseEvent.cs" />
+    <Compile Include="BusinessObjects\ICharacterEvent.cs" />
+    <Compile Include="BusinessObjects\IEvent.cs" />
+    <Compile Include="DataTypes\Attributes.cs" />
+    <Compile Include="DataTypes\DiceRollCheck.cs" />
+    <Compile Include="DataTypes\EonIVValue.cs" />
+    <Compile Include="DataTypes\SkillCategory.cs" />
+    <Compile Include="BusinessObjects\CharacterBasicChoises.cs" />
+    <Compile Include="EventExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Toolbox\Toolbox\Toolbox.csproj">
+      <Project>{ace3e00e-475e-4718-9785-0eda5a25958d}</Project>
+      <Name>Toolbox</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
-using Niklasson.EonIV.CharacterGeneration.Contracts;
-
-namespace Niklasson.EonIV.CharacterGeneration.BusinessObjects
+namespace Niklasson.EonIV.Models.BusinessObjects
 {
     public class RuleBookEventSet : BaseEventSet<IRuleBookEvent>
     {

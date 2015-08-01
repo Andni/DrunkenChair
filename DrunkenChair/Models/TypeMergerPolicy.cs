@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Finley.Common
+namespace Niklasson.DrunkenChair.Models
 {
     public class TypeMergerPolicy
     {

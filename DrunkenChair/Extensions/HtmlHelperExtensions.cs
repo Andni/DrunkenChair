@@ -5,10 +5,7 @@ using System.Web.Routing;
 using System;
 
 using System.Web.Mvc.Html;
-
-using Event = Niklasson.EonIV.CharacterGeneration.Contracts.RuleBookEvent;
-
-using Niklasson.EonIV.CharacterGeneration.Contracts;
+using Niklasson.EonIV.Models.BusinessObjects;
 
 namespace Niklasson.DrunkenChair.Extensions
 {
@@ -45,7 +42,7 @@ namespace Niklasson.DrunkenChair.Extensions
             return defaultHtmlAttributes;
         }
 
-        public static MvcHtmlString GenerateEventList(this HtmlHelper helper, IEnumerable<Event> events)
+        public static MvcHtmlString GenerateEventList(this HtmlHelper helper, IEnumerable<RuleBookEvent> events)
         {
             TagBuilder tb = new TagBuilder("dl");
             tb.GenerateId(helper.ViewData.ModelMetadata.DisplayName);

@@ -1,0 +1,11 @@
+﻿.attribute-spinner
+{
+    width: 60px;
+    display: inline;
+    color: transparent;
+    text-shadow: 0 0 0 gray;    
+}
+
+.col-md-2{
+    width: 32%
+}

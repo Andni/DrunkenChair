@@ -1,0 +1,41 @@
+﻿@model Niklasson.DrunkenChair.Models.CharacterEventStepViewModel
+
+@{
+    ViewBag.Title = "Händelser";
+}
+
+@section AddToHead
+{
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+}
+
+
+<h2>Händelser</h2>
+
+
+@using (Html.BeginForm("CharacterEventDetails", "EonIvCharacterCreator", FormMethod.Post, new { @class = "left-column"}))
+{
+    <div>
+        Valfria slag: @Html.DisplayFor(m => m.FreeEventRolls)
+        @Html.HiddenFor(m => m.FreeEventRolls)
+        @Html.ValidationMessageFor(m => m.FreeEventRolls)
+        @Html.EditorFor(m => m.Events)
+    </div>   
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" name="previousButton" value="Previous" class="btn btn-default" />
+            <input type="submit" name="nextButton" value="Next" class="btn btn-default" />
+        </div>
+    </div>
+}
+    <div id="CharacterPreview" class="right-column">
+        @Html.DisplayFor(m => m.CharacterPreview)
+    </div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript" src="@Url.Content("~/js/EonIvCharacters/characterEventDetails.js")"></script>
+
+}

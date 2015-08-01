@@ -1,0 +1,28 @@
+﻿@model Niklasson.EonIV.Models.BusinessObjects.CharacterSheet
+
+<div id="CharacterBasics">
+    <table>
+        <caption>Rollformulär</caption>
+        <tbody>
+            <tr>
+                <td>@Html.LabelFor(m => m.Race)</td>
+                <td>@Html.DisplayFor(m => m.Race)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.Environment)</td>
+                <td>@Html.DisplayFor(m => m.Environment)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.Archetype)</td>
+                <td>@Html.DisplayFor(m => m.Archetype)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.Background)</td>
+                <td>@Html.DisplayFor(m => m.Background)</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div id="CharacterAttributes">
+    @Html.DisplayFor(model => model.Attributes)
+</div>

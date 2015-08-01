@@ -1,0 +1,23 @@
+﻿@model  Niklasson.EonIV.Models.BusinessObjects.CharacterGenerationData
+<table>
+    <caption>Meta data</caption>
+    <tbody>
+        <tr>
+            @{ if (Model.EventRolls.Count() != 0)
+                {
+                    <td>@Html.DisplayFor(model => model.EventRolls)</td>
+                }
+            }
+            @{ if (Model.Skillpoints.Count() != 0)
+                {
+                    <td>@Html.DisplayFor(model => model.Skillpoints)</td>
+               }
+            }
+            @{ if (Model.ResourceOptions.Count() != 0)
+                {
+                    <td>@Html.DisplayFor(model => model.ResourceOptions)</td>
+                }
+            }
+        </tr>
+    </tbody>
+</table>

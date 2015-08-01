@@ -1,0 +1,36 @@
+﻿@model Niklasson.DrunkenChair.Models.CharacterBasicStepViewModel
+
+@{
+    var labelAttributes = new { @class = "control-label col-md-2" };
+    var dropdownListAttributes = new { @class = "form-control", data_action_url = Url.Action("GetCharacterPreview", "EonIvCharacterCreator") };
+}
+
+<div>
+    @Html.LabelFor(model => model.SelectedBackground, htmlAttributes: labelAttributes)
+    @Html.RadioButtonFor(model => model.SelectedBackground, dropdownListAttributes)
+    @Html.ValidationMessageFor(m => m.SelectedBackground)
+</div>
+
+<br />
+
+<div>
+    @Html.LabelFor(model => model.SelectedArchetype, htmlAttributes: labelAttributes)
+    @Html.DropDownListFor(model => model.SelectedArchetype, Model.Archetypes, dropdownListAttributes)
+    @Html.ValidationMessageFor(m => m.SelectedArchetype)
+</div>
+
+<br />
+
+<div>
+    @Html.LabelFor(model => model.SelectedRace, htmlAttributes: labelAttributes)
+    @Html.DropDownListFor(model => model.SelectedRace, Model.Races, dropdownListAttributes)
+    @Html.ValidationMessageFor(m => m.SelectedRace)
+</div>
+
+<br />
+
+<div>
+    @Html.LabelFor(model => model.SelectedEnvironment, htmlAttributes: labelAttributes)
+    @Html.DropDownListFor(model => model.SelectedEnvironment, Model.Environments, dropdownListAttributes)
+    @Html.ValidationMessageFor(m => m.SelectedEnvironment)
+</div>

@@ -32,7 +32,7 @@ namespace Niklasson.DrunkenChair.Models
             this.Description = e.Description;
             this.Number = e.Number;
             this.Name = e.Name;
-            foreach (CharacterModificationOptions o in e.ModificationOptions)
+            foreach (CharacterModificationOptions o in e.CharacterModifiers)
             {
                 ModificationOptions.Add(o);
             }

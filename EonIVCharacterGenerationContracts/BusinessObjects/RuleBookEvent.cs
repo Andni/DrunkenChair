@@ -23,8 +23,10 @@ namespace Niklasson.EonIV.Models.BusinessObjects
         public string Name { get; set; }
         [Required]
         public string Description { get; set; }
-        [Required]
-        public virtual List<CharacterModificationOptions> ModificationOptions { get; set; }
+        //[Required]
+        //public virtual List<CharacterModificationOptions> ModificationOptions { get; set; }
+        
+        public virtual CharacterModifierContainer CharacterModifiers { get; set; }
 
         public CharacterEvent ToCharacterEvent()
         {

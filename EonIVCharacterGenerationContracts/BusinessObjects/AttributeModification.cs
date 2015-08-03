@@ -5,7 +5,6 @@ namespace Niklasson.EonIV.Models.BusinessObjects
 {
     public class AttributeModification : CharacterModifier
     {
-        public int ID { get; set; }
         public Attribute Attribute { get; set; }
         public int Value { get; set; }
         

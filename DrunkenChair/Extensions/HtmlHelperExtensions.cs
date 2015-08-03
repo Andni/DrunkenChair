@@ -41,28 +41,5 @@ namespace Niklasson.DrunkenChair.Extensions
 
             return defaultHtmlAttributes;
         }
-
-        public static MvcHtmlString GenerateEventList(this HtmlHelper helper, IEnumerable<RuleBookEvent> events)
-        {
-            TagBuilder tb = new TagBuilder("dl");
-            tb.GenerateId(helper.ViewData.ModelMetadata.DisplayName);
-
-            System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            foreach(RuleBookEvent e in events)
-            {
-                sb.Append(String.Format("<dt>{0} {1}</dt><br/>", e.Number, e.Name));
-
-                sb.Append(String.Format("<dd>{0}[", e.Description, e.ModificationOptions));
-
-                foreach(CharacterModificationOptions mod in e.ModificationOptions)
-                {
-                    sb.Append(String.Format("<br/>", mod.Alternatives));
-                }
-                sb.Append("]</dd>");
-            }
-            tb.InnerHtml = sb.ToString();
-            var tmp = tb.ToString(TagRenderMode.Normal);
-            return new MvcHtmlString(tmp);
-        }
     }
 }

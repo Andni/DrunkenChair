@@ -53,16 +53,18 @@
     <Compile Include="Migrations\201507071033412_Initial.Designer.cs">
       <DependentUpon>201507071033412_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201508031422061_characterModifierRework.cs" />
+    <Compile Include="Migrations\201508031422061_characterModifierRework.Designer.cs">
+      <DependentUpon>201508031422061_characterModifierRework.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AttributeModificationParser.cs" />
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Migrations\EventParser.cs" />
     <Compile Include="Migrations\EventSeeder.cs" />
     <Compile Include="Migrations\ExpertiseParser.cs" />
     <Compile Include="Migrations\IAttributeModificationParser.cs" />
     <Compile Include="Migrations\IEventProvider.cs" />
     <Compile Include="Migrations\IModificationParser.cs" />
     <Compile Include="Migrations\ISkillPointModificationParser.cs" />
-    <Compile Include="Migrations\ModificationListParser.cs" />
     <Compile Include="Migrations\SkillModificationParser.cs" />
     <Compile Include="Migrations\SkillPointModificationParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,14 +74,12 @@
     <Compile Include="Repositories\EonIVCharacterRepository.cs" />
     <Compile Include="Repositories\IEonIVCharacterGenerationTables.cs" />
     <Compile Include="Repositories\Parsers\AttributeModificationParser.cs" />
-    <Compile Include="Repositories\Parsers\EventParser.cs" />
     <Compile Include="Repositories\Parsers\EventSeeder.cs" />
     <Compile Include="Repositories\Parsers\ExpertiseParser.cs" />
     <Compile Include="Repositories\Parsers\IAttributeModificationParser.cs" />
     <Compile Include="Repositories\Parsers\IEventProvider.cs" />
     <Compile Include="Repositories\Parsers\IModificationParser.cs" />
     <Compile Include="Repositories\Parsers\ISkillPointModificationParser.cs" />
-    <Compile Include="Repositories\Parsers\ModificationListParser.cs" />
     <Compile Include="Repositories\Parsers\SkillModificationParser.cs" />
     <Compile Include="Repositories\Parsers\SkillPointModificationParser.cs" />
   </ItemGroup>
@@ -100,6 +100,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201507071033412_Initial.resx">
       <DependentUpon>201507071033412_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508031422061_characterModifierRework.resx">
+      <DependentUpon>201508031422061_characterModifierRework.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -14,31 +14,21 @@ namespace Niklasson.EonIV.Models.BusinessObjects
         [NotMapped]
         public int? SelectedAlternativeIndex { get; set; }
 
-        public static implicit operator CharacterModificationOptions(CharacterModifier mod)
-        {
-            return new CharacterModificationOptions() { Alternatives = new List<CharacterModifier> { mod } };
-        }
+        //public static implicit operator CharacterModificationOptions(CharacterModifier mod)
+        //{
+        //    return new CharacterModificationOptions() { Alternatives = new List<CharacterModifier> { mod } };
+        //}
 
     }
 
     public class BaseCharacterModificationOptions
     {
         public virtual RuleBookEvent Events { get; set; }
-        public virtual List<CharacterModifier> Alternatives { get; set; }
+        //public virtual List<CharacterModifier> Alternatives { get; set; }
         
         public BaseCharacterModificationOptions()
         {
-            Alternatives = new List<CharacterModifier>();
-        }
-
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            foreach(CharacterModifier m in Alternatives)
-            {
-                sb.AppendLine(m.ToString());
-            }
-            return sb.ToString();
+            //Alternatives = new List<CharacterModifier>();
         }
     }
 }   

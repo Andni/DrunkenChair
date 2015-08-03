@@ -31,27 +31,21 @@ namespace Niklasson.EonIV.DataAccess.Repositories.Parsers
                         som skett. Det kan röra sig om brutna
                         ben, eldskador eller bettskador från ett
                         vilt djur.",
-                    ModificationOptions = new List<CharacterModificationOptions>()
+                    CharacterModifiers = new CharacterModifierContainer()
                     {
-                        new CharacterModificationOptions()
+                        new CharacterModifierContainer()
                         {
-                            Alternatives = new List<CharacterModifier>()
-                            {
-                                new AttributeModification() {Attribute = Attribute.STRENGTH, Value = -2},
-                                new AttributeModification() {Attribute = Attribute.STAMINA, Value = -2},
-                                new AttributeModification() {Attribute = Attribute.MOVEMENT, Value = -2},
-                                new AttributeModification() {Attribute = Attribute.PERCEPTION, Value = -2}
-                            }
+                            new AttributeModification() {Attribute = Attribute.STRENGTH, Value = -2},
+                            new AttributeModification() {Attribute = Attribute.STAMINA, Value = -2},
+                            new AttributeModification() {Attribute = Attribute.MOVEMENT, Value = -2},
+                            new AttributeModification() {Attribute = Attribute.PERCEPTION, Value = -2}   
                         },
-                        new CharacterModificationOptions()
+                        new CharacterModifierContainer()
                         {
-                            Alternatives = new List<CharacterModifier>()
-                            {
-                                new AttributeModification() {Attribute = Attribute.WILL, Value = EonIVValue.DiceToValue(1)},
-                                new AttributeModification() {Attribute = Attribute.PSYCHE, Value = EonIVValue.DiceToValue(1)},
-                                new AttributeModification() {Attribute = Attribute.WISDOM, Value = EonIVValue.DiceToValue(1)},
-                                new AttributeModification() {Attribute = Attribute.CHARISMA, Value = EonIVValue.DiceToValue(1)}
-                            }
+                            new AttributeModification() {Attribute = Attribute.WILL, Value = EonIVValue.DiceToValue(1)},
+                            new AttributeModification() {Attribute = Attribute.PSYCHE, Value = EonIVValue.DiceToValue(1)},
+                            new AttributeModification() {Attribute = Attribute.WISDOM, Value = EonIVValue.DiceToValue(1)},
+                            new AttributeModification() {Attribute = Attribute.CHARISMA, Value = EonIVValue.DiceToValue(1)}
                         }
                     }
                 },
@@ -64,7 +58,7 @@ namespace Niklasson.EonIV.DataAccess.Repositories.Parsers
                         sig olika tekniker för att kontrollera andningen
                         och kan till och med spela död
                         under en kortare tid.",
-                    ModificationOptions = new List<CharacterModificationOptions>()
+                    CharacterModifiers = new CharacterModifierContainer()
                     {
                             new Expertise() { Name = "Spela död"},
                             new Perk() { Description = @"Ignorerar efterverkningen Omtöcknad 
@@ -85,23 +79,17 @@ namespace Niklasson.EonIV.DataAccess.Repositories.Parsers
                         som skett. Det kan röra sig om brutna
                         ben, eldskador eller bettskador från ett
                         vilt djur.",
-                    ModificationOptions = new List<CharacterModificationOptions>()
+                    CharacterModifiers = new CharacterModifierContainer()
                     {
-                        new CharacterModificationOptions()
+                        new CharacterModifierContainer()
                         {
-                            Alternatives = new List<CharacterModifier>()
-                            {
-                                new AttributeModification() {Attribute = Attribute.MOVEMENT, Value = -2},
-                                new AttributeModification() {Attribute = Attribute.PERCEPTION, Value = -2}
-                            }
+                            new AttributeModification() {Attribute = Attribute.MOVEMENT, Value = -2},
+                            new AttributeModification() {Attribute = Attribute.PERCEPTION, Value = -2}
                         },
-                        new CharacterModificationOptions()
+                        new CharacterModifierContainer()
                         {
-                            Alternatives = new List<CharacterModifier>()
-                            {
-                                new AttributeModification() {Attribute = Attribute.WILL, Value = EonIVValue.DiceToValue(1)},
-                                new AttributeModification() {Attribute = Attribute.PSYCHE, Value = EonIVValue.DiceToValue(1)},
-                            }
+                            new AttributeModification() {Attribute = Attribute.WILL, Value = EonIVValue.DiceToValue(1)},
+                            new AttributeModification() {Attribute = Attribute.PSYCHE, Value = EonIVValue.DiceToValue(1)},
                         }
                     }
                 }

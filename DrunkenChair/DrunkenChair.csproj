@@ -48,6 +48,9 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NiklassonToolbox">
+      <HintPath>..\..\Toolbox\Toolbox\bin\Debug\NiklassonToolbox.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
@@ -275,6 +278,7 @@
     <Content Include="Views\Shared\DisplayTemplates\CharacterBasics.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\EventTableRolls.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Skillpoints.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\CharacterModifierContainerSingleChoice.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -291,10 +295,6 @@
     <Folder Include="General\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Toolbox\Toolbox\Toolbox.csproj">
-      <Project>{ace3e00e-475e-4718-9785-0eda5a25958d}</Project>
-      <Name>Toolbox</Name>
-    </ProjectReference>
     <ProjectReference Include="..\EonIVCharacterGenerationContracts\EonIV.Models.csproj">
       <Project>{06269a13-2b0f-409c-b5de-f636664a3ff3}</Project>
       <Name>EonIV.Models</Name>

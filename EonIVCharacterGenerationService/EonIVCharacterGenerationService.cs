@@ -31,16 +31,16 @@ namespace Niklasson.EonIV.Services
         public IEnumerable<Background> Backgrounds
         {
             get
-	        {
-		        return generationTables.Backgrounds.OrderBy(t => t.Name);
+            {
+                return generationTables.Backgrounds.OrderBy(t => t.Name);
             }
         }
         
         public IEnumerable<Environment> Environments
         {
             get
-	        {
-		        return generationTables.Environments.OrderBy(t => t.Name);
+            {
+                return generationTables.Environments.OrderBy(t => t.Name);
             }
         }
         public IEnumerable<Race> Races
@@ -52,7 +52,7 @@ namespace Niklasson.EonIV.Services
         }
 
         public IEnumerable<IRuleBookEvent> RollEvents(EventTableRolls eventRolls)
-       { 
+        { 
             var events = new List<IRuleBookEvent>();
 
             var v = GetRandomEvents(EventCategory.TRAVELS_AND_ADVENTURES, eventRolls.TravlesAndAdventures);

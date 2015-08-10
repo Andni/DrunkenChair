@@ -1,6 +1,6 @@
 ﻿namespace Niklasson.EonIV.Models.BusinessObjects
 {
-    public class ResourceOptions : BaseCharacterModificationOptions
+    public class ResourceOptions
     {
         public int Count()
         {

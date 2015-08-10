@@ -4,6 +4,7 @@ using System.Linq;
 using Random = System.Random;
 using Niklasson.EonIV.DataAccess;
 using Niklasson.EonIV.Models.BusinessObjects;
+using Niklasson.EonIV.Models;
 
 namespace Niklasson.EonIV.DataAccess.Repositories
 {

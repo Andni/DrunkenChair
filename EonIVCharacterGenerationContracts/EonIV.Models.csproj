@@ -47,6 +47,7 @@
     <Compile Include="BusinessObjects\CharacterModifierContainer.cs" />
     <Compile Include="BusinessObjects\BaseItem.cs" />
     <Compile Include="BusinessObjects\CharacterData.cs" />
+    <Compile Include="BusinessObjects\CharacterModifierContainerSingleChoice.cs" />
     <Compile Include="BusinessObjects\CharacterSheet.cs" />
     <Compile Include="BusinessObjects\ResourceOptions.cs" />
     <Compile Include="BusinessObjects\RuleBookEventSet.cs" />
@@ -71,7 +72,6 @@
     <Compile Include="BusinessObjects\CharacterBasics.cs" />
     <Compile Include="BusinessObjects\CharacterEvent.cs" />
     <Compile Include="BusinessObjects\Characteristicts.cs" />
-    <Compile Include="BusinessObjects\CharacterModificationOptions.cs" />
     <Compile Include="BusinessObjects\CharacterResource.cs" />
     <Compile Include="BusinessObjects\CharacterSkill.cs" />
     <Compile Include="BusinessObjects\CharacterSkillSet.cs" />
@@ -106,12 +106,7 @@
     <Compile Include="BusinessObjects\CharacterBasicChoises.cs" />
     <Compile Include="EventExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Toolbox\Toolbox\Toolbox.csproj">
-      <Project>{ace3e00e-475e-4718-9785-0eda5a25958d}</Project>
-      <Name>Toolbox</Name>
-    </ProjectReference>
+    <Compile Include="RandomNumberGenerator.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

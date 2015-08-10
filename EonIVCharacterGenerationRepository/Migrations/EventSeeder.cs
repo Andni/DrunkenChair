@@ -10,16 +10,10 @@ namespace Niklasson.EonIV.DataAccess.Migrations
 {
     public class EventSeeder
     {
-
-        public void ParseEventsFromFile()
-        {
-
-        }
-
         public static void SeedEvents(EonIVCharacterGenerationDbContext context)
         {
             context.Events.AddOrUpdate(
-                e => e.Id,
+                e => new {e.Category, e.Number},
                 new RuleBookEvent()
                 {
                     Category = EventCategory.TRAVELS_AND_ADVENTURES,
@@ -31,18 +25,17 @@ namespace Niklasson.EonIV.DataAccess.Migrations
                         som skett. Det kan röra sig om brutna
                         ben, eldskador eller bettskador från ett
                         vilt djur.",
-                    CharacterModifiers = new CharacterModifierContainer()
+                    CharacterModifiers = new CharacterModifierContainerSingleChoice()
                     {
-                        new CharacterModifierContainer()
+                        new CharacterModifierContainerSingleChoice()
                         {
                             new AttributeModification() {Attribute = Attribute.STRENGTH, Value = -2},
                             new AttributeModification() {Attribute = Attribute.STAMINA, Value = -2},
                             new AttributeModification() {Attribute = Attribute.MOVEMENT, Value = -2},
                             new AttributeModification() {Attribute = Attribute.PERCEPTION, Value = -2}
                         },
-                        new CharacterModifierContainer()
+                        new CharacterModifierContainerSingleChoice()
                         {
-                         
                             new AttributeModification() {Attribute = Attribute.WILL, Value = EonIVValue.DiceToValue(1)},
                             new AttributeModification() {Attribute = Attribute.PSYCHE, Value = EonIVValue.DiceToValue(1)},
                             new AttributeModification() {Attribute = Attribute.WISDOM, Value = EonIVValue.DiceToValue(1)},
@@ -59,7 +52,7 @@ namespace Niklasson.EonIV.DataAccess.Migrations
                         sig olika tekniker för att kontrollera andningen
                         och kan till och med spela död
                         under en kortare tid.",
-                    CharacterModifiers = new CharacterModifierContainer()
+                    CharacterModifiers = new CharacterModifierContainerSingleChoice()
                     {
                             new Expertise() { Name = "Spela död"},
                             new Perk() { Description = @"Ignorerar efterverkningen Omtöcknad 
@@ -74,20 +67,15 @@ namespace Niklasson.EonIV.DataAccess.Migrations
                     Category = EventCategory.INTRIGUE_AND_MISDEADS,
                     Number = 564,
                     Name = "Test event",
-                    Description = @"Rollpersonen har varit
-                        med om en allvarlig olycka och kroppen
-                        har blivit sargad och bär märken efter det
-                        som skett. Det kan röra sig om brutna
-                        ben, eldskador eller bettskador från ett
-                        vilt djur.",
-                    CharacterModifiers = new CharacterModifierContainer()
+                    Description = @"Rollpersonen har varit med om en allvarlig olycka och kroppenhar blivit sargad och bär märken efter det som skett. Det kan röra sig om brutna ben, eldskador eller bettskador från ett vilt djur.",
+                    CharacterModifiers = new CharacterModifierContainerSingleChoice()
                     {
-                        new CharacterModifierContainer()
+                        new CharacterModifierContainerSingleChoice()
                         {
                             new AttributeModification() {Attribute = Attribute.MOVEMENT, Value = -2},
                             new AttributeModification() {Attribute = Attribute.PERCEPTION, Value = -2}
                         },
-                        new CharacterModifierContainer()
+                        new CharacterModifierContainerSingleChoice()
                         {
                             new AttributeModification() {Attribute = Attribute.WILL, Value = EonIVValue.DiceToValue(1)},
                             new AttributeModification() {Attribute = Attribute.PSYCHE, Value = EonIVValue.DiceToValue(1)},

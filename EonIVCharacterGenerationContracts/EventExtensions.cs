@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Niklasson.EonIV.Models.BusinessObjects;
-using Niklasson.Toolbox;
 
 namespace Niklasson.EonIV.Models
 {

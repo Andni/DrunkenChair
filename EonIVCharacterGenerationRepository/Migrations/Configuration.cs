@@ -10,6 +10,7 @@ namespace Niklasson.EonIV.DataAccess.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+
             //if (System.Diagnostics.Debugger.IsAttached == false)
             //{
             //    System.Diagnostics.Debugger.Launch();

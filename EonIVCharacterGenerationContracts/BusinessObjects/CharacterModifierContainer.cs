@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Deployment.Internal;
+using System.Runtime.CompilerServices;
 
 namespace Niklasson.EonIV.Models.BusinessObjects
 {
@@ -10,18 +12,20 @@ namespace Niklasson.EonIV.Models.BusinessObjects
     {
         [Key]
         public int ID { get; set; }
+
+        public virtual CharacterModifierNode Parent { get; set; }
            
     }
 
-    public class CharacterModifierContainer : CharacterModifierNode, IEnumerable<CharacterModifierNode>
+    public abstract class CharacterModifierContainer : CharacterModifierNode, IEnumerable<CharacterModifierNode>
     {
         private List<CharacterModifierNode> children = new List<CharacterModifierNode>();
-        public virtual ICollection<CharacterModifierNode> Children {
+        public virtual IList<CharacterModifierNode> Children {
             get { return children; }
         }
         
         
-    public void Add(CharacterModifierNode node)
+        public void Add(CharacterModifierNode node)
         {
             Children.Add(node);
         }
@@ -35,5 +39,7 @@ namespace Niklasson.EonIV.Models.BusinessObjects
         {
             return GetEnumerator();
         }
+
+        public CharacterModifierNode this[int key] => children[key];
     }
 }

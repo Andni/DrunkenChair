@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using Niklasson.EonIV.DataAccess.Helpers;
 using Niklasson.EonIV.Models.BusinessObjects;
 using Niklasson.EonIV.Models.BusinessObjects.Helpers;
-using Niklasson.Toolbox;
 using Attribute = Niklasson.EonIV.Models.DataTypes.Attribute;
+using Environment = System.Environment;
 
 namespace Niklasson.EonIV.DataAccess.Repositories.Parsers
 {
@@ -15,7 +16,7 @@ namespace Niklasson.EonIV.DataAccess.Repositories.Parsers
         
         public CharacterModifier TryParse(string text)
         {
-            var textWithoutLinebreaks = text.Replace(System.Environment.NewLine, "");
+            var textWithoutLinebreaks = text.Replace(Environment.NewLine, "");
             var lc = textWithoutLinebreaks.ToLower();
             var match = regex.Match(lc);
             

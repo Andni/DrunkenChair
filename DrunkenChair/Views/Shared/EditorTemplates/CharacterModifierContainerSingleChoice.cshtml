@@ -1,0 +1,21 @@
+﻿@model Niklasson.EonIV.Models.BusinessObjects.CharacterModifierContainerSingleChoice
+
+<div>
+    @{
+        if (Model.Children.Count == 1)
+        {
+            <br />
+            @Html.DisplayFor(m => m.Children)
+        }
+        else
+        {
+            for (int i = 0; i < Model.Children.Count(); i++)
+            {
+                <br />
+                @Html.RadioButtonFor(m => m.SelectedAlternativeIndex, i) @Model.Children[i].ToString()
+            }
+            @Html.ValidationMessageFor(m => m.SelectedAlternativeIndex)
+        }
+        @Html.EditorFor(m => m.Children)
+    }
+</div>

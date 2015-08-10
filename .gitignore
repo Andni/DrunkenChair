@@ -214,5 +214,5 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
-DrunkenChair/App_Data/Niklasson.EonIV.DataAccess.EonIVCharacterGenerationDbContext.ldf
+DrunkenChair/App_Data
 .vs/config/applicationhost.config

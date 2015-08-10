@@ -58,9 +58,9 @@
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DrunkenChair\DrunkenChair.csproj">
+    <ProjectReference Include="..\DrunkenChair\EonIV.Web.csproj">
       <Project>{344d522e-6b95-4ff1-b24d-7629a68e442e}</Project>
-      <Name>DrunkenChair</Name>
+      <Name>EonIV.Web</Name>
     </ProjectReference>
     <ProjectReference Include="..\EonIVCharacterGenerationContracts\EonIV.Models.csproj">
       <Project>{06269a13-2b0f-409c-b5de-f636664a3ff3}</Project>

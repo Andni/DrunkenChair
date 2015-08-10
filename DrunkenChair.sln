@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrunkenChair", "DrunkenChair\DrunkenChair.csproj", "{344D522E-6B95-4FF1-B24D-7629A68E442E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EonIV.Web", "DrunkenChair\EonIV.Web.csproj", "{344D522E-6B95-4FF1-B24D-7629A68E442E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrunkenChairTests", "DrunkenChairTests\DrunkenChairTests.csproj", "{DAAFCC8E-B685-4172-AAA4-599E8F3AE28B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EonIV.Tests", "DrunkenChairTests\EonIV.Tests.csproj", "{DAAFCC8E-B685-4172-AAA4-599E8F3AE28B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EonIV.DataAccess", "EonIVCharacterGenerationRepository\EonIV.DataAccess.csproj", "{21A68370-385F-4E2F-B86A-2399B670A7CD}"
 EndProject

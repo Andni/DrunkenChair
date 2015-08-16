@@ -75,15 +75,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EonIVCharacterGenerationContracts\EonIV.Models.csproj">
-      <Project>{06269a13-2b0f-409c-b5de-f636664a3ff3}</Project>
-      <Name>EonIV.Models</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Migrations\201508101200566_Initial.resx">
       <DependentUpon>201508101200566_Initial.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EonIV.Models\EonIV.Models.csproj">
+      <Project>{06269a13-2b0f-409c-b5de-f636664a3ff3}</Project>
+      <Name>EonIV.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

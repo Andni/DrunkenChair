@@ -12,9 +12,6 @@ namespace Niklasson.EonIV.Models.BusinessObjects
         
         public virtual CharacterModifierContainer ParentContainer { get; set; }
 
-        [HiddenInput(DisplayValue = false)]
-        public string ConcreteModelType { get { return this.GetType().ToString(); } }
-
         public string Condition { get; set; }
         //public virtual CharacterModificationOptions CharacterModificationOptions { get; set; }
 

@@ -132,7 +132,7 @@ namespace Niklasson.DrunkenChair.Controllers
                 if(ModelState.IsValid)
                 {
                     GetCharacterConstructionSite().SetCharacterEventDetails(eventDetails.Events);
-                    return View("CharacterResourceDetails"); //placeholder, should return next view
+                    return View("UnderConstruction"); //placeholder, should return next view
                 }
                 else
                 {   
@@ -208,22 +208,7 @@ namespace Niklasson.DrunkenChair.Controllers
         {
             Session.Remove(sessionStringCharacter);
         }
-
-        //public bool RerollEvent(EventCategory cat, int index)
-        //{
-        //    var character = GetCharacterConstructionSite().Character;
-        //    if (index + 1 > character.Events[cat].Count())
-        //    {
-        //        return false;
-        //    }
-        //    else
-        //    {
-        //        var newEvent = new EventViewModel(characterGenerationService.GetRandomEvent(cat));
-        //        character.Events[cat][index] = newEvent;
-        //        return true;
-        //    }
-        //}
-
+        
         private CharacterBasics ResolveCharacterBasics(CharacterBasicStepViewModel details)
         {
             CharacterBasics res = new CharacterBasics();
@@ -236,18 +221,5 @@ namespace Niklasson.DrunkenChair.Controllers
             return res;
         }
 
-        //public IEnumerable<IRuleBookEvent> RollEvents(EventTableRolls rolls)
-        //{
-        //    var character = GetCharacterConstructionSite().Character;
-        //    var events = characterGenerationService.RollEvents(rolls);
-        //    return events;
-        //}
-
-        //public EventViewModel AddRandomEvent(EventCategory eventCategory, IEonIVCharacterGenerationService service)
-        //{
-        //    var ev = new EventViewModel(service.GetRandomEvent(eventCategory));
-        //    GetCharacterConstructionSite().Character.Events.Add(ev);
-        //    return ev;
-        //}
     }
 }

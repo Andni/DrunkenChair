@@ -6,5 +6,10 @@ namespace Niklasson.EonIV.Models.BusinessObjects
     {
         public int Value { get; set; }
         public SkillCategory ApplicableCategory { get; set; }
+
+        public override string ConcreteModelType
+        {
+            get { return typeof (EventSkillpoints).ToString(); }
+        }
     }
 }

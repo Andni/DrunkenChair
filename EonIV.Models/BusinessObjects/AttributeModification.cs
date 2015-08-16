@@ -7,7 +7,12 @@ namespace Niklasson.EonIV.Models.BusinessObjects
     {
         public Attribute Attribute { get; set; }
         public int Value { get; set; }
-        
+
+        public override string ConcreteModelType
+        {
+            get { return typeof (AttributeModification).ToString(); }
+        }
+
         public void AddDie(int dies = 1)
         {
             Value += dies * EonIVValue.valuePerD6;

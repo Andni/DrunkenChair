@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-
-using System.Reflection;
-using System.ComponentModel.Composition.Hosting;
+using Niklasson.DrunkenChair;
 using Niklasson.EonIV.Models.BusinessObjects;
+using Niklasson.EonIV.Web.CustomBinders;
 
-namespace Niklasson.DrunkenChair
+namespace Niklasson.EonIV.Web
 {
     public class MvcApplication : System.Web.HttpApplication
     {
@@ -21,13 +16,13 @@ namespace Niklasson.DrunkenChair
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            ModelBinders.Binders.Add(
-                typeof(CharacterModifier),
-                new Niklasson.DrunkenChair.CustomBinders.CharacterModifierModelBinder());
+            ModelBinders.Binders.Add(typeof(CharacterModifierNode), new CharacterModifierNodeModelBinder());
+            ModelBinders.Binders.Add(typeof(IRuleBookEvent), new IRuleBookEventModelBinder());
         }
 
         protected void Application_EndRequest()
-        {//here breakpoint
+        {
+            //breakpoint here
             // under debug mode you can find the exceptions at code: this.Context.AllErrors
         }
     }

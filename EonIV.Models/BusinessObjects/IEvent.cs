@@ -4,7 +4,7 @@ namespace Niklasson.EonIV.Models.BusinessObjects
 {
     public interface IRuleBookEvent : IBaseEvent
     {
-        CharacterModifierContainerSingleChoice CharacterModifiers { get; set; }
+        CharacterModifierContainer CharacterModifiers { get; set; }
         CharacterEvent ToCharacterEvent();
     }
 }

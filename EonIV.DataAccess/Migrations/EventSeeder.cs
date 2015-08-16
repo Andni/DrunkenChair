@@ -25,7 +25,7 @@ namespace Niklasson.EonIV.DataAccess.Migrations
                         som skett. Det kan röra sig om brutna
                         ben, eldskador eller bettskador från ett
                         vilt djur.",
-                    CharacterModifiers = new CharacterModifierContainerSingleChoice()
+                    CharacterModifiers = new CharacterModifierContainer()
                     {
                         new CharacterModifierContainerSingleChoice()
                         {
@@ -52,7 +52,7 @@ namespace Niklasson.EonIV.DataAccess.Migrations
                         sig olika tekniker för att kontrollera andningen
                         och kan till och med spela död
                         under en kortare tid.",
-                    CharacterModifiers = new CharacterModifierContainerSingleChoice()
+                    CharacterModifiers = new CharacterModifierContainer()
                     {
                             new Expertise() { Name = "Spela död"},
                             new Perk() { Description = @"Ignorerar efterverkningen Omtöcknad 
@@ -68,7 +68,7 @@ namespace Niklasson.EonIV.DataAccess.Migrations
                     Number = 564,
                     Name = "Test event",
                     Description = @"Rollpersonen har varit med om en allvarlig olycka och kroppenhar blivit sargad och bär märken efter det som skett. Det kan röra sig om brutna ben, eldskador eller bettskador från ett vilt djur.",
-                    CharacterModifiers = new CharacterModifierContainerSingleChoice()
+                    CharacterModifiers = new CharacterModifierContainer()
                     {
                         new CharacterModifierContainerSingleChoice()
                         {

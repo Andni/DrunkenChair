@@ -9,5 +9,11 @@ namespace Niklasson.EonIV.Models.BusinessObjects
         public string Name { get; set; }
         public DiceRollCheck Value { get; set; }
         public LearningModifier LearningModifier { get; set; }
+
+        public override string ConcreteModelType
+        {
+            get { return typeof (SkillModification).ToString(); }
+        }
+
     }
 }

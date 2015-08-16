@@ -26,7 +26,7 @@ namespace Niklasson.EonIV.Models.BusinessObjects
         //[Required]
         //public virtual List<CharacterModificationOptions> ModificationOptions { get; set; }
         
-        public virtual CharacterModifierContainerSingleChoice CharacterModifiers { get; set; }
+        public virtual CharacterModifierContainer CharacterModifiers { get; set; }
 
         public CharacterEvent ToCharacterEvent()
         {

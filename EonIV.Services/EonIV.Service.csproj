@@ -47,13 +47,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EonIVCharacterGenerationContracts\EonIV.Models.csproj">
-      <Project>{06269a13-2b0f-409c-b5de-f636664a3ff3}</Project>
-      <Name>EonIV.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\EonIVCharacterGenerationRepository\EonIV.DataAccess.csproj">
+    <ProjectReference Include="..\EonIV.DataAccess\EonIV.DataAccess.csproj">
       <Project>{21a68370-385f-4e2f-b86a-2399b670a7cd}</Project>
       <Name>EonIV.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EonIV.Models\EonIV.Models.csproj">
+      <Project>{06269a13-2b0f-409c-b5de-f636664a3ff3}</Project>
+      <Name>EonIV.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

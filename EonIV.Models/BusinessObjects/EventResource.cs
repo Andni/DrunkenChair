@@ -2,5 +2,9 @@
 {
     public class EventResource : CharacterModifier
     {
+        public override string ConcreteModelType
+        {
+            get { return typeof (EventResource).ToString(); }
+        }
     }
 }

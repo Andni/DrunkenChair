@@ -83,6 +83,7 @@
       <HintPath>..\packages\Microsoft.Composition.1.0.30\lib\portable-net45+win8+wp8+wpa81\System.Composition.TypedParts.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -164,6 +165,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RandomEventRequest.cs" />
     <Compile Include="Controllers\RerollEventRequest.cs" />
+    <Compile Include="CustomBinders\CharacterModifierNodeModelBinder.cs" />
+    <Compile Include="CustomBinders\IRuleBookEventModelBinder.cs" />
     <Compile Include="Extensions\HtmlButtonExtension.cs" />
     <Compile Include="Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="Extensions\ObjectPropertyMergerHelper.cs" />
@@ -172,7 +175,6 @@
     </Compile>
     <Compile Include="Helpers\DiceRoller.cs" />
     <Compile Include="Helpers\IDiceRoller.cs" />
-    <Compile Include="CustomBinders\CharacterModifierModelBinder.cs" />
     <Compile Include="Models\CharacterAttributeStepViewModel.cs" />
     <Compile Include="Models\CharacterBasicStepViewModel.cs" />
     <Compile Include="Models\CharacterEventStepViewModel.cs" />
@@ -279,6 +281,8 @@
     <Content Include="Views\Shared\DisplayTemplates\EventTableRolls.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Skillpoints.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\CharacterModifierContainerSingleChoice.cshtml" />
+    <Content Include="Views\EonIvCharacterCreator\UnderConstruction.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\CharacterModifierContainer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -295,15 +299,15 @@
     <Folder Include="General\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EonIVCharacterGenerationContracts\EonIV.Models.csproj">
-      <Project>{06269a13-2b0f-409c-b5de-f636664a3ff3}</Project>
-      <Name>EonIV.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\EonIVCharacterGenerationRepository\EonIV.DataAccess.csproj">
+    <ProjectReference Include="..\EonIV.DataAccess\EonIV.DataAccess.csproj">
       <Project>{21a68370-385f-4e2f-b86a-2399b670a7cd}</Project>
       <Name>EonIV.DataAccess</Name>
     </ProjectReference>
-    <ProjectReference Include="..\EonIVCharacterGenerationService\EonIV.Service.csproj">
+    <ProjectReference Include="..\EonIV.Models\EonIV.Models.csproj">
+      <Project>{06269a13-2b0f-409c-b5de-f636664a3ff3}</Project>
+      <Name>EonIV.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EonIV.Services\EonIV.Service.csproj">
       <Project>{385abe5d-d35e-4df8-a004-4dc4a60c8ba6}</Project>
       <Name>EonIV.Service</Name>
     </ProjectReference>

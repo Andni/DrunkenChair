@@ -1,14 +1,16 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.Serialization;
+using System.Web.Script.Serialization;
 using Niklasson.EonIV.Models.DataTypes;
 
 namespace Niklasson.EonIV.Models.BusinessObjects
 {
 
     [ComplexType]
-    [System.Runtime.Serialization.DataContract(IsReference=true)]
+    [DataContract(IsReference=true)]
     public class CharacterAttributeSet : CharacterBaseAttributeSet, ICharacterAttributes
     {
-        [System.Web.Script.Serialization.ScriptIgnore]
+        [ScriptIgnore]
         public CharacterBaseAttributeSet Base { get { return (CharacterBaseAttributeSet)this; }
             set {
                 if(value == null)

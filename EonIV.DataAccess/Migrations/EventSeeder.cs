@@ -1,8 +1,6 @@
 ﻿//using System;
 
-using System.Collections.Generic;
 using System.Data.Entity.Migrations;
-using Niklasson.EonIV.DataAccess.Repositories;
 using Niklasson.EonIV.Models.BusinessObjects;
 using Niklasson.EonIV.Models.DataTypes;
 
@@ -54,7 +52,7 @@ namespace Niklasson.EonIV.DataAccess.Migrations
                         under en kortare tid.",
                     CharacterModifiers = new CharacterModifierContainer()
                     {
-                            new Expertise() { Name = "Spela död"},
+                            new Expertise() { SkillName = "Spela död"},
                             new Perk() { Description = @"Ignorerar efterverkningen Omtöcknad 
                                 (se sida 176) och får en bonus på
                                 +3T6 när det gäller att hålla andan eller

@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Web;
+using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Niklasson.DrunkenChair;
@@ -7,7 +8,7 @@ using Niklasson.EonIV.Web.CustomBinders;
 
 namespace Niklasson.EonIV.Web
 {
-    public class MvcApplication : System.Web.HttpApplication
+    public class MvcApplication : HttpApplication
     {
         protected void Application_Start()
         {
@@ -18,6 +19,10 @@ namespace Niklasson.EonIV.Web
 
             ModelBinders.Binders.Add(typeof(CharacterModifierNode), new CharacterModifierNodeModelBinder());
             ModelBinders.Binders.Add(typeof(IRuleBookEvent), new IRuleBookEventModelBinder());
+
+
+            //Database.SetInitializer(new DropCreateDatabaseAlways<EonIVCharacterGenerationDbContext>());
+            //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<EonIVCharacterGenerationDbContext>());
         }
 
         protected void Application_EndRequest()

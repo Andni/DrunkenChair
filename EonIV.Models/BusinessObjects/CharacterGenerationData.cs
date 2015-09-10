@@ -1,4 +1,7 @@
-﻿namespace Niklasson.EonIV.Models.BusinessObjects
+﻿using System.Linq;
+using System.Collections.Generic;
+
+namespace Niklasson.EonIV.Models.BusinessObjects
 {
     public class CharacterGenerationData
     {
@@ -7,8 +10,6 @@
         public CharacterGenerationData(CharacterData character)
         {
             this.character = character;
-            Skillpoints = new Skillpoints();
-            ResourceOptions = new ResourceOptions();
         }
 
         public EventTableRolls EventRolls
@@ -19,12 +20,21 @@
             }
         }
 
-        public ResourceOptions ResourceOptions { get; }
         public CharacterBaseAttributeSet BonusDiceDistribution { get; set; }
-        public Skillpoints Skillpoints { get; set; }
 
+        public Skillpoints Skillpoints {
+            get
+            {
+                var e = character.Events.GetModifiers();
 
-        public int FreeEventRolls { get; set; }
-
+                List<CategorySkillPoints> eventSkillpoints = new List<CategorySkillPoints>();
+                if (e != null)
+                {
+                    eventSkillpoints = e.Where(x => x is CategorySkillPoints).Cast<CategorySkillPoints>().ToList();
+                }
+                return character.Basics.Archetype.Skillpoints + character.Basics.Environment.Skillpoints
+                    + eventSkillpoints;
+            }
+        }
     }
 }

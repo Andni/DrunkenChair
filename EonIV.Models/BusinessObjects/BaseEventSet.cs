@@ -45,7 +45,7 @@ namespace Niklasson.EonIV.Models.BusinessObjects
             }
         }
 
-        public bool Add(T evnt)
+        public virtual bool Add(T evnt)
         {
             if (evnt.Category != EventCategory.UNCATEGORIZED)
             {

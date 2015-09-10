@@ -6,11 +6,11 @@ namespace Niklasson.EonIV.Web.CustomBinders
 {
     public class IRuleBookEventModelBinder : DefaultModelBinder
     {
-        public override object BindModel(ControllerContext controllerContext, System.Web.Mvc.ModelBindingContext bindingContext)
+        public override object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
         {
             var type = typeof(RuleBookEvent);
             var model = Activator.CreateInstance(type);
-            bindingContext.ModelMetadata = System.Web.Mvc.ModelMetadataProviders.Current.GetMetadataForType(() => model, type);
+            bindingContext.ModelMetadata = ModelMetadataProviders.Current.GetMetadataForType(() => model, type);
 
             return base.BindModel(controllerContext, bindingContext);
         }

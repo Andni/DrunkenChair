@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Deployment.Internal;
-using System.Runtime.CompilerServices;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Text;
 using System.Web.Mvc;
 
 namespace Niklasson.EonIV.Models.BusinessObjects
@@ -16,25 +15,35 @@ namespace Niklasson.EonIV.Models.BusinessObjects
 
         [HiddenInput(DisplayValue = false)]
         public abstract string ConcreteModelType { get; }
+        
+        public int? ParentNodeId{ get; set; }
 
+        [ForeignKey("ParentNodeId")]
         public virtual CharacterModifierNode Parent { get; set; }
-           
     }
 
     public class CharacterModifierContainer : CharacterModifierNode, IEnumerable<CharacterModifierNode>
     {
-        private List<CharacterModifierNode> children = new List<CharacterModifierNode>();
-        public virtual IList<CharacterModifierNode> Children {
-            get { return children; }
-        }
-        
+        //private List<CharacterModifierNode> children = new List<CharacterModifierNode>();
+
+        [ForeignKey("ParentNodeId")]
+        public virtual List<CharacterModifierNode> Children
+        {
+            //get { return children; }
+            get; set;
+        } = new List<CharacterModifierNode>();
+
         public override string ConcreteModelType {
             get { return typeof(CharacterModifierContainer).ToString(); }
         }
 
         public void Add(CharacterModifierNode node)
         {
-            Children.Add(node);
+            if (node != null)
+            {
+                node.Parent = this;
+                Children.Add(node);
+            }
         }
 
         public IEnumerator<CharacterModifierNode> GetEnumerator()
@@ -47,6 +56,6 @@ namespace Niklasson.EonIV.Models.BusinessObjects
             return GetEnumerator();
         }
 
-        public CharacterModifierNode this[int key] => children[key];
+        public CharacterModifierNode this[int key] => Children[key];
     }
 }

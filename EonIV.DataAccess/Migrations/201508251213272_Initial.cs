@@ -1,8 +1,7 @@
+using System.Data.Entity.Migrations;
+
 namespace Niklasson.EonIV.DataAccess.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class Initial : DbMigration
     {
         public override void Up()
@@ -25,22 +24,27 @@ namespace Niklasson.EonIV.DataAccess.Migrations
                 c => new
                     {
                         Name = c.String(nullable: false, maxLength: 128),
+                        Number = c.Int(nullable: false),
                         Description = c.String(),
                         EventRolls_TravlesAndAdventures = c.Int(nullable: false),
                         EventRolls_IntrigueAndIlldeads = c.Int(nullable: false),
                         EventRolls_KnowledgeAndMysteries = c.Int(nullable: false),
                         EventRolls_BattlesAndSkirmishes = c.Int(nullable: false),
                         EventRolls_FreeChoise = c.Int(nullable: false),
+                        Modifications_ID = c.Int(),
                     })
-                .PrimaryKey(t => t.Name);
+                .PrimaryKey(t => t.Name)
+                .ForeignKey("dbo.CharacterModifierNodes", t => t.Modifications_ID)
+                .Index(t => t.Modifications_ID);
             
             CreateTable(
                 "dbo.CharacterModifierNodes",
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
+                        AbsoluteIdentifier = c.String(),
+                        ParentNodeId = c.Int(),
                         Condition = c.String(),
-                        SelectedAlternativeIndex = c.Int(),
                         Attribute = c.Int(),
                         Value = c.Int(),
                         Value1 = c.Int(),
@@ -49,21 +53,13 @@ namespace Niklasson.EonIV.DataAccess.Migrations
                         Name = c.String(),
                         Value_Value = c.Int(),
                         LearningModifier = c.Int(),
+                        Category = c.Int(),
+                        Points = c.Int(),
                         Discriminator = c.String(nullable: false, maxLength: 128),
-                        Parent_ID = c.Int(),
-                        CharacterModifierContainer_ID = c.Int(),
-                        ParentContainer_ID = c.Int(),
-                        Background_Name = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.CharacterModifierNodes", t => t.Parent_ID)
-                .ForeignKey("dbo.CharacterModifierNodes", t => t.CharacterModifierContainer_ID)
-                .ForeignKey("dbo.CharacterModifierNodes", t => t.ParentContainer_ID)
-                .ForeignKey("dbo.Backgrounds", t => t.Background_Name)
-                .Index(t => t.Parent_ID)
-                .Index(t => t.CharacterModifierContainer_ID)
-                .Index(t => t.ParentContainer_ID)
-                .Index(t => t.Background_Name);
+                .ForeignKey("dbo.CharacterModifierNodes", t => t.ParentNodeId)
+                .Index(t => t.ParentNodeId);
             
             CreateTable(
                 "dbo.Environments",
@@ -127,15 +123,11 @@ namespace Niklasson.EonIV.DataAccess.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.RuleBookEvents", "CharacterModifiers_ID", "dbo.CharacterModifierNodes");
-            DropForeignKey("dbo.CharacterModifierNodes", "Background_Name", "dbo.Backgrounds");
-            DropForeignKey("dbo.CharacterModifierNodes", "ParentContainer_ID", "dbo.CharacterModifierNodes");
-            DropForeignKey("dbo.CharacterModifierNodes", "CharacterModifierContainer_ID", "dbo.CharacterModifierNodes");
-            DropForeignKey("dbo.CharacterModifierNodes", "Parent_ID", "dbo.CharacterModifierNodes");
+            DropForeignKey("dbo.Backgrounds", "Modifications_ID", "dbo.CharacterModifierNodes");
+            DropForeignKey("dbo.CharacterModifierNodes", "ParentNodeId", "dbo.CharacterModifierNodes");
             DropIndex("dbo.RuleBookEvents", new[] { "CharacterModifiers_ID" });
-            DropIndex("dbo.CharacterModifierNodes", new[] { "Background_Name" });
-            DropIndex("dbo.CharacterModifierNodes", new[] { "ParentContainer_ID" });
-            DropIndex("dbo.CharacterModifierNodes", new[] { "CharacterModifierContainer_ID" });
-            DropIndex("dbo.CharacterModifierNodes", new[] { "Parent_ID" });
+            DropIndex("dbo.CharacterModifierNodes", new[] { "ParentNodeId" });
+            DropIndex("dbo.Backgrounds", new[] { "Modifications_ID" });
             DropTable("dbo.Races");
             DropTable("dbo.RuleBookEvents");
             DropTable("dbo.Environments");

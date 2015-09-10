@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.RegularExpressions;
 
 namespace Niklasson.EonIV.Models.DataTypes
 {
@@ -7,7 +8,7 @@ namespace Niklasson.EonIV.Models.DataTypes
     public class DiceRollCheck
     {
 
-        private int valuePerD6 = EonIVValue.valuePerD6;
+        private static readonly int valuePerD6 = EonIVValue.valuePerD6;
 
         public int UnlimitedDice6
         {
@@ -16,15 +17,23 @@ namespace Niklasson.EonIV.Models.DataTypes
                 return Value / valuePerD6;
             }
         }
+
+        public int Roll()
+        {
+            return ObT6Roller.Instance.Roll(UnlimitedDice6) + Bonus;
+        }
+
         public int Bonus {
             get
             {
                 return this.Value % valuePerD6;
             }
         }
+
         public int Value { get; set; }
 
-        public DiceRollCheck() : this(0) {}
+        public DiceRollCheck() { }
+
 
         public DiceRollCheck(int value)
         {
@@ -38,7 +47,7 @@ namespace Niklasson.EonIV.Models.DataTypes
 
         public DiceRollCheck(string str)
         {
-            System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex(@"(?<d6>\d+)([TDtd]6)?(\+(?<bonus>\d+))?");
+            Regex regex = new Regex(@"(?<d6>\d+)([TDtd]6)?(\+(?<bonus>\d+))?");
             var res = regex.Match(str);
             if(res.Groups["d6"].Success && res.Groups["bonus"].Success)
             {

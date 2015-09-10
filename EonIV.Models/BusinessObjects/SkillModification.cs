@@ -6,7 +6,7 @@ namespace Niklasson.EonIV.Models.BusinessObjects
     public class SkillModification : CharacterModifier
     {
         [Required]
-        public string Name { get; set; }
+        public string SkillName { get; set; }
         public DiceRollCheck Value { get; set; }
         public LearningModifier LearningModifier { get; set; }
 

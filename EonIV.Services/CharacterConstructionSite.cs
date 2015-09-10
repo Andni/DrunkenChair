@@ -7,11 +7,9 @@ namespace Niklasson.EonIV.Services
     public class CharacterConstructionSite
     {
         private CharacterData characterData = new CharacterData();
-        private CharacterGenerationData characterGenerationData;
-
+        
         public CharacterConstructionSite()
         {
-            characterGenerationData = new CharacterGenerationData(characterData);
         }
 
         public EventTableRolls GetCharacterEventRolls(){
@@ -44,7 +42,7 @@ namespace Niklasson.EonIV.Services
 
         public CharacterGenerationData GetGenerationData()
         {
-            return characterGenerationData;
+            return new CharacterGenerationData(characterData);
         }
 
         public bool RerollEvent(EventCategory cat, int index, IEonIVCharacterGenerationService characterGenerationService)
@@ -60,11 +58,6 @@ namespace Niklasson.EonIV.Services
                 return true;
             }
         }
-
-        //public void RollEvents(IEonIVCharacterGenerationService service)
-        //{
-        //    character.RolledEvents = service.RollEvents(character.Scaffolding.EventRolls);
-        //}
 
         public IRuleBookEvent AddRandomEvent(EventCategory eventCategory, IEonIVCharacterGenerationService service)
         {

@@ -1,5 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 using Niklasson.EonIV.Models.BusinessObjects;
+using Environment = System.Environment;
 
 namespace Niklasson.EonIV.DataAccess.Repositories.Parsers
 {
@@ -14,7 +15,7 @@ namespace Niklasson.EonIV.DataAccess.Repositories.Parsers
         public CharacterModifier TryParse(string text)
         {
             CharacterModifier res = null;
-            var textWithoutLinebreaks = text.Replace(System.Environment.NewLine, " ");
+            var textWithoutLinebreaks = text.Replace(Environment.NewLine, " ");
             var lc = textWithoutLinebreaks.ToLower();
 
 

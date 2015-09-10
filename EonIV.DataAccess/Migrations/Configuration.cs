@@ -1,5 +1,6 @@
+using System.Collections.Generic;
 using System.Data.Entity.Migrations;
-using Niklasson.EonIV.DataAccess.Repositories;
+using System.Diagnostics;
 using Niklasson.EonIV.Models.BusinessObjects;
 using Niklasson.EonIV.Models.DataTypes;
 
@@ -11,59 +12,38 @@ namespace Niklasson.EonIV.DataAccess.Migrations
         {
             AutomaticMigrationsEnabled = true;
 
-            //if (System.Diagnostics.Debugger.IsAttached == false)
+            //if (Debugger.IsAttached == false)
             //{
-            //    System.Diagnostics.Debugger.Launch();
+            //    Debugger.Launch();
             //}
         }
 
         protected override void Seed(EonIVCharacterGenerationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
-
+            
+            SeedBackgrounds(context);
             SeedArchetypes(context);
             SeedRaces(context);
             SeedEnvironments(context);
-            EventSeeder.SeedEvents(context);
-            //SeedConstants(context);
+            EventSeeder.SeedEvents(context);            
+        }
+        
+        private void SeedBackgrounds(EonIVCharacterGenerationDbContext context)
+        {
+            //seed background modifiers
+     //       var root = CharacterModifierNodes.GetBackgroundCharacterModifier();
+            //var list = root.Cast<CharacterModifierNode>();
+              //  .ToList();
 
-            //context.Event2.AddOrUpdate(
-            //        a => a.Name,
-            //        new Event2
-            //        {
-            //            Name = "event2 1",
-            //            Category = EventCategory.BATTLES_AND_SKIRMISHES,
-            //            Description = "aoeuaoeuaoeua",
-            //            Number = 1,
-            //            Modifiers = 
-            //            {
-            //                new AttributeModification()
-            //                {
-            //                    Attribute = Attribute.AGILITY,
-            //                    Value = 2
-            //                },
-            //                new EonIVCharacterModifierSelector()
-            //                {
-            //                    Alternatives = 
-            //                    {
-            //                        new AttributeModification() {Attribute = Attribute.CHARISMA, Value = 3},
-            //                        new AttributeModification() {Attribute = Attribute.PERCEPTION, Value = 3}
-            //                    }
-            //                }
-            //            }
-            //        }
-            //    );
+    //        SeedModifierNodes(context, root, new NodeTagGenerator("B"));
+            
+            foreach (var b in Backgrounds.GetBackgrounds())
+            {
+//                b.Modifications = null;
+                context.Backgrounds.AddOrUpdate(x => x.Name, b);
+  //              b.ModificationContainerId = root[b.Number - 1].ID;
+            }
         }
 
         private void SeedArchetypes(EonIVCharacterGenerationDbContext context)
@@ -95,7 +75,7 @@ namespace Niklasson.EonIV.DataAccess.Migrations
                         Wisdom = new DiceRollCheck(1, 0),
                         Charisma = new DiceRollCheck(1, 3)
                     },
-                    Perks = "Flexible"
+                    Perks = null
                 },
 
                 new Race
@@ -112,7 +92,7 @@ namespace Niklasson.EonIV.DataAccess.Migrations
                         Wisdom = new DiceRollCheck(2, 2),
                         Charisma = new DiceRollCheck(2, 2),
                     },
-                    Perks = "A plan within a plan"
+                    Perks = null
                 }
             );
         }

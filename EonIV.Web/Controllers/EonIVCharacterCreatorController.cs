@@ -1,15 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Net;
-using System.Web;
 using System.Web.Mvc;
-
-using System.ComponentModel.Composition;
-
+using System.Web.Script.Serialization;
 using Niklasson.DrunkenChair.Models;
-using Niklasson.DrunkenChair.Extensions;
 using Niklasson.EonIV.Models.BusinessObjects;
 using Niklasson.EonIV.Services;
 
@@ -17,7 +10,7 @@ namespace Niklasson.DrunkenChair.Controllers
 {
     public class EonIVCharacterCreatorController : Controller
     {
-        private IEonIVCharacterGenerationService characterGenerationService;
+        private readonly IEonIVCharacterGenerationService characterGenerationService;
         
         public EonIVCharacterCreatorController(IEonIVCharacterGenerationService service)
         {
@@ -46,11 +39,13 @@ namespace Niklasson.DrunkenChair.Controllers
                     SelectedRace = selectedRace
                 },
                 characterGenerationService);
+
             return new CharacterBasicStepViewModel(ccs)
             {
                 Archetypes = new SelectList(characterGenerationService.Archetypes),
                 Environments = new SelectList(characterGenerationService.Environments),
                 Races = new SelectList(characterGenerationService.Races),
+                Backgrounds = new List<Background>(characterGenerationService.GetRandomBackgrounds(2)),
 
                 CharacterPreview = new CharacterPreview(GetCharacterConstructionSite()),
             };
@@ -181,7 +176,7 @@ namespace Niklasson.DrunkenChair.Controllers
                 Wisdom = wis,
                 Charisma = cha
             };
-            res.Data = new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(atr);
+            res.Data = new JavaScriptSerializer().Serialize(atr);
             res.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
             return res;
         }
@@ -191,7 +186,7 @@ namespace Niklasson.DrunkenChair.Controllers
         {
             var result = new JsonResult();
             var ev = GetCharacterConstructionSite().AddRandomEvent(request.EventCategory, characterGenerationService);
-            result.Data = new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(ev);
+            result.Data = new JavaScriptSerializer().Serialize(ev);
             return result;
         }
 

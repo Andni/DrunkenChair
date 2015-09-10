@@ -7,12 +7,22 @@ namespace Niklasson.EonIV.DataAccess
 {
     public class EonIVCharacterGenerationDbContext : DbContext
     {
+        public DbSet<CharacterModifierNode> CharacterModifierNodes{ get; set; }
         public DbSet<Archetype> Archetypes { get; set; }
         public DbSet<Race> Races { get; set; }
         public DbSet<Environment> Environments { get; set; }
         public DbSet<RuleBookEvent> Events { get; set; }
         public DbSet<Background> Backgrounds { get; set; }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            //modelBuilder.Entity<Background>().HasOptional(b => b.Modifications);
+
+            //modelBuilder.Entity<CharacterModifierNode>()
+            //    .HasOptional(n => n.Parent);
+
+            modelBuilder.Entity<RuleBookEvent>().HasOptional(e => e.CharacterModifiers);
+        }
 
 
         /// <summary>

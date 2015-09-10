@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Niklasson.EonIV.Models.BusinessObjects;
-using Environment = Niklasson.EonIV.Models.BusinessObjects.Environment;
 
 namespace Niklasson.EonIV.Services
 {
@@ -16,7 +14,7 @@ namespace Niklasson.EonIV.Services
         IEnumerable<IRuleBookEvent> RollEvents(EventTableRolls eventRolls);
 
         IRuleBookEvent GetRandomEvent(EventCategory cat);
-
+        ICollection<Background> GetRandomBackgrounds(int count);
         CharacterBasics ResolveBasicChoices(ICharacterBasicChoices basics);
 
         //Type GetObjecType(string typeString);

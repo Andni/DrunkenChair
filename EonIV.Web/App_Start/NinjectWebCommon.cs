@@ -6,9 +6,10 @@ using Niklasson.EonIV.DataAccess.Repositories;
 using Niklasson.EonIV.Services;
 using Ninject;
 using Ninject.Web.Common;
+using WebActivatorEx;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(NinjectWebCommon), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(NinjectWebCommon), "Stop")]
+[assembly: ApplicationShutdownMethod(typeof(NinjectWebCommon), "Stop")]
 
 
 namespace Niklasson.DrunkenChair

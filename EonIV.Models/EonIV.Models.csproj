@@ -44,11 +44,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessObjects\CategorySkillPoints.cs" />
     <Compile Include="BusinessObjects\CharacterModifierContainer.cs" />
     <Compile Include="BusinessObjects\BaseItem.cs" />
     <Compile Include="BusinessObjects\CharacterData.cs" />
+    <Compile Include="BusinessObjects\CharacterModifierContainerMultiChoice.cs" />
     <Compile Include="BusinessObjects\CharacterModifierContainerSingleChoice.cs" />
     <Compile Include="BusinessObjects\CharacterSheet.cs" />
+    <Compile Include="BusinessObjects\Gear.cs" />
+    <Compile Include="BusinessObjects\Item.cs" />
+    <Compile Include="BusinessObjects\ItemProperties.cs" />
+    <Compile Include="BusinessObjects\ItemProperty.cs" />
+    <Compile Include="BusinessObjects\ItemSkillBonus.cs" />
+    <Compile Include="BusinessObjects\ItemVoucher.cs" />
+    <Compile Include="BusinessObjects\JadednessCross.cs" />
     <Compile Include="BusinessObjects\ResourceOptions.cs" />
     <Compile Include="BusinessObjects\RuleBookEventSet.cs" />
     <Compile Include="BusinessObjects\CharacterGenerationData.cs" />
@@ -61,6 +70,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="BusinessObjects\CharacterEventDetails.cs" />
+    <Compile Include="BusinessObjects\RandomSilver.cs" />
+    <Compile Include="BusinessObjects\SkillPointModification.cs" />
+    <Compile Include="BusinessObjects\SpecialSkillPoints.cs" />
     <Compile Include="CharacterCreationConstants.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -102,8 +114,10 @@
     <Compile Include="DataTypes\Attributes.cs" />
     <Compile Include="DataTypes\DiceRollCheck.cs" />
     <Compile Include="DataTypes\EonIVValue.cs" />
+    <Compile Include="DataTypes\IObT6Roller.cs" />
     <Compile Include="DataTypes\SkillCategory.cs" />
     <Compile Include="BusinessObjects\CharacterBasicChoises.cs" />
+    <Compile Include="DataTypes\ObT6Roller.cs" />
     <Compile Include="EventExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomNumberGenerator.cs" />

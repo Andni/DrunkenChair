@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Niklasson.EonIV.Models.BusinessObjects
 {
     public class CharacterModifierContainerSingleChoice : CharacterModifierContainer
     {
+        [NotMapped]
         public int SelectedAlternativeIndex { get; set; }
-
-        public CharacterModifierContainerSingleChoice() : base()
-        {
-        }
     }
 }

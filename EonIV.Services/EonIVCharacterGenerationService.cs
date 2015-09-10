@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Niklasson.EonIV.Models.BusinessObjects;
 using Niklasson.EonIV.DataAccess.Repositories;
+using Niklasson.EonIV.Models.BusinessObjects;
 
 namespace Niklasson.EonIV.Services
 {
@@ -13,6 +13,11 @@ namespace Niklasson.EonIV.Services
         public EonIVCharacterGenerationService(IEonIVCharacterGenerationTables tables)
         {
             generationTables = tables;
+        }
+
+        public ICollection<Background> GetRandomBackgrounds(int count)
+        {
+            return generationTables.GetRandomBackgrounds(count);
         }
 
         public IRuleBookEvent GetRandomEvent(EventCategory cat)

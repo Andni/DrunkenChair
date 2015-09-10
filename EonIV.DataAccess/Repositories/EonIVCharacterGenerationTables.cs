@@ -1,27 +1,27 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity.SqlServer;
 using System.Linq;
-
-using Random = System.Random;
-using Niklasson.EonIV.DataAccess;
-using Niklasson.EonIV.Models.BusinessObjects;
 using Niklasson.EonIV.Models;
+using Niklasson.EonIV.Models.BusinessObjects;
+using Environment = Niklasson.EonIV.Models.BusinessObjects.Environment;
 
 namespace Niklasson.EonIV.DataAccess.Repositories
 {
     public class EonIVCharacterGenerationTables : IEonIVCharacterGenerationTables
     {
-        private readonly EonIVCharacterGenerationDbContext gererationDbContext;
+        private readonly EonIVCharacterGenerationDbContext generationDbContext;
 
         public EonIVCharacterGenerationTables(EonIVCharacterGenerationDbContext context)
         {
-            gererationDbContext = context;
+            generationDbContext = context;
         }
 
         public IEnumerable<Archetype> Archetypes
         {
             get
             {
-                return gererationDbContext.Archetypes;
+                return generationDbContext.Archetypes;
             }
         }
 
@@ -29,7 +29,7 @@ namespace Niklasson.EonIV.DataAccess.Repositories
         {
             get
             {
-                return gererationDbContext.Races;
+                return generationDbContext.Races;
             }
         }
 
@@ -37,7 +37,7 @@ namespace Niklasson.EonIV.DataAccess.Repositories
         {
             get
             {
-                return gererationDbContext.Backgrounds;
+                return generationDbContext.Backgrounds;
             }
         }
 
@@ -45,39 +45,48 @@ namespace Niklasson.EonIV.DataAccess.Repositories
         {
             get
             {
-                return gererationDbContext.Environments;
+                return generationDbContext.Environments;
             }
         }
 
         public IEnumerable<IRuleBookEvent> Events
         {
-            get { return gererationDbContext.Events; }
+            get { return generationDbContext.Events; }
         }
 
         public IRuleBookEvent GetRandomEvent(EventCategory cat)
         {
-            var categoryEvents = gererationDbContext.Events.Where(e => e.Category == cat);
+            var categoryEvents = generationDbContext.Events.Where(e => e.Category == cat);
             return categoryEvents.GetRandom();
         }
 
+        public ICollection<Background> GetRandomBackgrounds(int count)
+        {
+            var r = new Random();
+            var backgroundCount = generationDbContext.Backgrounds.Count();
+
+            var res = generationDbContext.Backgrounds.OrderBy(b => SqlFunctions.Rand()).Take(count).ToList();
+            return res;
+        } 
+
         public IEnumerable<IRuleBookEvent> GetRandomEvents(EventCategory cat, int nb)
         {
-            var events = gererationDbContext.Events.Where(e => e.Category == cat);
+            var events = generationDbContext.Events.Where(e => e.Category == cat);
             
-            var count = events.Count();
-            if(count == 0)
+            var numberOfEventsInCategory = events.Count();
+            if(numberOfEventsInCategory == 0)
             {
                 yield break;
             }
             List<RuleBookEvent> eventList = events.ToList();
             
-            int numerOfEventsToGet = nb > count ? count : nb;
+            int numerOfEventsToGet = nb > numberOfEventsInCategory ? numberOfEventsInCategory : nb;
             var rand = new Random();
 
             int i = 0;
             while (i < numerOfEventsToGet)
             {
-                yield return eventList[rand.Next(0, count - 1)];
+                yield return eventList[rand.Next(0, numberOfEventsInCategory - 1)];
                 i++;
             }
         }

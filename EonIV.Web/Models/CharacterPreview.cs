@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Niklasson.EonIV.Models.BusinessObjects;
+﻿using Niklasson.EonIV.Models.BusinessObjects;
 using Niklasson.EonIV.Services;
 
 namespace Niklasson.DrunkenChair.Models

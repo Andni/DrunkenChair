@@ -1,13 +1,20 @@
 ﻿@model Niklasson.DrunkenChair.Models.CharacterBasicStepViewModel
 
 @{
-    var labelAttributes = new { @class = "control-label col-md-2" };
-    var dropdownListAttributes = new { @class = "form-control", data_action_url = Url.Action("GetCharacterPreview", "EonIvCharacterCreator") };
+    var labelAttributes = new {@class = "control-label col-md-2"};
+    var dropdownListAttributes = new {@class = "form-control", data_action_url = Url.Action("GetCharacterPreview", "EonIvCharacterCreator")};
 }
 
 <div>
     @Html.LabelFor(model => model.SelectedBackground, htmlAttributes: labelAttributes)
-    @Html.RadioButtonFor(model => model.SelectedBackground, dropdownListAttributes)
+    @{   
+        foreach (var bg in Model.Backgrounds)
+        {
+            @Html.RadioButtonFor(g => g.SelectedBackground, bg.Name)
+            <b>@bg.Name</b> @Html.Raw(" ") @Html.DisplayFor(m => bg)
+            <br/>
+        }
+    }
     @Html.ValidationMessageFor(m => m.SelectedBackground)
 </div>
 

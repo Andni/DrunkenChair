@@ -29,7 +29,7 @@ namespace Niklasson.EonIV.Models.BusinessObjects
         public EventTableRolls GetEventRolls()
         {
             return Background.EventRolls + Archetype.EventRolls
-                + Environment.EventRolls + Race.EventRolls;
+                + Environment.EventRolls;
         }
 
         public CharacterBasicChoices ToBasicChoices()

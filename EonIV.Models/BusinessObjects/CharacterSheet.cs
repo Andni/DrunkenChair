@@ -17,31 +17,27 @@ namespace Niklasson.EonIV.Models.BusinessObjects
         public int StartingCapitalInSilver { get; set; }
 
         [Column("Attributes")]
-        public CharacterAttributeSet Attributes { get; set; }
-        public CharacterJadedness Jadedness { get; set;}
-        public CharacterEventSet Events { get; set; }
-        public CharacterSkillSet Skills { get; set; }
-        public List<CharacterResource> Resources { get; set; }
-        public List<CharacterLanguageSkill> Languages { get; set; } 
+        public CharacterAttributeSet Attributes { get; set; } = new CharacterAttributeSet();
+        public CharacterJadedness Jadedness { get; set; } = new CharacterJadedness();
+        public CharacterEventSet Events { get; set; } = new CharacterEventSet();
+        public CharacterSkillSet Skills { get; set; } = new CharacterSkillSet();
+        public List<CharacterLanguageSkill> Languages { get; set; } = new List<CharacterLanguageSkill>();
+        public List<CharacterModifier> Notes { get; set; } = new List<CharacterModifier>();
         
-        public CharacterSheet()
-        {
-            Attributes = new CharacterAttributeSet();
-            Events = new CharacterEventSet();
-            Skills = new CharacterSkillSet();
-            Jadedness = new CharacterJadedness();
-            Resources = new List<CharacterResource>();
-            Languages = new List<CharacterLanguageSkill>();
-        }
-
         public CharacterSheet(ICharacterData data)
         {
-            Archetype = data.Basics.Archetype;
-            Background = data.Basics.Background;
-            Environment = data.Basics.Environment;
-            Race = data.Basics.Race;
+            Archetype = data.Archetype;
+            Background = data.Background;
+            Environment = data.Environment;
+            Race = data.Race;
 
-            Attributes = new CharacterAttributeSet(data.Basics.Race.StartingAttributes + data.ExtraAttributeDiceDistribution);
+            Attributes = new CharacterAttributeSet(data.Race.StartingAttributes + data.ExtraAttributeDiceDistribution);
+
+            Notes.AddRange(data.Archetype.Resources.Flatten());
+            Notes.AddRange(data.Background.Modifications.Flatten());
+            Notes.AddRange(data.Environment.GearAndResources.Flatten());
+
+            StartingCapitalInSilver = data.Environment.StartingSilver;
         }
     }
 }

@@ -175,10 +175,14 @@
     </Compile>
     <Compile Include="Helpers\DiceRoller.cs" />
     <Compile Include="Helpers\IDiceRoller.cs" />
+    <Compile Include="Models\CharacterArchetypeStepViewModel.cs" />
     <Compile Include="Models\CharacterAttributeStepViewModel.cs" />
+    <Compile Include="Models\CharacterBackgroundStepViewModel.cs" />
     <Compile Include="Models\CharacterBasicStepViewModel.cs" />
+    <Compile Include="Models\CharacterEnvironmentStepViewModel.cs" />
     <Compile Include="Models\CharacterEventStepViewModel.cs" />
     <Compile Include="Models\CharacterPreview.cs" />
+    <Compile Include="Models\CharacterRaceStepViewModel.cs" />
     <Compile Include="Models\Helpers\EonIVValue.cs" />
     <Compile Include="Models\ICharacterAttributes.cs" />
     <Compile Include="Models\ICharacterConstructionSite.cs" />
@@ -196,6 +200,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="js\EonIvCharacters\backgroundStep.js" />
     <Content Include="js\EonIvCharacters\characterAttributeDetails.js" />
     <Content Include="js\EonIvCharacters\characterEventDetails.js" />
     <Content Include="js\EonIvCharacters\eonIVCharacters.js" />
@@ -285,6 +290,11 @@
     <Content Include="Views\Shared\EditorTemplates\CharacterModifierContainer.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\CharacterModifierContainer.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Abilities.cshtml" />
+    <Content Include="Views\EonIvCharacterCreator\BackgroundStep.cshtml" />
+    <Content Include="Views\EonIvCharacterCreator\RaceStep.cshtml" />
+    <Content Include="Views\EonIvCharacterCreator\ArchetypeStep.cshtml" />
+    <Content Include="Views\EonIvCharacterCreator\EnvironmentStep.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Background.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

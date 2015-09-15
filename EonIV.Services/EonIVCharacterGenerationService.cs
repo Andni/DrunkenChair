@@ -25,6 +25,11 @@ namespace Niklasson.EonIV.Services
             return generationTables.GetRandomEvent(cat);
         }
 
+        public Background GetBackground(string backgroundName)
+        {
+            return generationTables.Backgrounds.Where(b => b.Name == backgroundName).SingleOrDefault();
+        }
+
         public IEnumerable<Archetype> Archetypes
         {
             get
@@ -55,6 +60,22 @@ namespace Niklasson.EonIV.Services
                 return generationTables.Races.OrderBy(t => t.Name);
             }
         }
+
+        public Archetype GetArchetype(string archetypeName)
+        {
+            return generationTables.Archetypes.Where(r => r.Name == archetypeName).SingleOrDefault();
+        }
+
+        public Race GetRace(string raceName)
+        {
+            return generationTables.Races.Where(r => r.Name == raceName).SingleOrDefault();
+        }
+
+        public Environment GetEnvironment(string environmentName)
+        {
+            return generationTables.Environments.Where(r => r.Name == environmentName).SingleOrDefault();
+        }
+
 
         public IEnumerable<IRuleBookEvent> RollEvents(EventTableRolls eventRolls)
         { 

@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Niklasson.DrunkenChair.Models
+namespace Niklasson.EonIV.Web.Models
 {
     public class TypeMergerPolicy
     {

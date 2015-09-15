@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace Niklasson.DrunkenChair
+namespace Niklasson.EonIV.Web
 {
     public class RouteConfig
     {

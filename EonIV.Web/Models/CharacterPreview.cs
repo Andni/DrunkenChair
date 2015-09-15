@@ -1,7 +1,7 @@
 ﻿using Niklasson.EonIV.Models.BusinessObjects;
 using Niklasson.EonIV.Services;
 
-namespace Niklasson.DrunkenChair.Models
+namespace Niklasson.EonIV.Web.Models
 {
     public class CharacterPreview : ICharacterPreview
     {
@@ -16,6 +16,5 @@ namespace Niklasson.DrunkenChair.Models
             sheet = ccs.ToCharacterSheet();
             scaffolding = ccs.GetGenerationData();
         }
-
     }
 }

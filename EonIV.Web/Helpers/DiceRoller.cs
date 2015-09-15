@@ -1,6 +1,6 @@
 ﻿using Niklasson.Toolbox;
 
-namespace Niklasson.DrunkenChair.Helpers
+namespace Niklasson.EonIV.Web.Helpers
 {
     public class DiceRoller : IDiceRoller
     {

@@ -1,6 +1,6 @@
 ﻿using Niklasson.EonIV.Models.BusinessObjects;
 
-namespace Niklasson.DrunkenChair.Models
+namespace Niklasson.EonIV.Web
 {
     public interface ICharacterPreview
     {

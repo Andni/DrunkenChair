@@ -78,14 +78,11 @@
       <DependentUpon>201509100941435_RenamedEnvironmentSkillpoints.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Backgrounds.cs" />
-    <Compile Include="Migrations\CharacterModifierNodeKeyGenerator.cs" />
     <Compile Include="Migrations\CharacterModifierNodes.cs" />
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Migrations\EntityFrameworkExtensions.cs" />
     <Compile Include="Migrations\EventSeeder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EonIVCharacterGenerationDbContext.cs" />
-    <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\EonIVCharacterGenerationTables.cs" />
     <Compile Include="Repositories\EonIVCharacterRepository.cs" />
     <Compile Include="Repositories\IEonIVCharacterGenerationTables.cs" />

@@ -20,6 +20,8 @@ namespace Niklasson.EonIV.Models.BusinessObjects
 
         [ForeignKey("ParentNodeId")]
         public virtual CharacterModifierNode Parent { get; set; }
+
+        public abstract IList<CharacterModifier> Flatten();
     }
 
     public class CharacterModifierContainer : CharacterModifierNode, IEnumerable<CharacterModifierNode>
@@ -46,6 +48,26 @@ namespace Niklasson.EonIV.Models.BusinessObjects
             }
         }
 
+        public override IList<CharacterModifier> Flatten()
+        {
+            var res = new List<CharacterModifier>();
+            foreach (CharacterModifierNode n in Children)
+            {
+                var c = n as CharacterModifierContainer;
+                if (c != null)
+                {
+                    res.AddRange(c.Flatten());
+                }
+
+                var c1 = n as CharacterModifier;
+                if (c1 != null)
+                {
+                    res.Add(c1);
+                }
+            }
+            return res;
+        }
+        
         public IEnumerator<CharacterModifierNode> GetEnumerator()
         {
             return Children.GetEnumerator();

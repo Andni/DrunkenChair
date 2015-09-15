@@ -1,12 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
-using Niklasson.DrunkenChair.Models;
+using Niklasson.EonIV.Web.Models;
 using Niklasson.EonIV.Models.BusinessObjects;
 using Niklasson.EonIV.Services;
 
-namespace Niklasson.DrunkenChair.Controllers
+using Environment = Niklasson.EonIV.Models.BusinessObjects.Environment;
+
+namespace Niklasson.EonIV.Web.Controllers
 {
     public class EonIVCharacterCreatorController : Controller
     {
@@ -19,56 +22,177 @@ namespace Niklasson.DrunkenChair.Controllers
 
         private string sessionStringCharacter = "character";
 
-        // GET: EonIvCharacters/Create
-        public ActionResult Create()
-        {   
-            return View(GetBlankCharacterBasicDetails());
+
+        [HttpGet]
+        public ActionResult BackgroundStep()
+        {
+            return View(GetCharacterBackgroundStepWithBackgrounds());
         }
 
-        private CharacterBasicStepViewModel GetBlankCharacterBasicDetails()
+        [HttpPost]
+        public ActionResult BackgroundStep(CharacterBackgroundStepViewModel backgroundDetails, string nextButton, string previousButton)
         {
             var ccs = GetCharacterConstructionSite();
-            
-            var selectedArchetype = characterGenerationService.Archetypes.FirstOrDefault();
-            var selectedEnvironment = characterGenerationService.Environments.FirstOrDefault();
-            var selectedRace = characterGenerationService.Races.FirstOrDefault();
-            ccs.SetCharacterBasicDetails(new CharacterBasicChoices
-                {
-                    SelectedArchetype = selectedArchetype,
-                    SelectedEnvironment = selectedEnvironment,
-                    SelectedRace = selectedRace
-                },
-                characterGenerationService);
-
-            return new CharacterBasicStepViewModel(ccs)
+            if (nextButton != null)
             {
-                Archetypes = new SelectList(characterGenerationService.Archetypes),
-                Environments = new SelectList(characterGenerationService.Environments),
-                Races = new SelectList(characterGenerationService.Races),
-                Backgrounds = new List<Background>(characterGenerationService.GetRandomBackgrounds(2)),
+                if (ModelState.IsValid)
+                {
+                    var races = new SelectList(characterGenerationService.Races);
+                    return View("RaceStep", new CharacterRaceStepViewModel(ccs)
+                    {
+                        Races = races,
+                        SelectedRace = string.IsNullOrEmpty(ccs.GetRace()) ? characterGenerationService.Races.FirstOrDefault() : ccs.GetRace(),
+                    });
+                }
+            }
 
-                CharacterPreview = new CharacterPreview(GetCharacterConstructionSite()),
-            };
+            if (previousButton != null)
+            {
+                return View("BackgroundStep", new CharacterBackgroundStepViewModel(ccs));
+            }
+
+            return View(backgroundDetails);
         }
+        
+        [HttpPost]
+        public ActionResult RaceStep(CharacterRaceStepViewModel raceStep, string nextButton, string previousButton)
+        {
+            var ccs = GetCharacterConstructionSite();
+            if (nextButton != null)
+            {
+                if (ModelState.IsValid)
+                {
+                    var archetypes = new SelectList(characterGenerationService.Archetypes);
+                    var selectedArchetype = string.IsNullOrEmpty(ccs.GetArchetype()) ? characterGenerationService.Archetypes.FirstOrDefault() : ccs.GetArchetype();
+
+                    return View("ArchetypeStep",
+                        new CharacterArchetypeStepViewModel(ccs)
+                        {
+                            Archetypes = archetypes,
+                            SelectedArchetype = selectedArchetype
+                        }
+                    );
+                }
+            }
+
+            if (previousButton != null)
+            {
+                return View("BackgroundStep", new CharacterBackgroundStepViewModel(ccs));
+            }
+
+            return View(raceStep);
+        }
+
+        [HttpPost]
+        public ActionResult ArchetypeStep(CharacterRaceStepViewModel archetypeStep, string nextButton, string previousButton)
+        {
+            var ccs = GetCharacterConstructionSite();
+            if (nextButton != null)
+            {
+                if (ModelState.IsValid)
+                {
+                    var environments = new SelectList(characterGenerationService.Environments);
+                    var selectedEnvironment = string.IsNullOrEmpty(ccs.GetEnvironment()) ? characterGenerationService.Environments.FirstOrDefault() : ccs.GetEnvironment();
+                    return View("EnvironmentStep", new CharacterEnvironmentStepViewModel(ccs)
+                    {
+                        Environments = environments,
+                        SelectedEnvironment = selectedEnvironment
+                    });
+                }
+            }
+
+            if (previousButton != null)
+            {
+                return View("RaceStep", new CharacterRaceStepViewModel(ccs));
+            }
+
+            return View(archetypeStep);
+        }
+
+        [HttpPost]
+        public ActionResult EnvironmentStep(CharacterRaceStepViewModel environmentStep, string nextButton, string previousButton)
+        {
+            var ccs = GetCharacterConstructionSite();
+            if (nextButton != null)
+            {
+                if (ModelState.IsValid)
+                {
+                    var environments = new SelectList(characterGenerationService.Environments);
+                    var selectedEnvironment = string.IsNullOrEmpty(ccs.GetEnvironment()) ? environments.FirstOrDefault().ToString() : ccs.GetEnvironment();
+                    return View("CharacterAttributeDetails", new CharacterEnvironmentStepViewModel(ccs)
+                        {
+                            Environments = environments,
+                            SelectedEnvironment = selectedEnvironment,
+                        }
+                    );
+                }
+            }
+
+            if (previousButton != null)
+            {
+                return View("ArchetypeStep", new CharacterArchetypeStepViewModel(ccs));
+            }
+
+            return View(environmentStep);
+        }
+        
+        private CharacterBackgroundStepViewModel GetCharacterBackgroundStepWithBackgrounds()
+        {
+            var ccs = GetCharacterConstructionSite();
+            var backgrounds = characterGenerationService.GetRandomBackgrounds(2);
+            var backgroundStep = new CharacterBackgroundStepViewModel(ccs)
+            {
+                Backgrounds = backgrounds.ToList(),
+                SelectedBackground = backgrounds.FirstOrDefault(),
+                BackgroundInfo = backgrounds.FirstOrDefault(),
+            };
+            return backgroundStep;
+        }
+
+        //private CharacterBasicStepViewModel GetBlankCharacterBasicDetails()
+        //{
+        //    var ccs = GetCharacterConstructionSite();
+            
+        //    var selectedArchetype = characterGenerationService.Archetypes.FirstOrDefault();
+        //    var selectedEnvironment = characterGenerationService.Environments.FirstOrDefault();
+        //    var selectedRace = characterGenerationService.Races.FirstOrDefault();
+        //    ccs.SetCharacterBasicDetails(new CharacterBasicChoices
+        //        {
+        //            SelectedArchetype = selectedArchetype,
+        //            SelectedEnvironment = selectedEnvironment,
+        //            SelectedRace = selectedRace
+        //        },
+        //        characterGenerationService);
+
+        //    return new CharacterBasicStepViewModel(ccs)
+        //    {
+        //        Archetypes = new SelectList(characterGenerationService.Archetypes),
+        //        Environments = new SelectList(characterGenerationService.Environments),
+        //        Races = new SelectList(characterGenerationService.Races),
+        //        Backgrounds = new List<Background>(characterGenerationService.GetRandomBackgrounds(2)),
+
+        //        CharacterPreview = new CharacterPreview(GetCharacterConstructionSite()),
+        //    };
+        //}
 
         // POST: EonIvCharacters/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(CharacterBasicStepViewModel basicDetails, string previousButton, string nextButton)
-        {
-            var ccs = GetCharacterConstructionSite();
-            if(nextButton != null)
-            {
-                if (ModelState.IsValid)
-                {
-                    ccs.SetCharacterBasicDetails(basicDetails, characterGenerationService);
-                    return View("CharacterAttributeDetails", new CharacterAttributeStepViewModel() { Preview = new CharacterPreview(ccs) });
-                }
-            }
-            return View(new CharacterBasicStepViewModel() { CharacterPreview = new CharacterPreview(ccs) });
-        }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create(CharacterBasicStepViewModel basicDetails, string previousButton, string nextButton)
+        //{
+        //    var ccs = GetCharacterConstructionSite();
+        //    if(nextButton != null)
+        //    {
+        //        if (ModelState.IsValid)
+        //        {
+        //            ccs.SetCharacterBasicDetails(basicDetails, characterGenerationService);
+        //            return View("CharacterAttributeDetails", new CharacterBonusAttributeStepViewModel() { Preview = new CharacterPreview(ccs) });
+        //        }
+        //    }
+        //    return View(new CharacterBasicStepViewModel() { CharacterPreview = new CharacterPreview(ccs) });
+        //}
 
         // GET: EonIvCharacters/CharacterAttributeDetails
         public ActionResult CharacterAttributeDetails()
@@ -80,7 +204,7 @@ namespace Niklasson.DrunkenChair.Controllers
             ViewBag.MaxDiceesPerAttribute = MaxDicesPerAttribute;
 
             return View(
-                new CharacterAttributeStepViewModel()
+                new CharacterBonusAttributeStepViewModel()
                 {
                     Preview = new CharacterPreview(GetCharacterConstructionSite())
                 }    
@@ -88,7 +212,7 @@ namespace Niklasson.DrunkenChair.Controllers
         }
         
         [HttpPost]
-        public ActionResult CharacterAttributeDetails(CharacterAttributeStepViewModel attributeDetails, string previousButton, string nextButton)
+        public ActionResult CharacterAttributeDetails(CharacterBonusAttributeStepViewModel attributeDetails, string previousButton, string nextButton)
         {
             var ccs = GetCharacterConstructionSite();
             if(nextButton != null)
@@ -106,7 +230,7 @@ namespace Niklasson.DrunkenChair.Controllers
                 return View("Create", new CharacterBasicStepViewModel() { CharacterPreview = new CharacterPreview(ccs) });
             }
 
-            return View(new CharacterAttributeStepViewModel() { Preview = new CharacterPreview(ccs) });
+            return View(new CharacterBonusAttributeStepViewModel() { Preview = new CharacterPreview(ccs) });
         }
 
         [HttpPost]
@@ -138,7 +262,7 @@ namespace Niklasson.DrunkenChair.Controllers
             if (previousButton != null)
             {
                 return View("CharacterAttributeDetails",
-                    new CharacterAttributeStepViewModel()
+                    new CharacterBonusAttributeStepViewModel()
                     {
                         Preview = new CharacterPreview(GetCharacterConstructionSite())
                     });
@@ -148,17 +272,41 @@ namespace Niklasson.DrunkenChair.Controllers
         }
 
         [HttpGet]
-        public ActionResult GetCharacterPreview(string archetype, string race, string environment)
+        public ActionResult UpdateBackground(string background)
         {
-            var choices = new CharacterBasicChoices()
-            {
-                SelectedArchetype = archetype,
-                SelectedEnvironment = environment,
-                SelectedRace = race
-            };
             var ccs = GetCharacterConstructionSite();
-            ccs.SetCharacterBasicDetails(choices, characterGenerationService);
+            ccs.SetBackground(background, characterGenerationService);
             return PartialView("CharacterPreview", new CharacterPreview(ccs));
+        }
+
+        [HttpGet]
+        public ActionResult UpdateRace(string race)
+        {
+            var ccs = GetCharacterConstructionSite();
+            ccs.SetRace(race, characterGenerationService);
+            return PartialView("CharacterPreview", new CharacterPreview(ccs));
+        }
+        
+        [HttpGet]
+        public ActionResult UpdateArchetype(string archetype)
+        {
+            var ccs = GetCharacterConstructionSite();
+            ccs.SetArchetype(archetype, characterGenerationService);
+            return PartialView("CharacterPreview", new CharacterPreview(ccs));
+        }
+        
+        [HttpGet]
+        public ActionResult UpdateEnvironment(string environment)
+        {
+            var ccs = GetCharacterConstructionSite();
+            ccs.SetEnvironment(environment, characterGenerationService);
+            return PartialView("CharacterPreview", new CharacterPreview(ccs));
+        }
+
+        [HttpGet]
+        public ActionResult GetCharacterPreview()
+        {
+            return PartialView("CharacterPreview", new CharacterPreview(GetCharacterConstructionSite()));
         }
 
         [HttpGet]

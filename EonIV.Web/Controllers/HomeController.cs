@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace Niklasson.DrunkenChair.Controllers
+namespace Niklasson.EonIV.Web.Controllers
 {
     public class HomeController : Controller
     {

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Niklasson.EonIV.Models.BusinessObjects
 {
+    //TODO to be replaced by a CharacterModifierContainer containing CategorySkillPoints
     [ComplexType]
     public class Skillpoints
     {

@@ -1,6 +1,6 @@
 ﻿using System.Web.Optimization;
 
-namespace Niklasson.DrunkenChair
+namespace Niklasson.EonIV.Web
 {
     public class BundleConfig
     {

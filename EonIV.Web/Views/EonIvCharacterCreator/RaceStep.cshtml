@@ -1,0 +1,16 @@
+﻿@model Niklasson.EonIV.Web.Models.CharacterRaceStepViewModel
+
+@{
+    ViewBag.Title = "RaceDetails";
+
+    var labelAttributes = new { @class = "control-label col-md-2" };
+    var dropdownListAttributes = new { @class = "form-control", data_action_url = Url.Action("GetCharacterPreview", "EonIvCharacterCreator") };
+}
+
+<h2>RaceDetails</h2>
+
+<div>
+    @Html.LabelFor(model => model.SelectedRace, htmlAttributes: labelAttributes)
+    @Html.DropDownListFor(model => model.SelectedRace, Model.Races, dropdownListAttributes)
+    @Html.ValidationMessageFor(m => m.SelectedRace)
+</div>

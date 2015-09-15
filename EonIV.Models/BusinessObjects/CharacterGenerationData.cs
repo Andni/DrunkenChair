@@ -16,7 +16,7 @@ namespace Niklasson.EonIV.Models.BusinessObjects
         {
             get
             {
-                return character.Basics.GetEventRolls();
+                return character.GetEventRolls();
             }
         }
 
@@ -25,15 +25,7 @@ namespace Niklasson.EonIV.Models.BusinessObjects
         public Skillpoints Skillpoints {
             get
             {
-                var e = character.Events.GetModifiers();
-
-                List<CategorySkillPoints> eventSkillpoints = new List<CategorySkillPoints>();
-                if (e != null)
-                {
-                    eventSkillpoints = e.Where(x => x is CategorySkillPoints).Cast<CategorySkillPoints>().ToList();
-                }
-                return character.Basics.Archetype.Skillpoints + character.Basics.Environment.Skillpoints
-                    + eventSkillpoints;
+                return character.GetSkillpoints();
             }
         }
     }

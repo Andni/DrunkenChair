@@ -4,7 +4,7 @@ using System.Web.Mvc;
 using Niklasson.EonIV.Models.BusinessObjects;
 using Niklasson.EonIV.Services;
 
-namespace Niklasson.DrunkenChair.Models
+namespace Niklasson.EonIV.Web.Models
 {
     public class CharacterBasicStepViewModel : ICharacterBasicChoices
     {

@@ -1,4 +1,4 @@
-﻿namespace Niklasson.DrunkenChair.Models
+﻿namespace Niklasson.EonIV.Web.Models
 {
     interface ICharacterConstructionSite
     {

@@ -3,9 +3,9 @@ using System.ComponentModel.DataAnnotations;
 using Niklasson.EonIV.Models;
 using Niklasson.EonIV.Models.BusinessObjects;
 
-namespace Niklasson.DrunkenChair.Models
+namespace Niklasson.EonIV.Web.Models
 {
-    public class CharacterAttributeStepViewModel : IBaseAttributeDices
+    public class CharacterBonusAttributeStepViewModel : IBaseAttributeDices
     {
         [Range(0, 0, ErrorMessage = "Alla bonustärningar måste spenderas.")]
         public int DicesLeftToDistribute { get; set; }
@@ -46,7 +46,7 @@ namespace Niklasson.DrunkenChair.Models
         [Range(0, 5, ErrorMessage = rangeErrorMessage)]
         public int CharismaBonusDices { get; set; }
 
-        public CharacterAttributeStepViewModel()
+        public CharacterBonusAttributeStepViewModel()
         {
             DicesLeftToDistribute = 10;
         }

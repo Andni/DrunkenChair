@@ -17,7 +17,10 @@ namespace Niklasson.EonIV.Services
         ICollection<Background> GetRandomBackgrounds(int count);
         CharacterBasics ResolveBasicChoices(ICharacterBasicChoices basics);
 
-        //Type GetObjecType(string typeString);
+        Archetype GetArchetype(string archetypeName);
+        Background GetBackground(string backgroundName);
+        Environment GetEnvironment(string environmentName);
+        Race GetRace(string raceName);
 
     }
 }

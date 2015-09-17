@@ -67,14 +67,14 @@ namespace Niklasson.EonIV.Web.Models
                 }
                 else
                 {
-                    this.AgilityBonusDices = value.Agility.UnlimitedDice6;
-                    this.CharismaBonusDices = value.Charisma.UnlimitedDice6;
-                    this.PerceptionBonusDices = value.Perception.UnlimitedDice6;
-                    this.PsycheBonusDices = value.Psyche.UnlimitedDice6;
-                    this.StaminaBonusDices= value.Stamina.UnlimitedDice6;
-                    this.StrengthBonusDices = value.Strength.UnlimitedDice6;
-                    this.WillBonusDices = value.Will.UnlimitedDice6;
-                    this.WisdomBonusDices = value.Wisdom.UnlimitedDice6;
+                    AgilityBonusDices = value.Agility.UnlimitedDice6;
+                    CharismaBonusDices = value.Charisma.UnlimitedDice6;
+                    PerceptionBonusDices = value.Perception.UnlimitedDice6;
+                    PsycheBonusDices = value.Psyche.UnlimitedDice6;
+                    StaminaBonusDices = value.Stamina.UnlimitedDice6;
+                    StrengthBonusDices = value.Strength.UnlimitedDice6;
+                    WillBonusDices = value.Will.UnlimitedDice6;
+                    WisdomBonusDices = value.Wisdom.UnlimitedDice6;
                     DicesLeftToDistribute = MaxBonusDices - currentBonus;
                 }
             }

@@ -9,13 +9,10 @@
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
 }
 
-<h2>RaceDetails</h2>
-
-
 <h2>Bakgrund</h2>
 
 
-@using (Html.BeginForm("Background", "EonIvCharacterCreator", FormMethod.Post, new { style = "display:inline-block;", @class = "left-column" }))
+@using (Html.BeginForm("BackgroundStep", "EonIvCharacterCreator", FormMethod.Post, new { style = "display:inline-block;", @class = "left-column" }))
 {
     @Html.AntiForgeryToken()
 

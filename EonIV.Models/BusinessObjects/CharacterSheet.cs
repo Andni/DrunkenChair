@@ -33,9 +33,18 @@ namespace Niklasson.EonIV.Models.BusinessObjects
 
             Attributes = new CharacterAttributeSet(data.Race.StartingAttributes + data.ExtraAttributeDiceDistribution);
 
-            Notes.AddRange(data.Archetype.Resources.Flatten());
-            Notes.AddRange(data.Background.Modifications.Flatten());
-            Notes.AddRange(data.Environment.GearAndResources.Flatten());
+            if(data.Archetype.Resources != null)
+            {
+                Notes.AddRange(data.Archetype.Resources.Flatten());
+            }
+            if (data.Background.Modifications != null)
+            {
+                Notes.AddRange(data.Background.Modifications.Flatten());
+            }
+            if (data.Environment.GearAndResources != null)
+            {
+                Notes.AddRange(data.Environment.GearAndResources.Flatten());
+            }
 
             StartingCapitalInSilver = data.Environment.StartingSilver;
         }

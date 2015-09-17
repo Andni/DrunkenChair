@@ -200,6 +200,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="js\EonIvCharacters\environmentStep.js" />
+    <Content Include="js\EonIvCharacters\raceStep.js" />
+    <Content Include="js\EonIvCharacters\archetypeStep.js" />
     <Content Include="js\EonIvCharacters\backgroundStep.js" />
     <Content Include="js\EonIvCharacters\characterAttributeDetails.js" />
     <Content Include="js\EonIvCharacters\characterEventDetails.js" />

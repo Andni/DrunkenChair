@@ -30,7 +30,7 @@ namespace Niklasson.EonIV.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult BackgroundStep(CharacterBackgroundStepViewModel backgroundDetails, string nextButton, string previousButton)
+        public ActionResult BackgroundStep(string SelectedBackground, string nextButton, string previousButton)
         {
             var ccs = GetCharacterConstructionSite();
             if (nextButton != null)
@@ -51,7 +51,7 @@ namespace Niklasson.EonIV.Web.Controllers
                 return View("BackgroundStep", new CharacterBackgroundStepViewModel(ccs));
             }
 
-            return View(backgroundDetails);
+            return View(new CharacterBackgroundStepViewModel(ccs));
         }
         
         [HttpPost]
@@ -84,7 +84,7 @@ namespace Niklasson.EonIV.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult ArchetypeStep(CharacterRaceStepViewModel archetypeStep, string nextButton, string previousButton)
+        public ActionResult ArchetypeStep(string SelectedArchetype, string nextButton, string previousButton)
         {
             var ccs = GetCharacterConstructionSite();
             if (nextButton != null)
@@ -106,11 +106,11 @@ namespace Niklasson.EonIV.Web.Controllers
                 return View("RaceStep", new CharacterRaceStepViewModel(ccs));
             }
 
-            return View(archetypeStep);
+            return View(new CharacterArchetypeStepViewModel(ccs));
         }
 
         [HttpPost]
-        public ActionResult EnvironmentStep(CharacterRaceStepViewModel environmentStep, string nextButton, string previousButton)
+        public ActionResult EnvironmentStep(string SelectedEnvironment, string nextButton, string previousButton)
         {
             var ccs = GetCharacterConstructionSite();
             if (nextButton != null)
@@ -119,12 +119,10 @@ namespace Niklasson.EonIV.Web.Controllers
                 {
                     var environments = new SelectList(characterGenerationService.Environments);
                     var selectedEnvironment = string.IsNullOrEmpty(ccs.GetEnvironment()) ? environments.FirstOrDefault().ToString() : ccs.GetEnvironment();
-                    return View("CharacterAttributeDetails", new CharacterEnvironmentStepViewModel(ccs)
-                        {
-                            Environments = environments,
-                            SelectedEnvironment = selectedEnvironment,
-                        }
-                    );
+                    return View("CharacterAttributeDetails", new CharacterBonusAttributeStepViewModel()
+                    {
+                        Preview = new CharacterPreview(ccs)
+                    });
                 }
             }
 
@@ -133,7 +131,7 @@ namespace Niklasson.EonIV.Web.Controllers
                 return View("ArchetypeStep", new CharacterArchetypeStepViewModel(ccs));
             }
 
-            return View(environmentStep);
+            return View(new CharacterEnvironmentStepViewModel(ccs));
         }
         
         private CharacterBackgroundStepViewModel GetCharacterBackgroundStepWithBackgrounds()

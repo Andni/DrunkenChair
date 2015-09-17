@@ -7,15 +7,9 @@ using Niklasson.EonIV.Models.BusinessObjects;
 using System.Web.Mvc;
 namespace Niklasson.EonIV.Web.Models
 {
-    public class CharacterBackgroundStepViewModel
+    public class CharacterBackgroundStepViewModel : herp
     {
-        public List<Background> Backgrounds { get; set; } = new List<Background>();
-
-        [Display(Name = "Bakgrund")]
-        public string SelectedBackground { get; set; }
-
-        public Background BackgroundInfo { get; set; }
-
+        
         public CharacterPreview CharacterPreview { get; set; }
 
         public CharacterBackgroundStepViewModel(CharacterConstructionSite ccs)
@@ -23,6 +17,15 @@ namespace Niklasson.EonIV.Web.Models
             CharacterPreview = new CharacterPreview(ccs);
             SelectedBackground = ccs.GetBackground();
         }
+    }
 
+    public class herp
+    {
+        public List<Background> Backgrounds { get; set; } = new List<Background>();
+
+        [Display(Name = "Bakgrund")]
+        public string SelectedBackground { get; set; }
+
+        public Background BackgroundInfo { get; set; }
     }
 }

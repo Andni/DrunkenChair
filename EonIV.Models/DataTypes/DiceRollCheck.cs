@@ -73,6 +73,20 @@ namespace Niklasson.EonIV.Models.DataTypes
             this.Value += EonIVValue.DiceToValue(dices);
         }
 
+        public override string ToString()
+        {
+            string s;
+            if (Bonus != 0)
+            {
+                s = UnlimitedDice6 + "T6+" + Bonus;
+            }
+            else
+            {
+                s = UnlimitedDice6 + "T6";
+            }
+            return s;
+        }
+
         public object Clone()
         {
             return new DiceRollCheck(this.Value);

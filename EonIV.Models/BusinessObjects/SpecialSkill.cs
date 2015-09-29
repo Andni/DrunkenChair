@@ -4,9 +4,9 @@ namespace Niklasson.EonIV.Models.BusinessObjects
 {
     public enum SpecialSkillCategory
     {
-        EXPERTISE,
-        CRAFT,
-        CHARACTERISTIC,
+        Expertise,
+        Craft,
+        Characteristic,
         UNCATEGORIZED = 0
     }
 

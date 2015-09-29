@@ -90,3 +90,8 @@ textarea {
 .right-column {
     float: right;
 }
+
+.character-modifier-container-entries
+{
+    padding-left: 2em; 
+}

@@ -1,31 +1,45 @@
-﻿@model Niklasson.EonIV.Models.BusinessObjects.CharacterModifierContainerSingleChoice
+﻿@model Niklasson.EonIV.Models.BusinessObjects.CharacterModifierContainerMultiChoice
 
 @using Niklasson.EonIV.Models.BusinessObjects;
 
 <div class="character-modifier-container-entries">
     @{
-        var descriptionExists = !string.IsNullOrEmpty(Model.Description);
+        if(Model.GotOnlyLeafChildren)
+        {
+            //@Html.DisplayFor(m => m.Description)
+        }
         @Html.HiddenFor(m => m.Description)
+
         if (Model.Children.Count == 1)
         {
+            <br />
             @Html.EditorFor(m => m.Children)
         }
         else
         {
             for (int i = 0; i < Model.Children.Count(); i++)
             {
-                @Html.RadioButtonFor(m => m.SelectedAlternativeIndex, i)
+                if(i != 0)
+                {
+                    <br />
+                }
+                if (Model.SelectedIndices.Count < i + 1)
+                {
+                    Model.SelectedIndices.Add(new bool());
+                }
+                @Html.CheckBoxFor(m => m.SelectedIndices[i])
 
 
                 var container = Model.Children[i] as CharacterModifierContainer;
                 if (container == null || (container != null && container.NoSelectionChildren))
                 {
-                    @Html.DisplayFor(m => m.Children[i].Label)
+                    <span style="font-weight: bold">
+                        @Html.DisplayFor(m => m.Children[i].Label)
+                    </span>
                     @Html.DisplayFor(m => m.Children[i].Description)
                 }
                 @Html.EditorFor(m => m.Children[i])
             }
-            @Html.ValidationMessageFor(m => m.SelectedAlternativeIndex)
         }
     }
     @Html.HiddenFor(m => m.ConcreteModelType)

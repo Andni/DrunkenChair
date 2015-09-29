@@ -48,12 +48,10 @@ namespace Niklasson.EonIV.DataAccess.Migrations
 
         private void SeedArchetypes(EonIVCharacterGenerationDbContext context)
         {
-            context.Archetypes.AddOrUpdate(
-                  a => a.Name,
-                  new Archetype { Name = "Krigare", EventRolls = new EventTableRolls(1, 0, 0, 2, 0) },
-                  new Archetype { Name = "Mystiker", EventRolls = new EventTableRolls(0, 0, 2, 0, 1) }
-                );
-
+            foreach (var a in Archetype.GetArchetypes())
+            {
+                context.Archetypes.AddOrUpdate(x => x.Name, a);
+            }
         }
 
         private void SeedRaces(EonIVCharacterGenerationDbContext context)

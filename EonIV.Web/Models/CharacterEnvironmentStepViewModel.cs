@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 using Niklasson.EonIV.Services;
 using Niklasson.EonIV.Models.BusinessObjects;
@@ -10,8 +9,11 @@ namespace Niklasson.EonIV.Web.Models
     public class CharacterEnvironmentStepViewModel
     {
         public SelectList Environments { get; set; }
+
         [Display(Name = "Miljö")]
         public string SelectedEnvironment{ get; set; }
+
+        public Environment CurrentSelectedEnvironment { get; set; }
 
         public CharacterPreview CharacterPreview { get; set; }
 

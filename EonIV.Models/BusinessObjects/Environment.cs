@@ -81,7 +81,7 @@ namespace Niklasson.EonIV.Models.BusinessObjects
                             new JadednessCross
                             {
                                 Label = "Avtrubbning",
-                                Type = JadednessType.VULNRABILITY,
+                                Type = JadednessType.Vulnrability,
                                 Crosses = 1
                             },
                             new Gear
@@ -216,7 +216,7 @@ namespace Niklasson.EonIV.Models.BusinessObjects
 
                             Label = "Avtrubbning",
                             Description = "I staden är det viktigt att hålla sig vän med rätt personer och inte tappa ansiktet. 1 avtrubbningskryss för utsatthet.",
-                            Type = JadednessType.VULNRABILITY,
+                            Type = JadednessType.Vulnrability,
                             Crosses = 1,
                         },
                         new Gear
@@ -228,13 +228,13 @@ namespace Niklasson.EonIV.Models.BusinessObjects
                         {
                             Label = "Expertiser",
                             Description = "1 poäng Expertiser.",
-                            Category = SpecialSkillCategory.EXPERTISE,
+                            Category = SpecialSkillCategory.Expertise,
                         },
                         new SpecialSkillPoints
                         {
                             Label = "Hantverk",
                             Description = "1 poäng Hantverk.",
-                            Category = SpecialSkillCategory.CRAFT,
+                            Category = SpecialSkillCategory.Craft,
                         },
                         new CategorySkillPoints
                         {

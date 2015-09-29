@@ -1,0 +1,11 @@
+﻿@model Niklasson.EonIV.Models.BusinessObjects.Archetype
+
+@Html.HiddenFor(m => m.Name)
+@Html.DisplayFor(m => m.Name)
+
+@Html.EditorFor(m => m.EventRolls)
+
+@Html.EditorFor(m => m.Skillpoints)
+
+<h4>Utrusting & rusurser</h4>
+@Html.EditorFor(m => m.Resources)

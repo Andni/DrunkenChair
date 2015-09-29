@@ -8,6 +8,7 @@ using Niklasson.EonIV.Models.BusinessObjects;
 using Niklasson.EonIV.Services;
 
 using Environment = Niklasson.EonIV.Models.BusinessObjects.Environment;
+using System.Diagnostics;
 
 namespace Niklasson.EonIV.Web.Controllers
 {
@@ -55,7 +56,7 @@ namespace Niklasson.EonIV.Web.Controllers
         }
         
         [HttpPost]
-        public ActionResult RaceStep(CharacterRaceStepViewModel raceStep, string nextButton, string previousButton)
+        public ActionResult RaceStep(string SelectedRace, string nextButton, string previousButton)
         {
             var ccs = GetCharacterConstructionSite();
             if (nextButton != null)
@@ -69,6 +70,7 @@ namespace Niklasson.EonIV.Web.Controllers
                         new CharacterArchetypeStepViewModel(ccs)
                         {
                             Archetypes = archetypes,
+                            CurrentSelectedArchetype = characterGenerationService.Archetypes.FirstOrDefault(),
                             SelectedArchetype = selectedArchetype
                         }
                     );
@@ -80,11 +82,32 @@ namespace Niklasson.EonIV.Web.Controllers
                 return View("BackgroundStep", new CharacterBackgroundStepViewModel(ccs));
             }
 
-            return View(raceStep);
+            return View(SelectedRace);
         }
 
+#if DEBUG
+        [HttpGet]
+        public ActionResult ArchetypeStep()
+        {
+            var ccs = GetCharacterConstructionSite();
+
+            var archetypes = new SelectList(characterGenerationService.Archetypes);
+            var selectedArchetype = string.IsNullOrEmpty(ccs.GetArchetype()) ? characterGenerationService.Archetypes.FirstOrDefault() : ccs.GetArchetype();
+            var archetype = characterGenerationService.Archetypes.FirstOrDefault();
+
+            return View("ArchetypeStep",
+                new CharacterArchetypeStepViewModel(ccs)
+                {
+                    Archetypes = archetypes,
+                    CurrentSelectedArchetype = archetype,
+                    SelectedArchetype = selectedArchetype
+                }
+            );
+        }
+#endif
+
         [HttpPost]
-        public ActionResult ArchetypeStep(string SelectedArchetype, string nextButton, string previousButton)
+        public ActionResult ArchetypeStep(CharacterArchetypeStepViewModel CharacterArchetypeStepViewModel, string nextButton, string previousButton)
         {
             var ccs = GetCharacterConstructionSite();
             if (nextButton != null)
@@ -110,7 +133,7 @@ namespace Niklasson.EonIV.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult EnvironmentStep(string SelectedEnvironment, string nextButton, string previousButton)
+        public ActionResult EnvironmentStep(Environment CurrentSelectedEnvironment, string nextButton, string previousButton)
         {
             var ccs = GetCharacterConstructionSite();
             if (nextButton != null)

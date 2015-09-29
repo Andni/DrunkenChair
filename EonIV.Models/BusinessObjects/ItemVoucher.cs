@@ -7,7 +7,7 @@ namespace Niklasson.EonIV.Models.BusinessObjects
         public WeaponRarity Rarity { get; set; }
             
         public virtual ItemProperties AddedProperties { get; set; }
-
+        
         public override string ConcreteModelType
         {
             get
@@ -19,9 +19,9 @@ namespace Niklasson.EonIV.Models.BusinessObjects
 
     public enum WeaponRarity
     {
-        COMMON = 0,
-        UNCOMMON = 1,
-        RARE = 2,
+        Common = 0,
+        Uncommon = 1,
+        Rare = 2,
     }
 
 }

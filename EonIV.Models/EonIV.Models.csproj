@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessObjects\Apprentice.cs" />
+    <Compile Include="BusinessObjects\ArmourSet.cs" />
     <Compile Include="BusinessObjects\CategorySkillPoints.cs" />
     <Compile Include="BusinessObjects\CharacterModifierContainer.cs" />
     <Compile Include="BusinessObjects\BaseItem.cs" />
@@ -52,12 +54,14 @@
     <Compile Include="BusinessObjects\CharacterModifierContainerSingleChoice.cs" />
     <Compile Include="BusinessObjects\CharacterSheet.cs" />
     <Compile Include="BusinessObjects\Gear.cs" />
+    <Compile Include="BusinessObjects\HolyItemVoucher.cs" />
     <Compile Include="BusinessObjects\Item.cs" />
     <Compile Include="BusinessObjects\ItemProperties.cs" />
     <Compile Include="BusinessObjects\ItemProperty.cs" />
     <Compile Include="BusinessObjects\ItemSkillBonus.cs" />
     <Compile Include="BusinessObjects\ItemVoucher.cs" />
     <Compile Include="BusinessObjects\JadednessCross.cs" />
+    <Compile Include="BusinessObjects\MysteryVoucher.cs" />
     <Compile Include="BusinessObjects\ResourceOptions.cs" />
     <Compile Include="BusinessObjects\RuleBookEventSet.cs" />
     <Compile Include="BusinessObjects\CharacterGenerationData.cs" />
@@ -73,6 +77,7 @@
     <Compile Include="BusinessObjects\RandomSilver.cs" />
     <Compile Include="BusinessObjects\SkillPointModification.cs" />
     <Compile Include="BusinessObjects\SpecialSkillPoints.cs" />
+    <Compile Include="BusinessObjects\SpecialSkillVoucher.cs" />
     <Compile Include="CharacterCreationConstants.cs">
       <SubType>Code</SubType>
     </Compile>

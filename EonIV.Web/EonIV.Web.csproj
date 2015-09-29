@@ -298,6 +298,17 @@
     <Content Include="Views\EonIvCharacterCreator\ArchetypeStep.cshtml" />
     <Content Include="Views\EonIvCharacterCreator\EnvironmentStep.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Background.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Archetype.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\CharacterModifierContainerMultiChoice.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\SkillPoints.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\EventTableRolls.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ArmourSet.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Resource.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\JadednessCross.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\WeaponVoucher.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\SpecialSkillPoints.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\RandomSilver.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DiceRollCheck.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

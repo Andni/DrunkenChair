@@ -1,6 +1,6 @@
 ﻿namespace Niklasson.EonIV.Models.BusinessObjects
 {
-    class Resource : CharacterModifier
+    public class Resource : CharacterModifier
     {   
         public override string ConcreteModelType
         {

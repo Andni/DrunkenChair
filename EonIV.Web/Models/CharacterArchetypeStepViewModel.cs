@@ -1,7 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
-
 using System.Web.Mvc;
+
 using Niklasson.EonIV.Services;
+using Niklasson.EonIV.Models.BusinessObjects;
 
 namespace Niklasson.EonIV.Web.Models
 {
@@ -12,6 +13,8 @@ namespace Niklasson.EonIV.Web.Models
         [Required]
         [Display(Name = "Arketyp")]
         public string SelectedArchetype { get; set; }
+
+        public Archetype CurrentSelectedArchetype { get; set; }
 
         public CharacterPreview CharacterPreview { get; set; }
 

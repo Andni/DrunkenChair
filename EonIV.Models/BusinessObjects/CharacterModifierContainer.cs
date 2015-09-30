@@ -93,6 +93,7 @@ namespace Niklasson.EonIV.Models.BusinessObjects
             get { return typeof(CharacterModifierContainer).ToString(); }
         }
 
+        public CharacterModifierContainerMultiChoice CooseTwoResources { get; internal set; }
 
         public virtual void Add(CharacterModifierNode node)
         {

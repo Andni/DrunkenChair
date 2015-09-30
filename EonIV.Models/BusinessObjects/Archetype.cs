@@ -19,8 +19,13 @@ namespace Niklasson.EonIV.Models.BusinessObjects
 
         public int? ResourcesContainerId { get; set; }
 
+        public int? PickTwoResourcesContainerId { get; set; }
+
         [ForeignKey("ResourcesContainerId")]
         public virtual CharacterModifierContainer Resources { get; set; }
+
+        [ForeignKey("PickTwoResourcesContainerId")]
+        public virtual CharacterModifierContainerMultiChoice PickTwoResources { get; private set; }
 
         public static implicit operator string(Archetype a)
         {
@@ -72,77 +77,77 @@ namespace Niklasson.EonIV.Models.BusinessObjects
                             ValidMaterials = new List<string> { "Fjällpansar", "Lamellpansar", "Ringbrynja" },
                             Coverage = ArmourCoverage.All,
                         },
-                        new CharacterModifierContainerMultiChoice(2)
+                    },
+                    PickTwoResources =
+                    new CharacterModifierContainerMultiChoice(2)
+                    {
+                        new JadednessCross
                         {
-                            new JadednessCross
+                            Type = JadednessType.Violence,
+                            Crosses = 1,
+                        },
+                        new Resource
+                        {
+                            Label = "Blodstillande örter",
+                            Description = "8 doser av blodstillande örter.",
+                        },
+                        new Resource
+                        {
+                            Label = "Riddjur",
+                            Description = "En stridshäst.",
+                        },
+                        new ArmourSet
+                        {
+                            Coverage = ArmourCoverage.All,
+                            ValidMaterials = new List<string>{ "Tunnplåt", "Plåt" },
+                        },
+                        new CharacterModifierContainerSingleChoice("Vapen", "Två ovanliga vapen eller ett sällsynt vapen.")
+                        {
+                            new CharacterModifierContainer("", "Två ovanliga vapen.")
                             {
-                                Type = JadednessType.Violence,
-                                Crosses = 1,
-                            },
-                            new Resource
-                            {
-                                Label = "Blodstillande örter",
-                                Description = "8 doser av blodstillande örter.",
-                            },
-                            new Resource
-                            {
-                                Label = "Riddjur",
-                                Description = "En stridshäst.",
-                            },
-                            new ArmourSet
-                            {
-                                Coverage = ArmourCoverage.All,
-                                ValidMaterials = new List<string>{ "Tunnplåt", "Plåt" },
-                            },
-                            new CharacterModifierContainerSingleChoice("Vapen", "Två ovanliga vapen eller ett sällsynt vapen.")
-                            {
-                                new CharacterModifierContainer("", "Två ovanliga vapen.")
+                                new WeaponVoucher
                                 {
-                                    new WeaponVoucher
-                                    {
-                                        Rarity = WeaponRarity.Uncommon,
-                                    },
-                                    new WeaponVoucher
-                                    {
-                                        Rarity = WeaponRarity.Uncommon,
-                                    }
+                                    Rarity = WeaponRarity.Uncommon,
                                 },
                                 new WeaponVoucher
                                 {
-                                    Description = "Ett sällsynt vapen.",
-                                    Rarity = WeaponRarity.Rare,
+                                    Rarity = WeaponRarity.Uncommon,
                                 }
-
                             },
-                            new CharacterModifierContainerSingleChoice("Ytterligare vapen", "Två ovanliga vapen eller ett sällsynt vapen.")
+                            new WeaponVoucher
                             {
-                                new CharacterModifierContainer("", "Två ovanliga vapen.")
-                                {
-                                    new WeaponVoucher
-                                    {
-                                        Rarity = WeaponRarity.Uncommon,
-                                    },
-                                    new WeaponVoucher
-                                    {
-                                        Rarity = WeaponRarity.Uncommon,
-                                    }
-                                },
-                                new WeaponVoucher
-                                {
-                                    Description = "Ett sällsynt vapen.",
-                                    Rarity = WeaponRarity.Rare,
-                                }
-
-                            },
-                            new RandomSilver
-                            {
-                                Dices = DiceRollCheck.CreateFromDice(4),
-                                SilverMultiplier = 4,
+                                Description = "Ett sällsynt vapen.",
+                                Rarity = WeaponRarity.Rare,
                             }
+
+                        },
+                        new CharacterModifierContainerSingleChoice("Ytterligare vapen", "Två ovanliga vapen eller ett sällsynt vapen.")
+                        {
+                            new CharacterModifierContainer("", "Två ovanliga vapen.")
+                            {
+                                new WeaponVoucher
+                                {
+                                    Rarity = WeaponRarity.Uncommon,
+                                },
+                                new WeaponVoucher
+                                {
+                                    Rarity = WeaponRarity.Uncommon,
+                                }
+                            },
+                            new WeaponVoucher
+                            {
+                                Description = "Ett sällsynt vapen.",
+                                Rarity = WeaponRarity.Rare,
+                            }
+
+                        },
+                        new RandomSilver
+                        {
+                            Dices = DiceRollCheck.CreateFromDice(4),
+                            SilverMultiplier = 4,
                         }
                     }
                 },
-                
                 new Archetype
                 {
                     Name = "Mystiker", EventRolls = new EventTableRolls(0, 0, 2, 0, 1),
@@ -170,57 +175,58 @@ namespace Niklasson.EonIV.Models.BusinessObjects
                         {
                             Label = "Mysterier",
                             Description = "6 Mysterier.",
+                            NumberOfMysteries = 6,
                         },
-                        new CharacterModifierContainerMultiChoice(2)
+                    },
+                    PickTwoResources = new CharacterModifierContainerMultiChoice(2)
+                    {
+                        new JadednessCross
                         {
-                            new JadednessCross
+                            Type = JadednessType.Supernatural,
+                            Crosses = 2,
+                        },
+                        new CharacterModifierContainer
+                        {
+                            new WeaponVoucher
                             {
-                                Type = JadednessType.Supernatural,
-                                Crosses = 2,
+                                Label = "Beväpning",
+                                Rarity = WeaponRarity.Uncommon,
                             },
-                            new CharacterModifierContainer
+                            new CharacterModifierContainerSingleChoice
                             {
-                                new WeaponVoucher
+                                new ArmourSet
                                 {
-                                    Label = "Beväpning",
-                                    Rarity = WeaponRarity.Uncommon,
-                                },
-                                new CharacterModifierContainerSingleChoice
-                                {
-                                    new ArmourSet
-                                    {
-                                        Coverage = ArmourCoverage.All,
-                                        ValidMaterials = new List<string> {"Härdat läder", "Nitläder", "Ringläder", "Fjällpansar", "Lamellpansar", "Ringbrynja" },
-                                    }
-                                },
-                                new HolyItemVoucher
-                                {
-                                    Label = "Heligt föremål",
-                                    Description = "Ytterligare ett heligt föremål.",
-                                },
-                                new Apprentice
-                                {
-                                    Label = "Lärling",
-                                    Description = "Rollpersinen har med sig en lärling. Slå två gånger på bakgrundstabellen och välj en som beskriver lärlingens härkomst.",
-                                },
-                                new Resource
-                                {
-                                    Label = "Mästare",
-                                    Description = "Rollpersonen har god kontakt med en mästare inom sitt gebit. Mästaren kan hjälpa rollpersonen med problem av mystisk karaktär.",
-                                },
-                                new SpecialSkillVoucher
-                                {
-                                    Label = "Specialträning",
-                                    Description = "Rollpersonen har fått särskilld bildning och får en valfri extertis som denne får 5T6 i. Exempel för en Daakpräst är Begravningsriter, Citera Libera, Flagellera, Helgonens liv, Kyrkor och heliga platser, Tolka religösa skrifter och Tortyr.",
-                                    Value = DiceRollCheck.CreateFromDice(5),
-                                },
-                                new RandomSilver
-                                {
-                                    Label = "Pengar",
-                                    Description = "4T6x5 silver.",
-                                    SilverMultiplier = 5,
-                                    Dices = DiceRollCheck.CreateFromDice(4),
+                                    Coverage = ArmourCoverage.All,
+                                    ValidMaterials = new List<string> {"Härdat läder", "Nitläder", "Ringläder", "Fjällpansar", "Lamellpansar", "Ringbrynja" },
                                 }
+                            },
+                            new HolyItemVoucher
+                            {
+                                Label = "Heligt föremål",
+                                Description = "Ytterligare ett heligt föremål.",
+                            },
+                            new Apprentice
+                            {
+                                Label = "Lärling",
+                                Description = "Rollpersinen har med sig en lärling. Slå två gånger på bakgrundstabellen och välj en som beskriver lärlingens härkomst.",
+                            },
+                            new Resource
+                            {
+                                Label = "Mästare",
+                                Description = "Rollpersonen har god kontakt med en mästare inom sitt gebit. Mästaren kan hjälpa rollpersonen med problem av mystisk karaktär.",
+                            },
+                            new SpecialSkillVoucher
+                            {
+                                Label = "Specialträning",
+                                Description = "Rollpersonen har fått särskilld bildning och får en valfri extertis som denne får 5T6 i. Exempel för en Daakpräst är Begravningsriter, Citera Libera, Flagellera, Helgonens liv, Kyrkor och heliga platser, Tolka religösa skrifter och Tortyr.",
+                                Value = DiceRollCheck.CreateFromDice(5),
+                            },
+                            new RandomSilver
+                            {
+                                Label = "Pengar",
+                                Description = "4T6x5 silver.",
+                                SilverMultiplier = 5,
+                                Dices = DiceRollCheck.CreateFromDice(4),
                             }
                         }
                     }

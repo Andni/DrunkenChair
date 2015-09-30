@@ -91,7 +91,25 @@ textarea {
     float: right;
 }
 
-.character-modifier-container-entries
-{
+.character-modifier-choise-container-entries{
     padding-left: 2em; 
+}
+
+.eon-sublabel{
+    font-size: medium;
+    font-family: Vinque; 
+}
+
+.eon-label{
+    font-size: large;
+    font-family: Vinque; 
+}
+
+ul{
+    padding: 0;
+    list-style: none;
+}
+
+.character-modifier-container-entry-label{
+    font-weight: bold;
 }

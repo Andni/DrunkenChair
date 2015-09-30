@@ -2,7 +2,7 @@
 
 @using Niklasson.EonIV.Models.BusinessObjects;
 
-<div class="character-modifier-container-entries">
+<div class="character-modifier-choise-container-entries">
     @{
         var descriptionExists = !string.IsNullOrEmpty(Model.Description);
         @Html.HiddenFor(m => m.Description)
@@ -14,16 +14,18 @@
         {
             for (int i = 0; i < Model.Children.Count(); i++)
             {
-                @Html.RadioButtonFor(m => m.SelectedAlternativeIndex, i)
-
-
-                var container = Model.Children[i] as CharacterModifierContainer;
-                if (container == null || (container != null && container.NoSelectionChildren))
-                {
-                    @Html.DisplayFor(m => m.Children[i].Label)
-                    @Html.DisplayFor(m => m.Children[i].Description)
-                }
-                @Html.EditorFor(m => m.Children[i])
+                <div class="character-modifier-entry">
+                    @Html.RadioButtonFor(m => m.SelectedAlternativeIndex, i)
+                    @{
+                        var container = Model.Children[i] as CharacterModifierContainer;
+                        if (container == null || (container != null && container.NoSelectionChildren))
+                        {
+                                @Html.DisplayFor(m => m.Children[i].Label)
+                                @Html.DisplayFor(m => m.Children[i].Description)
+                        }
+                        @Html.EditorFor(m => m.Children[i])
+                    }
+                </div>
             }
             @Html.ValidationMessageFor(m => m.SelectedAlternativeIndex)
         }

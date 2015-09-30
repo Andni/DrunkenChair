@@ -1,46 +1,43 @@
 ﻿@model Niklasson.EonIV.Models.BusinessObjects.CharacterModifierContainerMultiChoice
 
 @using Niklasson.EonIV.Models.BusinessObjects;
+@{
+    if(Model.GotOnlyLeafChildren)
+    {
+        //@Html.DisplayFor(m => m.Description)
+    }
+    @Html.HiddenFor(m => m.Description) 
 
-<div class="character-modifier-container-entries">
-    @{
-        if(Model.GotOnlyLeafChildren)
+    if (Model.Children.Count == 1)
+    {
+        <br />
+        @Html.EditorFor(m => m.Children)
+    }
+    else
+    {
+        for (int i = 0; i < Model.Children.Count(); i++)
         {
-            //@Html.DisplayFor(m => m.Description)
-        }
-        @Html.HiddenFor(m => m.Description)
-
-        if (Model.Children.Count == 1)
-        {
-            <br />
-            @Html.EditorFor(m => m.Children)
-        }
-        else
-        {
-            for (int i = 0; i < Model.Children.Count(); i++)
+            if (Model.SelectedIndices.Count < i + 1)
             {
-                if(i != 0)
-                {
-                    <br />
-                }
-                if (Model.SelectedIndices.Count < i + 1)
-                {
-                    Model.SelectedIndices.Add(new bool());
-                }
+                Model.SelectedIndices.Add(new bool());
+            }
+            
+            <div class="character-modifier-entry">
+            @{
                 @Html.CheckBoxFor(m => m.SelectedIndices[i])
-
 
                 var container = Model.Children[i] as CharacterModifierContainer;
                 if (container == null || (container != null && container.NoSelectionChildren))
                 {
-                    <span style="font-weight: bold">
+                    <span class="character-modifier-container-entry-label">
                         @Html.DisplayFor(m => m.Children[i].Label)
                     </span>
                     @Html.DisplayFor(m => m.Children[i].Description)
                 }
                 @Html.EditorFor(m => m.Children[i])
             }
+            </div>
         }
     }
-    @Html.HiddenFor(m => m.ConcreteModelType)
-</div>
+}
+@Html.HiddenFor(m => m.ConcreteModelType)

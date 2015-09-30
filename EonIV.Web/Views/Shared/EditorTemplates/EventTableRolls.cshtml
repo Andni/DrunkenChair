@@ -1,27 +1,38 @@
 ﻿@model Niklasson.EonIV.Models.BusinessObjects.EventTableRolls
 
 <table>
-    <caption>Slag på händelsetabeller</caption>
     <tbody>
-        <tr>
-            <td>@Html.LabelFor(m => m.TravlesAndAdventures)</td>
-            <td>@Html.DisplayFor(m => m.TravlesAndAdventures)</td>
-            <td>@Html.HiddenFor(m => m.TravlesAndAdventures)</td>
-        </tr>
-        <tr>
-            <td>@Html.LabelFor(m => m.IntrigueAndIlldeads)</td>
-            <td>@Html.DisplayFor(m => m.IntrigueAndIlldeads)</td>
-            <td>@Html.HiddenFor(m => m.IntrigueAndIlldeads)</td>
-        </tr>
-        <tr>
-            <td>@Html.LabelFor(m => m.KnowledgeAndMysteries)</td>
-            <td>@Html.DisplayFor(m => m.KnowledgeAndMysteries)</td>
-            <td>@Html.HiddenFor(m => m.KnowledgeAndMysteries)</td>
-        </tr>
-        <tr>
-            <td>@Html.LabelFor(m => m.BattlesAndSkirmishes)</td>
-            <td>@Html.DisplayFor(m => m.BattlesAndSkirmishes)</td>
-            <td>@Html.HiddenFor(m => m.BattlesAndSkirmishes)</td>
-        </tr>
+        @if(Model.TravlesAndAdventures > 0)
+        {
+            <tr>
+                <td>@Html.DisplayNameFor(m => m.TravlesAndAdventures)</td>
+                <td>@Html.DisplayFor(m => m.TravlesAndAdventures)</td>
+                <td>@Html.HiddenFor(m => m.TravlesAndAdventures)</td>
+            </tr>
+        }
+        @if (Model.IntrigueAndIlldeads > 0)
+        {
+            <tr>
+                <td>@Html.DisplayNameFor(m => m.IntrigueAndIlldeads)</td>
+                <td>@Html.DisplayFor(m => m.IntrigueAndIlldeads)</td>
+                <td>@Html.HiddenFor(m => m.IntrigueAndIlldeads)</td>
+            </tr>
+        }
+        @if (Model.KnowledgeAndMysteries > 0)
+        {
+            <tr>
+                <td>@Html.DisplayNameFor(m => m.KnowledgeAndMysteries)</td>
+                <td>@Html.DisplayFor(m => m.KnowledgeAndMysteries)</td>
+                <td>@Html.HiddenFor(m => m.KnowledgeAndMysteries)</td>
+            </tr>
+        }
+        @if (Model.BattlesAndSkirmishes > 0)
+        {
+            <tr>
+                <td>@Html.DisplayNameFor(m => m.BattlesAndSkirmishes)</td>
+                <td>@Html.DisplayFor(m => m.BattlesAndSkirmishes)</td>
+                <td>@Html.HiddenFor(m => m.BattlesAndSkirmishes)</td>
+            </tr>
+        }
     </tbody>
 </table>

@@ -1,23 +1,53 @@
 ﻿@model Niklasson.EonIV.Models.BusinessObjects.Skillpoints
 
-@Html.HiddenFor(m => m.Battle)
-@Html.DisplayFor(m => m.Battle)
-
-@Html.HiddenFor(m => m.Movement)
-@Html.DisplayFor(m => m.Movement)
-
-@Html.HiddenFor(m => m.Social)
-@Html.DisplayFor(m => m.Social)
-
-@Html.HiddenFor(m => m.Wilderness)
-@Html.DisplayFor(m => m.Wilderness)
-
-@Html.HiddenFor(m => m.Knowledge)
-@Html.DisplayFor(m => m.Knowledge)
-
-@Html.HiddenFor(m => m.Mystic)
-@Html.DisplayFor(m => m.Mystic)
-
-@Html.HiddenFor(m => m.FreeChoise)
-@Html.DisplayFor(m => m.FreeChoise)
-
+<ul>
+    @if(Model.Battle > 0)
+    {
+        <li>
+            @Html.DisplayFor(m => m.Battle) enheter Stridsfärdigheter
+            @Html.HiddenFor(m => m.Battle) 
+        </li>
+    }
+    @if (Model.Movement > 0)
+    {
+        <li>
+            @Html.HiddenFor(m => m.Movement) enheter Rörelsefärdigheter
+            @Html.DisplayFor(m => m.Movement)
+        </li>
+    }
+    @if (Model.Social > 0)
+    {
+        <li>
+            @Html.HiddenFor(m => m.Social) enheter Sociala färdigheter
+            @Html.DisplayFor(m => m.Social)
+        </li>
+    }
+    @if (Model.Wilderness > 0)
+    {
+        <li>
+            @Html.HiddenFor(m => m.Wilderness) enheter Vildmarksfärdigheter
+            @Html.DisplayFor(m => m.Wilderness)
+        </li>
+    }
+    @if (Model.Knowledge > 0)
+    {
+        <li>
+            @Html.HiddenFor(m => m.Knowledge) enheter Kunskapsfärdigheter
+            @Html.DisplayFor(m => m.Knowledge)
+        </li>
+    }
+    @if (Model.Mystic > 0)
+    {
+        <li>
+            @Html.HiddenFor(m => m.Mystic) enheter Mystikfärdigheter
+            @Html.DisplayFor(m => m.Mystic)
+        </li>
+    }
+    @if (Model.FreeChoise > 0)
+    {
+        <li>
+            @Html.HiddenFor(m => m.FreeChoise) enheter Valfria enheter
+            @Html.DisplayFor(m => m.FreeChoise)
+        </li>
+    }
+</ul>

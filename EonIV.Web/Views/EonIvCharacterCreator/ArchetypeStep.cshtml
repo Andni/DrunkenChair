@@ -10,7 +10,7 @@
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
 }
 
-<h2>ArchetypeStep</h2>
+<h2>Välj arketyp</h2>
 
 @using (Html.BeginForm("ArchetypeStep", "EonIvCharacterCreator", FormMethod.Post, new { style = "display:inline-block;", @class = "left-column" }))
 {
@@ -24,7 +24,6 @@
     var dropdownListAttributes = new { @class = "form-control", data_action_url = Url.Action("UpdateArchetype", "EonIvCharacterCreator") };
 
     <div>
-        @Html.LabelFor(model => model.SelectedArchetype, htmlAttributes: labelAttributes)
         @Html.DropDownListFor(model => model.SelectedArchetype, Model.Archetypes, dropdownListAttributes)
         @Html.ValidationMessageFor(m => m.SelectedArchetype)
         <br />

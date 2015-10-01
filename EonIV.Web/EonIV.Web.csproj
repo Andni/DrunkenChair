@@ -310,6 +310,7 @@
     <Content Include="Views\Shared\EditorTemplates\SpecialSkillPoints.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\RandomSilver.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DiceRollCheck.cshtml" />
+    <Content Include="Views\EonIvCharacterCreator\Archetype.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

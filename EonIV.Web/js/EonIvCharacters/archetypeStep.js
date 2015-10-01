@@ -14,11 +14,11 @@
             $(selector).data("action-url") +
             '?archetype=' + archetype
         );
-    };
+        $("#archetype").load(eon.updateArchetypeURL + '?archetype=' + archetype);
+    };  
 
 })(eon)
 
 $(this.document).ready(function () {
-
     eon.attachOnChange('#SelectedArchetype', eon.selectorChanged);
 });

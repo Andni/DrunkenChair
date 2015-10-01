@@ -169,52 +169,7 @@ namespace Niklasson.EonIV.Web.Controllers
             };
             return backgroundStep;
         }
-
-        //private CharacterBasicStepViewModel GetBlankCharacterBasicDetails()
-        //{
-        //    var ccs = GetCharacterConstructionSite();
-            
-        //    var selectedArchetype = characterGenerationService.Archetypes.FirstOrDefault();
-        //    var selectedEnvironment = characterGenerationService.Environments.FirstOrDefault();
-        //    var selectedRace = characterGenerationService.Races.FirstOrDefault();
-        //    ccs.SetCharacterBasicDetails(new CharacterBasicChoices
-        //        {
-        //            SelectedArchetype = selectedArchetype,
-        //            SelectedEnvironment = selectedEnvironment,
-        //            SelectedRace = selectedRace
-        //        },
-        //        characterGenerationService);
-
-        //    return new CharacterBasicStepViewModel(ccs)
-        //    {
-        //        Archetypes = new SelectList(characterGenerationService.Archetypes),
-        //        Environments = new SelectList(characterGenerationService.Environments),
-        //        Races = new SelectList(characterGenerationService.Races),
-        //        Backgrounds = new List<Background>(characterGenerationService.GetRandomBackgrounds(2)),
-
-        //        CharacterPreview = new CharacterPreview(GetCharacterConstructionSite()),
-        //    };
-        //}
-
-        // POST: EonIvCharacters/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create(CharacterBasicStepViewModel basicDetails, string previousButton, string nextButton)
-        //{
-        //    var ccs = GetCharacterConstructionSite();
-        //    if(nextButton != null)
-        //    {
-        //        if (ModelState.IsValid)
-        //        {
-        //            ccs.SetCharacterBasicDetails(basicDetails, characterGenerationService);
-        //            return View("CharacterAttributeDetails", new CharacterBonusAttributeStepViewModel() { Preview = new CharacterPreview(ccs) });
-        //        }
-        //    }
-        //    return View(new CharacterBasicStepViewModel() { CharacterPreview = new CharacterPreview(ccs) });
-        //}
-
+        
         // GET: EonIvCharacters/CharacterAttributeDetails
         public ActionResult CharacterAttributeDetails()
         {
@@ -328,6 +283,12 @@ namespace Niklasson.EonIV.Web.Controllers
         public ActionResult GetCharacterPreview()
         {
             return PartialView("CharacterPreview", new CharacterPreview(GetCharacterConstructionSite()));
+        }
+
+        [HttpGet]
+        public ActionResult GetArchetype(string archetype)
+        {
+            return PartialView("Archetype", characterGenerationService.GetArchetype(archetype));
         }
 
         [HttpGet]

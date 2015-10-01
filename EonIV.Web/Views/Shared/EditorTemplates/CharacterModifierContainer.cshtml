@@ -1,31 +1,24 @@
 ﻿@model Niklasson.EonIV.Models.BusinessObjects.CharacterModifierContainer
 
 @Html.HiddenFor(m => m.ConcreteModelType)
-<div class="character-modifier-container-entries">
     
     @{
         var descriptionExists = !string.IsNullOrEmpty(Model.Description);
-        if(Model.GotOnlyLeafChildren)
-        {
-        //    @Html.DisplayFor(m => m.Description)
-            @Html.HiddenFor(m => m.Description)
-        }
-
+        @Html.HiddenFor(m => m.Description)
+        
         for (int i = 0; i < Model.Children.Count; i++)
         {
             if (!Model.GotOnlyLeafChildren)
             {
-                if (i != 0)
-                {
-                    <br />
-                }
-                <span style="font-weight: bold">
-                    @Html.DisplayFor(m => m.Children[i].Label)
-                </span>
-                @Html.DisplayFor(m => m.Children[i].Description)
-
+                <div class="character-modifier-container-entries">
+                    @{
+                        <span style="font-weight: bold">
+                            @Html.DisplayFor(m => m.Children[i].Label)
+                        </span>
+                        @Html.DisplayFor(m => m.Children[i].Description)
+                    }
+                </div>
             }
             @Html.EditorFor(m => m.Children[i])
         }
     }
-</div>

@@ -25,13 +25,8 @@ namespace Niklasson.EonIV.Models.BusinessObjects
         public virtual CharacterModifierContainer Resources { get; set; }
 
         [ForeignKey("PickTwoResourcesContainerId")]
-        public virtual CharacterModifierContainerMultiChoice PickTwoResources { get; private set; }
-
-        public static implicit operator string(Archetype a)
-        {
-            return a.ToString();
-        }
-
+        public virtual CharacterModifierContainerMultiChoice PickTwoResources { get; set; }
+        
         public override string ToString()
         {
             return Name;

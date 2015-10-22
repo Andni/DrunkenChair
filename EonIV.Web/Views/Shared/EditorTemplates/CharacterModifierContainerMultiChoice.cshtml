@@ -1,43 +1,48 @@
 ﻿@model Niklasson.EonIV.Models.BusinessObjects.CharacterModifierContainerMultiChoice
 
 @using Niklasson.EonIV.Models.BusinessObjects;
-@{
-    if(Model.GotOnlyLeafChildren)
-    {
-        //@Html.DisplayFor(m => m.Description)
-    }
-    @Html.HiddenFor(m => m.Description) 
 
-    if (Model.Children.Count == 1)
-    {
-        <br />
-        @Html.EditorFor(m => m.Children)
-    }
-    else
-    {
-        for (int i = 0; i < Model.Children.Count(); i++)
+@Html.HiddenFor(m => m.ConcreteModelType)
+<div class="character-modifier-choise-container-entries">
+    @{
+        if (Model.GotOnlyLeafChildren)
         {
-            if (Model.SelectedIndices.Count < i + 1)
-            {
-                Model.SelectedIndices.Add(new bool());
-            }
-            
-            <div class="character-modifier-entry">
-            @{
-                @Html.CheckBoxFor(m => m.SelectedIndices[i])
+            //@Html.DisplayFor(m => m.Description)
+        }
+        @Html.HiddenFor(m => m.Description)
 
-                var container = Model.Children[i] as CharacterModifierContainer;
-                if (container == null || (container != null && container.NoSelectionChildren))
+        if (Model.Children.Count == 1)
+        {
+            <br />
+            @Html.EditorFor(m => m.Children)
+        }
+        else
+        {
+            for (int i = 0; i < Model.Children.Count(); i++)
+            {
+                if (Model.SelectedIndices.Count < i + 1)
                 {
-                    <span class="character-modifier-container-entry-label">
-                        @Html.DisplayFor(m => m.Children[i].Label)
-                    </span>
-                    @Html.DisplayFor(m => m.Children[i].Description)
+                    Model.SelectedIndices.Add(new bool());
                 }
-                @Html.EditorFor(m => m.Children[i])
+
+                <div class="character-modifier-entry">
+                    @{
+                        @Html.CheckBoxFor(m => m.SelectedIndices[i])
+
+                        var container = Model.Children[i] as CharacterModifierContainer;
+                        if (container == null || (container != null && container.NoSelectionChildren))
+                        {
+                            <span class="character-modifier-container-entry-label">
+                                @Html.DisplayFor(m => m.Children[i].Label)
+                            </span>
+                            <span>
+                                @Html.DisplayFor(m => m.Children[i].Description)
+                            </span>
+                        }
+                        @Html.EditorFor(m => m.Children[i])
+                    }
+                </div>
             }
-            </div>
         }
     }
-}
-@Html.HiddenFor(m => m.ConcreteModelType)
+</div>

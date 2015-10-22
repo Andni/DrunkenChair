@@ -2,23 +2,20 @@
 
 (function (ns) {
 
-
-    ns.attachOnChange = function (selector, fun) {
-        $(selector).change(function () { fun(selector); });
-    };
-
-
-    ns.selectorChanged = function (selector) {
+    ns.archetypeChanged = function (event) {
         var archetype = $('#SelectedArchetype').val();
+
         $('#CharacterPreview').load(
-            $(selector).data("action-url") +
+            $(event.target).data("action-url") +
             '?archetype=' + archetype
         );
-        $("#archetype").load(eon.updateArchetypeURL + '?archetype=' + archetype);
+
+        $("#archetype").load($(event.target).data("get-archetype-url") + '?archetype=' + archetype);
     };  
 
 })(eon)
 
 $(this.document).ready(function () {
-    eon.attachOnChange('#SelectedArchetype', eon.selectorChanged);
+
+    $('#SelectedArchetype').change(eon.archetypeChanged);
 });

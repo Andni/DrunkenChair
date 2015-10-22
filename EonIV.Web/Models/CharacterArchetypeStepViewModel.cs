@@ -14,7 +14,7 @@ namespace Niklasson.EonIV.Web.Models
         [Display(Name = "Arketyp")]
         public string SelectedArchetype { get; set; }
 
-        public Archetype CurrentSelectedArchetype { get; set; }
+        public Archetype DefaultArchetype { get; set; }
 
         public CharacterPreview CharacterPreview { get; set; }
 
@@ -23,7 +23,7 @@ namespace Niklasson.EonIV.Web.Models
         public CharacterArchetypeStepViewModel(CharacterConstructionSite ccs)
         {
             CharacterPreview = new CharacterPreview(ccs);
-            SelectedArchetype = ccs.GetArchetype();
+            SelectedArchetype = ccs.GetArchetypeName();
         }
 
     }

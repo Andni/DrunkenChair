@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
-
+using Niklasson.EonIV.Models.BusinessObjects;
 using Niklasson.EonIV.Services;
 
 namespace Niklasson.EonIV.Web.Models
@@ -13,6 +13,8 @@ namespace Niklasson.EonIV.Web.Models
         [Display(Name = "Folkslag")]
         public string SelectedRace { get; set; }
 
+        public Race DefaultRace { get; set; } 
+
         public CharacterPreview CharacterPreview { get; set; }
 
         public CharacterRaceStepViewModel() { }
@@ -20,7 +22,7 @@ namespace Niklasson.EonIV.Web.Models
         public CharacterRaceStepViewModel(CharacterConstructionSite ccs)
         {
             CharacterPreview = new CharacterPreview(ccs);
-            SelectedRace = ccs.GetRace();
+            SelectedRace = ccs.GetRaceName();
         }
     }
 }

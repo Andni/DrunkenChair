@@ -3,31 +3,35 @@
 @{
     object attributes = new { @class = "eon-label"};
 }
-<div class="eon-label">
-    @Html.DisplayFor(m => m.Name)
-</div>
+<div id="archetype">
+
+    <div class="eon-label">
+        @Html.DisplayFor(m => m.Name)
+    </div>
     @Html.HiddenFor(m => m.Name)
 
-<div class="eon-label">
-    Händelsetabeller
-</div>
-@Html.EditorFor(m => m.EventRolls)
-
-<div class="eon-label">
-    Färdigheter
-</div>
-@Html.EditorFor(m => m.Skillpoints)
-
-<div id="resources">
     <div class="eon-label">
-        Utrusting & rusurser
+        Händelsetabeller
     </div>
-    @Html.EditorFor(m => m.Resources)
+    @Html.EditorFor(m => m.EventRolls)
 
-    <div class="eon-sublabel">
-        Välj två av nedanstående alternativ
+    <div class="eon-label">
+        Färdigheter
     </div>
-    @Html.EditorFor(m => m.PickTwoResources)
+    @Html.EditorFor(m => m.Skillpoints)
+
+    <div id="resources">
+        <div class="eon-label">
+            Utrusting & rusurser
+        </div>
+        @Html.EditorFor(m => m.Resources)
+
+        <div class="eon-sublabel">
+            Välj två av nedanstående alternativ
+        </div>
+        <span id="pickTwoResources">
+            @Html.EditorFor(m => m.PickTwoResources)
+        </span>
+    </div>
 </div>
-
 <script src="~/js/EonIvCharacters/archetypePartialView.js"></script>

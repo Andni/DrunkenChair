@@ -2,23 +2,23 @@
 
 (function (ns) {
 
-
-    ns.attachOnChange = function (selector, fun) {
-        $(selector).change(function () { fun(selector); });
-    };
-
-
-    ns.selectorChanged = function (selector) {
+    ns.backgroundChanged = function (event) {
         var background = $('input[name = SelectedBackground]:checked').val();
+    
         $('#CharacterPreview').load(
-            $(selector).data("action-url") +
+            $(event.target).data("updatePreviewUrl") +
+            '?background=' + background
+        );
+
+        $('#eon-background').load(
+            $(event.target).data("getBackgroundUrl") +
             '?background=' + background
         );
     };
 
+
 })(eon)
 
 $(this.document).ready(function () {
-
-    eon.attachOnChange('.background-radio', eon.selectorChanged);
+    $('.background-radio').change(eon.backgroundChanged);
 });

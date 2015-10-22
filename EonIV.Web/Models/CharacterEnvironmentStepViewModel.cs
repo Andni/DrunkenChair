@@ -13,14 +13,14 @@ namespace Niklasson.EonIV.Web.Models
         [Display(Name = "Miljö")]
         public string SelectedEnvironment{ get; set; }
 
-        public Environment CurrentSelectedEnvironment { get; set; }
+        public Environment DefaultEnvironment { get; set; }
 
         public CharacterPreview CharacterPreview { get; set; }
 
         public CharacterEnvironmentStepViewModel(CharacterConstructionSite ccs)
         {
             CharacterPreview = new CharacterPreview(ccs);
-            SelectedEnvironment = ccs.GetEnvironment();
+            SelectedEnvironment = ccs.GetEnvironmentName();
         }
 
     }

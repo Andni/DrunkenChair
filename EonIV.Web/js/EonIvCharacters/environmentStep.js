@@ -2,16 +2,17 @@
 
 (function (ns) {
 
+    ns.environmentChanged = function (selector) {
 
-    ns.attachOnChange = function (selector, fun) {
-        $(selector).change(function () { fun(selector); });
-    };
-
-
-    ns.selectorChanged = function (selector) {
         var environment = $('#SelectedEnvironment').val();
+
         $('#CharacterPreview').load(
-            $(selector).data("action-url") +
+            $(event.target).data("action-url") +
+            '?environment=' + environment
+        );
+
+        $('#eon-environment').load(
+            $(event.target).data("get-environment-url") +
             '?environment=' + environment
         );
     };
@@ -20,5 +21,5 @@
 
 $(this.document).ready(function () {
 
-    eon.attachOnChange('#SelectedEnvironment', eon.selectorChanged);
+    $('#SelectedEnvironment').change(eon.environmentChanged);
 });

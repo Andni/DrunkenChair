@@ -21,7 +21,7 @@ namespace Niklasson.EonIV.Web.Models
         public CharacterBackgroundStepViewModel(CharacterConstructionSite ccs)
         {
             CharacterPreview = new CharacterPreview(ccs);
-            SelectedBackground = ccs.GetBackground();
+            SelectedBackground = ccs.GetBackgroundName();
         }
     }
 }

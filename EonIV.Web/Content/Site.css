@@ -30,12 +30,13 @@ body {
     padding-bottom: 20px;
     background-color: #ecd9bc;
     background-image: url(/Content/background/parchment_paper_background_1800x1600.jpg);
-    color: #8b0113;
     font-family: goudyOldStyle;
 }
 
 label, h1, h2, h3, h4, h5, h6, th {
     font-family: vinque;
+    color: #8b0113;
+
 }
 
 td, th {
@@ -97,11 +98,13 @@ textarea {
 
 .eon-sublabel{
     font-size: medium;
-    font-family: Vinque; 
+    font-family: Vinque;
+    color: #8b0113;
 }
 
 .eon-label{
     font-size: large;
+    color: #8b0113;
     font-family: Vinque; 
 }
 

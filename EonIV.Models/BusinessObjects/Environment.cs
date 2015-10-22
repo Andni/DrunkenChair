@@ -11,6 +11,8 @@ namespace Niklasson.EonIV.Models.BusinessObjects
         [Key]
         public string Name { get; set; }
 
+        public string Description { get; set; }
+
         public EventTableRolls EventRolls { get; set; }
 
         public Skillpoints Skillpoints { get; set; }
@@ -67,14 +69,11 @@ namespace Niklasson.EonIV.Models.BusinessObjects
                     },
                     GearAndResources = new CharacterModifierContainer
                     {
-                        new Gear
+                        new Resource
                         {
                             Label = "Fiskeutrustning",
-                            Item = new BaseItem
-                            {
-                                ItemName = "Fiskeutrustning",
-                                Description = "Bestående av nät, 30 meter rev, fem krokar, renskniv och en korg.",
-                            }
+                            Description = "Bestående av nät, 30 meter rev, fem krokar, renskniv och en korg.",
+                            
                         },
                         new CharacterModifierContainerMultiChoice(2)
                         {
@@ -84,40 +83,27 @@ namespace Niklasson.EonIV.Models.BusinessObjects
                                 Type = JadednessType.Vulnrability,
                                 Crosses = 1
                             },
-                            new Gear
+                            new Resource
                             {
                                 Label = "Egendom",
-                                Item = new BaseItem
-                                {
-                                    Description = "Ett litet torp, en nedgången gård vid havet eller en våning i stadens sämre delar. Lever rollpersonen invid vattnet (hamnstad eller by vid kusten eller vattendrag så har denne även en roddbåt eller mindre segelbåt.",
-                                }
+                                Description = "Ett litet torp, en nedgången gård vid havet eller en våning i stadens sämre delar. Lever rollpersonen invid vattnet (hamnstad eller by vid kusten eller vattendrag så har denne även en roddbåt eller mindre segelbåt.",    
                             },
                             new SkillModification
                             {
+                                SkillName = "Simma",
                                 Label = "Som fisken i vattnet",
-                                LearningModifier = LearningModifier.FAST_LEARNER,
+                                LearningModifier = LearningModifier.FastLearner,
                             },
                             new CategorySkillPoints
                             {
                                 Label = "Språk",
-                                Category = DataTypes.SkillCategory.LANGUAGE,
+                                Category = SkillCategory.Language,
                                 SkillPoints = 2
                             },
-                            new Gear
+                            new Resource
                             {
                                 Label = "Tubkikare",
-                                Item = new Item
-                                {
-                                    Description = "En tubkikare som gör det möjligt att se över stora avstånd. Bonus +1T6 på färdigheten speja vid situationer där tubkikaren kan användas.",
-                                    Properties = new ItemProperties
-                                    {
-                                        new ItemSkillBonus
-                                        {
-                                            SkillName = "Speja",
-                                            Bonus = DiceRollCheck.CreateFromDice(1)
-                                        }
-                                    }
-                                }
+                                Description = "En tubkikare som gör det möjligt att se över stora avstånd. Bonus +1T6 på färdigheten speja vid situationer där tubkikaren kan användas.",
                             },
                             new RandomSilver
                             {
@@ -144,17 +130,15 @@ namespace Niklasson.EonIV.Models.BusinessObjects
                     },
                     GearAndResources = new CharacterModifierContainer
                     {
-                        new Gear
+                        new Resource
                         {
                             Label = "Luxuösa kläder",
-                            Item = new BaseItem{
-                                Description = "En uppsättning figursydda och lyxiga kläder av mycket god kvalitet. Smycken och värdeföremål värda 50 silver.",
-                                Value = 50
-                            }
+                            Description = "En uppsättning figursydda och lyxiga kläder av mycket god kvalitet. Smycken och värdeföremål värda 50 silver.",
+                            
                         },
                         new CharacterModifierContainerMultiChoice(2)
                         {
-                            new Gear
+                            new Resource
                             {
                                 Label = "Egendom",
                                 Description =
@@ -164,14 +148,14 @@ namespace Niklasson.EonIV.Models.BusinessObjects
                             {
                                 Label = "Född med silversked",
                                 SkillName = "Hovliv",
-                                LearningModifier = LearningModifier.FAST_LEARNER
+                                LearningModifier = LearningModifier.FastLearner
                             },
-                            new Gear
+                            new Resource
                             {
                                 Label = "Slav eller tjänare",
                                 Description = "En slav eller tjänare som lyder och passar upp rollpersonen."
                             },
-                            new Gear
+                            new Resource
                             {
                                 Label = "Ståtligt riddjur",
                                 Description = "Ett ståtligt och präktigt riddjur, exempelvis en stridshäst, en snövit ridhäst eller något annat som drar till sig rppmärksamhet.",
@@ -203,13 +187,10 @@ namespace Niklasson.EonIV.Models.BusinessObjects
                     },
                     GearAndResources = new CharacterModifierContainer
                     {
-                        new Gear
+                        new Resource
                         {
                             Label = "Finkläder",
-                            Item = new BaseItem
-                            {
-                                Description = "En uppsättning finare kläder som man vanligen bär vid festligheter och högtider.",
-                            }
+                            Description = "En uppsättning finare kläder som man vanligen bär vid festligheter och högtider.",    
                         },
                         new JadednessCross
                         {
@@ -219,7 +200,7 @@ namespace Niklasson.EonIV.Models.BusinessObjects
                             Type = JadednessType.Vulnrability,
                             Crosses = 1,
                         },
-                        new Gear
+                        new Resource
                         {
                             Label = "Egendom",
                             Description = "Ett litet hus i stadens sämre delar eller en våning i stadens bättre delar.",
@@ -240,7 +221,7 @@ namespace Niklasson.EonIV.Models.BusinessObjects
                         {
                             Label = "Språk",
                             Description = "2 Språkenheter.",
-                            Category = SkillCategory.LANGUAGE,
+                            Category = SkillCategory.Language,
                             SkillPoints = 2
                         },
                         new RandomSilver

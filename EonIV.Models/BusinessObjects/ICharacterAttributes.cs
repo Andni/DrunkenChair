@@ -2,19 +2,10 @@
 
 namespace Niklasson.EonIV.Models.BusinessObjects
 {
-    public interface ICharacterAttributes
+    public interface ICharacterAttributes : ICharacterBaseAttributes
     {
         CharacterBaseAttributeSet Base { get; set; }
         //CharacterAttributeSet Derived { get; }
-
-        DiceRollCheck Strength { get; }
-        DiceRollCheck Stamina { get; }
-        DiceRollCheck Agility { get; }
-        DiceRollCheck Perception { get; }
-        DiceRollCheck Will { get; }
-        DiceRollCheck Psyche { get; }
-        DiceRollCheck Wisdom { get; }
-        DiceRollCheck Charisma { get; }
 
         DiceRollCheck Movement { get;}
         DiceRollCheck Impression { get; }

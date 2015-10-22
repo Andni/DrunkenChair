@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Niklasson.EonIV.Models.BusinessObjects
@@ -14,6 +15,8 @@ namespace Niklasson.EonIV.Models.BusinessObjects
         public string Race { get; set; }
 
         public string Profession { get; set; }
+
+        [Display(Name = "Startkapital")]
         public int StartingCapitalInSilver { get; set; }
 
         [Column("Attributes")]
@@ -23,30 +26,57 @@ namespace Niklasson.EonIV.Models.BusinessObjects
         public CharacterSkillSet Skills { get; set; } = new CharacterSkillSet();
         public List<CharacterLanguageSkill> Languages { get; set; } = new List<CharacterLanguageSkill>();
         public List<CharacterModifier> Notes { get; set; } = new List<CharacterModifier>();
-        
+
         public CharacterSheet(ICharacterData data)
         {
-            Archetype = data.Archetype;
-            Background = data.Background;
-            Environment = data.Environment;
-            Race = data.Race;
-
-            Attributes = new CharacterAttributeSet(data.Race.StartingAttributes + data.ExtraAttributeDiceDistribution);
-
-            if(data.Archetype.Resources != null)
+            if (data == null)
             {
-                Notes.AddRange(data.Archetype.Resources.Flatten());
+                return;
             }
-            if (data.Background.Modifications != null)
+
+            Race = data.Race?.Name;
+            Attributes += data.ExtraAttributeDiceDistribution;
+            //race
+            if (data.Race != null)
             {
+                Attributes += new CharacterAttributeSet(data.Race.StartingAttributes);
+            }
+
+
+            //background notes
+            if (data?.Background?.Modifications != null)
+            {
+                Background = data.Background?.Name;
                 Notes.AddRange(data.Background.Modifications.Flatten());
             }
-            if (data.Environment.GearAndResources != null)
+
+            //environment
+            if (data?.Environment != null)
             {
-                Notes.AddRange(data.Environment.GearAndResources.Flatten());
+                StartingCapitalInSilver = data.Environment.StartingSilver;
+                Environment = data.Environment.Name;
+                if(data.Environment?.GearAndResources != null)
+                {
+                    Notes.AddRange(data.Environment.GearAndResources.Flatten());
+                }
+
             }
 
-            StartingCapitalInSilver = data.Environment.StartingSilver;
+            //archetype notes
+            var archetype = data?.Archetype;
+            if (archetype != null)
+            {
+                Archetype = data.Archetype?.Name;
+
+                if (archetype.Resources != null)
+                {
+                    Notes.AddRange(archetype.Resources.Flatten());
+                }
+                if (archetype.PickTwoResources != null)
+                {
+                    Notes.AddRange(archetype.PickTwoResources.Flatten());
+                }
+            }
         }
     }
 }

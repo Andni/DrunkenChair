@@ -81,11 +81,11 @@ namespace Niklasson.EonIV.Services
         { 
             var events = new List<IRuleBookEvent>();
 
-            var v = GetRandomEvents(EventCategory.TRAVELS_AND_ADVENTURES, eventRolls.TravlesAndAdventures);
+            var v = GetRandomEvents(EventCategory.TravelsAndAdventures, eventRolls.TravlesAndAdventures);
             events.AddRange( v); 
-            events.AddRange(GetRandomEvents(EventCategory.INTRIGUE_AND_MISDEADS, eventRolls.IntrigueAndIlldeads));
-            events.AddRange(GetRandomEvents(EventCategory.KNOWLEDGE_AND_MYSTERIES, eventRolls.KnowledgeAndMysteries));
-            events.AddRange(GetRandomEvents(EventCategory.BATTLES_AND_SKIRMISHES, eventRolls.BattlesAndSkirmishes));
+            events.AddRange(GetRandomEvents(EventCategory.IntrigueAndMisdeads, eventRolls.IntrigueAndIlldeads));
+            events.AddRange(GetRandomEvents(EventCategory.KnowledgeAndMysteries, eventRolls.KnowledgeAndMysteries));
+            events.AddRange(GetRandomEvents(EventCategory.BattlesAndSkirmishes, eventRolls.BattlesAndSkirmishes));
 
             return events;
         }

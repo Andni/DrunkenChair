@@ -14,8 +14,8 @@ namespace Niklasson.EonIV.Models.BusinessObjects
     {
         public SpecialSkill()
         {
-            LearningModifier = LearningModifier.FAST_LEARNER;
-            Value = EonIVValue.DiceToValue(4);
+            LearningModifier = LearningModifier.FastLearner;
+            Value = new DiceRollCheck(4, 0);
         }
     }
 }

@@ -33,10 +33,10 @@ namespace Niklasson.EonIV.Web.Models
         public CharacterBasicStepViewModel(CharacterConstructionSite ccs)
         {
             CharacterPreview = new CharacterPreview(ccs);
-            SelectedArchetype = ccs.GetArchetype();
-            SelectedBackground = ccs.GetBackground();
-            SelectedEnvironment = ccs.GetEnvironment();
-            SelectedRace = ccs.GetRace();
+            SelectedArchetype = ccs.GetArchetypeName();
+            SelectedBackground = ccs.GetBackgroundName();
+            SelectedEnvironment = ccs.GetEnvironmentName();
+            SelectedRace = ccs.GetRaceName();
         }
     }
 }

@@ -7,7 +7,6 @@ namespace Niklasson.EonIV.Models.DataTypes
     [ComplexType]
     public class DiceRollCheck
     {
-
         private static readonly int valuePerD6 = EonIVValue.valuePerD6;
 
         public int UnlimitedDice6
@@ -17,12 +16,7 @@ namespace Niklasson.EonIV.Models.DataTypes
                 return Value / valuePerD6;
             }
         }
-
-        public int Roll()
-        {
-            return ObT6Roller.Instance.Roll(UnlimitedDice6) + Bonus;
-        }
-
+        
         public int Bonus {
             get
             {
@@ -39,12 +33,12 @@ namespace Niklasson.EonIV.Models.DataTypes
         {
             this.Value = value;
         }
-
+        
         public DiceRollCheck(int unlimitedDice6, int bonus)
         {
             this.Value = unlimitedDice6 * valuePerD6;
         }
-
+        
         public DiceRollCheck(string str)
         {
             Regex regex = new Regex(@"(?<d6>\d+)([TDtd]6)?(\+(?<bonus>\d+))?");
@@ -63,14 +57,26 @@ namespace Niklasson.EonIV.Models.DataTypes
             }
         }
 
+        public DiceRollCheck(DiceRollCheck original)
+        {
+            Value = original.Value;
+        }
+
+        public int Roll()
+        {
+            return ObT6Roller.Instance.Roll(UnlimitedDice6) + Bonus;
+        }
+
+
         public static DiceRollCheck CreateFromDice(int dice)
         {
             return new DiceRollCheck(EonIVValue.DiceToValue(dice));
         }
 
-        public void AddDice(int dices = 1)
+        public DiceRollCheck AddDice(int dices = 1)
         {
-            this.Value += EonIVValue.DiceToValue(dices);
+            Value += EonIVValue.DiceToValue(dices);
+            return this;
         }
 
         public override string ToString()
@@ -89,7 +95,7 @@ namespace Niklasson.EonIV.Models.DataTypes
 
         public object Clone()
         {
-            return new DiceRollCheck(this.Value);
+            return new DiceRollCheck(Value);
         }
 
         public static DiceRollCheck operator+(DiceRollCheck lh, DiceRollCheck rh)
@@ -111,12 +117,12 @@ namespace Niklasson.EonIV.Models.DataTypes
             return new DiceRollCheck((int) Math.Floor( lh.Value/rh ));
         }
         
-        public static implicit operator DiceRollCheck(int value)
+        public static explicit operator DiceRollCheck(int value)
         {
             return new DiceRollCheck(value);
         }
 
-        public static implicit operator DiceRollCheck(string str)
+        public static explicit operator DiceRollCheck(string str)
         {
             return new DiceRollCheck(str);
         }

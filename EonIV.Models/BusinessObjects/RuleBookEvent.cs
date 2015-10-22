@@ -4,11 +4,11 @@ namespace Niklasson.EonIV.Models.BusinessObjects
 {
     public enum EventCategory
     {
-        TRAVELS_AND_ADVENTURES = 1,
-        INTRIGUE_AND_MISDEADS = 2,
-        KNOWLEDGE_AND_MYSTERIES = 3,
-        BATTLES_AND_SKIRMISHES = 4,
-        UNCATEGORIZED = 0
+        TravelsAndAdventures = 1,
+        IntrigueAndMisdeads = 2,
+        KnowledgeAndMysteries = 3,
+        BattlesAndSkirmishes = 4,
+        Uncategorized = 0
     }
 
     public class RuleBookEvent : IRuleBookEvent

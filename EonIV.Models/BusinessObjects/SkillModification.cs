@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Niklasson.EonIV.Models.DataTypes;
 
 namespace Niklasson.EonIV.Models.BusinessObjects
@@ -7,7 +8,8 @@ namespace Niklasson.EonIV.Models.BusinessObjects
     {
         [Required]
         public string SkillName { get; set; }
-        public DiceRollCheck Value { get; set; }
+        [Column("SkillValue")]
+        public DiceRollCheck Value { get; set; } = new DiceRollCheck(0);
         public LearningModifier LearningModifier { get; set; }
 
         public override string ConcreteModelType

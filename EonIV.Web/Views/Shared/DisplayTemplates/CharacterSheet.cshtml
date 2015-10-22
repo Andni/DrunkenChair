@@ -1,28 +1,42 @@
 ﻿@model Niklasson.EonIV.Models.BusinessObjects.CharacterSheet
 
-<div id="CharacterBasics">
-    <table>
-        <caption>Rollformulär</caption>
-        <tbody>
-            <tr>
-                <td>@Html.LabelFor(m => m.Race)</td>
-                <td>@Html.DisplayFor(m => m.Race)</td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(m => m.Environment)</td>
-                <td>@Html.DisplayFor(m => m.Environment)</td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(m => m.Archetype)</td>
-                <td>@Html.DisplayFor(m => m.Archetype)</td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(m => m.Background)</td>
-                <td>@Html.DisplayFor(m => m.Background)</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-<div id="CharacterAttributes">
-    @Html.DisplayFor(model => model.Attributes)
-</div>
+    <div id="CharacterBasics">
+        <table>
+            <caption>Rollformulär</caption>
+            <tbody>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Race)</td>
+                    <td>@Html.DisplayFor(m => m.Race)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Environment)</td>
+                    <td>@Html.DisplayFor(m => m.Environment)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Archetype)</td>
+                    <td>@Html.DisplayFor(m => m.Archetype)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Background)</td>
+                    <td>@Html.DisplayFor(m => m.Background)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        @Html.DisplayNameFor(m => m.StartingCapitalInSilver)
+        @Html.DisplayFor(m => m.StartingCapitalInSilver)
+    </div>
+    
+    <div>
+        @Html.DisplayNameFor(m => m.Jadedness)
+        @Html.DisplayFor(m => m.Jadedness)
+    </div>
+
+    <div id="Attributes">
+        @Html.DisplayFor(model => model.Attributes)
+    </div>
+    <div id="Notes">
+        <label>Notes</label>
+        @Html.DisplayFor(m => m.Notes)
+    </div>    

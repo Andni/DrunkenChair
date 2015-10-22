@@ -22,15 +22,16 @@
     </div>
 
     var labelAttributes = new { @class = "control-label col-md-2" };
-    var dropdownListAttributes = new { @class = "form-control", data_action_url = Url.Action("UpdateArchetype", "EonIvCharacterCreator") };
+    var dropdownListAttributes = new { @class = "form-control",
+        data_action_url = Url.Action("UpdateArchetype", "EonIvCharacterCreator"),
+        data_get_archetype_url = Url.Action("GetArchetype", "EonIvCharacterCreator")
+    };
 
     <div>
         @Html.DropDownListFor(model => model.SelectedArchetype, Model.Archetypes, dropdownListAttributes)
         @Html.ValidationMessageFor(m => m.SelectedArchetype)
         <br />
-        <div id="archetype">
-            @{Html.RenderPartial("Archetype", Model.CurrentSelectedArchetype);}
-        </div>
+        @{Html.RenderPartial("Archetype", Model.DefaultArchetype);}
     </div>
 
     <div class="form-group">
@@ -49,6 +50,7 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script type="text/javascript" src="@Url.Content("~/js/EonIvCharacters/archetypeStep.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/js/EonIvCharacters/shared.js")"></script>
     <script>
         $(function () {
             eon = eon || {};

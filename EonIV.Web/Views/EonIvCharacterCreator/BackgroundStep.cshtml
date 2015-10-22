@@ -24,17 +24,26 @@
     var dropdownListAttributes = new { @class = "form-control", data_action_url = Url.Action("GetCharacterPreview", "EonIvCharacterCreator") };
 
     <div>
+        @Html.ValidationMessageFor(m => m.SelectedBackground)
         @Html.LabelFor(model => model.SelectedBackground, htmlAttributes: labelAttributes)
         @{
             foreach (var bg in Model.Backgrounds)
             {
-                @Html.RadioButtonFor(g => g.SelectedBackground, bg.Name, new { data_action_url = "UpdateBackground", @class = "background-radio" })
-                <b>@bg.Name</b> @Html.Raw(" ") @Html.DisplayFor(m => bg)
+                @Html.RadioButtonFor(g => g.SelectedBackground, bg.Name,
+                    new
+                    {
+                        data_get_background_url = Url.Action("GetBackground", "EonIVCharacterCreator"),
+                        data_update_preview_url = Url.Action("UpdateBackground", "EonIVCharacterCreator"),
+                        @class = "background-radio"
+                    })
+                <b>@bg.Name</b>
                 <br />
             }
         }
-        @Html.ValidationMessageFor(m => m.SelectedBackground)
+
+        @{Html.RenderPartial("Background", Model.Backgrounds.FirstOrDefault());}
     </div>
+
 
 
     <div class="form-group">
@@ -42,7 +51,7 @@
             <input type="submit" name="nextButton" value="Next" class="btn btn-default" />
         </div>
     </div>
-}
+            }
 
 <div id="CharacterPreview" class="right-column" style="display:inline-block;">
     @{Html.RenderPartial("CharacterPreview", Model.CharacterPreview);}

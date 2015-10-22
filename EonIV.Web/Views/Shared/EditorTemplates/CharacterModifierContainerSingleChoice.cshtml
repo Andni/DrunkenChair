@@ -2,6 +2,7 @@
 
 @using Niklasson.EonIV.Models.BusinessObjects;
 
+@Html.HiddenFor(m => m.ConcreteModelType)
 <div class="character-modifier-choise-container-entries">
     @{
         var descriptionExists = !string.IsNullOrEmpty(Model.Description);
@@ -30,5 +31,4 @@
             @Html.ValidationMessageFor(m => m.SelectedAlternativeIndex)
         }
     }
-    @Html.HiddenFor(m => m.ConcreteModelType)
 </div>

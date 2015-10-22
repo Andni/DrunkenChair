@@ -5,7 +5,7 @@ using Niklasson.EonIV.Models.DataTypes;
 namespace Niklasson.EonIV.Models.BusinessObjects
 {
     [ComplexType]
-    public class CharacterBaseAttributeSet
+    public class CharacterBaseAttributeSet : ICharacterBaseAttributes
     {
         [Display(Name = "Styrka")]
         public DiceRollCheck Strength { get; set; }

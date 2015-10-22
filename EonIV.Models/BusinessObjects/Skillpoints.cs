@@ -40,25 +40,25 @@ namespace Niklasson.EonIV.Models.BusinessObjects
         {
             switch(skillpoints.Category)
             {
-                case DataTypes.SkillCategory.BATTLE:
+                case DataTypes.SkillCategory.Battle:
                     this.Battle += skillpoints.SkillPoints;
                     break;
-                case DataTypes.SkillCategory.FREE_CHOISE:
+                case DataTypes.SkillCategory.FreeChoise:
                     this.FreeChoise += skillpoints.SkillPoints;
                     break;
-                case DataTypes.SkillCategory.KNOWLEDGE:
+                case DataTypes.SkillCategory.Knowledge:
                     this.Knowledge += skillpoints.SkillPoints;
                     break;
-                case DataTypes.SkillCategory.MOVEMENT:
+                case DataTypes.SkillCategory.Movement:
                     this.Movement += skillpoints.SkillPoints;
                     break;
-                case DataTypes.SkillCategory.MYSTIC:
+                case DataTypes.SkillCategory.Mystic:
                     this.Mystic+= skillpoints.SkillPoints;
                     break;
-                case DataTypes.SkillCategory.SOCIAL:
+                case DataTypes.SkillCategory.Social:
                     this.Social += skillpoints.SkillPoints;
                     break;
-                case DataTypes.SkillCategory.WILDERNESS:
+                case DataTypes.SkillCategory.Wilderness:
                     this.Wilderness += skillpoints.SkillPoints;
                     break;
             }

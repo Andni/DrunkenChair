@@ -8,22 +8,22 @@ namespace Niklasson.EonIV.Models
     {
         public static IEnumerable<T> IntrigueAndMisdeads<T>(this IEnumerable<T> events) where T : IBaseEvent
         {
-            return events.Where(e => e.Category == EventCategory.INTRIGUE_AND_MISDEADS);
+            return events.Where(e => e.Category == EventCategory.IntrigueAndMisdeads);
         }
 
         public static IEnumerable<T> BattlesAndSkirmishes<T>(this IEnumerable<T> events) where T : IBaseEvent
         {
-            return events.Where(e => e.Category == EventCategory.BATTLES_AND_SKIRMISHES);
+            return events.Where(e => e.Category == EventCategory.BattlesAndSkirmishes);
         }
 
         public static IEnumerable<T> TravelsAndAdventures<T>(this IEnumerable<T> events) where T : IBaseEvent
         {
-            return events.Where(e => e.Category == EventCategory.TRAVELS_AND_ADVENTURES);
+            return events.Where(e => e.Category == EventCategory.TravelsAndAdventures);
         }
 
         public static IEnumerable<T> KnowledgeAndMysteries<T>(this IEnumerable<T> events) where T : IBaseEvent
         {
-            return events.Where(e => e.Category == EventCategory.KNOWLEDGE_AND_MYSTERIES);
+            return events.Where(e => e.Category == EventCategory.KnowledgeAndMysteries);
         }
 
         public static IEnumerable<T> FilterByCategory<T>(this IEnumerable<T> events, EventCategory cat) where T : IBaseEvent

@@ -21,15 +21,17 @@
     </div>
 
     var labelAttributes = new { @class = "control-label col-md-2" };
-    var dropdownListAttributes = new { @class = "form-control", data_action_url = Url.Action("UpdateEnvironment", "EonIvCharacterCreator") };
+    var dropdownListAttributes = new { @class = "form-control",
+        data_action_url = Url.Action("UpdateEnvironment", "EonIvCharacterCreator"),
+        data_get_environment_url = Url.Action("GetEnvironment", "EonIvCharacterCreator")
+    };
 
-    <div>
-        @Html.LabelFor(model => model.SelectedEnvironment, htmlAttributes: labelAttributes)
-        @Html.DropDownListFor(model => model.SelectedEnvironment, Model.Environments, dropdownListAttributes)
-        @Html.ValidationMessageFor(m => m.SelectedEnvironment)
-        <br />
-        @Html.EditorFor(m => m.CurrentSelectedEnvironment)
-    </div>
+    @Html.LabelFor(model => model.SelectedEnvironment, htmlAttributes: labelAttributes)
+    @Html.DropDownListFor(model => model.SelectedEnvironment, Model.Environments, dropdownListAttributes)
+    @Html.ValidationMessageFor(m => m.SelectedEnvironment)
+    <br />
+    
+    Html.RenderPartial("Environment", Model.DefaultEnvironment);
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">

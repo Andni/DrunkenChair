@@ -15,13 +15,14 @@
     object labelHtmlAttributes = new { @class = "control-label col-md-2" };
 
     object diceHtmlAttributes = new
-        {
-            @class = "form-control attribute-spinner",
-            @onkeydown = "return false",
-            @min = "0",
-            @max = "5",
-        };
-        
+    {
+        @class = "form-control attribute-spinner",
+        @onkeydown = "return false",
+        @min = "0",
+        @max = "5",
+        data_update_attributes_url = Url.Action("GetDerivedAttributes", "EonIvCharacterCreator")
+    };
+
     object diceDistributorViewData = new
     {
         htmlAttributes = new

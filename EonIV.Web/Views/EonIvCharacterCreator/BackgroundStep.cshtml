@@ -12,7 +12,7 @@
 <h2>Bakgrund</h2>
 
 
-@using (Html.BeginForm("BackgroundStep", "EonIvCharacterCreator", FormMethod.Post, new { style = "display:inline-block;", @class = "left-column" }))
+@using (Html.BeginForm("BackgroundStep", "EonIvCharacterCreator", FormMethod.Post, new { style = "display:inline-block;", @class = "col-md-6" }))
 {
     @Html.AntiForgeryToken()
 
@@ -53,7 +53,7 @@
     </div>
             }
 
-<div id="CharacterPreview" class="right-column" style="display:inline-block;">
+<div id="CharacterPreview" class="col-md-6" style="display:inline-block;">
     @{Html.RenderPartial("CharacterPreview", Model.CharacterPreview);}
 </div>
 

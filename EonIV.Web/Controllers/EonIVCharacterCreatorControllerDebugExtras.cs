@@ -37,6 +37,18 @@ namespace Niklasson.EonIV.Web.Controllers
                 }
             );
         }
+        
+        // GET: EonIvCharacters/CharacterAttributeDetails
+        public ActionResult CharacterAttributeDetails()
+        {
+            return View(
+                new CharacterBonusAttributeStepViewModel()
+                {
+                    Preview = new CharacterPreview(GetCharacterConstructionSite())
+                }
+            );
+        }
+
 #endif
     }
 }

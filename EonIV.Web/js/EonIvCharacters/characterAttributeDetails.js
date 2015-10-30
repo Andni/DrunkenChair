@@ -70,6 +70,8 @@ eon.CharacterAttributeDetails.Initialize = function () {
 
     var prefix = '#Preview_CharacterSheet_Attributes_';
     elements.each(function (i, e) {
+        //jQuery event handlers are executed in the order they are bound,
+        //Bind the handlers in seperate calls to take advantage of this as well as jQuery's this handling in events
         $(e).on("change", null, null, eon.CharacterAttributeDetails.UpdateOtherSpinnersMaxValue);
         $(e).on("change", null, $(e).data('onchange-target'), eon.CharacterAttributeDetails.UpdatePreviewDetails);
         $(e).on("change", null, null, function () {

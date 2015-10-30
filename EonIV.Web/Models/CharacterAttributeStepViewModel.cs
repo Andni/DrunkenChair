@@ -8,7 +8,7 @@ namespace Niklasson.EonIV.Web.Models
     public class CharacterBonusAttributeStepViewModel : IBaseAttributeDices
     {
         [Range(0, 0, ErrorMessage = "Alla bonustärningar måste spenderas.")]
-        public int DicesLeftToDistribute { get; set; }
+        public int DicesLeftToDistribute { get; set; } = 10;
         public int MaxDicesPerAttribute = 5;
 
         private const string rangeErrorMessage = " max 5";
@@ -46,10 +46,7 @@ namespace Niklasson.EonIV.Web.Models
         [Range(0, 5, ErrorMessage = rangeErrorMessage)]
         public int CharismaBonusDices { get; set; }
 
-        public CharacterBonusAttributeStepViewModel()
-        {
-            DicesLeftToDistribute = 10;
-        }
+        public CharacterBonusAttributeStepViewModel() { }
 
         public CharacterBaseAttributeSet CharacterBaseAttributeSet
         {

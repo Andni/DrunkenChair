@@ -27,7 +27,7 @@ namespace Niklasson.EonIV.Web.Controllers
 
         [HttpGet]
         public ActionResult BackgroundStep()
-        {
+         {
             return View(GetCharacterBackgroundStepWithBackgrounds());
         }
         
@@ -99,10 +99,7 @@ namespace Niklasson.EonIV.Web.Controllers
                 {
                     var environments = new SelectList(characterGenerationService.Environments);
                     var selectedEnvironment = string.IsNullOrEmpty(ccs.GetEnvironmentName()) ? environments.FirstOrDefault().ToString() : ccs.GetEnvironmentName();
-                    return View("CharacterAttributeDetails", new CharacterBonusAttributeStepViewModel()
-                    {
-                        Preview = new CharacterPreview(ccs)
-                    });
+                    return View("CharacterAttributeDetails", GetCharacterBonusAttributeStepViewModel());
                 }
             }
 
@@ -112,23 +109,6 @@ namespace Niklasson.EonIV.Web.Controllers
             }
 
             return View(new CharacterEnvironmentStepViewModel(ccs));
-        }
-        
-        // GET: EonIvCharacters/CharacterAttributeDetails
-        public ActionResult CharacterAttributeDetails()
-        {
-            int DicesToDistribute = 10;
-            int MaxDicesPerAttribute = 5;
-
-            ViewBag.DicesToDistribute = DicesToDistribute;
-            ViewBag.MaxDiceesPerAttribute = MaxDicesPerAttribute;
-
-            return View(
-                new CharacterBonusAttributeStepViewModel()
-                {
-                    Preview = new CharacterPreview(GetCharacterConstructionSite())
-                }    
-            );
         }
         
         [HttpPost]
@@ -409,6 +389,23 @@ namespace Niklasson.EonIV.Web.Controllers
                 DefaultEnvironment = ccs.Environment,
                 SelectedEnvironment = ccs.Environment.Name
             };
+        }
+
+        private CharacterBonusAttributeStepViewModel GetCharacterBonusAttributeStepViewModel()
+        {
+            var ccs = GetCharacterConstructionSite();
+            var b = ccs.GetCharacterAttributeExtraDiceDistribution();
+
+            int dicesLeft = 10 - b.AgilityBonusDices - b.CharismaBonusDices - b.PerceptionBonusDices - b.PsycheBonusDices
+                - b.StaminaBonusDices - b.StrengthBonusDices - b.WillBonusDices - b.WisdomBonusDices;
+
+            var res = new CharacterBonusAttributeStepViewModel()
+            {
+                DicesLeftToDistribute = dicesLeft,
+                Preview = new CharacterPreview(ccs),
+            };
+
+            return res;
         }
         #endregion
     }

@@ -1,0 +1,19 @@
+﻿@model  Niklasson.EonIV.Models.BusinessObjects.Background
+
+<div id="eon-background", class="eon-background">
+    <div>
+        @Html.DisplayFor(m => m.Name)
+        @Html.HiddenFor(m => m.Name)
+    </div>
+
+    @Html.DisplayFor(m => m.Description)
+
+    <div class="eon-label">
+        Händelsetabeller
+    </div>
+    @Html.EditorFor(m => m.EventRolls)
+
+    <div id="modifications">
+        @Html.EditorFor(m => m.Modifications)
+    </div>
+</div>

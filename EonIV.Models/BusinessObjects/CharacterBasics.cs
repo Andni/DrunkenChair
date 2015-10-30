@@ -36,10 +36,10 @@ namespace Niklasson.EonIV.Models.BusinessObjects
         {
             return new CharacterBasicChoices()
             {
-                SelectedArchetype = Archetype,
-                SelectedBackground = Background,
-                SelectedEnvironment = Environment,
-                SelectedRace = Race
+                SelectedArchetype = Archetype.Name,
+                SelectedBackground = Background.Name,
+                SelectedEnvironment = Environment.Name,
+                SelectedRace = Race.Name
             };
         }
     }

@@ -1,0 +1,51 @@
+﻿@model Niklasson.EonIV.Web.Models.CharacterEnvironmentStepViewModel
+
+@{
+    ViewBag.Title = "Miljö";
+}
+
+
+@section AddToHead
+{
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+}
+
+<h2>Miljö</h2>
+
+@using (Html.BeginForm("EnvironmentStep", "EonIvCharacterCreator", FormMethod.Post, new { style = "display:inline-block;", @class = "left-column" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    </div>
+
+    var labelAttributes = new { @class = "control-label col-md-2" };
+    var dropdownListAttributes = new { @class = "form-control",
+        data_action_url = Url.Action("UpdateEnvironment", "EonIvCharacterCreator"),
+        data_get_environment_url = Url.Action("GetEnvironment", "EonIvCharacterCreator")
+    };
+
+    @Html.LabelFor(model => model.SelectedEnvironment, htmlAttributes: labelAttributes)
+    @Html.DropDownListFor(model => model.SelectedEnvironment, Model.Environments, dropdownListAttributes)
+    @Html.ValidationMessageFor(m => m.SelectedEnvironment)
+    <br />
+    
+    Html.RenderPartial("Environment", Model.DefaultEnvironment);
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" name="previousButton" value="Previous" class="btn btn-default" />
+            <input type="submit" name="nextButton" value="Next" class="btn btn-default" />
+        </div>
+    </div>
+}
+
+<div id="CharacterPreview" class="right-column" style="display:inline-block;">
+    @{Html.RenderPartial("CharacterPreview", Model.CharacterPreview);}
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript" src="@Url.Content("~/js/EonIvCharacters/environmentStep.js")"></script>
+}

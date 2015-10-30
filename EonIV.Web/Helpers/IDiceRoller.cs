@@ -1,4 +1,4 @@
-﻿namespace Niklasson.DrunkenChair.Helpers
+﻿namespace Niklasson.EonIV.Web.Helpers
 {
     interface IDiceRoller
     {

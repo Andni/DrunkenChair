@@ -7,9 +7,9 @@ namespace Niklasson.EonIV.Models.BusinessObjects
 
     public enum LearningModifier
     {
-        SLOW_LEARNER = -1,
-        NONE = 0,
-        FAST_LEARNER = 1
+        SlowLearner = -1,
+        None = 0,
+        FastLearner = 1
     }
 
     public class CharacterSkill : IComparable
@@ -28,9 +28,9 @@ namespace Niklasson.EonIV.Models.BusinessObjects
         public CharacterSkill()
         {
             Name = "";
-            Value = 0;
-            LearningModifier = LearningModifier.NONE;
-            Category = SkillCategory.UNCATEGORIZED;
+            Value =  new DiceRollCheck(0);
+            LearningModifier = LearningModifier.None;
+            Category = SkillCategory.Uncategorized;
         }
 
         public CharacterSkill(SkillCategory cat) : this()

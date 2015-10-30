@@ -4,7 +4,7 @@ using System.Web.Mvc;
 using Niklasson.EonIV.Models.BusinessObjects;
 using Niklasson.EonIV.Services;
 
-namespace Niklasson.DrunkenChair.Models
+namespace Niklasson.EonIV.Web.Models
 {
     public class CharacterBasicStepViewModel : ICharacterBasicChoices
     {
@@ -33,10 +33,10 @@ namespace Niklasson.DrunkenChair.Models
         public CharacterBasicStepViewModel(CharacterConstructionSite ccs)
         {
             CharacterPreview = new CharacterPreview(ccs);
-            SelectedArchetype = ccs.GetArchetype();
-            SelectedBackground = ccs.GetBackground();
-            SelectedEnvironment = ccs.GetEnvironment();
-            SelectedRace = ccs.GetRace();
+            SelectedArchetype = ccs.GetArchetypeName();
+            SelectedBackground = ccs.GetBackgroundName();
+            SelectedEnvironment = ccs.GetEnvironmentName();
+            SelectedRace = ccs.GetRaceName();
         }
     }
 }

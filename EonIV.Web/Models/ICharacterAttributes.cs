@@ -1,7 +1,7 @@
 ﻿using Niklasson.EonIV.Models.BusinessObjects;
 using Niklasson.EonIV.Models.DataTypes;
 
-namespace Niklasson.DrunkenChair.Models
+namespace Niklasson.EonIV.Web.Models
 {
     public interface ICharacterAttributes
     {

@@ -3,12 +3,12 @@ using System.ComponentModel.DataAnnotations;
 using Niklasson.EonIV.Models;
 using Niklasson.EonIV.Models.BusinessObjects;
 
-namespace Niklasson.DrunkenChair.Models
+namespace Niklasson.EonIV.Web.Models
 {
-    public class CharacterAttributeStepViewModel : IBaseAttributeDices
+    public class CharacterBonusAttributeStepViewModel : IBaseAttributeDices
     {
         [Range(0, 0, ErrorMessage = "Alla bonustärningar måste spenderas.")]
-        public int DicesLeftToDistribute { get; set; }
+        public int DicesLeftToDistribute { get; set; } = 10;
         public int MaxDicesPerAttribute = 5;
 
         private const string rangeErrorMessage = " max 5";
@@ -46,10 +46,7 @@ namespace Niklasson.DrunkenChair.Models
         [Range(0, 5, ErrorMessage = rangeErrorMessage)]
         public int CharismaBonusDices { get; set; }
 
-        public CharacterAttributeStepViewModel()
-        {
-            DicesLeftToDistribute = 10;
-        }
+        public CharacterBonusAttributeStepViewModel() { }
 
         public CharacterBaseAttributeSet CharacterBaseAttributeSet
         {
@@ -67,14 +64,14 @@ namespace Niklasson.DrunkenChair.Models
                 }
                 else
                 {
-                    this.AgilityBonusDices = value.Agility.UnlimitedDice6;
-                    this.CharismaBonusDices = value.Charisma.UnlimitedDice6;
-                    this.PerceptionBonusDices = value.Perception.UnlimitedDice6;
-                    this.PsycheBonusDices = value.Psyche.UnlimitedDice6;
-                    this.StaminaBonusDices= value.Stamina.UnlimitedDice6;
-                    this.StrengthBonusDices = value.Strength.UnlimitedDice6;
-                    this.WillBonusDices = value.Will.UnlimitedDice6;
-                    this.WisdomBonusDices = value.Wisdom.UnlimitedDice6;
+                    AgilityBonusDices = value.Agility.UnlimitedDice6;
+                    CharismaBonusDices = value.Charisma.UnlimitedDice6;
+                    PerceptionBonusDices = value.Perception.UnlimitedDice6;
+                    PsycheBonusDices = value.Psyche.UnlimitedDice6;
+                    StaminaBonusDices = value.Stamina.UnlimitedDice6;
+                    StrengthBonusDices = value.Strength.UnlimitedDice6;
+                    WillBonusDices = value.Will.UnlimitedDice6;
+                    WisdomBonusDices = value.Wisdom.UnlimitedDice6;
                     DicesLeftToDistribute = MaxBonusDices - currentBonus;
                 }
             }

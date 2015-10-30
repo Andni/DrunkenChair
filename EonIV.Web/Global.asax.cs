@@ -1,8 +1,9 @@
-﻿using System.Web;
+﻿using System.Data.Entity;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using Niklasson.DrunkenChair;
+using Niklasson.EonIV.DataAccess;
 using Niklasson.EonIV.Models.BusinessObjects;
 using Niklasson.EonIV.Web.CustomBinders;
 

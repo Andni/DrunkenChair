@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace Niklasson.DrunkenChair.Extensions
+namespace Niklasson.EonIV.Web.Extensions
 {
     public static class ObjectPropertyMergerHelper
     {

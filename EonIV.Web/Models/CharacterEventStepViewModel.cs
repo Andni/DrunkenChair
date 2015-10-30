@@ -1,7 +1,7 @@
 ﻿using Niklasson.EonIV.Models.BusinessObjects;
 using Niklasson.EonIV.Services;
 
-namespace Niklasson.DrunkenChair.Models
+namespace Niklasson.EonIV.Web.Models
 {
     public class CharacterEventStepViewModel : CharacterEventDetails
     {

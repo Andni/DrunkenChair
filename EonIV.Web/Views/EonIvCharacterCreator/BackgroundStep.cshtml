@@ -1,0 +1,63 @@
+﻿@model Niklasson.EonIV.Web.Models.CharacterBackgroundStepViewModel
+
+@{
+    ViewBag.Title = "Bakgrund";
+}
+
+@section AddToHead
+{
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+}
+
+<h2>Bakgrund</h2>
+
+
+@using (Html.BeginForm("BackgroundStep", "EonIvCharacterCreator", FormMethod.Post, new { style = "display:inline-block;", @class = "col-md-6" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    </div>
+
+    var labelAttributes = new { @class = "control-label col-md-2" };
+    var dropdownListAttributes = new { @class = "form-control", data_action_url = Url.Action("GetCharacterPreview", "EonIvCharacterCreator") };
+
+    <div>
+        @Html.ValidationMessageFor(m => m.SelectedBackground)
+        @Html.LabelFor(model => model.SelectedBackground, htmlAttributes: labelAttributes)
+        @{
+            foreach (var bg in Model.Backgrounds)
+            {
+                @Html.RadioButtonFor(g => g.SelectedBackground, bg.Name,
+                    new
+                    {
+                        data_get_background_url = Url.Action("GetBackground", "EonIVCharacterCreator"),
+                        data_update_preview_url = Url.Action("UpdateBackground", "EonIVCharacterCreator"),
+                        @class = "background-radio"
+                    })
+                <b>@bg.Name</b>
+                <br />
+            }
+        }
+
+        @{Html.RenderPartial("Background", Model.Backgrounds.FirstOrDefault());}
+    </div>
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" name="nextButton" value="Next" class="btn btn-default" />
+        </div>
+    </div>
+            }
+
+<div id="CharacterPreview" class="col-md-6" style="display:inline-block;">
+    @{Html.RenderPartial("CharacterPreview", Model.CharacterPreview);}
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript" src="@Url.Content("~/js/EonIvCharacters/backgroundStep.js")"></script>
+}

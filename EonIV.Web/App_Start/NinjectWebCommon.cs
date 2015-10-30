@@ -1,7 +1,7 @@
 using System;
 using System.Web;
 using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-using Niklasson.DrunkenChair;
+using Niklasson.EonIV.Web;
 using Niklasson.EonIV.DataAccess.Repositories;
 using Niklasson.EonIV.Services;
 using Ninject;
@@ -12,7 +12,7 @@ using WebActivatorEx;
 [assembly: ApplicationShutdownMethod(typeof(NinjectWebCommon), "Stop")]
 
 
-namespace Niklasson.DrunkenChair
+namespace Niklasson.EonIV.Web
 {
     public static class NinjectWebCommon 
     {

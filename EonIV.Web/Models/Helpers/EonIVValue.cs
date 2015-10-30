@@ -1,4 +1,4 @@
-﻿namespace Niklasson.DrunkenChair.Models.Helpers
+﻿namespace Niklasson.EonIV.Web.Models.Helpers
 {
     public static class EonIVValue
     {

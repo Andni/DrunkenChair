@@ -25,6 +25,11 @@ namespace Niklasson.EonIV.Services
             return generationTables.GetRandomEvent(cat);
         }
 
+        public Background GetBackground(string backgroundName)
+        {
+            return generationTables.Backgrounds.Where(b => b.Name == backgroundName).SingleOrDefault();
+        }
+
         public IEnumerable<Archetype> Archetypes
         {
             get
@@ -56,15 +61,31 @@ namespace Niklasson.EonIV.Services
             }
         }
 
+        public Archetype GetArchetype(string archetypeName)
+        {
+            return generationTables.Archetypes.Where(r => r.Name == archetypeName).SingleOrDefault();
+        }
+
+        public Race GetRace(string raceName)
+        {
+            return generationTables.Races.Where(r => r.Name == raceName).SingleOrDefault();
+        }
+
+        public Environment GetEnvironment(string environmentName)
+        {
+            return generationTables.Environments.Where(r => r.Name == environmentName).SingleOrDefault();
+        }
+
+
         public IEnumerable<IRuleBookEvent> RollEvents(EventTableRolls eventRolls)
         { 
             var events = new List<IRuleBookEvent>();
 
-            var v = GetRandomEvents(EventCategory.TRAVELS_AND_ADVENTURES, eventRolls.TravlesAndAdventures);
+            var v = GetRandomEvents(EventCategory.TravelsAndAdventures, eventRolls.TravlesAndAdventures);
             events.AddRange( v); 
-            events.AddRange(GetRandomEvents(EventCategory.INTRIGUE_AND_MISDEADS, eventRolls.IntrigueAndIlldeads));
-            events.AddRange(GetRandomEvents(EventCategory.KNOWLEDGE_AND_MYSTERIES, eventRolls.KnowledgeAndMysteries));
-            events.AddRange(GetRandomEvents(EventCategory.BATTLES_AND_SKIRMISHES, eventRolls.BattlesAndSkirmishes));
+            events.AddRange(GetRandomEvents(EventCategory.IntrigueAndMisdeads, eventRolls.IntrigueAndIlldeads));
+            events.AddRange(GetRandomEvents(EventCategory.KnowledgeAndMysteries, eventRolls.KnowledgeAndMysteries));
+            events.AddRange(GetRandomEvents(EventCategory.BattlesAndSkirmishes, eventRolls.BattlesAndSkirmishes));
 
             return events;
         }

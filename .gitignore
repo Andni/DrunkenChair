@@ -216,3 +216,4 @@ pip-log.txt
 .mr.developer.cfg
 DrunkenChair/App_Data
 .vs/config/applicationhost.config
+EonIV.DataAccess/Migrations/CharacterModifierNodeKeyGenerator.cs

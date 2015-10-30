@@ -67,7 +67,7 @@ namespace Niklasson.EonIV.DataAccess.Repositories
 
             var res = generationDbContext.Backgrounds.OrderBy(b => SqlFunctions.Rand()).Take(count).ToList();
             return res;
-        } 
+        }
 
         public IEnumerable<IRuleBookEvent> GetRandomEvents(EventCategory cat, int nb)
         {

@@ -11,6 +11,6 @@ namespace Niklasson.EonIV.Models.BusinessObjects
         
         public string Description { get; set; }
 
-        public int Value { get; set; }
+        public int SilverValue { get; set; }
     }
 }

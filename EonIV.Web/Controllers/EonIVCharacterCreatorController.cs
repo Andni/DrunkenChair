@@ -1,14 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
-using Niklasson.DrunkenChair.Models;
+using Niklasson.EonIV.Web.Models;
 using Niklasson.EonIV.Models.BusinessObjects;
 using Niklasson.EonIV.Services;
 
-namespace Niklasson.DrunkenChair.Controllers
+using Environment = Niklasson.EonIV.Models.BusinessObjects.Environment;
+using System.Diagnostics;
+using Niklasson.EonIV.Models.DataTypes;
+
+namespace Niklasson.EonIV.Web.Controllers
 {
-    public class EonIVCharacterCreatorController : Controller
+    public partial class EonIVCharacterCreatorController : Controller
     {
         private readonly IEonIVCharacterGenerationService characterGenerationService;
         
@@ -19,76 +24,95 @@ namespace Niklasson.DrunkenChair.Controllers
 
         private string sessionStringCharacter = "character";
 
-        // GET: EonIvCharacters/Create
-        public ActionResult Create()
-        {   
-            return View(GetBlankCharacterBasicDetails());
-        }
 
-        private CharacterBasicStepViewModel GetBlankCharacterBasicDetails()
-        {
-            var ccs = GetCharacterConstructionSite();
-            
-            var selectedArchetype = characterGenerationService.Archetypes.FirstOrDefault();
-            var selectedEnvironment = characterGenerationService.Environments.FirstOrDefault();
-            var selectedRace = characterGenerationService.Races.FirstOrDefault();
-            ccs.SetCharacterBasicDetails(new CharacterBasicChoices
-                {
-                    SelectedArchetype = selectedArchetype,
-                    SelectedEnvironment = selectedEnvironment,
-                    SelectedRace = selectedRace
-                },
-                characterGenerationService);
-
-            return new CharacterBasicStepViewModel(ccs)
-            {
-                Archetypes = new SelectList(characterGenerationService.Archetypes),
-                Environments = new SelectList(characterGenerationService.Environments),
-                Races = new SelectList(characterGenerationService.Races),
-                Backgrounds = new List<Background>(characterGenerationService.GetRandomBackgrounds(2)),
-
-                CharacterPreview = new CharacterPreview(GetCharacterConstructionSite()),
-            };
-        }
-
-        // POST: EonIvCharacters/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(CharacterBasicStepViewModel basicDetails, string previousButton, string nextButton)
-        {
-            var ccs = GetCharacterConstructionSite();
-            if(nextButton != null)
-            {
-                if (ModelState.IsValid)
-                {
-                    ccs.SetCharacterBasicDetails(basicDetails, characterGenerationService);
-                    return View("CharacterAttributeDetails", new CharacterAttributeStepViewModel() { Preview = new CharacterPreview(ccs) });
-                }
-            }
-            return View(new CharacterBasicStepViewModel() { CharacterPreview = new CharacterPreview(ccs) });
-        }
-
-        // GET: EonIvCharacters/CharacterAttributeDetails
-        public ActionResult CharacterAttributeDetails()
-        {
-            int DicesToDistribute = 10;
-            int MaxDicesPerAttribute = 5;
-
-            ViewBag.DicesToDistribute = DicesToDistribute;
-            ViewBag.MaxDiceesPerAttribute = MaxDicesPerAttribute;
-
-            return View(
-                new CharacterAttributeStepViewModel()
-                {
-                    Preview = new CharacterPreview(GetCharacterConstructionSite())
-                }    
-            );
+        [HttpGet]
+        public ActionResult BackgroundStep()
+         {
+            return View(GetCharacterBackgroundStepWithBackgrounds());
         }
         
         [HttpPost]
-        public ActionResult CharacterAttributeDetails(CharacterAttributeStepViewModel attributeDetails, string previousButton, string nextButton)
+        public ActionResult BackgroundStep(string SelectedBackground, string nextButton, string previousButton)
+        {
+            var ccs = GetCharacterConstructionSite();
+            if (nextButton != null)
+            {
+                if (ModelState.IsValid)
+                {
+                    return View("RaceStep", GetCharacterRaceStepViewModel());
+                }
+            }
+            
+            return View(GetCharacterBackgroundStepViewModel());
+        }
+        
+        [HttpPost]
+        public ActionResult RaceStep(string SelectedRace, string nextButton, string previousButton)
+        {
+            var ccs = GetCharacterConstructionSite();
+            if (nextButton != null)
+            {
+                if (ModelState.IsValid)
+                {
+                    ccs.Race = characterGenerationService.GetRace(SelectedRace);       
+                    return View("ArchetypeStep", GetCharacterArchetypeStepViewModel());
+                }
+            }
+
+            if (previousButton != null)
+            {
+                return View("BackgroundStep", GetCharacterBackgroundStepViewModel());
+            }
+
+            return View(GetCharacterRaceStepViewModel());
+        }
+
+        [HttpPost]
+        public ActionResult ArchetypeStep(CharacterArchetypeStepViewModel CharacterArchetypeStepViewModel, string nextButton, string previousButton)
+        {
+            var ccs = GetCharacterConstructionSite();
+            if (nextButton != null)
+            {
+                if (ModelState.IsValid)
+                {
+                    //TODO: validate archetype resource selection
+
+                    return View("EnvironmentStep", GetCharacterEnvironmentStepViewModel());
+                }
+            }
+
+            if (previousButton != null)
+            {
+                return View("RaceStep", GetCharacterRaceStepViewModel());
+            }
+
+            return View(GetCharacterArchetypeStepViewModel());
+        }
+
+        [HttpPost]
+        public ActionResult EnvironmentStep(Environment CurrentSelectedEnvironment, string nextButton, string previousButton)
+        {
+            var ccs = GetCharacterConstructionSite();
+            if (nextButton != null)
+            {
+                if (ModelState.IsValid)
+                {
+                    var environments = new SelectList(characterGenerationService.Environments);
+                    var selectedEnvironment = string.IsNullOrEmpty(ccs.GetEnvironmentName()) ? environments.FirstOrDefault().ToString() : ccs.GetEnvironmentName();
+                    return View("CharacterAttributeDetails", GetCharacterBonusAttributeStepViewModel());
+                }
+            }
+
+            if (previousButton != null)
+            {
+                return View("ArchetypeStep", new CharacterArchetypeStepViewModel(ccs));
+            }
+
+            return View(new CharacterEnvironmentStepViewModel(ccs));
+        }
+        
+        [HttpPost]
+        public ActionResult CharacterAttributeDetails(CharacterBonusAttributeStepViewModel attributeDetails, string previousButton, string nextButton)
         {
             var ccs = GetCharacterConstructionSite();
             if(nextButton != null)
@@ -103,10 +127,10 @@ namespace Niklasson.DrunkenChair.Controllers
             
             if(previousButton != null)
             {
-                return View("Create", new CharacterBasicStepViewModel() { CharacterPreview = new CharacterPreview(ccs) });
+                return View("EnvironmentStep", GetCharacterEnvironmentStepViewModel());
             }
 
-            return View(new CharacterAttributeStepViewModel() { Preview = new CharacterPreview(ccs) });
+            return View(new CharacterBonusAttributeStepViewModel() { Preview = new CharacterPreview(ccs) });
         }
 
         [HttpPost]
@@ -138,7 +162,7 @@ namespace Niklasson.DrunkenChair.Controllers
             if (previousButton != null)
             {
                 return View("CharacterAttributeDetails",
-                    new CharacterAttributeStepViewModel()
+                    new CharacterBonusAttributeStepViewModel()
                     {
                         Preview = new CharacterPreview(GetCharacterConstructionSite())
                     });
@@ -148,39 +172,103 @@ namespace Niklasson.DrunkenChair.Controllers
         }
 
         [HttpGet]
-        public ActionResult GetCharacterPreview(string archetype, string race, string environment)
+        public ActionResult UpdateBackground(string background)
         {
-            var choices = new CharacterBasicChoices()
-            {
-                SelectedArchetype = archetype,
-                SelectedEnvironment = environment,
-                SelectedRace = race
-            };
             var ccs = GetCharacterConstructionSite();
-            ccs.SetCharacterBasicDetails(choices, characterGenerationService);
+            ccs.SetBackground(background, characterGenerationService);
             return PartialView("CharacterPreview", new CharacterPreview(ccs));
         }
 
+        [HttpGet]
+        public ActionResult UpdateRace(string race)
+        {
+            var ccs = GetCharacterConstructionSite();
+            ccs.SetRace(race, characterGenerationService);
+            return PartialView("CharacterPreview", new CharacterPreview(ccs));
+        }
+        
+        [HttpGet]
+        public ActionResult UpdateArchetype(string archetype)
+        {
+            var ccs = GetCharacterConstructionSite();
+            ccs.SetArchetype(archetype, characterGenerationService);
+            return PartialView("CharacterPreview", new CharacterPreview(ccs));
+        }
+        
+        [HttpGet]
+        public ActionResult UpdateEnvironment(string environment)
+        {
+            var ccs = GetCharacterConstructionSite();
+            ccs.SetEnvironment(environment, characterGenerationService);
+            return PartialView("CharacterPreview", new CharacterPreview(ccs));
+        }
+
+        [HttpPost]
+        public ActionResult SetArchetype(Archetype archetype)
+        {
+            var ccs = GetCharacterConstructionSite();
+            ccs.SetArchetype(archetype);
+            return PartialView("CharacterPreview", new CharacterPreview(ccs));
+        }
+
+        [HttpPost]
+        public ActionResult SetBackground(Background background)
+        {
+            var ccs = GetCharacterConstructionSite();
+            ccs.SetBackground(background);
+            return PartialView("CharacterPreview", new CharacterPreview(ccs));
+        }
+
+        [HttpGet]
+        public ActionResult GetCharacterPreview()
+        {
+            return PartialView("CharacterPreview", new CharacterPreview(GetCharacterConstructionSite()));
+        }
+
+        [HttpGet]
+        public ActionResult GetArchetype(string archetype)
+        {
+            return PartialView("Archetype", characterGenerationService.GetArchetype(archetype));
+        }
+
+        [HttpGet]
+        public ActionResult GetBackground(string background)
+        {
+            return PartialView("Background", characterGenerationService.GetBackground(background));
+        }
+
+        [HttpGet]
+        public ActionResult GetEnvironment(string environment)
+        {
+            return PartialView("Environment", characterGenerationService.GetEnvironment(environment));
+        }
+
+        [HttpGet]
+        public ActionResult GetRace(string race)
+        {
+            return PartialView("Race", characterGenerationService.GetRace(race));
+        }
+        
         [HttpGet]
         public JsonResult GetDerivedAttributes(string str, string sta, string agl, string per, string wil, string psy, string wis, string cha)
         {
             var res = new JsonResult();
             var atr = new CharacterAttributeSet()
             {
-                Strength = str,
-                Stamina = sta,
-                Agility = agl,
-                Perception = per,
-                Will = wil,
-                Psyche = psy,
-                Wisdom = wis,
-                Charisma = cha
+                Strength = new DiceRollCheck(str),
+                Stamina = new DiceRollCheck(sta),
+                Agility = new DiceRollCheck(agl),
+                Perception = new DiceRollCheck(per),
+                Will = new DiceRollCheck(wil),
+                Psyche = new DiceRollCheck(psy),
+                Wisdom = new DiceRollCheck(wis),
+                Charisma = new DiceRollCheck(cha),
             };
             res.Data = new JavaScriptSerializer().Serialize(atr);
             res.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
             return res;
         }
-
+        
         [HttpPost]
         public JsonResult AddRandomEventToCategory(RandomEventRequest request)
         {
@@ -189,6 +277,9 @@ namespace Niklasson.DrunkenChair.Controllers
             result.Data = new JavaScriptSerializer().Serialize(ev);
             return result;
         }
+
+
+        #region helpers methods
 
         private CharacterConstructionSite GetCharacterConstructionSite()
         {
@@ -215,6 +306,107 @@ namespace Niklasson.DrunkenChair.Controllers
 
             return res;
         }
+        
+        private CharacterBackgroundStepViewModel GetCharacterBackgroundStepWithBackgrounds()
+        {
+            var ccs = GetCharacterConstructionSite();
+            var backgrounds = characterGenerationService.GetRandomBackgrounds(2);
 
+            if(ccs.Background == null)
+            {
+                ccs.Background = backgrounds.First();
+            }
+
+            var backgroundStep = new CharacterBackgroundStepViewModel(ccs)
+            {
+                Backgrounds = backgrounds.ToList(),
+                SelectedBackground = backgrounds.FirstOrDefault(),
+                BackgroundInfo = backgrounds.FirstOrDefault(),
+            };
+            return backgroundStep;
+        }
+
+        private CharacterRaceStepViewModel GetCharacterRaceStepViewModel()
+        {
+            var ccs = GetCharacterConstructionSite();
+            var races = characterGenerationService.Races;
+            if (ccs.Race == null)
+            {
+                ccs.Race = races.First();
+            }
+            
+            return new CharacterRaceStepViewModel(ccs)
+            {
+                Races = new SelectList(races),
+                DefaultRace = ccs.Race,
+                SelectedRace = ccs.Race.Name
+            };
+        }
+
+        private CharacterArchetypeStepViewModel GetCharacterArchetypeStepViewModel()
+        {
+            var ccs = GetCharacterConstructionSite();
+            var archetypes = characterGenerationService.Archetypes;
+            if (ccs.Archetype == null)
+            {
+                ccs.Archetype = archetypes.First();
+            }
+            
+            return new CharacterArchetypeStepViewModel(ccs)
+            {
+                Archetypes = new SelectList(archetypes),
+                DefaultArchetype  = ccs.Archetype,
+                SelectedArchetype = ccs.Archetype.Name
+            };
+        }
+
+
+        private CharacterBackgroundStepViewModel GetCharacterBackgroundStepViewModel()
+        {
+            var ccs = GetCharacterConstructionSite();
+            var backgrounds = characterGenerationService.GetRandomBackgrounds(2);
+            var background = ccs.Background ?? backgrounds.FirstOrDefault();
+
+            return new CharacterBackgroundStepViewModel(ccs)
+            {
+                Backgrounds = backgrounds.ToList(),
+                SelectedBackground = background.Name,
+            };
+        }
+        
+        private CharacterEnvironmentStepViewModel GetCharacterEnvironmentStepViewModel()
+        {
+            var ccs = GetCharacterConstructionSite();
+            var environments = characterGenerationService.Environments;
+            if (ccs.Environment == null)
+            {
+                ccs.Environment = environments.First();
+            }
+            
+            return new CharacterEnvironmentStepViewModel(ccs)
+            {
+                Environments = new SelectList(environments),
+                DefaultEnvironment = ccs.Environment,
+                SelectedEnvironment = ccs.Environment.Name
+            };
+        }
+
+        private CharacterBonusAttributeStepViewModel GetCharacterBonusAttributeStepViewModel()
+        {
+            var ccs = GetCharacterConstructionSite();
+            var b = ccs.GetCharacterAttributeExtraDiceDistribution();
+
+            int dicesLeft = 10 - b.AgilityBonusDices - b.CharismaBonusDices - b.PerceptionBonusDices - b.PsycheBonusDices
+                - b.StaminaBonusDices - b.StrengthBonusDices - b.WillBonusDices - b.WisdomBonusDices;
+
+            var res = new CharacterBonusAttributeStepViewModel()
+            {
+                DicesLeftToDistribute = dicesLeft,
+                Preview = new CharacterPreview(ccs),
+            };
+
+            return res;
+        }
+        #endregion
     }
 }

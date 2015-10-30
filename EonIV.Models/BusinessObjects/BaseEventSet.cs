@@ -31,13 +31,13 @@ namespace Niklasson.EonIV.Models.BusinessObjects
             {
                 switch (cat)
                 {
-                    case EventCategory.TRAVELS_AND_ADVENTURES:
+                    case EventCategory.TravelsAndAdventures:
                         return TravelsAndAdventures;
-                    case EventCategory.BATTLES_AND_SKIRMISHES:
+                    case EventCategory.BattlesAndSkirmishes:
                         return BattlesAndSkirmishes;
-                    case EventCategory.INTRIGUE_AND_MISDEADS:
+                    case EventCategory.IntrigueAndMisdeads:
                         return IntrigueAndMisdeads;
-                    case EventCategory.KNOWLEDGE_AND_MYSTERIES:
+                    case EventCategory.KnowledgeAndMysteries:
                         return KnowledgeAndMysteries;
                     default:
                         return new List<T>();
@@ -47,7 +47,7 @@ namespace Niklasson.EonIV.Models.BusinessObjects
 
         public virtual bool Add(T evnt)
         {
-            if (evnt.Category != EventCategory.UNCATEGORIZED)
+            if (evnt.Category != EventCategory.Uncategorized)
             {
                 this[evnt.Category].Add(evnt);
                 return true;

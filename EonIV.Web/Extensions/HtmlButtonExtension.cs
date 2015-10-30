@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
 
-namespace Niklasson.DrunkenChair.Extensions
+namespace Niklasson.EonIV.Web.Extensions
 {
     public static class HtmlButtonExtension
     {

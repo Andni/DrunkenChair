@@ -1,0 +1,20 @@
+﻿@model Niklasson.EonIV.Models.BusinessObjects.Race
+
+<div id="race">
+    <div class="eon-label">
+        @Html.DisplayFor(m => m.Name)
+    </div>
+    @Html.HiddenFor(m => m.Name)
+
+
+    <div class="eon-label">
+        @Html.DisplayFor(m => m.Description)
+    </div>
+    @Html.HiddenFor(m => m.Description)
+
+    <div class="eon-label">
+        Egenskaper
+    </div>
+    @Html.EditorFor(m => m.Perks)
+
+</div>

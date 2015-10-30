@@ -14,12 +14,12 @@ namespace Niklasson.EonIV.DataAccess.Migrations
                 {
                     new CategorySkillPoints
                     {
-                        Category = SkillCategory.KNOWLEDGE,
+                        Category = SkillCategory.Knowledge,
                         SkillPoints = 4
                     },
                     new CategorySkillPoints
                     {
-                        Category = SkillCategory.MYSTIC,
+                        Category = SkillCategory.Mystic,
                         SkillPoints = 4
                     }
                 },
@@ -27,12 +27,12 @@ namespace Niklasson.EonIV.DataAccess.Migrations
                 {
                     new CategorySkillPoints
                     {
-                        Category = SkillCategory.KNOWLEDGE,
+                        Category = SkillCategory.Knowledge,
                         SkillPoints = 4
                     },
                     new CategorySkillPoints
                     {
-                        Category = SkillCategory.WILDERNESS,
+                        Category = SkillCategory.Wilderness,
                         SkillPoints = 4
                     }
                 }

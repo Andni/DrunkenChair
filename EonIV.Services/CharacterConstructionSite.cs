@@ -13,12 +13,36 @@ namespace Niklasson.EonIV.Services
         }
 
         public EventTableRolls GetCharacterEventRolls(){
-            return characterData.Basics.GetEventRolls();
+            return characterData.GetEventRolls();
         }
 
-        public void SetCharacterBasicDetails(ICharacterBasicChoices basicChoices, IEonIVCharacterGenerationService service)
+        public void SetBackground(Background background)
         {
-            characterData.Basics = service.ResolveBasicChoices(basicChoices);
+            characterData.Background = background;
+        }
+
+        public void SetArchetype(Archetype archetype)
+        {
+            characterData.Archetype = archetype;
+        }
+
+        public void SetRace(Race race)
+        {
+            characterData.Race = race;
+        }
+
+        public void SetEnvironment(Environment environment)
+        {
+            characterData.Environment = environment;
+        }
+
+        public void SetBackground(string backgroundName, IEonIVCharacterGenerationService service)
+        {
+            var background = service.GetBackground(backgroundName);
+            if(background != null)
+            {
+                characterData.Background = background;
+            }
         }
 
         public IBaseAttributeDices GetCharacterAttributeExtraDiceDistribution()
@@ -37,7 +61,7 @@ namespace Niklasson.EonIV.Services
 
         public CharacterSheet ToCharacterSheet()
         {
-            return characterData.ToCharacterSheet();
+            return new CharacterSheet(characterData);
         }
 
         public CharacterGenerationData GetGenerationData()
@@ -68,7 +92,7 @@ namespace Niklasson.EonIV.Services
 
         public void RollEvents(IEonIVCharacterGenerationService service)
         {
-            characterData.Events = new RuleBookEventSet(service.RollEvents(characterData.Basics.GetEventRolls()));
+            characterData.Events = new RuleBookEventSet(service.RollEvents(characterData.GetEventRolls()));
         }
 
         public void SetCharacterEventDetails(RuleBookEventSet events)
@@ -76,24 +100,65 @@ namespace Niklasson.EonIV.Services
             characterData.Events = events;
         }
 
-        public string GetArchetype()
+        public string GetArchetypeName()
         {
-            return characterData.Basics.Archetype;
+            return characterData.Archetype.Name;
         }
 
-        public string GetBackground()
+        public string GetBackgroundName()
         {
-            return characterData.Basics.Background;
+            return characterData.Background.Name;
         }
 
-        public string GetEnvironment()
+        public string GetEnvironmentName()
         {
-            return characterData.Basics.Environment;
+            return characterData.Environment.Name;
         }
 
-        public string GetRace()
+        public string GetRaceName()
         {
-            return characterData.Basics.Race;
+            return characterData.Race.Name;
+        }
+
+        public Archetype Archetype
+        {
+            get { return characterData.Archetype; }
+            set { characterData.Archetype = value; }
+        }
+
+        public Background Background
+        {
+            get { return characterData.Background; }
+            set { characterData.Background= value; }
+        }
+
+        public Environment Environment
+        {
+            get { return characterData.Environment; }
+            set { characterData.Environment = value; }
+        }
+
+        public Race Race
+        {
+            get { return characterData.Race; }
+            set { characterData.Race = value; }
+        }
+
+
+
+        public void SetRace(string raceName, IEonIVCharacterGenerationService characterGenerationService)
+        {
+            characterData.Race = characterGenerationService.GetRace(raceName);
+        }
+
+        public void SetArchetype(string archetypeName, IEonIVCharacterGenerationService characterGenerationService)
+        {
+            characterData.Archetype = characterGenerationService.GetArchetype(archetypeName);
+        }
+
+        public void SetEnvironment(string environmentName, IEonIVCharacterGenerationService characterGenerationService)
+        {
+            characterData.Environment = characterGenerationService.GetEnvironment(environmentName);
         }
     }
 }                  

@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace Niklasson.DrunkenChair
+namespace Niklasson.EonIV.Web
 {
     public class FilterConfig
     {

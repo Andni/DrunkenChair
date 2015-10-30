@@ -98,18 +98,34 @@ namespace Niklasson.EonIV.Models.BusinessObjects
             }
         }
         
-        public static CharacterAttributeSet operator +(CharacterAttributeSet lh, CharacterAttributeSet rh)
+        public static CharacterAttributeSet operator +(CharacterAttributeSet lh, ICharacterBaseAttributes rh)
         {
-            lh.Agility += rh.Agility;
-            lh.Charisma += rh.Charisma;
-            lh.Perception += rh.Perception;
-            lh.Psyche += rh.Psyche;
-            lh.Stamina += rh.Stamina;
-            lh.Strength += rh.Strength;
-            lh.Will += rh.Will;
-            lh.Wisdom += rh.Wisdom;
-
-            return lh;
+            return new CharacterAttributeSet
+            {
+                Agility = lh.Agility + rh.Agility,
+                Charisma = lh.Charisma + rh.Charisma,
+                Perception = lh.Perception + rh.Perception,
+                Psyche = lh.Psyche + rh.Psyche,
+                Stamina = lh.Stamina + rh.Stamina,
+                Strength = lh.Strength + rh.Strength,
+                Will = lh.Will + rh.Will,
+                Wisdom = lh.Wisdom + rh.Wisdom,
+            };
+        }
+        
+        public static CharacterAttributeSet operator +(CharacterAttributeSet lh, IBaseAttributeDices rh)
+        {
+            return new CharacterAttributeSet
+            {
+                Agility = new DiceRollCheck(lh.Agility).AddDice(rh.AgilityBonusDices),
+                Charisma = new DiceRollCheck(lh.Charisma).AddDice(rh.CharismaBonusDices),
+                Perception = new DiceRollCheck(lh.Perception).AddDice(rh.PerceptionBonusDices),
+                Psyche = new DiceRollCheck(lh.Psyche).AddDice(rh.PsycheBonusDices),
+                Stamina = new DiceRollCheck(lh.Stamina).AddDice(rh.StaminaBonusDices),
+                Strength = new DiceRollCheck(lh.Strength).AddDice(rh.StrengthBonusDices),
+                Will = new DiceRollCheck(lh.Will).AddDice(rh.WillBonusDices),
+                Wisdom = new DiceRollCheck(lh.Wisdom).AddDice(rh.WisdomBonusDices),
+            };
         }
         
     }

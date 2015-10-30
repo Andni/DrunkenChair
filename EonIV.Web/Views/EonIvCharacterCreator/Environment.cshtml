@@ -1,0 +1,21 @@
+﻿
+@model  Niklasson.EonIV.Models.BusinessObjects.Environment
+
+<div id="eon-environment" , class="eon-environment">
+    <div>
+        @Html.DisplayFor(m => m.Name)
+        @Html.HiddenFor(m => m.Name)
+    </div>
+
+    @Html.DisplayFor(m => m.Description)
+
+    <div class="eon-label">
+        Händelsetabeller
+    </div>
+    @Html.EditorFor(m => m.EventRolls)
+
+    <div class="eon-label">
+        Färdigheter
+    </div>
+    @Html.EditorFor(m => m.Skillpoints)
+</div>

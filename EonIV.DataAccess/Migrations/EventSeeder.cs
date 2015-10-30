@@ -14,7 +14,7 @@ namespace Niklasson.EonIV.DataAccess.Migrations
                 e => new {e.Category, e.Number},
                 new RuleBookEvent()
                 {
-                    Category = EventCategory.TRAVELS_AND_ADVENTURES,
+                    Category = EventCategory.TravelsAndAdventures,
                     Number = 1,
                     Name = "Allvarlig olycka",
                     Description = @"Rollpersonen har varit
@@ -43,7 +43,7 @@ namespace Niklasson.EonIV.DataAccess.Migrations
                 },
                 new RuleBookEvent()
                 {
-                    Category = EventCategory.TRAVELS_AND_ADVENTURES,
+                    Category = EventCategory.TravelsAndAdventures,
                     Number = 2,
                     Name = "Andningsteknik",
                     Description = @"Rollpersonen har lärt
@@ -62,7 +62,7 @@ namespace Niklasson.EonIV.DataAccess.Migrations
                 },
                 new RuleBookEvent()
                 {
-                    Category = EventCategory.INTRIGUE_AND_MISDEADS,
+                    Category = EventCategory.IntrigueAndMisdeads,
                     Number = 564,
                     Name = "Test event",
                     Description = @"Rollpersonen har varit med om en allvarlig olycka och kroppenhar blivit sargad och bär märken efter det som skett. Det kan röra sig om brutna ben, eldskador eller bettskador från ett vilt djur.",

@@ -3,7 +3,7 @@ using System.Linq;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace Niklasson.DrunkenChair.Extensions
+namespace Niklasson.EonIV.Web.Extensions
 {
     public static partial class HtmlHelperExtensions
     {

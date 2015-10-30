@@ -4,7 +4,7 @@ using System.Web.Mvc;
 using Niklasson.EonIV.Models.BusinessObjects;
 using Niklasson.EonIV.Services;
 
-namespace Niklasson.DrunkenChair.Controllers
+namespace Niklasson.EonIV.Web.Controllers
 {
     public class EonIvCharactersController : Controller
     {

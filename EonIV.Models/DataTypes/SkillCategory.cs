@@ -5,31 +5,31 @@ namespace Niklasson.EonIV.Models.DataTypes
 {
     public enum SkillCategory
     {
-        BATTLE = 1,
-        KNOWLEDGE = 2,
-        LANGUAGE = 3,
-        MISC = 4,
-        MOVEMENT = 5,
-        MYSTIC = 6,
-        SOCIAL = 7,
-        WILDERNESS = 8,
-        FREE_CHOISE = 9,
-        UNCATEGORIZED = 0
+        Battle = 1,
+        Knowledge = 2,
+        Language = 3,
+        Misc = 4,
+        Movement = 5,
+        Mystic = 6,
+        Social = 7,
+        Wilderness = 8,
+        FreeChoise = 9,
+        Uncategorized = 0
     }
 
     public static class SkillCategoryHelper
     {
         private static Dictionary<SkillCategory, string> dic = new Dictionary<SkillCategory, string>() {
-            {SkillCategory.BATTLE, "strid"},
-            {SkillCategory.SOCIAL, "sociala"},
-            {SkillCategory.WILDERNESS, "vildmark"},
-            {SkillCategory.MOVEMENT, "rörelse"},
-            {SkillCategory.MYSTIC, "mystik"},
-            {SkillCategory.KNOWLEDGE, "kunskap"},
-            {SkillCategory.LANGUAGE, "språk"},
-            {SkillCategory.MISC, "övrigt"},
-            {SkillCategory.FREE_CHOISE, "valfria"},
-            {SkillCategory.UNCATEGORIZED, "okategoriserat"}
+            {SkillCategory.Battle, "strid"},
+            {SkillCategory.Social, "sociala"},
+            {SkillCategory.Wilderness, "vildmark"},
+            {SkillCategory.Movement, "rörelse"},
+            {SkillCategory.Mystic, "mystik"},
+            {SkillCategory.Knowledge, "kunskap"},
+            {SkillCategory.Language, "språk"},
+            {SkillCategory.Misc, "övrigt"},
+            {SkillCategory.FreeChoise, "valfria"},
+            {SkillCategory.Uncategorized, "okategoriserat"}
         };
 
         public static SkillCategory TryParse(string cat)

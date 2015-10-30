@@ -1,6 +1,6 @@
 ﻿using Niklasson.EonIV.Models.BusinessObjects;
 
-namespace Niklasson.DrunkenChair.Controllers
+namespace Niklasson.EonIV.Web.Controllers
 {
     public class RandomEventRequest
     {
